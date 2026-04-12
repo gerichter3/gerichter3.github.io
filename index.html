@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>gerichter3 · 法律網頁資源中心</title>
+  <style>
+    :root {
+      --primary: #1a3a5c;
+      --accent: #c8a84b;
+      --bg: #f5f2ec;
+      --card-bg: #ffffff;
+      --text: #2c2c2c;
+      --muted: #6b6b6b;
+      --border: #e0d8cc;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "Noto Serif TC", "Georgia", serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* ── Header ── */
+    header {
+      background: var(--primary);
+      color: #fff;
+      padding: 48px 32px 36px;
+      text-align: center;
+      border-bottom: 4px solid var(--accent);
+    }
+    header .badge {
+      display: inline-block;
+      background: var(--accent);
+      color: var(--primary);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      padding: 3px 12px;
+      border-radius: 2px;
+      margin-bottom: 14px;
+      text-transform: uppercase;
+    }
+    header h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      margin-bottom: 8px;
+    }
+    header p {
+      font-size: 0.95rem;
+      color: #c2cfe0;
+      letter-spacing: 0.05em;
+    }
+
+    /* ── Main ── */
+    main {
+      max-width: 960px;
+      margin: 48px auto;
+      padding: 0 24px;
+    }
+
+    .section-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--primary);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border-left: 4px solid var(--accent);
+      padding-left: 12px;
+      margin-bottom: 24px;
+    }
+
+    /* ── Cards ── */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 24px;
+      margin-bottom: 56px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      transition: box-shadow 0.2s, transform 0.2s;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+    }
+    .card:hover {
+      box-shadow: 0 8px 28px rgba(26,58,92,0.13);
+      transform: translateY(-3px);
+    }
+
+    .card-header {
+      background: var(--primary);
+      padding: 20px 20px 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .card-icon {
+      width: 44px;
+      height: 44px;
+      background: var(--accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+    .card-header h2 {
+      font-size: 1rem;
+      color: #fff;
+      font-weight: 700;
+      line-height: 1.4;
+    }
+
+    .card-body {
+      padding: 18px 20px 20px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .card-desc {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.7;
+      flex: 1;
+    }
+    .card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .tag {
+      font-size: 0.72rem;
+      background: #eef2f7;
+      color: var(--primary);
+      padding: 3px 9px;
+      border-radius: 3px;
+      letter-spacing: 0.05em;
+    }
+    .card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 4px;
+      font-size: 0.82rem;
+      color: var(--primary);
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+    .card-link::after { content: "→"; }
+
+    /* ── Coming Soon ── */
+    .card.coming-soon {
+      opacity: 0.6;
+      pointer-events: none;
+    }
+    .card.coming-soon .card-header {
+      background: #7a8fa3;
+    }
+    .card.coming-soon .card-icon {
+      background: #b0bec5;
+    }
+    .soon-badge {
+      font-size: 0.7rem;
+      background: #b0bec5;
+      color: #fff;
+      padding: 2px 8px;
+      border-radius: 3px;
+      letter-spacing: 0.05em;
+    }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      padding: 32px 16px;
+      font-size: 0.8rem;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+    }
+    footer a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+    footer a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="badge">Legal Web Resources</div>
+  <h1>法律網頁資源中心</h1>
+  <p>gerichter3 · 統一管理所有法律專題網頁</p>
+</header>
+
+<main>
+
+  <p class="section-title">已發布專題</p>
+
+  <div class="grid">
+
+    <!-- 私設通路 -->
+    <a class="card" href="https://gerichter3.github.io/private-access-roads/" target="_blank">
+      <div class="card-header">
+        <div class="card-icon">⚖️</div>
+        <h2>私設通路上義務之繼受</h2>
+      </div>
+      <div class="card-body">
+        <p class="card-desc">
+          探討私設通路相關法律義務的繼受問題，涵蓋民法、土地法條文解析、重要判例，以及實務爭議與解決建議。
+        </p>
+        <div class="card-tags">
+          <span class="tag">民法</span>
+          <span class="tag">土地法</span>
+          <span class="tag">物權</span>
+          <span class="tag">判例</span>
+        </div>
+        <span class="card-link">前往網頁</span>
+      </div>
+    </a>
+
+    <!-- 測試網頁 -->
+    <a class="card" href="https://gerichter3.github.io/github-test/" target="_blank">
+      <div class="card-header">
+        <div class="card-icon">🔧</div>
+        <h2>GitHub 連接測試</h2>
+      </div>
+      <div class="card-body">
+        <p class="card-desc">
+          WorkBuddy × GitHub 部署流程驗證網頁，確認 GitHub Pages 自動部署功能正常運作。
+        </p>
+        <div class="card-tags">
+          <span class="tag">測試</span>
+          <span class="tag">GitHub Pages</span>
+        </div>
+        <span class="card-link">前往網頁</span>
+      </div>
+    </a>
+
+    <!-- 預留卡片 -->
+    <div class="card coming-soon">
+      <div class="card-header">
+        <div class="card-icon">📁</div>
+        <h2>更多專題 <span class="soon-badge">即將上線</span></h2>
+      </div>
+      <div class="card-body">
+        <p class="card-desc">
+          未來新增的法律專題網頁將自動出現於此，持續更新中。
+        </p>
+        <div class="card-tags">
+          <span class="tag">待新增</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <p class="section-title">使用說明</p>
+  <div style="background:#fff;border:1px solid var(--border);border-radius:8px;padding:24px 28px;font-size:0.9rem;line-height:2;color:var(--muted);">
+    <p>此頁面為 <strong style="color:var(--primary)">gerichter3</strong> 的 GitHub Pages 入口，統一管理所有已部署的法律專題網頁。</p>
+    <p>每新增一個專題，即在此頁面加入對應卡片，方便統一存取與分享。</p>
+    <p>所有網頁原始碼存放於：
+      <a href="https://github.com/gerichter3" target="_blank" style="color:var(--primary);font-weight:600;">github.com/gerichter3</a>
+    </p>
+  </div>
+
+</main>
+
+<footer>
+  <p>© 2026 gerichter3 · 本站由 <a href="https://github.com/gerichter3/gerichter3.github.io" target="_blank">GitHub Pages</a> 提供服務</p>
+</footer>
+
+</body>
+</html>
