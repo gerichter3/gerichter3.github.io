@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>共有物分割混合分割之法律效力分析</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Microsoft JhengHei","微軟正黑體",sans-serif;background:linear-gradient(135deg,#667eea,#764ba2);min-height:100vh;padding:20px}
+.container{max-width:1200px;margin:0 auto;background:#fff;border-radius:20px;box-shadow:0 20px 60px rgba(0,0,0,.3);overflow:hidden}
+.header{background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;padding:30px;text-align:center}
+.header h1{font-size:2em;margin-bottom:10px}
+.header p{opacity:.9}
+.controls{background:#f8f9fa;padding:15px 30px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.btn{padding:10px 20px;border:none;border-radius:8px;cursor:pointer;font-size:1em;font-weight:700;transition:.3s}
+.btn-primary{background:linear-gradient(135deg,#667eea,#764ba2);color:#fff}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 5px 15px rgba(102,126,234,.4)}
+.toc-toggle{background:#28a745;color:#fff}
+.slides-container{padding:30px;max-height:80vh;overflow-y:auto}
+.slide{margin-bottom:40px;padding:30px;background:#f8f9fa;border-radius:15px;border-left:5px solid #667eea;animation:slideIn .5s ease}
+@keyframes slideIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.slide-header{display:flex;align-items:center;gap:15px;margin-bottom:20px;padding-bottom:15px;border-bottom:2px solid #dee2e6}
+.slide-num{background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;padding:8px 15px;border-radius:20px;font-weight:700}
+.slide-header h2{font-size:1.8em;color:#333;flex:1}
+.slide-body{line-height:1.8;color:#555}
+.slide-img{text-align:center;margin:20px 0}
+.slide-img img{max-width:100%;height:auto;border-radius:10px;box-shadow:0 5px 15px rgba(0,0,0,.2)}
+.slide-text p{margin:10px 0;padding:8px 0}
+.toc-panel{position:fixed;top:0;right:-400px;width:400px;height:100vh;background:#fff;box-shadow:-5px 0 20px rgba(0,0,0,.2);transition:right .3s;z-index:1000;overflow-y:auto;padding:20px}
+.toc-panel.active{right:0}
+.toc-header{font-size:1.5em;font-weight:700;margin-bottom:20px;color:#667eea;border-bottom:2px solid #667eea;padding-bottom:10px}
+.toc-item{display:block;padding:12px 15px;margin:5px 0;background:#f8f9fa;border-radius:8px;text-decoration:none;color:#333;transition:.3s;cursor:pointer}
+.toc-item:hover{background:#667eea;color:#fff;transform:translateX(5px)}
+.overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.5);z-index:999}
+.overlay.active{display:block}
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>共有物分割混合分割之法律效力分析</h1>
+        <p>互動式法學簡報</p>
+    </div>
+    <div class="controls">
+        <button class="btn btn-primary" onclick="prev()">上一張</button>
+        <button class="btn btn-primary" onclick="next()">下一張</button>
+        <button class="btn toc-toggle" onclick="toggleToc()">目錄</button>
+    </div>
+    <div class="slides-container" id="container">
+
+        <div class="slide" id="slide-1">
+            <div class="slide-header">
+                <span class="slide-num">1</span>
+                <h2>共有物分割</h2>
+            </div>
+            <div class="slide-body">
+                
+                <div class="slide-text"><p>混合分割之法律效力分析</p><p>民法第 824 條第 2 項第 2 款後段｜實務見解分歧與法院裁量</p><p>謝秉錡律師</p><p>黃暐筑律師</p><p>2026 年 5 月</p></div>
+            </div>
+        </div>
+        
+
+        <div class="slide" id="slide-2">
+            <div class="slide-header">
+                <span class="slide-num">2</span>
+                <h2>Slide 2</h2>
+            </div>
+            <div class="slide-body">
+                
+                <div class="slide-text"></div>
+            </div>
+        </div>
+        
+
+        <div class="slide" id="slide-3">
+            <div class="slide-header">
+                <span class="slide-num">3</span>
+                <h2>案件事實與爭點</h2>
+            </div>
+            <div class="slide-body">
+                
+                <div class="slide-text"><p>一、法律爭點與法規架構</p><p>【事實摘要】</p><p>甲、乙、丙三人共有 A 土地。甲在 A 土地後方建有房屋，A 土地上有一小路通往甲之房屋。</p><p>乙向法院提起共有物分割訴訟。甲主張：將 A 土地分割為二部分，(1) 小路部分由原物分配予甲；(2) 其餘土地變價分割，價金分配予各共有人。</p><p>【核心爭點】</p><p>1. 「部分原物、部分變價」之混合分割方法是否合法？</p><p>2. 供通行使用之小路，得否單獨分配予甲一人？</p><p>3. 其餘部分採變價分割，是否具備「原物分配顯有困難」之要件？</p><p>共有物分割法律效力分析　｜　謝秉錡律師事務所　第 2 頁／共 20 頁</p></div>
+            </div>
+        </div>
+        
+
+        <div class="slide" id="slide-4">
+            <div class="slide-header">
+                <span class="slide-num">4</span>
+                <h2>Slide 4</h2>
+            </div>
+            <div class="slide-body">
+                
+                <div class="slide-text"></div>
+            </div>
+        </div>
+        
+
+        <div class="slide" id="slide-5">
+            <div class="slide-header">
+                <span class="slide-num">5</span>
+                <h2>Slide 5</h2>
+            </div>
+            <div class="slide-body">
+                <div class="slide-img"><img src="images/image1.png" alt="Slide 5"></div>
+                <div class="slide-text"></div>
+            </div>
+        </div>
+        
+
+        <div class="slide" id="slide-6">
+            <div class="slide-header">
+                <span class="slide-num">6</span>
+                <h2>相關法條架構</h2>
+            </div>
+            <div class="slide-body">
+                <div class="slide-img"><img src="images/image2.png" alt="Slide 6"></div>
+                <div class="slide-text"><p>民法第 823～825 條</p><p>【民法第 824 條第 2 項第 2 款】</p><p>以原物為分配時，因共有人之利益或其他必要情形，得就共有物之一部分仍維持共有。</p><p>【同上第 2 項第 2 款後段】</p><p>「以原物之一部分分配於各共有人，他部分變賣，以價金分配於各共有人。」</p><p>【民法第 824 條第 3 項】</p><p>共有人中有未受分配，或不能按其應有部分受分配者，得以金錢補償之。</p><p>【民法第 823 條第 1 項】</p><p>各共有人，除法令另有規定外，得隨時請求分割共有物。但因物之使用目的不能分割或契約訂有不分割之期限者，不在此限。</p><p>【司法實務核心爭點】</p><p>「各共有人」是否限於「全體共有人」？</p><p>→ 早期嚴格說：必須全體共有人均受原物分配（否定說）</p><p>→ 現行彈性說：得僅由部分共有人受原物分配（肯定說）</p><p>共有物分割法律效力分析　｜　謝秉錡律師事務所　第 3 頁／共 20 頁</p></div>
+            </div>
+        </div>
+        
+
+        <div class="slide" id="slide-7">
+            <div class="slide-header">
+                <span class="slide-num">7</span>
+                <h2>早期嚴格解釋（否定說）</h2>
+            </div>
+            <div class="slide-body">
+                <div class="slide-img"><img src="images/image3.png" alt="Slide 7"></div>
+                <div class="slide-text"><p>105 年法律座談會．甲說</p><p>【見解要旨】</p><p>嚴格文義解釋：民法第 824 條第 2 項第 2 款後段所稱「各共有人」，係指「全體共有人」。</p><p>因此，法院採混合分割（部分原物＋部分變價）時，原物部分應分配予「全體共有人」，不得僅分配予部分共有人。</p><p>【代表性見解】</p><p>• 臺灣高等法院暨所屬法院 105 年法律座談會民事類提案第 11 號</p><p>表決結果：甲說（否定說）34 票 ＞ 乙說（肯定說）33 票</p><p>多數意見認為：僅將部分土地分配予部分共有人，與法條「分配於各共有人」之文義不符。</p><p>• 108 年度上字第 1258 號判決</p><p>明確採否定說：「不能採用將系爭土地之部分分割予部分共有人，再將其餘土地部分變價後分配予其他未取得土地之人。」</p><p>共有物分割法律效力分析　｜　謝秉錡律師事務所　第 4 頁／共 20 頁</p></div>
+            </div>
+        </div>
+        
+
+        <div class="slide" id="slide-8">
+            <div class="slide-header">
+                <span class="slide-num">8</span>
+                <h2>現行彈性解釋（肯定說）</h2>
+            </div>
+            <div class="slide-body">
+                <div class="slide-img"><img src="images/image4.png" alt="Slide 8"></div>
+                <div class="slide-text"><p>112 年法律座談會．乙說</p><p>【見解要旨】</p><p>98 年民法修正後，法院應以「公平原則」及「經濟效用」為核心考量，允許彈性運用分割方法。</p><p>「</p><p>部分原物分配予部分共有人、其餘變價分配」之混合分割，現已為實務肯定</p><p>。</p><p>【代表性見解】</p><p>• 臺灣高等法院暨所屬法院 112 年法律座談會民事類提案第 5 號</p><p>研討結果：採乙說（肯定說）</p><p>「法院可依個案情形，採原物與變價分割併用，並由取得原物者補償未取得者，此為修法後允許之方法，符合立法意旨與公平原則。」</p><p>• 關鍵轉折：法院強調「由取得原物者補償未取得者」（民法第 824 條第 3 項），使混合分割具備公平性。</p><p>共有物分割法律效力分析　｜　謝秉錡律師事務所　第 5 頁／共 20 頁</p></div>
+            </div>
+        </div>
+        
+
+        <div class="slide" id="slide-9">
+            <div class="slide-header">
+                <span class="slide-num">9</span>
+                <h2>見解對比：嚴格說 vs 彈性說</h2>
+            </div>
+            <div class="slide-body">
+                <div class="slide-img"><img src="images/image5.png" alt="Slide 9"></div>
+                <div class="slide-text"><p>實務見解之演變</p><p>❌ 嚴格解釋（早期）</p><p>• 法條文義：「各共有人」＝全體共有人</p><p>• 混合分割時，原物必須分配予全體共有人</p><p>• 僅分配部分共有人 → 違反法條文義</p><p>• 代表性見解：</p><p>－105 年座談會甲說（34 票）</p><p>－108 年度上字第 1258 號</p><p>• 評價：過度拘泥文義，未能兼顧經濟效用</p><p>✅ 彈性解釋（現行）</p><p>• 98 年修法意旨：公平原則＋經濟效用</p><p>• 混合分割：得僅由部分共有人取得原物</p><p>• 配套：取得原物者以金錢補償其他共有人</p><p>• 代表性見解：</p><p>－112 年座談會乙說（多數採用）</p><p>－臺灣高等法院 112 年提案第 5 號</p><p>• 評價：符合現代共有物分割之實務需求</p><p>共有物分割法律效力分析　｜　謝秉錡律師事務所　第 6 頁／共 20 頁</p></div>
+            </div>
+        </div>
+        
+
+        <div class="slide" id="slide-10">
+            <div class="slide-header">
+                <span class="slide-num">10</span>
+                <h2>Slide 10</h2>
+            </div>
+            <div class="slide-body">
+                <div class="slide-img"><img src="images/image6.png" alt="Slide 10"></div>
+                <div class="slide-text"></div>
+            </div>
+        </div>
+        
+
+        <div class="slide" id="slide-11">
+            <div class="slide-header">
+                <span class="slide-num">11</span>
+                <h2>Slide 11</h2>
+            </div>
+            <div class="slide-body">
+                <div class="slide-img"><img src="images/image7.png" alt="Slide 11"></div>
+                <div class="slide-text"></div>
+            </div>
+        </div>
+        
+
+        <div class="slide" id="slide-12">
+            <div class="slide-header">
+                <span class="slide-num">12</span>
+                <h2>道路土地之分割限制</h2>
+            </div>
+            <div class="slide-body">
+                <div class="slide-img"><img src="images/image8.png" alt="Slide 12"></div>
+                <div class="slide-text"><p>因使用目的不能分割原則</p><p>【民法第 823 條第 1 項但書】</p><p>「因物之使用目的不能分割」者，不得請求分割。</p><p>【實務見解：道路原則上應維持共有】</p><p>• 108 年度上字第 1258 號判決：</p><p>「所謂因物之使用目的不能分割，係指共有物繼續供他物之用，而為其物之利用所不可缺……例如……區分所有建築物之共同部分等是。」</p><p>• 112 年度上字第 358 號判決：</p><p>「屬道路用地之……部分，依其使用目的即有維持共有之必要，當由兩造共同負擔道路用地之面積，應屬允妥。」</p><p>【法律效果】</p><p>供通行使用之道路土地，法院依民法第 824 條第 4 項，通常會判決「維持共有」，由全體共有人按應有部分比例共有。</p><p>共有物分割法律效力分析　｜　謝秉錡律師事務所　第 7 頁／共 20 頁</p></div>
+            </div>
+        </div>
+        
+
+        <div class="slide" id="slide-13">
+            <div class="slide-header">
+                <span class="slide-num">13</span>
+                <h2>Slide 13</h2>
+            </div>
+            <div class="slide-body">
+                <div class="slide-img"><img src="images/image9.png" alt="Slide 13"></div>
+                <div class="slide-text"></div>
+            </div>
+        </div>
+        
+
+        <div class="slide" id="slide-14">
+            <div class="slide-header">
+                <span class="slide-num">14</span>
+                <h2>Slide 14</h2>
+            </div>
+            <div class="slide-body">
+                <div class="slide-img"><img src="images/image10.png" alt="Slide 14"></div>
+                <div class="slide-text"></div>
+            </div>
+        </div>
+        
+
+        <div class="slide" id="slide-15">
+            <div class="slide-header">
+                <span class="slide-num">15</span>
+                <h2>變價分割之發動要件</h2>
+            </div>
+            <div class="slide-body">
+                <div class="slide-img"><img src="images/image11.png" alt="Slide 15"></div>
+                <div class="slide-text"><p>「原物分配顯有困難」之判斷</p><p>【法條依據】</p><p>民法第 824 條第 2 項第 2 款前段：「原物分配顯有困難時，得變賣共有物，以價金分配於各共有人。」</p><p>【「顯有困難」之認定標準】</p><p>實務上包括：</p><p>• 地形狹長、難以單獨利用</p><p>• 面積過小，不符合經濟效益</p><p>• 共有土地為「道路用地」，無單獨利用價值 → 112 年度上易字第 472 號</p><p>【實務態度：審慎採用變價分割】</p><p>• 112 年度上字第 358 號：</p><p>「難認兩造就系爭土地受原物之分配顯有事實上或法律上之困難……應認以由原物分割方法為適當。故……主張採變價分割方案，委無可採。」</p><p>【舉證責任】甲須舉證證明「其餘部分」確有原物分配之困難，否則法院將優先採原物分割。</p><p>共有物分割法律效力分析　｜　謝秉錡律師事務所　第 9 頁／共 20 頁</p></div>
+            </div>
+        </div>
+        
+
+        <div class="slide" id="slide-16">
+            <div class="slide-header">
+                <span class="slide-num">16</span>
+                <h2>Slide 16</h2>
+            </div>
+            <div class="slide-body">
+                <div class="slide-img"><img src="images/image12.png" alt="Slide 16"></div>
+                <div class="slide-text"></div>
+            </div>
+        </div>
+        
+
+        <div class="slide" id="slide-17">
+            <div class="slide-header">
+                <span class="slide-num">17</span>
+                <h2>法院之裁量權</h2>
+            </div>
+            <div class="slide-body">
+                <div class="slide-img"><img src="images/image13.png" alt="Slide 17"></div>
+                <div class="slide-text"><p>不受當事人主張分割方法之拘束</p><p>【法律原則】</p><p>法院定共有物之分割方法，固有自由裁量權，不受共有人主張之拘束，但仍應斟酌下列因素公平決定（110 年度台上字第 1630 號、110 年度上字第 1097 號）：</p><p>1. 當事人之聲明（意願）</p><p>2. 共有物之性質</p><p>3. 經濟效用</p><p>4. 全體共有人之利益</p><p>【實務見解】</p><p>• 113 年度上易字第 262 號：</p><p>「法院應斟酌當事人意願、共有物之使用情形、共有物之性質、經濟效用及全體共有人利益等情形而為適當之分割，不受共有人主張分割方法之拘束。」</p><p>【實務意義】</p><p>甲之主張僅供法院參考，最終分割方法由法院依職權裁量決定。</p><p>共有物分割法律效力分析　｜　謝秉錡律師事務所　第 10 頁／共 20 頁</p></div>
+            </div>
+        </div>
+        
+
+        <div class="slide" id="slide-18">
+            <div class="slide-header">
+                <span class="slide-num">18</span>
+                <h2>Slide 18</h2>
+            </div>
+            <div class="slide-body">
+                
+                <div class="slide-text"></div>
+            </div>
+        </div>
+        
+
+        <div class="slide" id="slide-19">
+            <div class="slide-header">
+                <span class="slide-num">19</span>
+                <h2>Slide 19</h2>
+            </div>
+            <div class="slide-body">
+                
+                <div class="slide-text"></div>
+            </div>
+        </div>
+        
+
+        <div class="slide" id="slide-20">
+            <div class="slide-header">
+                <span class="slide-num">20</span>
+                <h2>道路維持共有之例外</h2>
+            </div>
+            <div class="slide-body">
+                
+                <div class="slide-text"><p>共有人無通行需求時</p><p>【例外見解】</p><p>道路維持共有「並非絕對」。若無維持共有之必要，法院無須強制維持共有。</p><p>【代表性見解】</p><p>• 113 年度重上字第 207 號判決：</p><p>「無必要亦無理由再保留……土地作為道路，由兩造共有使兩造共享不動產役權。」</p><p>• 本件特殊性（甲案）：</p><p>乙、丙二人「無意取得該小路部分」，且該小路係「通往甲所有之房屋」。</p><p>乙、丙對該道路並無使用需求。</p><p>【反面論證】</p><p>強制乙、丙維持共有 → 乙、丙須負擔管理責任與稅費 → 減損經濟效用 → 違反 110 年度台上字第 1630 號「公平決定」原則。</p><p>共有物分割法律效力分析　｜　謝秉錡律師事務所　第 8 頁／共 20 頁</p></div>
+            </div>
+        </div>
+        
+
+        <div class="slide" id="slide-21">
+            <div class="slide-header">
+                <span class="slide-num">21</span>
+                <h2>Slide 21</h2>
+            </div>
+            <div class="slide-body">
+                
+                <div class="slide-text"></div>
+            </div>
+        </div>
+        
+
+        <div class="slide" id="slide-22">
+            <div class="slide-header">
+                <span class="slide-num">22</span>
+                <h2>金錢補償機制</h2>
+            </div>
+            <div class="slide-body">
+                
+                <div class="slide-text"><p>取得原物者對其他共有人之補償義務</p><p>【法條依據】</p><p>民法第 824 條第 3 項：「共有人中有未受分配，或不能按其應有部分受分配者，得以金錢補償之。」</p><p>【適用情形】</p><p>混合分割中，若僅由部分共有人（甲）取得原物（小路），其他共有人（乙、丙）未受原物分配，甲應以金錢補償乙、丙。</p><p>【補償數額之計算】</p><p>• 甲取得小路之價值 ＞ 甲之應有部分比例 → 甲應補償乙、丙差額</p><p>• 補償方式：於分割裁判中一併宣告金錢補償數額</p><p>【實務見解】</p><p>臺灣高等法院暨所屬法院 112 年法律座談會民事類提案第 5 號：</p><p>「由取得原物者補償未取得者，以達成公平適當之結果。」</p><p>共有物分割法律效力分析　｜　謝秉錡律師事務所　第 11 頁／共 20 頁</p></div>
+            </div>
+        </div>
+        
+
+        <div class="slide" id="slide-23">
+            <div class="slide-header">
+                <span class="slide-num">23</span>
+                <h2>Slide 23</h2>
+            </div>
+            <div class="slide-body">
+                
+                <div class="slide-text"></div>
+            </div>
+        </div>
+        
+
+        <div class="slide" id="slide-24">
+            <div class="slide-header">
+                <span class="slide-num">24</span>
+                <h2>袋地風險與通行權</h2>
+            </div>
+            <div class="slide-body">
+                
+                <div class="slide-text"><p>變價分割後之潛在爭議</p><p>【問題意識】</p><p>若甲取得小路（原物分配），其餘土地變價由「第三人」拍定取得。該第三人是否需通行該小路？</p><p>若其餘土地無其他通路 → 其餘土地成為「袋地」→ 第三人需對甲之小路主張通行權。</p><p>【法院可能之處理方式】</p><p>• 方式一：依 112 年度上字第 358 號意旨，要求將小路「維持共有」，以保障潛在買受人（第三人）之權益。</p><p>• 方式二：甲於分割時一併「設定不動產役權」予其餘土地（或承諾提供通行權），以解決袋地問題。</p><p>【實務建議】</p><p>甲應於分割方案中預先規劃：證明其餘土地另有通路，或承諾設定通行權，以減少法院駁回之風險。</p><p>共有物分割法律效力分析　｜　謝秉錡律師事務所　第 12 頁／共 20 頁</p></div>
+            </div>
+        </div>
+        
+
+        <div class="slide" id="slide-25">
+            <div class="slide-header">
+                <span class="slide-num">25</span>
+                <h2>對話 2：彈性方案</h2>
+            </div>
+            <div class="slide-body">
+                
+                <div class="slide-text"><p>乙、丙無意取得土地時之調整</p><p>【事實變更】</p><p>由於「道路只有甲在使用」，且「乙、丙二人無意取得土地」，甲希望提出「更彈性之方案」。</p><p>【法律議題】</p><p>1. 乙、丙「無意取得」之意願，是否足以動搖「道路應維持共有」之原則？</p><p>2. 若乙、丙均同意變價分割，法院是否仍受「原物分配顯有困難」要件之拘束？</p><p>3. 第三人拍定後之通行權問題，如何預先解決？</p><p>【實務新情勢】</p><p>共有人意願之尊重（112 年度上字第 358 號）：</p><p>「考量兩造意願及公平性」——當部分共有人明確表示無意取得特定部分時，「強制其接受原物分配」反而違反其意願。</p><p>共有物分割法律效力分析　｜　謝秉錡律師事務所　第 14 頁／共 20 頁</p></div>
+            </div>
+        </div>
+        
+
+        <div class="slide" id="slide-26">
+            <div class="slide-header">
+                <span class="slide-num">26</span>
+                <h2>對話 2 綜合評析</h2>
+            </div>
+            <div class="slide-body">
+                
+                <div class="slide-text"><p>甲之主張在現行實務下之可行性</p><p>【可行性評估】</p><p>甲之主張在現行實務見解下「具有可行性」，但法院採納與否取決於下列條件：</p><p>條件 1：甲依民法第 824 條第 3 項提出「金錢補償方案」，以調節甲取得小路之超額利益。</p><p>條件 2：其餘部分確有「原物分配顯有困難」之情事，或乙、丙「均同意變價分割」（113 年度上易字第 106 號）。</p><p>條件 3：其餘土地不會因分割而成為袋地；甲願意提供必要之通行權或設定不動產役權。</p><p>【結論】</p><p>若甲能證明上述三條件均具備，法院依 110 年度台上字第 1630 號、112 年度上字第 358 號所揭示之原則，採用甲之方案之可能性甚高。</p><p>共有物分割法律效力分析　｜　謝秉錡律師事務所　第 15 頁／共 20 頁</p></div>
+            </div>
+        </div>
+        
+
+        <div class="slide" id="slide-27">
+            <div class="slide-header">
+                <span class="slide-num">27</span>
+                <h2>Slide 27</h2>
+            </div>
+            <div class="slide-body">
+                
+                <div class="slide-text"></div>
+            </div>
+        </div>
+        
+
+        <div class="slide" id="slide-28">
+            <div class="slide-header">
+                <span class="slide-num">28</span>
+                <h2>實務建議</h2>
+            </div>
+            <div class="slide-body">
+                
+                <div class="slide-text"><p>甲應如何修正分割方案</p><p>【建議方案】</p><p>建議一：將小路部分規劃為「由全體共有人維持共有」（109 年度上易字第 218 號），以符合道路使用目的。</p><p>建議二：若堅持取得小路，應一併提出：</p><p>(1) 金錢補償乙、丙之具體數額（依民法第 824 條第 3 項）；</p><p>(2) 證明其餘土地「原物分配顯有困難」之證據；</p><p>(3) 承諾對其餘土地（將來之買受人）提供通行權。</p><p>建議三：提出「全體共有人均能獲得原物分配」之替代方案，避免法院依職權改定分割方法。</p><p>【重要提醒】</p><p>法院不受當事人主張之拘束。上述建議僅在增加法院採納之可能性，最終仍由法院裁量決定。</p><p>共有物分割法律效力分析　｜　謝秉錡律師事務所　第 16 頁／共 20 頁</p></div>
+            </div>
+        </div>
+        
+
+        <div class="slide" id="slide-29">
+            <div class="slide-header">
+                <span class="slide-num">29</span>
+                <h2>重要判決／座談會一覽</h2>
+            </div>
+            <div class="slide-body">
+                
+                <div class="slide-text"><p>本分析引用之實務見解</p><p>判決／座談會</p><p>見解要旨</p><p>對甲方案之影響</p><p>105 年法律座談會第 11 號</p><p>嚴格解釋（否定說）</p><p>❌ 不利</p><p>108 年度上字第 1258 號</p><p>嚴格解釋；道路應維持共有</p><p>❌ 不利</p><p>112 年法律座談會第 5 號</p><p>彈性解釋（肯定說）✅</p><p>✅ 有利</p><p>112 年度上字第 358 號</p><p>道路維持共有；變價分割從嚴</p><p>⚠ 部分不利</p><p>113 年度上易字第 262 號</p><p>道路維持共有；法院裁量權</p><p>⚠ 部分不利</p><p>113 年度重上字第 207 號</p><p>無通行需求時，無須維持共有</p><p>✅ 有利</p><p>110 年度台上字第 1630 號</p><p>法院裁量不受當事人拘束</p><p>⚠ 中性</p><p>共有物分割法律效力分析　｜　謝秉錡律師事務所　第 17 頁／共 20 頁</p></div>
+            </div>
+        </div>
+        
+
+        <div class="slide" id="slide-30">
+            <div class="slide-header">
+                <span class="slide-num">30</span>
+                <h2>重要法條索引</h2>
+            </div>
+            <div class="slide-body">
+                
+                <div class="slide-text"><p>民法第 823～825 條摘要</p><p>【民法第 823 條】</p><p>第 1 項：</p><p>各共有人，除法令另有規定外，得隨時請求分割共有物。但因物之使用目的不能分割或契約訂有不分割之期限者，不在此限。</p><p>【民法第 824 條第 2 項】</p><p>第 2 款：</p><p>以原物為分配時，因共有人之利益或其他必要情形，得就共有物之一部分仍維持共有。</p><p>第 2 款後段：</p><p>「以原物之一部分分配於各共有人，他部分變賣，以價金分配於各共有人。」</p><p>【民法第 824 條第 3 項】</p><p>共有人中有未受分配，或不能按其應有部分受分配者，得以金錢補償之。</p><p>【民法第 824 條第 4 項】</p><p>以原物為分配時，因共有人之利益或其他必要情形，得就共有物之一部分仍維持共有。</p><p>【「因使用目的不能分割」之例】</p><p>• 界牆、界標</p><p>• 區分所有建築物之共同部分</p><p>• 供通行使用之道路（通常情形）</p><p>• 管線、排水設施</p><p>共有物分割法律效力分析　｜　謝秉錡律師事務所　第 18 頁／共 20 頁</p></div>
+            </div>
+        </div>
+        
+
+        <div class="slide" id="slide-31">
+            <div class="slide-header">
+                <span class="slide-num">31</span>
+                <h2>結　　論</h2>
+            </div>
+            <div class="slide-body">
+                
+                <div class="slide-text"><p>1. 「部分原物、部分變價」之混合分割，現行實務（112 年座談會乙說）已採「肯定說」，並不違法。</p><p>2. 供通行使用之道路，原則上應維持共有；例外：共有人均無通行需求時，無強制維持共有之必要。</p><p>3. 變價分割須具備「原物分配顯有困難」要件；甲應舉證證明之。</p><p>4. 甲之方案若附帶「金錢補償」及「通行權承諾」，獲法院採納之可能性較高。</p><p>承辦律師：謝秉錡律師事務所　｜　本簡報僅供學術研究與實務參考，不作為個案法律意見</p></div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+<div class="overlay" id="overlay" onclick="toggleToc()"></div>
+<div class="toc-panel" id="toc">
+    <div class="toc-header">目錄</div>
+<a href="#slide-1" class="toc-item">1. 共有物分割</a>
+<a href="#slide-2" class="toc-item">2. Slide 2</a>
+<a href="#slide-3" class="toc-item">3. 案件事實與爭點</a>
+<a href="#slide-4" class="toc-item">4. Slide 4</a>
+<a href="#slide-5" class="toc-item">5. Slide 5</a>
+<a href="#slide-6" class="toc-item">6. 相關法條架構</a>
+<a href="#slide-7" class="toc-item">7. 早期嚴格解釋（否定說）</a>
+<a href="#slide-8" class="toc-item">8. 現行彈性解釋（肯定說）</a>
+<a href="#slide-9" class="toc-item">9. 見解對比：嚴格說 vs 彈性說</a>
+<a href="#slide-10" class="toc-item">10. Slide 10</a>
+<a href="#slide-11" class="toc-item">11. Slide 11</a>
+<a href="#slide-12" class="toc-item">12. 道路土地之分割限制</a>
+<a href="#slide-13" class="toc-item">13. Slide 13</a>
+<a href="#slide-14" class="toc-item">14. Slide 14</a>
+<a href="#slide-15" class="toc-item">15. 變價分割之發動要件</a>
+<a href="#slide-16" class="toc-item">16. Slide 16</a>
+<a href="#slide-17" class="toc-item">17. 法院之裁量權</a>
+<a href="#slide-18" class="toc-item">18. Slide 18</a>
+<a href="#slide-19" class="toc-item">19. Slide 19</a>
+<a href="#slide-20" class="toc-item">20. 道路維持共有之例外</a>
+<a href="#slide-21" class="toc-item">21. Slide 21</a>
+<a href="#slide-22" class="toc-item">22. 金錢補償機制</a>
+<a href="#slide-23" class="toc-item">23. Slide 23</a>
+<a href="#slide-24" class="toc-item">24. 袋地風險與通行權</a>
+<a href="#slide-25" class="toc-item">25. 對話 2：彈性方案</a>
+<a href="#slide-26" class="toc-item">26. 對話 2 綜合評析</a>
+<a href="#slide-27" class="toc-item">27. Slide 27</a>
+<a href="#slide-28" class="toc-item">28. 實務建議</a>
+<a href="#slide-29" class="toc-item">29. 重要判決／座談會一覽</a>
+<a href="#slide-30" class="toc-item">30. 重要法條索引</a>
+<a href="#slide-31" class="toc-item">31. 結　　論</a>
+</div>
+<script>
+let current=1;
+const total=31;
+function show(n){if(n<1)n=1;if(n>total)n=total;document.querySelectorAll(".slide").forEach(s=>s.style.display="none");const el=document.getElementById("slide-"+n);if(el){el.style.display="block";el.scrollIntoView({behavior:"smooth",block:"start"})}current=n;document.getElementById("counter").textContent=n}
+function next(){if(current<total)show(current+1)}
+function prev(){if(current>1)show(current-1)}
+function toggleToc(){document.getElementById("toc").classList.toggle("active");document.getElementById("overlay").classList.toggle("active")}
+document.querySelectorAll(".toc-item").forEach(item=>{item.addEventListener("click",function(e){e.preventDefault();show(parseInt(this.textContent));toggleToc()})});
+document.addEventListener("keydown",e=>{if(e.key==="ArrowRight"||e.key===" ")next();else if(e.key==="ArrowLeft")prev();else if(e.key==="Escape")toggleToc()});
+// 初始：只顯示第一張
+document.querySelectorAll(".slide").forEach((s,i)=>{if(i!==0)s.style.display="none"});
+</script>
+</body>
+</html>
