@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>三七五租約研究 — 未自任耕作之法律分析</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: "Microsoft JhengHei", "Noto Sans TC", sans-serif; background: #0a1628; overflow: hidden; height: 100vh; }
+.slide-container {
+  position: relative; width: 100vw; height: 100vh;
+  display: none; justify-content: center; align-items: center;
+  background-size: cover; background-position: center;
+}
+.slide-container.active { display: flex; }
+.slide-inner {
+  position: relative; width: 95vw; height: 90vh;
+  max-width: 1280px; background: #f8f9fc; border-radius: 12px;
+  overflow: hidden; box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+  display: flex; flex-direction: column;
+}
+
+/* Header */
+.slide-header {
+  background: #1a365d; padding: 12px 30px;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.slide-title { color: #d4af37; font-size: 26px; font-weight: bold; }
+.slide-number { color: #8fa8c8; font-size: 14px; }
+
+/* Body */
+.slide-body {
+  flex: 1; padding: 30px 40px; overflow-y: auto;
+  display: flex; gap: 30px;
+}
+.slide-text { flex: 1; }
+.slide-text p {
+  font-size: 20px; line-height: 1.6; color: #2d3748;
+  margin-bottom: 12px;
+}
+.slide-text .big { font-size: 28px; font-weight: bold; color: #1a365d; }
+.slide-text .accent { color: #d4af37; font-weight: bold; }
+.slide-text .highlight { color: #e53e3e; font-weight: bold; }
+.slide-text .bullet { padding-left: 20px; position: relative; }
+.slide-text .bullet::before { content: "•"; position: absolute; left: 5px; color: #d4af37; }
+.slide-text .card-title { font-size: 18px; font-weight: bold; color: #1a365d; margin-top: 10px; }
+.slide-text .card-content { font-size: 16px; color: #4a5568; padding-left: 10px; }
+.slide-body img {
+  max-width: 45%; max-height: 70vh; object-fit: contain;
+  border-radius: 8px; box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+}
+
+/* Navigation */
+.nav-bar {
+  position: fixed; bottom: 0; left: 0; right: 0;
+  background: rgba(15,36,64,0.95); padding: 10px 20px;
+  display: flex; justify-content: center; align-items: center; gap: 20px;
+  z-index: 100;
+}
+.nav-btn {
+  background: #d4af37; color: #1a365d; border: none;
+  padding: 8px 24px; font-size: 16px; font-weight: bold;
+  border-radius: 6px; cursor: pointer;
+}
+.nav-btn:hover { background: #e6c04c; }
+.nav-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+.nav-indicator { color: #8fa8c8; font-size: 14px; }
+
+/* Sidebar TOC */
+.toc-btn {
+  position: fixed; top: 20px; right: 20px; z-index: 200;
+  background: #d4af37; color: #1a365d; border: none;
+  width: 44px; height: 44px; font-size: 22px; border-radius: 50%;
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+}
+.toc-panel {
+  position: fixed; top: 0; right: -400px; width: 380px; height: 100vh;
+  background: #0f2440; z-index: 300; transition: right 0.3s;
+  overflow-y: auto; padding: 20px;
+}
+.toc-panel.open { right: 0; }
+.toc-overlay {
+  position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.5); z-index: 250; display: none;
+}
+.toc-overlay.show { display: block; }
+.toc-panel h2 { color: #d4af37; font-size: 20px; margin-bottom: 15px; }
+.toc-item {
+  padding: 10px 12px; color: #cbd5e0; cursor: pointer;
+  border-radius: 6px; font-size: 15px; margin-bottom: 4px;
+}
+.toc-item:hover, .toc-item.active { background: #1a365d; color: #d4af37; }
+
+/* Fullscreen cover slides */
+.slide-cover .slide-body {
+  background: #0f2440; justify-content: center; align-items: center; text-align: center;
+  flex-direction: column;
+}
+.slide-cover .slide-body p { color: white; }
+.slide-cover .slide-body .big { font-size: 48px; color: white; }
+.slide-cover .slide-body .accent { color: #d4af37; }
+
+/* Table styling */
+.data-table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+.data-table th { background: #1a365d; color: white; padding: 8px 12px; font-size: 14px; }
+.data-table td { padding: 8px 12px; font-size: 14px; border-bottom: 1px solid #e2e8f0; }
+.data-table tr:nth-child(even) td { background: #edf2f7; }
+
+/* Full-bleed image slides */
+.slide-img-full .slide-body { padding: 0; }
+.slide-img-full .slide-body img { max-width: 100%; max-height: 100%; border-radius: 0; }
+</style>
+</head>
+<body>
+
+
+<div class="slide-container slide-cover" data-slide="1">
+  <div class="slide-inner">
+    <div class="slide-header">
+      <div class="slide-title">三七五租約研究</div>
+      <div class="slide-number">1 / 24</div>
+    </div>
+    <div class="slide-body">
+      <div class="slide-text"><p>三七五租約研究</p><p>未自任耕作之法律分析</p><p>耕地三七五減租條例第16條 | 最高法院判決整理</p></div>
+      
+    </div>
+  </div>
+</div>
+
+<div class="slide-container " data-slide="2">
+  <div class="slide-inner">
+    <div class="slide-header">
+      <div class="slide-title">第 2 頁</div>
+      <div class="slide-number">2 / 24</div>
+    </div>
+    <div class="slide-body">
+      <div class="slide-text"><p style="color:#a0aec0;font-size:24px;text-align:center;padding-top:40px">— 過場 —</p></div>
+      <img src="images/image1.jpg" alt="Slide 2">
+    </div>
+  </div>
+</div>
+
+<div class="slide-container " data-slide="3">
+  <div class="slide-inner">
+    <div class="slide-header">
+      <div class="slide-title">案例事實</div>
+      <div class="slide-number">3 / 24</div>
+    </div>
+    <div class="slide-body">
+      <div class="slide-text"><p class="big">案例事實</p><p>甲（出租人）於民國40年間將A農地出租予乙（佃農），成立三七五租約。</p><p>民國70年，甲出具土地使用同意書，同意乙在A地上興建農舍，惟未指明用途。</p><p>民國110年，甲發現乙將農舍作居住使用，且另於他處搭建鐵皮屋放置農具。</p><p>甲主張：乙違反耕地三七五減租條例第16條，未自任耕作，請求返還土地。</p></div>
+      
+    </div>
+  </div>
+</div>
+
+<div class="slide-container " data-slide="4">
+  <div class="slide-inner">
+    <div class="slide-header">
+      <div class="slide-title">第 4 頁</div>
+      <div class="slide-number">4 / 24</div>
+    </div>
+    <div class="slide-body">
+      <div class="slide-text"><p style="color:#a0aec0;font-size:24px;text-align:center;padding-top:40px">— 過場 —</p></div>
+      <img src="images/image2.jpg" alt="Slide 4">
+    </div>
+  </div>
+</div>
+
+<div class="slide-container " data-slide="5">
+  <div class="slide-inner">
+    <div class="slide-header">
+      <div class="slide-title">第 5 頁</div>
+      <div class="slide-number">5 / 24</div>
+    </div>
+    <div class="slide-body">
+      <div class="slide-text"><p style="color:#a0aec0;font-size:24px;text-align:center;padding-top:40px">— 過場 —</p></div>
+      <img src="images/image3.jpg" alt="Slide 5">
+    </div>
+  </div>
+</div>
+
+<div class="slide-container " data-slide="6">
+  <div class="slide-inner">
+    <div class="slide-header">
+      <div class="slide-title">四大爭點</div>
+      <div class="slide-number">6 / 24</div>
+    </div>
+    <div class="slide-body">
+      <div class="slide-text"><p class="big">四大爭點</p><p>爭點一</p><p>農舍供居住使用</p><p>是否構成未自任耕作？</p><p>爭點二</p><p>出租人同意書</p><p>是否排除強制規定？</p><p>爭點三</p><p>一部未自任耕作</p><p>是否導致全部無效？</p><p>爭點四</p><p>長期未異議</p><p>是否使無效恢復？</p></div>
+      
+    </div>
+  </div>
+</div>
+
+<div class="slide-container " data-slide="7">
+  <div class="slide-inner">
+    <div class="slide-header">
+      <div class="slide-title">第 7 頁</div>
+      <div class="slide-number">7 / 24</div>
+    </div>
+    <div class="slide-body">
+      <div class="slide-text"><p style="color:#a0aec0;font-size:24px;text-align:center;padding-top:40px">— 過場 —</p></div>
+      <img src="images/image4.jpg" alt="Slide 7">
+    </div>
+  </div>
+</div>
+
+<div class="slide-container " data-slide="8">
+  <div class="slide-inner">
+    <div class="slide-header">
+      <div class="slide-title">自任耕作定義</div>
+      <div class="slide-number">8 / 24</div>
+    </div>
+    <div class="slide-body">
+      <div class="slide-text"><p class="big">自任耕作定義</p><p class="card-title">📜 耕地三七五減租條例第16條</p><p>「承租人應自任耕作」</p><p>如承租人以承租之土地建築房屋居住</p><p>或其他非耕作之用者，均不在自任耕作之列，</p><p>構成原訂租約無效。</p><p class="card-title">⚖️ 最高法院70年台上字第4637號</p><p>判例要旨：</p><p>「自任耕作」係指承租人應以承租之土地</p><p>供自己從事耕作之用。</p><p>以承租土地建築房屋居住或作</p><p>其他非耕作之用者，均不屬之。</p><p>乙將農舍供居住使用 <span style="color:#d4af37"> → </span> 已逾越「便利耕作」範圍 <span style="color:#d4af37"> → </span> 構成未自任耕作</p></div>
+      
+    </div>
+  </div>
+</div>
+
+<div class="slide-container " data-slide="9">
+  <div class="slide-inner">
+    <div class="slide-header">
+      <div class="slide-title">第 9 頁</div>
+      <div class="slide-number">9 / 24</div>
+    </div>
+    <div class="slide-body">
+      <div class="slide-text"><p style="color:#a0aec0;font-size:24px;text-align:center;padding-top:40px">— 過場 —</p></div>
+      <img src="images/image5.jpg" alt="Slide 9">
+    </div>
+  </div>
+</div>
+
+<div class="slide-container " data-slide="10">
+  <div class="slide-inner">
+    <div class="slide-header">
+      <div class="slide-title">農舍功能定位</div>
+      <div class="slide-number">10 / 24</div>
+    </div>
+    <div class="slide-body">
+      <div class="slide-text"><p class="big">農舍功能定位</p><p class="card-title">🏠 農舍之正當用途</p><p class="bullet">以耕作為目的所建之簡陋房屋</p><p class="bullet">為便利耕作所建</p><p class="bullet">供堆置農具、肥料</p><p class="bullet">供臨時休息之用</p><p class="card-title">⚖️ 最高法院96台上字第2595號</p><p>農舍「非以解決承租人家族實際</p><p>居住問題為其目的」</p><p><span style="color:#d4af37"> → </span> 乙將農舍作居住使用</p><p><span style="color:#d4af37"> → </span> 已逾越正當用途</p><p><span style="color:#d4af37"> → </span> 構成非耕作之用</p><p style="background:#fff5f5;padding:8px 12px;border-radius:6px;color:#e53e3e;font-weight:bold">⚠ 乙另於他處搭建鐵皮屋放置農具，亦無解於違反自任耕作之事實</p></div>
+      
+    </div>
+  </div>
+</div>
+
+<div class="slide-container " data-slide="11">
+  <div class="slide-inner">
+    <div class="slide-header">
+      <div class="slide-title">第 11 頁</div>
+      <div class="slide-number">11 / 24</div>
+    </div>
+    <div class="slide-body">
+      <div class="slide-text"><p style="color:#a0aec0;font-size:24px;text-align:center;padding-top:40px">— 過場 —</p></div>
+      <img src="images/image6.jpg" alt="Slide 11">
+    </div>
+  </div>
+</div>
+
+<div class="slide-container " data-slide="12">
+  <div class="slide-inner">
+    <div class="slide-header">
+      <div class="slide-title">強制規定效力</div>
+      <div class="slide-number">12 / 24</div>
+    </div>
+    <div class="slide-body">
+      <div class="slide-text"><p class="big">強制規定效力</p><p>耕地三七五減租條例係強制規定，</p><p>不得由租賃當事人以合意方式排除有關未自任耕作之效力。</p><p>新竹地方法院106年度訴字第62號</p><p>🔹 自任耕作規定</p><p>為強行規範</p><p>🔹 不得以當事人合意</p><p>排除適用</p></div>
+      
+    </div>
+  </div>
+</div>
+
+<div class="slide-container " data-slide="13">
+  <div class="slide-inner">
+    <div class="slide-header">
+      <div class="slide-title">同意書效力</div>
+      <div class="slide-number">13 / 24</div>
+    </div>
+    <div class="slide-body">
+      <div class="slide-text"><p class="big">同意書效力</p><p>甲於70年出具之同意書，僅係同意乙「興建農舍」</p><p>農舍使用本即應限於耕作目的</p><p class="highlight">❌ 乙之主張</p><p>甲出具同意書 <span style="color:#d4af37"> → </span> 已成立使用借貸關係</p><p><span style="color:#d4af37"> → </span> 乙使用土地有權源</p><p class="highlight">✅ 法院見解</p><p>乙擅自變更用途為居住</p><p><span style="color:#d4af37"> → </span> 逾越同意範圍</p><p><span style="color:#d4af37"> → </span> 不得排除強制規定</p></div>
+      
+    </div>
+  </div>
+</div>
+
+<div class="slide-container " data-slide="14">
+  <div class="slide-inner">
+    <div class="slide-header">
+      <div class="slide-title">第 14 頁</div>
+      <div class="slide-number">14 / 24</div>
+    </div>
+    <div class="slide-body">
+      <div class="slide-text"><p style="color:#a0aec0;font-size:24px;text-align:center;padding-top:40px">— 過場 —</p></div>
+      <img src="images/image7.jpg" alt="Slide 14">
+    </div>
+  </div>
+</div>
+
+<div class="slide-container " data-slide="15">
+  <div class="slide-inner">
+    <div class="slide-header">
+      <div class="slide-title">一部無效＝全部無效</div>
+      <div class="slide-number">15 / 24</div>
+    </div>
+    <div class="slide-body">
+      <div class="slide-text"><p class="big">一部無效＝全部無效</p><p>A農地</p><p>單一租約</p><p><span style="color:#d4af37"> → </span></p><p>一部土地</p><p>未自任耕作</p><p><span style="color:#d4af37"> → </span></p><p>全部租約</p><p>無效</p><p>實務見解</p><p class="bullet">最高法院103年度台上字第2579號：未自任耕作之土地雖僅一部，以單一契約約定承租範圍，租約全部無效</p><p class="bullet">最高法院84年度台上字第2584號：兩造以單一契約約定承租範圍，租約自應全部無效</p><p>• 乙將農舍供居住使用 <span style="color:#d4af37"> → </span> 該部分土地未供耕作 <span style="color:#d4af37"> → </span> 構成一部未自任耕作</p></div>
+      
+    </div>
+  </div>
+</div>
+
+<div class="slide-container " data-slide="16">
+  <div class="slide-inner">
+    <div class="slide-header">
+      <div class="slide-title">第 16 頁</div>
+      <div class="slide-number">16 / 24</div>
+    </div>
+    <div class="slide-body">
+      <div class="slide-text"><p style="color:#a0aec0;font-size:24px;text-align:center;padding-top:40px">— 過場 —</p></div>
+      <img src="images/image8.jpg" alt="Slide 16">
+    </div>
+  </div>
+</div>
+
+<div class="slide-container " data-slide="17">
+  <div class="slide-inner">
+    <div class="slide-header">
+      <div class="slide-title">無效之絕對性</div>
+      <div class="slide-number">17 / 24</div>
+    </div>
+    <div class="slide-body">
+      <div class="slide-text"><p class="big">無效之絕對性</p><p>因未自任耕作而無效之租約，其無效效果具有絕對性</p><p>← 當然、自始、絕對無效 <span style="color:#d4af37"> → </span></p><p>最高法院111年度台上字第2530號</p><p>最高法院112年度台上字第2852號</p><p class="highlight">✗ 出租人嗣後繼續收取費用</p><p class="highlight">✗ 出租人默示同意使用</p><p class="highlight">✗ 行政機關每六年換約</p><p class="highlight">✗ 承租人長期佔有使用</p></div>
+      
+    </div>
+  </div>
+</div>
+
+<div class="slide-container " data-slide="18">
+  <div class="slide-inner">
+    <div class="slide-header">
+      <div class="slide-title">第 18 頁</div>
+      <div class="slide-number">18 / 24</div>
+    </div>
+    <div class="slide-body">
+      <div class="slide-text"><p style="color:#a0aec0;font-size:24px;text-align:center;padding-top:40px">— 過場 —</p></div>
+      <img src="images/image9.jpg" alt="Slide 18">
+    </div>
+  </div>
+</div>
+
+<div class="slide-container " data-slide="19">
+  <div class="slide-inner">
+    <div class="slide-header">
+      <div class="slide-title">換約未異議效果</div>
+      <div class="slide-number">19 / 24</div>
+    </div>
+    <div class="slide-body">
+      <div class="slide-text"><p class="big">換約未異議效果</p><p>乙抗辯：租約每六年強制換約，甲未表意見，有同意之意</p><p>新竹地方法院113年度訴字第100號判決：</p><p>耕地三七五減租條例第16條第2項之無效規定，係基於耕地保護之公益目的</p><p><span style="color:#d4af37"> → </span> 當然、自始、絕對無效</p><p><span style="color:#d4af37"> → </span> 不因出租人長期未異議、繼續收租或行政機關換約行為而補正或恢復效力</p><p>「權利失效」抗辯不成立</p><p>無效租約不因時間經過而治癒</p></div>
+      
+    </div>
+  </div>
+</div>
+
+<div class="slide-container " data-slide="20">
+  <div class="slide-inner">
+    <div class="slide-header">
+      <div class="slide-title">實務見解彙整</div>
+      <div class="slide-number">20 / 24</div>
+    </div>
+    <div class="slide-body">
+      <div class="slide-text"><p class="big">實務見解彙整</p></div>
+      
+    </div>
+  </div>
+</div>
+
+<div class="slide-container " data-slide="21">
+  <div class="slide-inner">
+    <div class="slide-header">
+      <div class="slide-title">第 21 頁</div>
+      <div class="slide-number">21 / 24</div>
+    </div>
+    <div class="slide-body">
+      <div class="slide-text"><p style="color:#a0aec0;font-size:24px;text-align:center;padding-top:40px">— 過場 —</p></div>
+      <img src="images/image10.jpg" alt="Slide 21">
+    </div>
+  </div>
+</div>
+
+<div class="slide-container " data-slide="22">
+  <div class="slide-inner">
+    <div class="slide-header">
+      <div class="slide-title">法律推理流程</div>
+      <div class="slide-number">22 / 24</div>
+    </div>
+    <div class="slide-body">
+      <div class="slide-text"><p class="big">法律推理流程</p><p>前提一：乙將農舍供居住使用，逾越農舍正當用途</p><p>↓</p><p>前提二：耕地三七五減租條例為強制規定，不得排除</p><p>↓</p><p>前提三：一部未自任耕作 <span style="color:#d4af37"> → </span> 全部租約無效</p><p>↓</p><p>前提四：無效效果絕對，不因換約或收租而恢復</p><p>↓</p><p>結論：甲得請求乙返還土地</p></div>
+      
+    </div>
+  </div>
+</div>
+
+<div class="slide-container " data-slide="23">
+  <div class="slide-inner">
+    <div class="slide-header">
+      <div class="slide-title">結  論</div>
+      <div class="slide-number">23 / 24</div>
+    </div>
+    <div class="slide-body">
+      <div class="slide-text"><p class="big">結  論</p><p class="highlight">✓ 乙將農舍作居住使用 → 構成未自任耕作</p><p class="highlight">✓ 使用借貸抗辯 → 不得排除強制規定</p><p class="highlight">✓ 一部未自任耕作 → 租約全部無效</p><p class="highlight">✓ 長期未異議 → 不影響無效效力</p></div>
+      
+    </div>
+  </div>
+</div>
+
+<div class="slide-container " data-slide="24">
+  <div class="slide-inner">
+    <div class="slide-header">
+      <div class="slide-title">第 24 頁</div>
+      <div class="slide-number">24 / 24</div>
+    </div>
+    <div class="slide-body">
+      <div class="slide-text"><p style="color:#a0aec0;font-size:24px;text-align:center;padding-top:40px">— 過場 —</p></div>
+      <img src="images/image11.jpg" alt="Slide 24">
+    </div>
+  </div>
+</div>
+
+<button class="toc-btn" onclick="toggleTOC()">☰</button>
+<div class="toc-overlay" onclick="toggleTOC()"></div>
+<div class="toc-panel">
+  <h2>📑 目錄</h2>
+
+  <div class="toc-item" onclick="goTo(1)">1. 三七五租約研究</div>
+  <div class="toc-item" onclick="goTo(2)">2. 第 2 頁</div>
+  <div class="toc-item" onclick="goTo(3)">3. 案例事實</div>
+  <div class="toc-item" onclick="goTo(4)">4. 第 4 頁</div>
+  <div class="toc-item" onclick="goTo(5)">5. 第 5 頁</div>
+  <div class="toc-item" onclick="goTo(6)">6. 四大爭點</div>
+  <div class="toc-item" onclick="goTo(7)">7. 第 7 頁</div>
+  <div class="toc-item" onclick="goTo(8)">8. 自任耕作定義</div>
+  <div class="toc-item" onclick="goTo(9)">9. 第 9 頁</div>
+  <div class="toc-item" onclick="goTo(10)">10. 農舍功能定位</div>
+  <div class="toc-item" onclick="goTo(11)">11. 第 11 頁</div>
+  <div class="toc-item" onclick="goTo(12)">12. 強制規定效力</div>
+  <div class="toc-item" onclick="goTo(13)">13. 同意書效力</div>
+  <div class="toc-item" onclick="goTo(14)">14. 第 14 頁</div>
+  <div class="toc-item" onclick="goTo(15)">15. 一部無效＝全部無效</div>
+  <div class="toc-item" onclick="goTo(16)">16. 第 16 頁</div>
+  <div class="toc-item" onclick="goTo(17)">17. 無效之絕對性</div>
+  <div class="toc-item" onclick="goTo(18)">18. 第 18 頁</div>
+  <div class="toc-item" onclick="goTo(19)">19. 換約未異議效果</div>
+  <div class="toc-item" onclick="goTo(20)">20. 實務見解彙整</div>
+  <div class="toc-item" onclick="goTo(21)">21. 第 21 頁</div>
+  <div class="toc-item" onclick="goTo(22)">22. 法律推理流程</div>
+  <div class="toc-item" onclick="goTo(23)">23. 結  論</div>
+  <div class="toc-item" onclick="goTo(24)">24. 第 24 頁</div>
+
+</div>
+<div class="nav-bar">
+  <button class="nav-btn" id="prevBtn" onclick="prevSlide()">◀ 上一頁</button>
+  <span class="nav-indicator" id="slideIndicator">1 / 24</span>
+  <button class="nav-btn" id="nextBtn" onclick="nextSlide()">下一頁 ▶</button>
+</div>
+
+<script>
+let currentSlide = 1;
+const totalSlides = 24;
+const slides = document.querySelectorAll('.slide-container');
+
+function showSlide(n) {
+  if (n < 1) n = 1;
+  if (n > totalSlides) n = totalSlides;
+  currentSlide = n;
+  slides.forEach(s => s.classList.remove('active'));
+  document.querySelector(`.slide-container[data-slide="${n}"]`).classList.add('active');
+  document.getElementById('slideIndicator').textContent = `${n} / ${totalSlides}`;
+  document.getElementById('prevBtn').disabled = n === 1;
+  document.getElementById('nextBtn').disabled = n === totalSlides;
+  // Update TOC highlight
+  document.querySelectorAll('.toc-item').forEach((el, i) => {
+    el.classList.toggle('active', i + 1 === n);
+  });
+}
+
+function nextSlide() { showSlide(currentSlide + 1); }
+function prevSlide() { showSlide(currentSlide - 1); }
+function goTo(n) { showSlide(n); toggleTOC(); }
+
+function toggleTOC() {
+  document.querySelector('.toc-panel').classList.toggle('open');
+  document.querySelector('.toc-overlay').classList.toggle('show');
+}
+
+// Keyboard navigation
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') {
+    e.preventDefault(); nextSlide();
+  } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+    e.preventDefault(); prevSlide();
+  }
+});
+
+// Touch support
+let touchStartX = 0;
+document.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; });
+document.addEventListener('touchend', e => {
+  const diff = touchStartX - e.changedTouches[0].clientX;
+  if (Math.abs(diff) > 50) {
+    diff > 0 ? nextSlide() : prevSlide();
+  }
+});
+
+showSlide(1);
+</script>
+</body>
+</html>
