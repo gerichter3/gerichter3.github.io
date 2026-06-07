@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>農舍與農地未同時信託之法律問題 — 謝秉錡律師事務所</title>
+  <style>
+    :root {
+      --primary: #1a3a5c;
+      --accent: #c8a84b;
+      --bg: #f0ede6;
+      --slide-bg: #ffffff;
+      --text: #1e1e1e;
+      --muted: #5a5a5a;
+      --border: #d8cfc0;
+      --sidebar-w: 260px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Noto Serif TC", "Georgia", "Times New Roman", serif;
+      background: var(--bg);
+      color: var(--text);
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── Header ── */
+    #top-bar {
+      background: var(--primary);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 20px;
+      flex-shrink: 0;
+      border-bottom: 3px solid var(--accent);
+    }
+    #top-bar .title-area {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    #top-bar .logo-icon {
+      width: 36px;
+      height: 36px;
+      background: var(--accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+    }
+    #top-bar h1 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+    #top-bar .sub {
+      font-size: 0.72rem;
+      color: #a8bdd4;
+    }
+    #top-bar .nav-area {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    #slide-counter {
+      font-size: 0.85rem;
+      color: #c2cfe0;
+      min-width: 60px;
+      text-align: center;
+    }
+    .nav-btn {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.25);
+      color: #fff;
+      padding: 6px 14px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.82rem;
+      transition: background 0.15s;
+      font-family: inherit;
+    }
+    .nav-btn:hover { background: rgba(255,255,255,0.22); }
+    #toc-toggle {
+      background: var(--accent);
+      border: none;
+      color: var(--primary);
+      padding: 6px 14px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.82rem;
+      font-weight: 700;
+      font-family: inherit;
+    }
+
+    /* ── Layout ── */
+    #main-layout {
+      display: flex;
+      flex: 1;
+      overflow: hidden;
+    }
+
+    /* ── Sidebar ── */
+    #sidebar {
+      width: var(--sidebar-w);
+      background: #1e2d3e;
+      color: #c8d8e8;
+      overflow-y: auto;
+      flex-shrink: 0;
+      transition: width 0.25s;
+      border-right: 1px solid #2a3f56;
+    }
+    #sidebar.hidden {
+      width: 0;
+      overflow: hidden;
+    }
+    #sidebar h3 {
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      color: var(--accent);
+      padding: 16px 16px 8px;
+      text-transform: uppercase;
+      border-bottom: 1px solid rgba(200,168,75,0.2);
+      margin-bottom: 4px;
+    }
+    #sidebar ul {
+      list-style: none;
+      padding: 4px 0;
+    }
+    #sidebar ul li {
+      padding: 8px 16px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      border-left: 3px solid transparent;
+      transition: all 0.15s;
+      line-height: 1.4;
+    }
+    #sidebar ul li:hover {
+      background: rgba(200,168,75,0.1);
+      color: #fff;
+    }
+    #sidebar ul li.active {
+      border-left-color: var(--accent);
+      background: rgba(200,168,75,0.08);
+      color: #fff;
+    }
+
+    /* ── Slides Area ── */
+    #slides-area {
+      flex: 1;
+      overflow: hidden;
+      position: relative;
+    }
+    #slides-wrapper {
+      display: flex;
+      height: 100%;
+      transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+    }
+    .slide {
+      min-width: 100%;
+      height: 100%;
+      overflow-y: auto;
+      padding: 0;
+    }
+
+    /* ── Cover Slide ── */
+    .slide-cover {
+      background: linear-gradient(135deg, #0f2236 0%, #1a3a5c 60%, #2a5280 100%);
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px;
+      position: relative;
+    }
+    .slide-cover::before {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 6px;
+      background: var(--accent);
+    }
+    .cover-badge {
+      background: var(--accent);
+      color: var(--primary);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      padding: 4px 14px;
+      border-radius: 2px;
+      margin-bottom: 24px;
+    }
+    .cover-title {
+      font-size: clamp(1.6rem, 3.5vw, 2.8rem);
+      color: #fff;
+      font-weight: 700;
+      line-height: 1.4;
+      margin-bottom: 16px;
+    }
+    .cover-sub {
+      font-size: 1rem;
+      color: #a8c4dc;
+      margin-bottom: 32px;
+    }
+    .cover-firm {
+      font-size: 0.9rem;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    /* ── Image Only ── */
+    .slide-image-only {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #f8f6f2;
+      padding: 20px;
+      position: relative;
+    }
+    .slide-image-only img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+    }
+
+    /* ── Slide Header ── */
+    .slide-inner {
+      min-height: 100%;
+      padding: 28px 40px 32px;
+      display: flex;
+      flex-direction: column;
+    }
+    .slide-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      padding-bottom: 14px;
+      border-bottom: 2px solid var(--accent);
+    }
+    .slide-title {
+      font-size: 1.4rem;
+      color: var(--primary);
+      font-weight: 700;
+      line-height: 1.3;
+      flex: 1;
+    }
+    .slide-num-badge {
+      background: var(--primary);
+      color: var(--accent);
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 3px;
+      letter-spacing: 0.05em;
+      flex-shrink: 0;
+      margin-left: 16px;
+    }
+
+    /* ── Content Styles ── */
+    .slide-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .content-label {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-top: 8px;
+      border-left: 3px solid var(--accent);
+      padding-left: 10px;
+    }
+    .content-para {
+      font-size: 0.88rem;
+      line-height: 1.8;
+      color: var(--text);
+      background: #f8f6f2;
+      padding: 10px 14px;
+      border-radius: 4px;
+    }
+    .content-item {
+      font-size: 0.88rem;
+      line-height: 1.7;
+      color: var(--text);
+      padding: 4px 0 4px 8px;
+    }
+    .item-num {
+      display: inline-block;
+      background: var(--primary);
+      color: #fff;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 20px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      margin-right: 6px;
+    }
+    .content-quote {
+      font-size: 0.85rem;
+      line-height: 1.8;
+      color: #2c4a6a;
+      background: #eef3f8;
+      border-left: 4px solid var(--primary);
+      padding: 12px 16px;
+      border-radius: 0 4px 4px 0;
+      font-style: italic;
+    }
+    .content-source {
+      font-size: 0.78rem;
+      color: var(--muted);
+      text-align: right;
+      padding-right: 4px;
+    }
+    .content-warning {
+      font-size: 0.88rem;
+      line-height: 1.7;
+      color: #7a3b00;
+      background: #fef6e8;
+      border: 1px solid #f0d080;
+      border-radius: 4px;
+      padding: 8px 12px;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    .warn-icon { font-size: 1rem; flex-shrink: 0; margin-top: 1px; }
+    .content-option {
+      font-size: 0.88rem;
+      color: var(--text);
+      padding-left: 20px;
+    }
+    .numbered-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      background: #f8f6f2;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 12px 14px;
+      margin: 4px 0;
+    }
+    .num-badge {
+      width: 28px;
+      height: 28px;
+      background: var(--primary);
+      color: var(--accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.85rem;
+      flex-shrink: 0;
+    }
+    .num-content { flex: 1; }
+    .num-title { font-weight: 700; color: var(--primary); font-size: 0.9rem; margin-bottom: 3px; }
+    .num-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.6; }
+    .num-sub { font-size: 0.78rem; color: #888; margin-top: 2px; }
+
+    /* ── TOC Grid ── */
+    .toc-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 10px;
+      flex: 1;
+    }
+    .toc-item {
+      background: #f8f6f2;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 10px 14px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all 0.15s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      line-height: 1.4;
+    }
+    .toc-item:hover {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+    }
+    .toc-arrow {
+      color: var(--accent);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    /* ── Compare Table ── */
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.82rem;
+      margin-top: 4px;
+    }
+    .compare-table th {
+      background: var(--primary);
+      color: #fff;
+      padding: 10px 12px;
+      text-align: left;
+      font-weight: 700;
+    }
+    .compare-table th:first-child { border-radius: 6px 0 0 0; }
+    .compare-table th:last-child { border-radius: 0 6px 0 0; }
+    .compare-table td {
+      padding: 9px 12px;
+      border-bottom: 1px solid var(--border);
+      line-height: 1.6;
+    }
+    .compare-table tr:nth-child(even) td { background: #f8f6f2; }
+    .risk-high { color: #b33000; font-weight: 700; }
+    .risk-low { color: #1a6e2a; font-weight: 700; }
+    .table-note {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-top: 10px;
+      text-align: center;
+      font-style: italic;
+    }
+
+    /* ── Case List ── */
+    .case-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .case-item {
+      background: #f8f6f2;
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 6px 6px 0;
+      padding: 12px 16px;
+    }
+    .case-num { font-weight: 700; color: var(--primary); font-size: 0.88rem; }
+    .case-court { font-size: 0.78rem; color: var(--muted); margin: 2px 0; }
+    .case-desc { font-size: 0.85rem; color: var(--text); }
+
+    /* ── Keyboard hint ── */
+    #key-hint {
+      position: fixed;
+      bottom: 16px;
+      right: 20px;
+      font-size: 0.72rem;
+      color: #888;
+      pointer-events: none;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 700px) {
+      #sidebar { width: 0; }
+      .slide-inner { padding: 18px 20px 24px; }
+      .slide-title { font-size: 1.1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="top-bar">
+  <div class="title-area">
+    <div class="logo-icon">🏡</div>
+    <div>
+      <div><strong>農舍與農地未同時信託之法律問題</strong></div>
+      <div class="sub">農業發展條例第18條第4項 · 謝秉錡律師事務所 · 2026年6月</div>
+    </div>
+  </div>
+  <div class="nav-area">
+    <button class="nav-btn" onclick="prevSlide()">◀ 上一張</button>
+    <span id="slide-counter">1 / 32</span>
+    <button class="nav-btn" onclick="nextSlide()">下一張 ▶</button>
+    <button id="toc-toggle" onclick="toggleSidebar()">目錄</button>
+  </div>
+</div>
+
+<div id="main-layout">
+  <div id="sidebar">
+    <h3>目錄導覽</h3>
+    <ul>
+<li onclick="goTo(3)" data-slide="4">案件事實背景</li>
+<li onclick="goTo(4)" data-slide="5">核心爭點</li>
+<li onclick="goTo(7)" data-slide="8">規範目的與立法意旨</li>
+<li onclick="goTo(9)" data-slide="10">適用前提要件</li>
+<li onclick="goTo(11)" data-slide="12">信託移轉性質之認定</li>
+<li onclick="goTo(13)" data-slide="14">實務見解分歧總覽</li>
+<li onclick="goTo(15)" data-slide="16">嚴格適用說之分析</li>
+<li onclick="goTo(16)" data-slide="17">履行不能與實質關係說</li>
+<li onclick="goTo(17)" data-slide="18">關鍵判決對照表</li>
+<li onclick="goTo(19)" data-slide="20">未辦保存登記農舍之處理</li>
+<li onclick="goTo(20)" data-slide="21">信託前後權屬變化</li>
+<li onclick="goTo(21)" data-slide="22">法律架構分析圖</li>
+<li onclick="goTo(23)" data-slide="24">四因素綜合判斷</li>
+<li onclick="goTo(25)" data-slide="26">實務風險評估</li>
+<li onclick="goTo(27)" data-slide="28">結論與建議</li>
+<li onclick="goTo(29)" data-slide="30">實務建議步驟</li>
+<li onclick="goTo(30)" data-slide="31">參考判決總覽</li>
+<li onclick="goTo(31)" data-slide="32">判決核實聲明</li>
+
+    </ul>
+  </div>
+  <div id="slides-area">
+    <div id="slides-wrapper">
+
+  <div class="slide" id="slide-1">
+    <div class="slide-cover">
+      <div class="cover-badge">LEGAL ANALYSIS</div>
+      <h1 class="cover-title">農舍與農地<br>未同時信託之法律問題</h1>
+      <div class="cover-sub">農業發展條例第18條第4項 · 自益信託之實務爭議分析</div>
+      <div class="cover-firm">謝秉錡律師事務所 · 2026年6月</div>
+      <div class="slide-num-badge">01 / 32</div>
+    </div>
+  </div>
+  <div class="slide" id="slide-2">
+    <div class="slide-image-only">
+      <img src="farmhouse-trust-images/image1.png" alt="幻灯片 2" />
+      <div class="slide-num-badge">02 / 32</div>
+    </div>
+  </div>
+  <div class="slide" id="slide-3">
+    <div class="slide-inner">
+      <div class="slide-header">
+        <h2 class="slide-title">簡報目錄</h2>
+        <div class="slide-num-badge">03 / 32</div>
+      </div>
+      <div class="toc-grid">
+<div class="toc-item" onclick="goTo(3)"><span class="toc-arrow">→</span>案件事實背景</div>
+<div class="toc-item" onclick="goTo(4)"><span class="toc-arrow">→</span>核心爭點</div>
+<div class="toc-item" onclick="goTo(7)"><span class="toc-arrow">→</span>規範目的與立法意旨</div>
+<div class="toc-item" onclick="goTo(9)"><span class="toc-arrow">→</span>適用前提要件</div>
+<div class="toc-item" onclick="goTo(11)"><span class="toc-arrow">→</span>信託移轉性質之認定</div>
+<div class="toc-item" onclick="goTo(13)"><span class="toc-arrow">→</span>實務見解分歧總覽</div>
+<div class="toc-item" onclick="goTo(15)"><span class="toc-arrow">→</span>嚴格適用說之分析</div>
+<div class="toc-item" onclick="goTo(16)"><span class="toc-arrow">→</span>履行不能與實質關係說</div>
+<div class="toc-item" onclick="goTo(17)"><span class="toc-arrow">→</span>關鍵判決對照表</div>
+<div class="toc-item" onclick="goTo(19)"><span class="toc-arrow">→</span>未辦保存登記農舍之處理</div>
+<div class="toc-item" onclick="goTo(20)"><span class="toc-arrow">→</span>信託前後權屬變化</div>
+<div class="toc-item" onclick="goTo(21)"><span class="toc-arrow">→</span>法律架構分析圖</div>
+<div class="toc-item" onclick="goTo(23)"><span class="toc-arrow">→</span>四因素綜合判斷</div>
+<div class="toc-item" onclick="goTo(25)"><span class="toc-arrow">→</span>實務風險評估</div>
+<div class="toc-item" onclick="goTo(27)"><span class="toc-arrow">→</span>結論與建議</div>
+<div class="toc-item" onclick="goTo(29)"><span class="toc-arrow">→</span>實務建議步驟</div>
+<div class="toc-item" onclick="goTo(30)"><span class="toc-arrow">→</span>參考判決總覽</div>
+<div class="toc-item" onclick="goTo(31)"><span class="toc-arrow">→</span>判決核實聲明</div>
+
+      </div>
+    </div>
+  </div>
+  <div class="slide" id="slide-4">
+    <div class="slide-inner">
+      <div class="slide-header">
+        <h2 class="slide-title">案件事實背景</h2>
+        <div class="slide-num-badge">04 / 32</div>
+      </div>
+      <div class="slide-content">
+        <div class="content-label">本案基本事實</div><div class="content-item"><span class="item-num">1</span> 甲為 A 農地之所有權人，且於該農地上興建有 B 農舍（未辦理保存登記）</div><div class="content-item"><span class="item-num">2</span> 甲將 A 農地以自益信託方式移轉予乙（受託人），甲同時為信託受益人</div><div class="content-item"><span class="item-num">3</span> 惟甲未將坐落其上之 B 農舍一併辦理移轉或信託登記</div><div class="content-item"><span class="item-num">4</span> 信託後：乙取得 A 農地之形式所有權，甲保留 B 農舍之所有權</div>
+        <div class="numbered-item">
+          <div class="num-badge">5</div>
+          <div class="num-content">
+            <div class="num-title">爭議：此舉是否違反農業發展條例第18條第4項中段強制規定？</div>
+            <div class="num-desc">信託前權屬</div>
+            <div class="num-sub">甲（委託人）</div>
+          </div>
+        </div><div class="content-label">A 農地</div><div class="content-label">B 農舍（未保存登記）</div><div class="content-label">信託移轉後 ⬇</div><div class="content-label">所有權分離狀態</div><div class="content-label">乙（農地） vs 甲（農舍）</div>
+      </div>
+    </div>
+  </div>
+  <div class="slide" id="slide-5">
+    <div class="slide-inner">
+      <div class="slide-header">
+        <h2 class="slide-title">核心爭點</h2>
+        <div class="slide-num-badge">05 / 32</div>
+      </div>
+      <div class="slide-content">
+        <div class="content-label">自益信託僅移轉農地而未一併移轉</div><div class="content-label">未辦保存登記農舍之情形</div><div class="content-label">是否違反農業發展條例第18條第4項</div><div class="content-quote">「農舍應與其坐落用地併同移轉」之</div><div class="content-label">強制規定？</div><div class="content-label">信託是否該當</div><div class="content-quote">「移轉」？</div><div class="content-label">未保存登記農舍</div><div class="content-label">如何處理？</div><div class="content-label">自益信託之</div><div class="content-label">特殊性？</div>
+      </div>
+    </div>
+  </div>
+  <div class="slide" id="slide-6">
+    <div class="slide-image-only">
+      <img src="farmhouse-trust-images/image2.png" alt="幻灯片 6" />
+      <div class="slide-num-badge">06 / 32</div>
+    </div>
+  </div>
+  <div class="slide" id="slide-7">
+    <div class="slide-image-only">
+      <img src="farmhouse-trust-images/image3.png" alt="幻灯片 7" />
+      <div class="slide-num-badge">07 / 32</div>
+    </div>
+  </div>
+  <div class="slide" id="slide-8">
+    <div class="slide-inner">
+      <div class="slide-header">
+        <h2 class="slide-title">規範目的與立法意旨</h2>
+        <div class="slide-num-badge">08 / 32</div>
+      </div>
+      <div class="slide-content">
+        <div class="content-label">農業發展條例第18條第4項中段</div><div class="content-quote">「農舍應與其坐落用地併同移轉</div><div class="content-label">或併同設定抵押權」</div><div class="content-label">立法理由</div><div class="content-label">農舍與農業經營有不可分離之關係</div><div class="content-label">規範目的</div><div class="content-label">使農舍與農地歸屬同一人所有，增進利用效率</div><div class="content-label">防止弊端</div><div class="content-label">避免農舍與農地分屬不同所有權人，致使法律關係複雜</div><div class="content-label">實務引用：最高行政法院112年度上字第269號判決</div><div class="content-quote">「農舍係為農業經營不可分離之設施物，目的是在於便利農地就地耕種而特予其權限之」</div><div class="content-source">— 92年度判字第1304號判決</div>
+      </div>
+    </div>
+  </div>
+  <div class="slide" id="slide-9">
+    <div class="slide-image-only">
+      <img src="farmhouse-trust-images/image4.png" alt="幻灯片 9" />
+      <div class="slide-num-badge">09 / 32</div>
+    </div>
+  </div>
+  <div class="slide" id="slide-10">
+    <div class="slide-inner">
+      <div class="slide-header">
+        <h2 class="slide-title">適用前提要件</h2>
+        <div class="slide-num-badge">10 / 32</div>
+      </div>
+      <div class="slide-content">
+        <div class="content-label">105年度上字第448號判決之見解</div>
+        <div class="numbered-item">
+          <div class="num-badge">1</div>
+          <div class="num-content">
+            <div class="num-title">要件一</div>
+            <div class="num-desc">農舍與坐落之土地所有權人同屬一人</div>
+            <div class="num-sub">農業發展條例第18條第4項前段參照</div>
+          </div>
+        </div>
+        <div class="numbered-item">
+          <div class="num-badge">2</div>
+          <div class="num-content">
+            <div class="num-title">要件二</div>
+            <div class="num-desc">所有權人依法得移轉農舍與坐落之土地</div>
+            <div class="num-sub">始有可能將農舍與其坐落用地併同移轉</div>
+          </div>
+        </div><div class="content-label">!</div><div class="content-label">本案檢驗</div><div class="content-label">信託前甲同時為A農地與B農舍之所有權人，符合要件一</div><div class="content-label">惟B農舍未辦保存登記，要件二之「依法得移轉」存有爭議</div>
+      </div>
+    </div>
+  </div>
+  <div class="slide" id="slide-11">
+    <div class="slide-image-only">
+      <img src="farmhouse-trust-images/image5.png" alt="幻灯片 11" />
+      <div class="slide-num-badge">11 / 32</div>
+    </div>
+  </div>
+  <div class="slide" id="slide-12">
+    <div class="slide-inner">
+      <div class="slide-header">
+        <h2 class="slide-title">信託移轉性質之認定</h2>
+        <div class="slide-num-badge">12 / 32</div>
+      </div>
+      <div class="slide-content">
+        <div class="content-label">信託行為是否該當「移轉」？</div><div class="content-label">實務採肯定見解</div><div class="content-quote">「凡農舍所有權之移轉，限定與其坐落之農業用地併同移轉，不論是修正施行前或修正施行後所興建之農舍，均應適用上開本文規範」</div><div class="content-source">— 最高行政法院112年度上字第269號判決</div><div class="content-label">信託移轉之法律效果</div><div class="content-label">形式上發生所有權變動</div><div class="content-label">受託人取得形式所有權</div><div class="content-label">委託人喪失所有權（形式上）</div><div class="content-label">信託以財產管理為目的，仍受本條規範</div><div class="content-para">不論是買賣、贈與或信託，只要發生農舍所有權移轉之效果，即應受農業發展條例第18條第4項規範</div>
+      </div>
+    </div>
+  </div>
+  <div class="slide" id="slide-13">
+    <div class="slide-image-only">
+      <img src="farmhouse-trust-images/image6.png" alt="幻灯片 13" />
+      <div class="slide-num-badge">13 / 32</div>
+    </div>
+  </div>
+  <div class="slide" id="slide-14">
+    <div class="slide-inner">
+      <div class="slide-header">
+        <h2 class="slide-title">實務見解分歧總覽</h2>
+        <div class="slide-num-badge">14 / 32</div>
+      </div>
+      <div class="slide-content">
+        <div class="content-label">兩種法律評價立場</div><div class="content-label">嚴格適用說</div><div class="content-label">只要信託行為客觀上造成</div><div class="content-label">農舍與農地所有權分屬不同人</div><div class="content-label">即違反本條規定</div><div class="content-label">不問農舍是否已辦保存登記</div><div class="content-label">不問信託是否為自益信託</div><div class="content-label">代表判決</div><div class="content-label">112年度上字第269號</div><div class="content-label">（最高行政法院）</div><div class="content-label">履行不能說 /</div><div class="content-label">實質關係說</div><div class="content-label">考量客觀履行可能性</div><div class="content-label">及信託之實質法律關係</div><div class="content-label">自益信託未造成實質分離</div><div class="content-label">農舍未辦保存登記→客觀不能移轉</div><div class="content-label">自益信託→實質權益未分離</div><div class="content-label">代表判決</div><div class="content-label">105年度上字第448號</div>
+      </div>
+    </div>
+  </div>
+  <div class="slide" id="slide-15">
+    <div class="slide-image-only">
+      <img src="farmhouse-trust-images/image7.png" alt="幻灯片 15" />
+      <div class="slide-num-badge">15 / 32</div>
+    </div>
+  </div>
+  <div class="slide" id="slide-16">
+    <div class="slide-inner">
+      <div class="slide-header">
+        <h2 class="slide-title">嚴格適用說之分析</h2>
+        <div class="slide-num-badge">16 / 32</div>
+      </div>
+      <div class="slide-content">
+        <div class="content-label">客觀上造成所有權分離即屬違反</div><div class="content-quote">「查上開第4項中段規定『農舍應與其坐落用地併同移轉』之限制，係因農舍與農業之經營有不可分之關係，為使農舍與農地歸同一人所有…避免因農舍與農地分屬不同人所有」</div><div class="content-source">— 最高行政法院112年度上字第269號判決</div><div class="content-label">適用於本案</div><div class="content-para">信託後 A 農地所有權人為乙，B 農舍所有權人為甲 → 已造成「農舍與農地分屬不同所有權人」之狀態，違反法律目的。</div><div class="content-para">例外不適用：89年修法前已存在之農舍與農地分屬不同人之情形（111年度訴字第1463號判決）。但本案係甲自行透過信託造成分離，不適用此例外。</div>
+      </div>
+    </div>
+  </div>
+  <div class="slide" id="slide-17">
+    <div class="slide-inner">
+      <div class="slide-header">
+        <h2 class="slide-title">履行不能與實質關係說</h2>
+        <div class="slide-num-badge">17 / 32</div>
+      </div>
+      <div class="slide-content">
+        <div class="content-label">考量客觀履行可能性及信託之實質法律關係</div>
+        <div class="numbered-item">
+          <div class="num-badge">1</div>
+          <div class="num-content">
+            <div class="num-title">客觀履行不能</div>
+            <div class="num-desc">105年度上字第448號</div>
+            <div class="num-sub">B農舍未辦保存登記，客觀上無法辦理所有權移轉登記或信託登記，不具備「依法得移轉」之要件，無從適用本條規定</div>
+          </div>
+        </div>
+        <div class="numbered-item">
+          <div class="num-badge">2</div>
+          <div class="num-content">
+            <div class="num-title">自益信託之特殊性</div>
+            <div class="num-desc">委託人甲同時為受益人，形式上農地所有權移轉予乙，但甲實質上仍享有信託財產受益權，並對B農舍保有所有權，未造成永久分離</div>
+            
+          </div>
+        </div>
+        <div class="numbered-item">
+          <div class="num-badge">3</div>
+          <div class="num-content">
+            <div class="num-title">與立法目的無違</div>
+            <div class="num-desc">農舍與農地仍歸屬於甲之實質控制下，並未造成法律關係複雜化或利用效率降低之弊端</div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="slide" id="slide-18">
+    <div class="slide-inner">
+      <div class="slide-header">
+        <h2 class="slide-title">關鍵判決對照表</h2>
+        <div class="slide-num-badge">18 / 32</div>
+      </div>
+      
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>比較項目</th>
+            <th>嚴格適用說</th>
+            <th>履行不能說/實質關係說</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>代表判決</td><td>最高行政法院<br>112年度上字第269號</td><td>臺中高分院<br>105年度上字第448號</td></tr>
+          <tr><td>核心主張</td><td>客觀上造成所有權分離即違反</td><td>考量客觀履行可能性及實質關係</td></tr>
+          <tr><td>對未保存登記農舍之處理</td><td>仍應適用，要求補正</td><td>客觀不能移轉，不違反</td></tr>
+          <tr><td>對自益信託之評價</td><td>形式分離即違反</td><td>實質未分離，較寬鬆</td></tr>
+          <tr><td>本案風險</td><td class="risk-high">⚠ 高風險（登記駁回）</td><td class="risk-low">✓ 較低風險</td></tr>
+        </tbody>
+      </table>
+      <div class="table-note">結論：實務上存在明顯分歧，須綜合各因素判斷</div>
+    </div>
+  </div>
+  <div class="slide" id="slide-19">
+    <div class="slide-image-only">
+      <img src="farmhouse-trust-images/image8.png" alt="幻灯片 19" />
+      <div class="slide-num-badge">19 / 32</div>
+    </div>
+  </div>
+  <div class="slide" id="slide-20">
+    <div class="slide-inner">
+      <div class="slide-header">
+        <h2 class="slide-title">未辦保存登記農舍之處理</h2>
+        <div class="slide-num-badge">20 / 32</div>
+      </div>
+      <div class="slide-content">
+        <div class="content-label">法律困境與實務難題</div><div class="content-label">農舍之認定</div><div class="content-para">依92年度判字第1304號判決，農舍之認定以事實上存在及農業使用為準，不以辦妥保存登記為必要。故B農舍雖未辦保存登記，仍該當「農舍」定義，應受本條規範。</div><div class="content-label">實務兩難</div><div class="content-para">若嚴格適用本條，要求未辦保存登記農舍必須併同移轉 → 客觀上無法辦理所有權移轉登記</div><div class="content-label">究竟應認為？</div><div class="content-label">A. 客觀不能履行故不違反</div><div class="content-label">B. 應先辦保存登記再併同移轉</div><div class="content-label">建議方案</div><div class="content-para">甲應於B農舍辦妥保存登記後，儘速將該農舍以信託併同登記方式補正，使土地與農舍之登記狀態趨於一致，以符最高法院110年度台上字第311號判決揭示「使農舍所有權與農地利用權結為一體」之立法精神。</div>
+      </div>
+    </div>
+  </div>
+  <div class="slide" id="slide-21">
+    <div class="slide-inner">
+      <div class="slide-header">
+        <h2 class="slide-title">信託前後權屬變化</h2>
+        <div class="slide-num-badge">21 / 32</div>
+      </div>
+      <div class="slide-content">
+        <div class="content-label">信託前</div><div class="content-label">甲（所有權人）</div><div class="content-label">A 農地</div><div class="content-label">B 農舍</div><div class="content-label">（未保存登記）</div><div class="content-label">✓ 農舍與農地同屬一人</div><div class="content-label">→ 信託移轉 →</div><div class="content-label">信託後</div><div class="content-label">乙（受託人）</div><div class="content-label">甲（受益人）</div><div class="content-label">A 農地</div><div class="content-label">所有權 ↗</div><div class="content-label">B 農舍</div><div class="content-label">所有權 ↙</div><div class="content-warning"><span class="warn-icon">⚠</span>所有權分離狀態</div><div class="content-label">農舍（甲）≠ 農地（乙）</div>
+      </div>
+    </div>
+  </div>
+  <div class="slide" id="slide-22">
+    <div class="slide-inner">
+      <div class="slide-header">
+        <h2 class="slide-title">法律架構分析圖</h2>
+        <div class="slide-num-badge">22 / 32</div>
+      </div>
+      <div class="slide-content">
+        <div class="content-label">農業發展條例第18條第4項中段</div><div class="content-quote">「農舍應與其坐落用地併同移轉」</div><div class="content-label">適用前提</div><div class="content-label">農舍與農地同屬一人</div><div class="content-label">所有權人依法得移轉</div><div class="content-label">移轉之定義</div><div class="content-label">買賣、贈與、信託</div><div class="content-label">形式上所有權變動</div><div class="content-label">例外排除</div><div class="content-label">89年修法前已分離</div><div class="content-label">非自行造成分離</div><div class="content-label">結論：違反效果 → 地政機關得駁回登記申請或要求補正</div>
+      </div>
+    </div>
+  </div>
+  <div class="slide" id="slide-23">
+    <div class="slide-image-only">
+      <img src="farmhouse-trust-images/image9.png" alt="幻灯片 23" />
+      <div class="slide-num-badge">23 / 32</div>
+    </div>
+  </div>
+  <div class="slide" id="slide-24">
+    <div class="slide-inner">
+      <div class="slide-header">
+        <h2 class="slide-title">四因素綜合判斷</h2>
+        <div class="slide-num-badge">24 / 32</div>
+      </div>
+      <div class="slide-content">
+        
+        <div class="numbered-item">
+          <div class="num-badge">1</div>
+          <div class="num-content">
+            <div class="num-title">信託前權屬狀態</div>
+            <div class="num-desc">甲同時為A農地與B農舍所有權人，符合適用前提（105上448）</div>
+            <div class="num-sub">符合要件</div>
+          </div>
+        </div>
+        <div class="numbered-item">
+          <div class="num-badge">2</div>
+          <div class="num-content">
+            <div class="num-title">客觀履行可能性</div>
+            <div class="num-desc">B農舍未辦保存登記，客觀上不能移轉，可能構成不適用本條之理由</div>
+            <div class="num-sub">有利於甲</div>
+          </div>
+        </div>
+        <div class="numbered-item">
+          <div class="num-badge">3</div>
+          <div class="num-content">
+            <div class="num-title">信託之性質</div>
+            <div class="num-desc">形式上造成所有權分離（乙取得農地，甲保留農舍），該當分屬不同人狀態</div>
+            <div class="num-sub">不利於甲</div>
+          </div>
+        </div>
+        <div class="numbered-item">
+          <div class="num-badge">4</div>
+          <div class="num-content">
+            <div class="num-title">例外情形之排除</div>
+            <div class="num-desc">89年修法前例外僅適用已存在之分離，本件係甲自行造成，不適用例外</div>
+            <div class="num-sub">不利於甲</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="slide" id="slide-25">
+    <div class="slide-image-only">
+      <img src="farmhouse-trust-images/image10.png" alt="幻灯片 25" />
+      <div class="slide-num-badge">25 / 32</div>
+    </div>
+  </div>
+  <div class="slide" id="slide-26">
+    <div class="slide-inner">
+      <div class="slide-header">
+        <h2 class="slide-title">實務風險評估</h2>
+        <div class="slide-num-badge">26 / 32</div>
+      </div>
+      <div class="slide-content">
+        <div class="content-warning"><span class="warn-icon">⚠</span></div><div class="content-label">登記駁回風險</div><div class="content-para">地政機關受理農地信託登記時，若發現農舍存在而未一併移轉，可能認為違反農業發展條例第18條第4項而駁回申請或要求補正。</div><div class="content-label">判決依據與因應</div><div class="content-label">112上269 嚴格立場支持駁回</div><div class="content-warning"><span class="warn-icon">⚠</span></div><div class="content-label">登記撤銷風險</div><div class="content-label">縱使信託行為已成立，亦可能面臨登記被撤銷之後果。</div><div class="content-label">判決依據與因應</div><div class="content-label">未保存登記農舍無法信託登記，形成死循環</div><div class="content-warning"><span class="warn-icon">⛔</span></div><div class="content-label">後續處理困境</div><div class="content-label">可能無法辦理農舍保存登記，或無法補辦併同移轉登記，形成僵局。</div><div class="content-label">判決依據與因應</div><div class="content-label">信託目的若為資產管理而非脫法，可向地政機關釋明</div>
+      </div>
+    </div>
+  </div>
+  <div class="slide" id="slide-27">
+    <div class="slide-image-only">
+      <img src="farmhouse-trust-images/image11.png" alt="幻灯片 27" />
+      <div class="slide-num-badge">27 / 32</div>
+    </div>
+  </div>
+  <div class="slide" id="slide-28">
+    <div class="slide-inner">
+      <div class="slide-header">
+        <h2 class="slide-title">結論與建議</h2>
+        <div class="slide-num-badge">28 / 32</div>
+      </div>
+      <div class="slide-content">
+        <div class="content-para">綜合實務見解，甲將A農地以自益信託方式移轉予乙，而未將其上B農舍併同移轉，是否違反農業發展條例第18條第4項，應考量四項因素綜合判斷。實務上較嚴格之見解傾向認定違反，甲面臨登記駁回之風險。</div><div class="content-item"><span class="item-num">1</span> 先辦理B農舍保存登記</div><div class="content-item"><span class="item-num">2</span> 補辦農舍信託併同登記</div>
+        <div class="numbered-item">
+          <div class="num-badge">3</div>
+          <div class="num-content">
+            <div class="num-title">使土地與農舍登記狀態一致</div>
+            <div class="num-desc">最高法院110年度台上字第311號判決：「使農舍所有權與農地利用權結為一體」</div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="slide" id="slide-29">
+    <div class="slide-image-only">
+      <img src="farmhouse-trust-images/image12.png" alt="幻灯片 29" />
+      <div class="slide-num-badge">29 / 32</div>
+    </div>
+  </div>
+  <div class="slide" id="slide-30">
+    <div class="slide-inner">
+      <div class="slide-header">
+        <h2 class="slide-title">實務建議步驟</h2>
+        <div class="slide-num-badge">30 / 32</div>
+      </div>
+      <div class="slide-content">
+        
+        <div class="numbered-item">
+          <div class="num-badge">1</div>
+          <div class="num-content">
+            <div class="num-title">辦理保存登記</div>
+            <div class="num-desc">向地政機關申請B農舍建物所有權第一次登記（保存登記），取得建物登記謄本</div>
+            
+          </div>
+        </div>
+        <div class="numbered-item">
+          <div class="num-badge">2</div>
+          <div class="num-content">
+            <div class="num-title">評估信託架構</div>
+            <div class="num-desc">確認信託契約內容是否符合自益信託要件，評估是否需調整信託條款</div>
+            
+          </div>
+        </div>
+        <div class="numbered-item">
+          <div class="num-badge">3</div>
+          <div class="num-content">
+            <div class="num-title">補辦併同登記</div>
+            <div class="num-desc">以信託併同登記方式，將B農舍所有權移轉予受託人乙，使農地與農舍登記狀態一致</div>
+            
+          </div>
+        </div>
+        <div class="numbered-item">
+          <div class="num-badge">4</div>
+          <div class="num-content">
+            <div class="num-title">向地政機關釋明</div>
+            <div class="num-desc">若地政機關要求補正，可提出信託目的為資產管理之相關文件，並引用105上448判決</div>
+            
+          </div>
+        </div>
+        <div class="numbered-item">
+          <div class="num-badge">5</div>
+          <div class="num-content">
+            <div class="num-title">定期追蹤狀態</div>
+            <div class="num-desc">建立定期查核機制，確保農舍與農地之登記始終維持同一所有權人狀態</div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="slide" id="slide-31">
+    <div class="slide-inner">
+      <div class="slide-header">
+        <h2 class="slide-title">參考判決總覽</h2>
+        <div class="slide-num-badge">31 / 32</div>
+      </div>
+      <div class="case-list">
+
+          <div class="case-item">
+            <div class="case-num">112年度上字第269號</div>
+            <div class="case-court">最高行政法院</div>
+            <div class="case-desc">凡農舍所有權之移轉均應併同移轉，信託亦同</div>
+          </div>
+          <div class="case-item">
+            <div class="case-num">105年度上字第448號</div>
+            <div class="case-court">臺灣高等法院臺中分院</div>
+            <div class="case-desc">適用前提為所有權人依法得移轉農舍</div>
+          </div>
+          <div class="case-item">
+            <div class="case-num">111年度訴字第1463號</div>
+            <div class="case-court">臺北高等行政法院</div>
+            <div class="case-desc">89年修法前已存在分離狀態之例外</div>
+          </div>
+          <div class="case-item">
+            <div class="case-num">92年度判字第1304號</div>
+            <div class="case-court">最高行政法院</div>
+            <div class="case-desc">農舍不以辦妥保存登記為必要</div>
+          </div>
+          <div class="case-item">
+            <div class="case-num">110年度台上字第311號</div>
+            <div class="case-court">最高法院</div>
+            <div class="case-desc">使農舍所有權與農地利用權結為一體</div>
+          </div>
+      </div>
+    </div>
+  </div>
+  <div class="slide" id="slide-32">
+    <div class="slide-inner">
+      <div class="slide-header">
+        <h2 class="slide-title">判決核實聲明</h2>
+        <div class="slide-num-badge">32 / 32</div>
+      </div>
+      <div class="slide-content">
+        <div class="content-label">本簡報引用判決均經台灣法院判決資料庫核實</div><div class="content-para">核實方式：透過司法院裁判書查詢系統及 twinkle-hub 判決資料庫逐一查證裁判字號、法院、案由與判決全文內容。</div><div class="content-label">謝秉錡律師事務所</div><div class="content-label">2026年6月 · 法學教育用途</div><div class="content-label">本簡報所有判決引用均經核實</div><div class="content-label">無 AI 幻覺判決</div>
+      </div>
+    </div>
+  </div>
+    </div>
+  </div>
+</div>
+
+<div id="key-hint">← → 方向鍵換頁</div>
+
+<script>
+  let current = 0;
+  const total = 32;
+  let sidebarOpen = true;
+
+  function updateUI() {
+    const wrapper = document.getElementById('slides-wrapper');
+    wrapper.style.transform = `translateX(-${current * 100}%)`;
+    document.getElementById('slide-counter').textContent = `${current + 1} / ${total}`;
+
+    // 更新側邊欄 active
+    const items = document.querySelectorAll('#sidebar ul li');
+    items.forEach(li => {
+      li.classList.remove('active');
+      if (parseInt(li.dataset.slide) === current + 1) {
+        li.classList.add('active');
+        li.scrollIntoView({block: 'nearest'});
+      }
+    });
+  }
+
+  function nextSlide() {
+    if (current < total - 1) { current++; updateUI(); }
+  }
+  function prevSlide() {
+    if (current > 0) { current--; updateUI(); }
+  }
+  function goTo(idx) {
+    current = Math.max(0, Math.min(idx, total - 1));
+    updateUI();
+  }
+  function toggleSidebar() {
+    sidebarOpen = !sidebarOpen;
+    document.getElementById('sidebar').classList.toggle('hidden', !sidebarOpen);
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') nextSlide();
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') prevSlide();
+  });
+
+  // Touch swipe
+  let touchStartX = 0;
+  document.getElementById('slides-area').addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; });
+  document.getElementById('slides-area').addEventListener('touchend', e => {
+    const diff = touchStartX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) { diff > 0 ? nextSlide() : prevSlide(); }
+  });
+
+  updateUI();
+</script>
+
+</body>
+</html>
