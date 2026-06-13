@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>借名登記法律分析 — 互動式簡報</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f8fafc;
+  --bg-2: #f1f5f9;
+  --ink: #0f172a;
+  --ink-2: #1e293b;
+  --ink-3: #475569;
+  --ink-4: #94a3b8;
+  --party: #1e40af;
+  --fact: #475569;
+  --evidence: #a16207;
+  --law: #15803d;
+  --procedure: #7c3aed;
+  --judgment: #991b1b;
+  --issue: #c2410c;
+  --accent: #d4af37;
+  --accent-2: #1a365d;
+  --t1: clamp(32px, 4vw, 55px);
+  --t2: clamp(22px, 2.8vw, 34px);
+  --t3: clamp(15px, 1.8vw, 21px);
+  --t4: clamp(11px, 1.2vw, 13px);
+  --s1: clamp(40px, 5vw, 80px);
+  --s2: clamp(28px, 3vw, 48px);
+  --s3: clamp(16px, 1.8vw, 24px);
+  --s4: clamp(8px, 1vw, 12px);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { width: 100%; height: 100%; overflow: hidden; font-family: 'Inter','標楷體','KaiTi','BiauKai',serif; background: #000; }
+
+/* Progress bar */
+#progress { position: fixed; top: 0; left: 0; width: 0%; height: 4px; background: linear-gradient(90deg, var(--accent-2), var(--accent)); z-index: 1000; transition: width .5s ease; }
+
+/* Section tag */
+#section-tag {
+  position: fixed; top: 20px; left: 24px; z-index: 999;
+  font-size: 12px; font-weight: 600; letter-spacing: 0.5px;
+  padding: 6px 14px; border-radius: 20px;
+  background: rgba(15,23,42,0.08); backdrop-filter: blur(8px);
+  color: var(--ink-3); border: 1px solid rgba(15,23,42,0.06);
+  transition: all .4s ease;
+}
+#section-tag::before { content: "— "; }
+#section-tag::after { content: " —"; }
+
+/* Page info */
+#pageInfo {
+  position: fixed; bottom: 24px; right: 32px; z-index: 999;
+  font-size: 13px; font-weight: 500; color: var(--ink-4);
+  background: rgba(255,255,255,0.85); backdrop-filter: blur(8px);
+  padding: 6px 16px; border-radius: 20px;
+  border: 1px solid rgba(15,23,42,0.06);
+}
+
+/* Hint */
+#hint {
+  position: fixed; bottom: 24px; left: 32px; z-index: 999;
+  font-size: 12px; color: var(--ink-4);
+  background: rgba(255,255,255,0.75); backdrop-filter: blur(8px);
+  padding: 5px 12px; border-radius: 16px;
+  opacity: 0.5; transition: opacity .3s;
+}
+#hint:hover { opacity: 1; }
+
+/* Slides */
+.slide {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  padding: 60px 80px;
+  opacity: 0; pointer-events: none;
+  transition: opacity .55s ease, transform .55s ease;
+  transform: translateY(20px);
+  overflow-y: auto;
+  background: var(--bg);
+}
+.slide.active { opacity: 1; pointer-events: auto; transform: translateY(0); }
+.slide-inner { width: 100%; max-width: 1200px; margin: auto; }
+
+/* Cover */
+.slide-cover { background: linear-gradient(135deg, #0a1628 0%, #1a365d 40%, #2d4a7a 100%); }
+.slide-cover .slide-inner { text-align: center; }
+.slide-cover .cover-badge {
+  display: inline-block; padding: 8px 24px;
+  background: rgba(212,175,55,0.15); border: 1px solid rgba(212,175,55,0.3);
+  border-radius: 30px; color: var(--accent); font-size: 14px; font-weight: 500;
+  letter-spacing: 2px; margin-bottom: 32px;
+}
+.slide-cover h1 {
+  font-size: clamp(36px, 5vw, 64px); font-weight: 800;
+  color: #fff; line-height: 1.2; margin-bottom: 16px;
+}
+.slide-cover .subtitle {
+  font-size: clamp(18px, 2.2vw, 30px); font-weight: 400;
+  color: rgba(255,255,255,0.75); margin-bottom: 8px;
+}
+.slide-cover .case-ref {
+  font-size: 15px; color: rgba(255,255,255,0.5);
+  margin-top: 24px; padding-top: 24px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+.slide-cover .firm { font-size: 13px; color: rgba(212,175,55,0.7); margin-top: 8px; letter-spacing: 1px; }
+.slide-cover .cover-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); margin: 0 8px; }
+
+/* Cover slide decorative background */
+.cover-particles { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+.cover-particles span {
+  position: absolute; width: 3px; height: 3px;
+  background: rgba(212,175,55,0.15); border-radius: 50%;
+  animation: float 6s ease-in-out infinite;
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0) scale(1); opacity: 0.3; }
+  50% { transform: translateY(-30px) scale(1.5); opacity: 0.8; }
+}
+
+/* Section divider */
+.slide-divider { background: linear-gradient(135deg, var(--accent-2) 0%, #0f1f3a 100%); }
+.slide-divider h2 { font-size: clamp(28px, 4vw, 48px); color: #fff; text-align: center; }
+.slide-divider .divider-sub {
+  text-align: center; color: rgba(212,175,55,0.8); font-size: 14px;
+  letter-spacing: 3px; margin-top: 12px; font-weight: 500;
+}
+
+/* Content slides */
+.slide-content h2 {
+  font-size: var(--t2); font-weight: 700; color: var(--accent-2);
+  margin-bottom: var(--s3); padding-bottom: var(--s4);
+  border-bottom: 3px solid var(--accent);
+  display: inline-block;
+}
+.slide-content h3 { font-size: var(--t3); font-weight: 600; color: var(--ink-2); margin: var(--s3) 0 var(--s2); }
+.slide-content p, .slide-content li { font-size: var(--t3); color: var(--ink-3); line-height: 1.7; }
+
+/* Card grid */
+.card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--s3); margin-top: var(--s3); }
+.card {
+  background: #fff; border-radius: 12px; padding: var(--s3);
+  border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  transition: transform .2s, box-shadow .2s;
+}
+.card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+.card .card-badge {
+  display: inline-block; padding: 3px 10px; border-radius: 12px;
+  font-size: 11px; font-weight: 600; margin-bottom: 8px;
+}
+.card h4 { font-size: 16px; font-weight: 600; color: var(--ink-2); margin-bottom: 8px; }
+.card p { font-size: 14px; color: var(--ink-3); line-height: 1.6; }
+
+/* Fact slide */
+.fact-list { list-style: none; padding: 0; }
+.fact-list li {
+  padding: 14px 20px; margin-bottom: 10px;
+  background: #fff; border-radius: 10px;
+  border-left: 4px solid var(--fact);
+  font-size: var(--t3); color: var(--ink-2); line-height: 1.6;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+.fact-list li strong { color: var(--accent-2); }
+
+/* Issue cards (interactive accordion) */
+.issue-card {
+  background: #fff; border-radius: 12px; margin-bottom: var(--s3);
+  border: 1px solid #e2e8f0; cursor: pointer;
+  overflow: hidden; transition: box-shadow .2s;
+}
+.issue-card:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+.issue-header {
+  display: flex; align-items: center; gap: 12px;
+  padding: 18px 24px; background: #fff;
+}
+.issue-badge {
+  flex-shrink: 0; padding: 4px 14px; border-radius: 20px;
+  font-size: 12px; font-weight: 700; color: #fff;
+  background: var(--issue);
+}
+.issue-header h4 { flex: 1; font-size: 17px; font-weight: 600; color: var(--ink-2); margin: 0; }
+.toggle-icon { font-size: 14px; color: var(--ink-4); transition: transform .3s; }
+.issue-card.open .toggle-icon { transform: rotate(180deg); }
+.issue-detail {
+  padding: 0 24px 18px; display: none;
+  border-top: 1px solid #f1f5f9; margin-top: 0;
+}
+.issue-card.open .issue-detail { display: block; }
+.issue-detail p { font-size: 15px; color: var(--ink-3); line-height: 1.7; margin: 10px 0; }
+.issue-detail .highlight {
+  padding: 10px 16px; background: rgba(212,175,55,0.08);
+  border-left: 3px solid var(--accent); border-radius: 4px;
+  font-weight: 500; color: var(--ink-2);
+}
+
+/* Law tooltip */
+.law-tip {
+  border-bottom: 1px dashed var(--law); cursor: help;
+  position: relative; color: var(--law); font-weight: 500;
+}
+.law-tip:hover::after {
+  content: attr(data-tip);
+  position: fixed; bottom: auto; left: 50%;
+  transform: translateX(-50%);
+  background: var(--ink); color: #fff;
+  padding: 10px 16px; border-radius: 8px;
+  font-size: 13px; white-space: normal;
+  max-width: 400px; width: max-content;
+  z-index: 1000; line-height: 1.5;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+}
+
+/* Timeline */
+.timeline { position: relative; padding: var(--s3) 0; }
+.timeline::before {
+  content: ''; position: absolute; left: 20px; top: 0; bottom: 0;
+  width: 2px; background: linear-gradient(to bottom, var(--accent-2), var(--accent));
+}
+.timeline-item {
+  position: relative; padding: 0 0 var(--s3) 56px; cursor: pointer;
+}
+.timeline-dot {
+  position: absolute; left: 12px; top: 6px;
+  width: 18px; height: 18px; border-radius: 50%;
+  border: 3px solid #fff; box-shadow: 0 0 0 2px currentColor;
+}
+.timeline-label { font-size: 16px; font-weight: 600; color: var(--ink-2); cursor: pointer; }
+.timeline-label:hover { color: var(--accent-2); }
+.timeline-detail {
+  margin-top: 8px; padding: 12px 16px;
+  background: #fff; border-radius: 8px;
+  border: 1px solid #e2e8f0; display: none;
+}
+.timeline-item.open .timeline-detail { display: block; }
+.timeline-detail p { font-size: 14px; color: var(--ink-3); line-height: 1.6; }
+
+/* Step flow */
+.step-flow {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--s3); margin-top: var(--s3);
+}
+.step {
+  text-align: center; padding: var(--s3) var(--s2);
+  background: #fff; border-radius: 12px;
+  border: 1px solid #e2e8f0; position: relative;
+}
+.step-number {
+  width: 36px; height: 36px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 12px; font-weight: 700; font-size: 15px; color: #fff;
+}
+.step h4 { font-size: 15px; font-weight: 600; color: var(--ink-2); margin-bottom: 8px; }
+.step p { font-size: 13px; color: var(--ink-3); line-height: 1.5; }
+.step-arrow {
+  position: absolute; right: -18px; top: 50%; transform: translateY(-50%);
+  font-size: 24px; color: var(--ink-4);
+}
+.step:last-child .step-arrow { display: none; }
+
+/* Law table */
+.law-table { width: 100%; border-collapse: collapse; margin-top: var(--s3); }
+.law-table th, .law-table td {
+  padding: 12px 16px; text-align: left; border-bottom: 1px solid #e2e8f0;
+  font-size: 14px; line-height: 1.5;
+}
+.law-table th { background: var(--accent-2); color: #fff; font-weight: 600; }
+.law-table tr:hover td { background: #f8fafc; }
+.law-table .law-ref { color: var(--law); font-weight: 600; font-size: 13px; }
+
+/* Verification table */
+.verify-table { width: 100%; border-collapse: collapse; margin-top: var(--s3); }
+.verify-table th, .verify-table td { padding: 10px 14px; border-bottom: 1px solid #e2e8f0; font-size: 14px; }
+.verify-table th { background: var(--bg-2); color: var(--ink-2); font-weight: 600; }
+.verify-good { color: var(--law); font-weight: 600; }
+.verify-bad { color: var(--judgment); font-weight: 600; }
+
+/* Conclusion card */
+.conclusion-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--s3); margin-top: var(--s3); }
+.conclusion-card {
+  background: #fff; border-radius: 12px; padding: var(--s3);
+  border-top: 4px solid var(--accent);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+.conclusion-card h3 { font-size: 18px; font-weight: 700; color: var(--accent-2); margin-bottom: 8px; }
+.conclusion-card p { font-size: 14px; color: var(--ink-3); line-height: 1.6; }
+
+/* Two-column layout */
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s3); }
+.col-card { background: #fff; border-radius: 12px; padding: var(--s3); border: 1px solid #e2e8f0; }
+.col-card h4 { font-size: 16px; font-weight: 600; margin-bottom: 12px; }
+.col-card .party-label { color: var(--party); }
+.col-card .fact-label { color: var(--fact); }
+.col-card ul { list-style: none; padding: 0; }
+.col-card li { padding: 6px 0; font-size: 14px; color: var(--ink-3); line-height: 1.6; }
+.col-card li::before { content: "• "; color: var(--ink-4); }
+
+/* Action steps */
+.action-steps { list-style: none; padding: 0; counter-reset: step-counter; }
+.action-steps li {
+  counter-increment: step-counter; padding: 16px 20px 16px 56px;
+  margin-bottom: 12px; background: #fff; border-radius: 10px;
+  border: 1px solid #e2e8f0; position: relative; font-size: 15px;
+  color: var(--ink-3); line-height: 1.6;
+}
+.action-steps li::before {
+  content: counter(step-counter);
+  position: absolute; left: 16px; top: 16px;
+  width: 28px; height: 28px; border-radius: 50%;
+  background: var(--accent-2); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 700;
+}
+
+/* End slide */
+.slide-end { background: linear-gradient(135deg, #0a1628 0%, #1a365d 40%, #2d4a7a 100%); }
+.slide-end h2 { font-size: clamp(28px, 4vw, 48px); color: #fff; text-align: center; }
+.slide-end p { color: rgba(255,255,255,0.6); text-align: center; margin-top: 16px; font-size: 15px; }
+.slide-end .end-accent { color: var(--accent); }
+
+/* SVG card container */
+.svg-container {
+  background: #fff; border-radius: 12px; padding: 20px;
+  border: 1px solid #e2e8f0; box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  margin: var(--s3) 0; overflow: hidden;
+}
+.svg-container svg { width: 100%; height: auto; display: block; }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .slide { padding: 40px 24px; }
+  .two-col { grid-template-columns: 1fr; }
+  .step-flow { grid-template-columns: 1fr; }
+  .step-arrow { display: none; }
+  #hint { display: none; }
+}
+</style>
+</head>
+<body>
+
+<div id="progress"></div>
+<div id="section-tag">引起動機</div>
+<div id="pageInfo">1 / 17</div>
+<div id="hint">← → 方向鍵切頁 &nbsp;·&nbsp; F 全螢幕</div>
+
+<!-- ============ SLIDE 1: COVER ============ -->
+<section class="slide slide-cover active" data-slide="1" data-section="引起動機">
+  <div class="cover-particles">
+    <span style="top:15%;left:10%;animation-delay:0s"></span>
+    <span style="top:25%;left:85%;animation-delay:1s"></span>
+    <span style="top:60%;left:20%;animation-delay:2s"></span>
+    <span style="top:70%;left:75%;animation-delay:0.5s"></span>
+    <span style="top:40%;left:50%;animation-delay:1.5s"></span>
+    <span style="top:80%;left:45%;animation-delay:2.5s"></span>
+  </div>
+  <div class="slide-inner">
+    <div class="cover-badge">⚖ 法律分析</div>
+    <h1>借名登記<br>法律分析與實務見解</h1>
+    <p class="subtitle">甲將土地借名登記在乙名下之法律爭議</p>
+    <div class="case-ref">
+      <span class="cover-dot"></span>
+      最高法院 99 年度台上字第 1662 號 &nbsp;·&nbsp; 臺灣高等法院 110 年度上更一字第 54 號
+      <span class="cover-dot"></span>
+    </div>
+    <p class="firm">謝秉錡律師事務所</p>
+  </div>
+</section>
+
+<!-- ============ SLIDE 2: CASE FACTS ============ -->
+<section class="slide slide-content" data-slide="2" data-section="引起動機">
+  <div class="slide-inner">
+    <h2>案例事實</h2>
+    <div class="two-col" style="margin-top:var(--s3)">
+      <div class="col-card">
+        <h4 class="party-label">📋 案件背景</h4>
+        <ul>
+          <li>甲將土地<span class="law-tip" data-tip="借名登記：當事人約定一方將自己財產以他方名義登記，而仍由自己管理、使用、處分。">借名登記</span>在乙名下</li>
+          <li>土地權狀由甲保管</li>
+          <li>後甲遺失權狀</li>
+          <li>乙終止借名登記契約</li>
+          <li>甲避不見面</li>
+          <li>乙不願支付地價稅及房屋稅</li>
+        </ul>
+      </div>
+      <div class="col-card">
+        <h4 class="judgment" style="color:var(--judgment);">⚡ 乙起訴請求</h4>
+        <ul>
+          <li><strong>① 返還權狀</strong><br><span style="font-size:13px;color:var(--ink-4);">請求甲返還土地所有權狀</span></li>
+          <li style="margin-top:12px;"><strong>② 偕同辦理土地移轉登記</strong><br><span style="font-size:13px;color:var(--ink-4);">請求甲偕同至地政事務所辦理所有權移轉登記</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 3: ISSUES ============ -->
+<section class="slide slide-content" data-slide="3" data-section="引起動機">
+  <div class="slide-inner">
+    <h2>爭議問題</h2>
+    <div class="card-grid" style="margin-top:var(--s3)">
+      <div class="card" style="border-top:4px solid var(--issue);">
+        <span class="card-badge" style="background:rgba(194,65,12,0.1);color:var(--issue);">爭點一</span>
+        <h4>權狀所有權屬於何人所有？</h4>
+        <p>甲持有權狀但遺失，乙主張返還。權狀在借名登記關係中的法律歸屬為何？</p>
+      </div>
+      <div class="card" style="border-top:4px solid var(--procedure);">
+        <span class="card-badge" style="background:rgba(124,58,237,0.1);color:var(--procedure);">爭點二</span>
+        <h4>乙請求甲偕同辦理移轉登記有無理由？</h4>
+        <p>乙終止借名登記契約後，能否請求甲配合辦理土地所有權移轉登記？</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 4: DEFINITION ============ -->
+<section class="slide slide-content" data-slide="4" data-section="維持注意">
+  <div class="slide-inner">
+    <h2>借名登記之定義</h2>
+    <div style="background:#fff;border-radius:12px;padding:var(--s3);border:1px solid #e2e8f0;margin-top:var(--s3);border-left:4px solid var(--law);">
+      <p style="font-size:var(--t3);color:var(--ink-2);line-height:1.8;font-weight:500;">
+        「稱借名登記者，謂當事人約定一方將自己之財產以他方名義登記，<br>
+        而仍由自己管理、使用、處分，他方允就該財產為出名登記之契約。」
+      </p>
+      <p style="margin-top:12px;font-size:14px;color:var(--ink-4);text-align:right;">
+        — 最高法院 99 年度台上字第 1662 號判決
+      </p>
+    </div>
+    <div class="card-grid" style="margin-top:var(--s3)">
+      <div class="card">
+        <span class="card-badge" style="background:rgba(21,128,61,0.1);color:var(--law);">法律性質</span>
+        <h4>與委任契約同視</h4>
+        <p>依民法第 <span class="law-tip" data-tip="民法第529條：關於勞務給付之契約，不屬於法律所定其他契約之種類者，適用關於委任之規定。">529 條</span>，適用委任之相關規定</p>
+      </div>
+      <div class="card">
+        <span class="card-badge" style="background:rgba(30,64,175,0.1);color:var(--party);">核心特徵</span>
+        <h4>信任關係</h4>
+        <p>側重於借名者與出名者間之信任關係，出名者提供與登記有關之勞務給付</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 5: RELATIONSHIP DIAGRAM ============ -->
+<section class="slide slide-content" data-slide="5" data-section="維持注意">
+  <div class="slide-inner">
+    <h2>借名登記法律關係</h2>
+    <div class="svg-container">
+      <svg viewBox="0 0 960 380" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <pattern id="grid5" width="40" height="40" patternUnits="userSpaceOnUse">
+            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#f1f5f9" stroke-width="0.8"/>
+          </pattern>
+          <marker id="arr5" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+            <polygon points="0 0, 8 3, 0 6" fill="#94a3b8"/>
+          </marker>
+          <marker id="arr5-green" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+            <polygon points="0 0, 8 3, 0 6" fill="#15803d"/>
+          </marker>
+          <marker id="arr5-red" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+            <polygon points="0 0, 8 3, 0 6" fill="#991b1b"/>
+          </marker>
+        </defs>
+        <rect width="960" height="380" fill="#f8fafc"/>
+        <rect width="960" height="380" fill="url(#grid5)"/>
+
+        <!-- Back arrows -->
+        <line x1="530" y1="130" x2="700" y2="130" stroke="#94a3b8" stroke-width="1.2" marker-end="url(#arr5)"/>
+        <line x1="430" y1="130" x2="260" y2="130" stroke="#94a3b8" stroke-width="1.2" marker-end="url(#arr5)"/>
+
+        <!-- Core circle -->
+        <ellipse cx="480" cy="130" rx="62" ry="30" fill="rgba(212,175,55,0.1)" stroke="#d4af37" stroke-width="1.5" stroke-dasharray="5,3"/>
+
+        <!-- Party A (left) -->
+        <rect x="40" y="100" width="200" height="60" rx="8" fill="#fff"/>
+        <rect x="40" y="100" width="200" height="60" rx="8" fill="rgba(219,234,254,0.85)" stroke="#1e40af" stroke-width="1.5"/>
+        <text x="140" y="122" fill="#1e3a5f" font-size="15" font-weight="700" text-anchor="middle" font-family="Inter,'標楷體','KaiTi',serif">借名人（甲）</text>
+        <text x="140" y="145" fill="#3b82f6" font-size="12" text-anchor="middle" font-family="Inter,'標楷體','KaiTi',serif">實際所有權人</text>
+
+        <!-- Party B (right) -->
+        <rect x="720" y="100" width="200" height="60" rx="8" fill="#fff"/>
+        <rect x="720" y="100" width="200" height="60" rx="8" fill="rgba(254,242,242,0.85)" stroke="#991b1b" stroke-width="1.5"/>
+        <text x="820" y="122" fill="#5c1a1a" font-size="15" font-weight="700" text-anchor="middle" font-family="Inter,'標楷體','KaiTi',serif">出名人（乙）</text>
+        <text x="820" y="145" fill="#ef4444" font-size="12" text-anchor="middle" font-family="Inter,'標楷體','KaiTi',serif">登記名義人</text>
+
+        <!-- Labels on arrows -->
+        <text x="360" y="115" fill="#64748b" font-size="10" text-anchor="end" font-family="Inter,'標楷體','KaiTi',serif">提供勞務</text>
+        <text x="600" y="115" fill="#64748b" font-size="10" text-anchor="start" font-family="Inter,'標楷體','KaiTi',serif">支付報酬</text>
+
+        <!-- Trust core label -->
+        <text x="480" y="105" fill="#d4af37" font-size="10" font-weight="600" text-anchor="middle" font-family="Inter,'標楷體','KaiTi',serif">信任關係</text>
+        <text x="480" y="145" fill="#b45309" font-size="9" text-anchor="middle" font-family="Inter,'標楷體','KaiTi',serif">契約核心</text>
+
+        <!-- Central arrows down -->
+        <line x1="480" y1="160" x2="480" y2="210" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr5)"/>
+
+        <!-- Features box -->
+        <rect x="280" y="215" width="400" height="70" rx="8" fill="#fff"/>
+        <rect x="280" y="215" width="400" height="70" rx="8" fill="rgba(255,247,237,0.5)" stroke="#d4af37" stroke-width="1.2"/>
+        <text x="480" y="240" fill="#78350f" font-size="12" font-weight="600" text-anchor="middle" font-family="Inter,'標楷體','KaiTi',serif">甲：管理、使用、處分財產 · 持有權狀</text>
+        <text x="480" y="262" fill="#78350f" font-size="12" font-weight="600" text-anchor="middle" font-family="Inter,'標楷體','KaiTi',serif">乙：提供勞務給付 · 應配合移轉登記</text>
+
+        <!-- Arrow to consequence -->
+        <line x1="480" y1="285" x2="480" y2="320" stroke="#991b1b" stroke-width="1.5" marker-end="url(#arr5-red)"/>
+
+        <!-- End box -->
+        <rect x="330" y="325" width="300" height="40" rx="8" fill="#fff"/>
+        <rect x="330" y="325" width="300" height="40" rx="8" fill="rgba(254,242,242,0.85)" stroke="#991b1b" stroke-width="1.5"/>
+        <text x="480" y="350" fill="#7f1d1d" font-size="13" font-weight="600" text-anchor="middle" font-family="Inter,'標楷體','KaiTi',serif">終止後應回復原狀（民法 §259）</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 6: LAW ARTICLES ============ -->
+<section class="slide slide-content" data-slide="6" data-section="維持注意">
+  <div class="slide-inner">
+    <h2>相關法條</h2>
+    <table class="law-table">
+      <thead>
+        <tr><th style="width:85px;">條號</th><th>要旨</th><th>本案適用</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="law-ref">民法 §549</td>
+          <td>委任契約之終止<br><span style="font-size:12px;color:var(--ink-4);">當事人之任何一方，得隨時終止委任契約。終止於不利他方時期者，應負損害賠償責任。</span></td>
+          <td>乙得隨時終止借名登記契約</td>
+        </tr>
+        <tr>
+          <td class="law-ref">民法 §263</td>
+          <td>終止契約之準用規定<br><span style="font-size:12px;color:var(--ink-4);">第 258 條及第 260 條之規定，於當事人依法律之規定終止契約者準用之。</span></td>
+          <td>終止後得請求回復原狀</td>
+        </tr>
+        <tr>
+          <td class="law-ref">民法 §259</td>
+          <td>契約解除後之回復原狀<br><span style="font-size:12px;color:var(--ink-4);">由他方所受領之給付物，應返還之。</span></td>
+          <td>甲應配合移轉土地登記</td>
+        </tr>
+        <tr>
+          <td class="law-ref">民法 §529</td>
+          <td>勞務給付契約之適用<br><span style="font-size:12px;color:var(--ink-4);">關於勞務給付之契約，不屬於法律所定其他契約之種類者，適用關於委任之規定。</span></td>
+          <td>借名登記類推適用委任規定</td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="margin-top:var(--s3);font-size:14px;color:var(--ink-4);">
+      💡 將滑鼠懸停在 <span class="law-tip" data-tip="民法第549條：當事人之任何一方，得隨時終止委任契約。">法條編號</span> 上可查看條文內容
+    </p>
+  </div>
+</section>
+
+<!-- ============ SLIDE 7: JUDGMENT 1 ============ -->
+<section class="slide slide-content" data-slide="7" data-section="維持注意">
+  <div class="slide-inner">
+    <h2>實務見解 ① — 權狀所有權之歸屬</h2>
+    <div class="card-grid" style="margin-top:var(--s3)">
+      <div class="card" style="grid-column:1/-1;border-left:4px solid var(--evidence);">
+        <span class="card-badge" style="background:rgba(161,98,7,0.1);color:var(--evidence);">裁判字號</span>
+        <h4>臺灣高等法院 110 年度上更一字第 54 號民事判決</h4>
+        <p style="margin-top:8px;">
+          借名登記契約類推適用民法第 550 條規定，借名關係因當事人一方死亡而消滅。
+        </p>
+        <p style="margin-top:8px;">
+          但在尚未登記取回房地所有權之前，借名人之繼承人仍得基於契約上之地位，合法占有系爭權狀。
+        </p>
+        <div style="margin-top:16px;padding:12px 16px;background:rgba(21,128,61,0.06);border-radius:8px;border-left:3px solid var(--law);">
+          <p style="font-size:15px;font-weight:600;color:var(--law);">→ 結論：借名人有權占有權狀（符合誠信原則）</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 8: JUDGMENT 2 ============ -->
+<section class="slide slide-content" data-slide="8" data-section="維持注意">
+  <div class="slide-inner">
+    <h2>實務見解 ② — 終止後之移轉登記請求</h2>
+    <div class="card-grid" style="margin-top:var(--s3)">
+      <div class="card" style="grid-column:1/-1;border-left:4px solid var(--procedure);">
+        <span class="card-badge" style="background:rgba(124,58,237,0.1);color:var(--procedure);">裁判字號</span>
+        <h4>臺灣高等法院臺中分院 108 年度上字第 292 號民事判決</h4>
+        <div style="margin-top:12px;padding:12px 16px;background:var(--bg-2);border-radius:8px;">
+          <p style="font-size:14px;color:var(--ink-2);line-height:1.8;">
+            「借名登記契約應與委任契約同視，適用民法委任之相關規定。」
+          </p>
+          <p style="font-size:14px;color:var(--ink-2);line-height:1.8;margin-top:8px;">
+            「當事人之任何一方，得隨時終止委任契約；契約終止後，當事人應負回復原狀之義務。」
+          </p>
+        </div>
+        <div style="margin-top:16px;padding:12px 16px;background:rgba(21,128,61,0.06);border-radius:8px;border-left:3px solid var(--law);">
+          <p style="font-size:15px;font-weight:600;color:var(--law);">→ 乙終止借名登記後，得請求甲偕同辦理移轉登記</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 9: JUDGMENT 3 + TIMELINE ============ -->
+<section class="slide slide-content" data-slide="9" data-section="維持注意">
+  <div class="slide-inner">
+    <h2>實務見解 ③ — 借名登記之法律定性</h2>
+    <div class="card-grid" style="margin-top:var(--s3)">
+      <div class="card" style="grid-column:1/-1;border-left:4px solid var(--accent);">
+        <span class="card-badge" style="background:rgba(212,175,55,0.15);color:#b8860b;">⭐ 標竿判決</span>
+        <h4>最高法院 99 年度台上字第 1662 號民事判決</h4>
+        <div class="two-col" style="margin-top:12px;gap:16px;">
+          <div>
+            <p style="font-size:14px;font-weight:600;color:var(--ink-2);">核心論述</p>
+            <ul style="list-style:none;padding:0;margin-top:8px;">
+              <li style="padding:4px 0;font-size:14px;color:var(--ink-3);">✓ 借名登記契約 → 無名契約</li>
+              <li style="padding:4px 0;font-size:14px;color:var(--ink-3);">✓ 適用民法第 529 條</li>
+              <li style="padding:4px 0;font-size:14px;color:var(--ink-3);">✓ 類推適用委任契約規定</li>
+            </ul>
+          </div>
+          <div>
+            <p style="font-size:14px;font-weight:600;color:var(--ink-2);">實務影響</p>
+            <p style="font-size:14px;color:var(--ink-3);margin-top:8px;">各級法院廣泛採用此定義，為借名登記爭議之基本法理。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="margin-top:var(--s2);">裁判實務時間軸</h3>
+    <div class="timeline">
+      <div class="timeline-item" onclick="toggleTimeline(this)">
+        <div class="timeline-dot" style="color:var(--judgment);background:#991b1b;"></div>
+        <div class="timeline-label">最高法院 99 台上 1662</div>
+        <div class="timeline-detail">
+          <p>建立借名登記之正式定義，確立「與委任契約同視」之基本法理，為各級法院廣泛引用。</p>
+        </div>
+      </div>
+      <div class="timeline-item" onclick="toggleTimeline(this)">
+        <div class="timeline-dot" style="color:var(--procedure);background:#7c3aed;"></div>
+        <div class="timeline-label">臺灣高等法院臺中分院 108 上 292</div>
+        <div class="timeline-detail">
+          <p>確認借名登記終止後，出名人得請求借名人偕同辦理移轉登記。</p>
+        </div>
+      </div>
+      <div class="timeline-item" onclick="toggleTimeline(this)">
+        <div class="timeline-dot" style="color:var(--evidence);background:#a16207;"></div>
+        <div class="timeline-label">臺灣高等法院 110 上更一 54</div>
+        <div class="timeline-detail">
+          <p>明確借名登記關係消滅後，借名人仍有權占有權狀，符合誠信原則。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 10: ISSUE 1 ANALYSIS ============ -->
+<section class="slide slide-content" data-slide="10" data-section="維持注意">
+  <div class="slide-inner">
+    <h2>爭點一分析 — 權狀所有權屬於何人？</h2>
+    <div style="margin-top:var(--s3)">
+      <div class="issue-card open" onclick="toggleIssue(this)">
+        <div class="issue-header">
+          <span class="issue-badge">分析</span>
+          <h4>借名人（甲）有權占有權狀</h4>
+          <span class="toggle-icon">▼</span>
+        </div>
+        <div class="issue-detail" style="display:block;">
+          <p>依臺灣高等法院 110 年度上更一字第 54 號判決：</p>
+          <p>✓ 借名人（甲）於借名登記存續期間，本於實際所有人地位，有權占有保管系爭權狀</p>
+          <p>✓ 借名人死亡後，繼承人得繼受契約上地位，在尚未登記取回所有權之前，仍得合法占有權狀</p>
+          <p class="highlight">⇒ 結論：甲有權占有權狀</p>
+        </div>
+      </div>
+      <div class="issue-card" onclick="toggleIssue(this)">
+        <div class="issue-header">
+          <span class="issue-badge">法理</span>
+          <h4>權狀之法律性質</h4>
+          <span class="toggle-icon">▼</span>
+        </div>
+        <div class="issue-detail">
+          <p>權狀為證明文件，非所有權本身。基於借名登記之內部關係，實際所有人有權持有權狀。</p>
+          <p>若甲已遺失權狀，應由甲自行辦理補發，而非由乙返還（因事實上無法返還）。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 11: ISSUE 2 ANALYSIS ============ -->
+<section class="slide slide-content" data-slide="11" data-section="維持注意">
+  <div class="slide-inner">
+    <h2>爭點二分析 — 乙請求移轉登記有無理由？</h2>
+    <div style="margin-top:var(--s3)">
+      <div class="issue-card open" onclick="toggleIssue(this)">
+        <div class="issue-header">
+          <span class="issue-badge">分析</span>
+          <h4>乙有理由請求甲偕同辦理移轉登記</h4>
+          <span class="toggle-icon">▼</span>
+        </div>
+        <div class="issue-detail" style="display:block;">
+          <p>依臺灣高等法院臺中分院 108 年度上字第 292 號判決：</p>
+          <p>✓ 借名登記契約 → 委任契約 → 民法 §549 適用</p>
+          <p>✓ 當事人任何一方得隨時終止委任契約</p>
+          <p>✓ 終止後當事人應回復原狀（民法 §259）<br>→ 出名人應將財產返還借名人</p>
+          <p class="highlight">⇒ 乙終止借名登記契約後，有理由請求甲偕同辦理土地移轉登記</p>
+        </div>
+      </div>
+      <div class="issue-card" onclick="toggleIssue(this)">
+        <div class="issue-header">
+          <span class="issue-badge">注意</span>
+          <h4>實務操作提醒</h4>
+          <span class="toggle-icon">▼</span>
+        </div>
+        <div class="issue-detail">
+          <p>雖然乙有請求權，但實務上仍需注意：</p>
+          <p>① 乙需先證明已合法終止借名登記契約<br>② 若甲拒不配合，乙得向法院提起訴訟請求履行<br>③ 法院判決確定後，乙得持確定判決單獨辦理登記</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 12: LEGAL REASONING FLOW ============ -->
+<section class="slide slide-content" data-slide="12" data-section="維持注意">
+  <div class="slide-inner">
+    <h2>法律推理流程</h2>
+    <div class="step-flow">
+      <div class="step">
+        <div class="step-number" style="background:var(--party);">1</div>
+        <h4 style="color:var(--party);">借名登記成立</h4>
+        <p>甲將土地以乙名義登記，由甲管理使用</p>
+        <div class="step-arrow">→</div>
+      </div>
+      <div class="step">
+        <div class="step-number" style="background:var(--issue);">2</div>
+        <h4 style="color:var(--issue);">契約終止</h4>
+        <p>乙對甲終止借名登記契約（民法 §549）</p>
+        <div class="step-arrow">→</div>
+      </div>
+      <div class="step">
+        <div class="step-number" style="background:var(--law);">3</div>
+        <h4 style="color:var(--law);">回復原狀義務</h4>
+        <p>終止後應回復原狀（民法 §259、§263）</p>
+        <div class="step-arrow">→</div>
+      </div>
+      <div class="step">
+        <div class="step-number" style="background:var(--judgment);">4</div>
+        <h4 style="color:var(--judgment);">移轉登記請求</h4>
+        <p>乙得請求甲偕同辦理移轉登記</p>
+      </div>
+    </div>
+    <div style="margin-top:var(--s3);text-align:center;font-size:14px;color:var(--ink-4);">
+      ⚖ 法律依據：民法 §549（終止）→ §259（回復原狀）→ §529（委任準用）
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 13: VERIFICATION ============ -->
+<section class="slide slide-content" data-slide="13" data-section="喚起行動">
+  <div class="slide-inner">
+    <h2>判決核實聲明</h2>
+    <p style="margin-top:var(--s3);font-size:15px;color:var(--ink-3);">
+      以下判決均已通過 <strong>taiwan-legal-db</strong> 資料庫核實
+    </p>
+    <table class="verify-table">
+      <thead>
+        <tr><th>判決字號</th><th>案由</th><th>狀態</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>最高法院 99 年度台上字第 1662 號</td>
+          <td>返還土地</td>
+          <td class="verify-good">✅ 已核實</td>
+        </tr>
+        <tr>
+          <td>臺灣高等法院 110 年度上更一字第 54 號</td>
+          <td>返還所有權狀</td>
+          <td class="verify-good">✅ 已核實</td>
+        </tr>
+        <tr>
+          <td>臺灣高等法院臺中分院 108 年度上字第 292 號</td>
+          <td>確認所有權等</td>
+          <td class="verify-good">✅ 已核實</td>
+        </tr>
+        <tr style="background:rgba(153,27,27,0.04);">
+          <td>❌ 臺灣臺中地方法院 115 年度中簡字第 12 號</td>
+          <td>（已排除 — 實際為刑事竊盜案，與借名登記無關）</td>
+          <td class="verify-bad">❌ 幻覺判決</td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="margin-top:var(--s3);font-size:13px;color:var(--ink-4);">
+      資料來源：司法院裁判書系統 (taiwan-legal-db)
+    </p>
+  </div>
+</section>
+
+<!-- ============ SLIDE 14: CONCLUSION ============ -->
+<section class="slide slide-content" data-slide="14" data-section="喚起行動">
+  <div class="slide-inner">
+    <h2>綜合結論</h2>
+    <div class="conclusion-grid">
+      <div class="conclusion-card">
+        <h3>❶ 權狀所有權歸屬</h3>
+        <p>借名人有權占有權狀。依實務見解，借名人本於實際所有人地位，在借名登記存續期間有權保管權狀。</p>
+      </div>
+      <div class="conclusion-card">
+        <h3>❷ 移轉登記請求</h3>
+        <p>乙終止後有理由請求甲偕同辦理土地所有權移轉登記。法律依據為委任契約終止後之回復原狀義務。</p>
+      </div>
+      <div class="conclusion-card">
+        <h3>❸ 法律依據</h3>
+        <p>民法 §549（終止委任）、§259（回復原狀）、§529（委任準用），三條文構成完整的請求權基礎。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLIDE 15: ACTION STEPS ============ -->
+<section class="slide slide-content" data-slide="15" data-section="喚起行動">
+  <div class="slide-inner">
+    <h2>建議行動</h2>
+    <ol class="action-steps">
+      <li>
+        <strong>乙應正式以書面終止借名登記契約</strong><br>
+        可依民法第 549 條隨時終止，建議以存證信函方式送達，保留證據。
+      </li>
+      <li>
+        <strong>終止後請求甲偕同辦理所有權移轉登記</strong><br>
+        至地政事務所辦理土地所有權移轉登記，將土地回復至甲名下。
+      </li>
+      <li>
+        <strong>若甲仍不配合，得向法院起訴請求</strong><br>
+        主張終止契約後之回復原狀請求權，訴請甲履行移轉登記義務。
+      </li>
+      <li>
+        <strong>權狀返還部分</strong><br>
+        依實務見解，借名人有權占有權狀。若甲已遺失，應由甲自行辦理補發。
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ SLIDE 16: END ============ -->
+<section class="slide slide-end" data-slide="16" data-section="喚起行動">
+  <div class="slide-inner">
+    <h2>感謝聆聽</h2>
+    <p style="color:rgba(255,255,255,0.6);font-size:var(--t3);margin-top:var(--s3);">
+      謝秉錡律師事務所
+    </p>
+    <p style="color:rgba(255,255,255,0.4);font-size:14px;margin-top:var(--s3);">
+      本簡報引用之判決皆經 <span class="end-accent">taiwan-legal-db</span> 核實
+    </p>
+    <div style="margin-top:48px;display:flex;justify-content:center;gap:24px;">
+      <span style="width:8px;height:8px;border-radius:50%;background:var(--accent);animation:pulse 2s infinite;"></span>
+      <span style="width:8px;height:8px;border-radius:50%;background:var(--accent);animation:pulse 2s infinite 0.3s;"></span>
+      <span style="width:8px;height:8px;border-radius:50%;background:var(--accent);animation:pulse 2s infinite 0.6s;"></span>
+    </div>
+    <style>
+      @keyframes pulse { 0%,100%{opacity:0.3;transform:scale(1)} 50%{opacity:1;transform:scale(1.5)} }
+    </style>
+  </div>
+</section>
+
+<script>
+// ===== Navigation State =====
+let currentSlide = 1;
+const totalSlides = 16;
+
+function updateUI() {
+  // Progress bar
+  const pct = (currentSlide / totalSlides) * 100;
+  document.getElementById('progress').style.width = pct + '%';
+
+  // Active slide
+  document.querySelectorAll('.slide').forEach(s => s.classList.remove('active'));
+  document.querySelector(`[data-slide="${currentSlide}"]`).classList.add('active');
+
+  // Page info
+  document.getElementById('pageInfo').textContent = `${currentSlide} / ${totalSlides}`;
+
+  // Section tag
+  const section = document.querySelector(`[data-slide="${currentSlide}"]`).dataset.section;
+  document.getElementById('section-tag').textContent = section;
+}
+
+function goTo(n) {
+  if (n < 1 || n > totalSlides) return;
+  currentSlide = n;
+  updateUI();
+}
+
+function goNext() { if (currentSlide < totalSlides) goTo(currentSlide + 1); }
+function goPrev() { if (currentSlide > 1) goTo(currentSlide - 1); }
+
+// Interaction: issue cards
+function toggleIssue(el) {
+  el.classList.toggle('open');
+  const detail = el.querySelector('.issue-detail');
+  if (detail) {
+    detail.style.display = el.classList.contains('open') ? 'block' : 'none';
+  }
+}
+
+// Interaction: timeline items
+function toggleTimeline(el) {
+  el.classList.toggle('open');
+}
+
+// ===== Keyboard Navigation =====
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'ArrowDown') {
+    e.preventDefault();
+    goNext();
+  } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+    e.preventDefault();
+    goPrev();
+  } else if (e.key === 'f' || e.key === 'F') {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen().catch(() => {});
+    } else {
+      document.exitFullscreen();
+    }
+  } else if (e.key === 'Escape') {
+    if (document.fullscreenElement) document.exitFullscreen();
+  } else if (e.key === 'Home') {
+    goTo(1);
+  } else if (e.key === 'End') {
+    goTo(totalSlides);
+  }
+});
+
+// ===== Click Navigation =====
+document.addEventListener('click', (e) => {
+  // Don't navigate if clicking interactive elements
+  if (e.target.closest('.issue-card') || e.target.closest('.timeline-item') ||
+      e.target.closest('.law-tip') || e.target.closest('.card') ||
+      e.target.closest('table') || e.target.closest('.step-flow')) return;
+
+  const x = e.clientX;
+  if (x > window.innerWidth * 0.7) {
+    goNext();
+  } else if (x < window.innerWidth * 0.3) {
+    goPrev();
+  }
+});
+
+// ===== Touch Navigation =====
+let touchStartX = 0;
+document.addEventListener('touchstart', (e) => { touchStartX = e.changedTouches[0].screenX; });
+document.addEventListener('touchend', (e) => {
+  const diff = touchStartX - e.changedTouches[0].screenX;
+  if (Math.abs(diff) > 50) {
+    if (diff > 0) goNext();
+    else goPrev();
+  }
+});
+
+// ===== Init =====
+updateUI();
+</script>
+</body>
+</html>
