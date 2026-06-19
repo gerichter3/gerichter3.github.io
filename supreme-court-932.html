@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>最高法院111台上大字第932號</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: "Microsoft JhengHei", "Noto Sans TC", sans-serif; background: #1a1a2e; color: #fff; overflow: hidden; height: 100vh; }
+  
+  .container { display: flex; height: 100vh; }
+  
+  /* 側邊欄 */
+  .sidebar { width: 260px; background: #16213e; padding: 20px 0; overflow-y: auto; flex-shrink: 0; border-right: 1px solid #0f3460; }
+  .sidebar h3 { padding: 0 16px 16px; font-size: 15px; color: #e94560; border-bottom: 1px solid #0f3460; }
+  .sidebar ul { list-style: none; }
+  .sidebar li { padding: 10px 16px; cursor: pointer; font-size: 13px; color: #a0a0b0; border-left: 3px solid transparent; transition: all 0.2s; word-break: break-all; }
+  .sidebar li:hover { background: #1a1a3e; color: #fff; }
+  .sidebar li.active { background: #1a1a3e; color: #e94560; border-left-color: #e94560; font-weight: bold; }
+  
+  /* 主內容 */
+  .main { flex: 1; display: flex; flex-direction: column; position: relative; overflow: hidden; }
+  
+  /* 幻燈片區域 */
+  .slide-viewer { flex: 1; display: flex; align-items: center; justify-content: center; padding: 20px; overflow: auto; background: #0f3460; }
+  .slide-content { max-width: 100%; max-height: 100%; text-align: center; }
+  .slide-content .slide-text { text-align: left; max-width: 900px; padding: 30px; background: rgba(255,255,255,0.05); border-radius: 8px; }
+  .slide-content .slide-text p { font-size: 18px; line-height: 1.8; margin-bottom: 10px; color: #e0e0e0; }
+  .slide-content .slide-text p:first-child { font-size: 24px; font-weight: bold; color: #fff; }
+  .slide-img { max-width: 100%; max-height: 70vh; object-fit: contain; border-radius: 4px; box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
+  
+  /* 頁碼與導航列 */
+  .nav-bar { display: flex; align-items: center; justify-content: center; gap: 20px; padding: 12px 20px; background: #16213e; border-top: 1px solid #0f3460; }
+  .nav-bar button { background: #0f3460; color: #fff; border: none; padding: 8px 20px; border-radius: 4px; cursor: pointer; font-size: 14px; transition: background 0.2s; }
+  .nav-bar button:hover { background: #e94560; }
+  .nav-bar .page-info { font-size: 14px; color: #a0a0b0; }
+  
+  /* 全螢幕按鈕 */
+  .fullscreen-btn { position: absolute; top: 12px; right: 12px; background: rgba(255,255,255,0.1); color: #fff; border: 1px solid rgba(255,255,255,0.2); padding: 6px 12px; border-radius: 4px; cursor: pointer; font-size: 12px; z-index: 10; }
+  .fullscreen-btn:hover { background: rgba(255,255,255,0.2); }
+  
+  /* Scrollbar */
+  .sidebar::-webkit-scrollbar { width: 4px; }
+  .sidebar::-webkit-scrollbar-thumb { background: #0f3460; border-radius: 2px; }
+  
+  @media (max-width: 768px) { .sidebar { width: 180px; } .sidebar li { font-size: 12px; padding: 8px 12px; } .slide-content .slide-text p { font-size: 15px; } .slide-content .slide-text p:first-child { font-size: 18px; } }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="sidebar" id="sidebar">
+    <h3>目錄</h3>
+    <ul id="toc"></ul>
+  </div>
+  <div class="main">
+    <button class="fullscreen-btn" onclick="toggleFullscreen()">[全螢幕]</button>
+    <div class="slide-viewer" id="slideViewer">
+      <div class="slide-content" id="slideContent"></div>
+    </div>
+    <div class="nav-bar">
+      <button onclick="prevSlide()">◀ 上一張</button>
+      <span class="page-info" id="pageInfo">1 / 1</span>
+      <button onclick="nextSlide()">下一張 ▶</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const slides = [
+  {
+  index: 0,
+  title: 最高法院,
+  html: `<div class='slide-text'><p>最高法院</p><p>111年度台上大字第932號</p><p>民事裁定分析</p><p>請求返還不當得利事件</p><p>最高法院民事大法庭  |  民國115年6月12日</p></div>`
+},
+  {
+  index: 1,
+  title: 階段一 — 為何承租人也占有土地,
+  html: `<div class='slide-text'><p>階段一 — 為何承租人也占有土地</p><p>「建物不能脫離土地而存在」</p><p>空間結合</p><p>建物占有人對該部分土地</p><p>有一定空間上結合關係</p><p>時間繼續</p><p>占有一段相當時間</p><p>具有繼續性</p><p>排除干涉</p><p>占有建物同時排除他人</p><p>對土地之干涉</p><p>大法庭推論</p><p>B 將建物交付 C 占有時，同時也移轉了建物坐落土地之占有</p><p>C 客觀上對土地有事實上管領力</p><p>C 主觀上通常也認識到自己對土地有支配管領力</p><p>★ 結論：C 為土地之占有人</p></div>`
+},
+  {
+  index: 2,
+  title: 無標題,
+  html: `<img src='images/sc932/image4.png' class='slide-img' alt='slide image'>`
+},
+  {
+  index: 3,
+  title: 階段一 — 矛盾推論,
+  html: `<div class='slide-text'><p>階段一 — 矛盾推論</p><p>若不承認 C 為土地占有人 → 理論矛盾</p><p>一方面肯認地主 A 得對 C 行使物上請求權（請求遷出）</p><p>另一方面又謂 C 未占有土地</p><p>→ 理論上不一致 — 既然得請求返還土地，怎能說對方未占有土地？</p><p>更嚴重的實務問題</p><p>若建物所有人不明，地主無法請求拆屋還地</p><p>若不承認建物占有人為土地占有人，地主對 C 也無法行使物上請求權</p><p>★ 地主只能任令占有人持續占用 — 違反物權法對所有權之保障！</p></div>`
+},
+  {
+  index: 4,
+  title: 無標題,
+  html: `<img src='images/sc932/image5.png' class='slide-img' alt='slide image'>`
+},
+  {
+  index: 5,
+  title: 無標題,
+  html: `<img src='images/sc932/image6.png' class='slide-img' alt='slide image'>`
+},
+  {
+  index: 6,
+  title: 階段二 — 不當得利分析架構,
+  html: `<div class='slide-text'><p>階段二 — 不當得利分析架構</p><p>民法第 179 條：無法律上之原因而受利益，致他人受損害者，應返還其利益。</p><p>受有利益</p><p>C 使用土地之利益</p><p>（使用土地之租金價值）</p><p>✅</p><p>侵害權益</p><p>侵害應歸屬 A 之</p><p>權益內容</p><p>✅</p><p>致生損害</p><p>致 A 受損害</p><p>（無法使用土地）</p><p>✅</p><p>關鍵問題</p><p>C 使用土地確實受有利益、侵害 A 權益、致 A 受損害。但——</p><p>C 取得該利益有無「法律上原因」？ → 取決於占有人的主觀狀態（善意 vs 惡意）</p></div>`
+},
+  {
+  index: 7,
+  title: 無標題,
+  html: `<img src='images/sc932/image7.png' class='slide-img' alt='slide image'>`
+},
+  {
+  index: 8,
+  title: 無標題,
+  html: `<img src='images/sc932/image8.png' class='slide-img' alt='slide image'>`
+},
+  {
+  index: 9,
+  title: 善意占有人 → ❌ 不用返還,
+  html: `<div class='slide-text'><p>善意占有人 → ❌ 不用返還</p><p>法律依據</p><p>民法第 943 條第 1 項：占有人推定其適法有此權利</p><p>民法第 952 條：善意占有人得為占有物之使用、收益</p><p>推理過程</p><p>C 向 B 承租建物，行使的是租賃權</p><p>租賃權內容包含建物坐落基地之占有使用</p><p>法律推定 C 適法有此租賃權（§943 I）</p><p>在此推定範圍內，C 得為土地之使用收益（§952）</p><p>故 C 使用土地之利益有法律上原因</p><p>★ 對 A 不負返還義務</p><p>政策考量：善意占有人就其占有是否具有本權，並無查證義務（民法第959條立法理由）— 保障交易安全，否則無人敢安心租房</p></div>`
+},
+  {
+  index: 10,
+  title: 無標題,
+  html: `<img src='images/sc932/image9.png' class='slide-img' alt='slide image'>`
+},
+  {
+  index: 11,
+  title: 無標題,
+  html: `<img src='images/sc932/image1.png' class='slide-img' alt='slide image'>`
+},
+  {
+  index: 12,
+  title: 惡意占有人 → ✅ 要返還,
+  html: `<div class='slide-text'><p>惡意占有人 → ✅ 要返還</p><p>民法第 952 條反面解釋：非善意占有人不得為占有物之使用、收益</p><p>推理過程</p><p>C 若明知或可得而知建物無權占有土地 → 非善意占有人</p><p>非善意占有人不得為土地之使用收益</p><p>乃竟占有使用土地，受有利益</p><p>致 A 受損害，且欠缺法律上原因</p><p>應依民法第 179 條、第 181 條、第 182 條返還該利益</p><p>★ C 須返還使用土地之不當得利</p><p>公平性考量：若認惡意建物占有人亦毋庸返還，等於讓其終局保有占用他人土地之利益 — 顯非公平</p></div>`
+},
+  {
+  index: 13,
+  title: 舉證責任分配,
+  html: `<div class='slide-text'><p>舉證責任分配</p><p>主張</p><p>舉證責任人</p><p>說明</p><p>C 為善意占有人</p><p>無須舉證（法律推定）</p><p>民法第943條第1項推定</p><p>C 為惡意占有人</p><p>A（地主）須舉證</p><p>主張C非善意者負舉證責任</p><p>關鍵原則：善意占有受法律推定，地主 A 須舉證 C 為惡意</p><p>※ 各占有人之善惡意應分別觀察 — 即使 B 為惡意，C 仍可能受善意推定</p></div>`
+},
+  {
+  index: 14,
+  title: 無標題,
+  html: `<img src='images/sc932/image10.png' class='slide-img' alt='slide image'>`
+},
+  {
+  index: 15,
+  title: 無標題,
+  html: `<img src='images/sc932/image11.png' class='slide-img' alt='slide image'>`
+},
+  {
+  index: 16,
+  title: 裁定結論 — 主文,
+  html: `<div class='slide-text'><p>裁定結論 — 主文</p><p>主文第一點</p><p>單一建物無權占有他人之土地，非建物所有權或事實上處分權人之建物占有人（承租人），為土地之占有人。</p><p>主文第二點</p><p>上開建物占有人除為土地善意占有人外，應依不當得利之規定，返還使用土地之利益予土地所有人。</p></div>`
+},
+  {
+  index: 17,
+  title: 無標題,
+  html: `<img src='images/sc932/image12.png' class='slide-img' alt='slide image'>`
+},
+  {
+  index: 18,
+  title: 實務影響與啟示,
+  html: `<div class='slide-text'><p>實務影響與啟示</p><p>對地主（土地所有人）</p><p>可同時對承租人請求不當得利</p><p>須證明承租人為「惡意」</p><p>舉證難度較高</p><p>宜蒐集承租人知悉土地爭議之證據</p><p>對承租人（建物占有人）</p><p>原則受善意推定保護</p><p>無須查證土地權源</p><p>明知則須返還不當得利</p><p>可主張善意占有抗辯</p><p>對實務律師</p><p>代理地主：蒐集存證信函、訴訟通知等</p><p>代理承租人：要求地主舉證惡意</p><p>大法庭裁定有拘束力</p><p>各審級應依此見解裁判</p><p>大法庭裁定效力：依法院組織法第51條之10，提案庭提交之繫屬案件及所有同類型案件，均受大法庭裁定見解之拘束。</p></div>`
+},
+  {
+  index: 19,
+  title: 無標題,
+  html: `<img src='images/sc932/image13.png' class='slide-img' alt='slide image'>`
+},
+  {
+  index: 20,
+  title: 資料來源：司法院,
+  html: `<div class='slide-text'><p>謝謝</p><p>資料來源：司法院</p><p>最高法院 111年度台上大字第932號民事裁定</p><p>請求返還不當得利事件</p></div>`
+},
+  {
+  index: 21,
+  title: 本案基礎事實 — 當事人關係,
+  html: `<div class='slide-text'><p>本案基礎事實 — 當事人關係</p><p>A — 上訴人 游萬隆</p><p>系爭土地之共有人（地主）</p><p>已對B訴請拆屋還地勝訴</p><p>→</p><p>B — 訴外人</p><p>系爭建物之所有人</p><p>建物無權占有A之土地</p><p>已遭拆屋還地勝訴確定</p><p>→</p><p>C — 詠寶國際有限公司</p><p>向B承租系爭建物全部</p><p>為建物占有人（承租人）</p><p>被訴請返還不當得利</p><p>核心問題：C（承租人）是否為土地占有人？應否對A負不當得利返還責任？</p></div>`
+},
+  {
+  index: 22,
+  title: 無標題,
+  html: `<img src='images/sc932/image2.png' class='slide-img' alt='slide image'>`
+},
+  {
+  index: 23,
+  title: 事實時間線,
+  html: `<div class='slide-text'><p>事實時間線</p><p>B 取得建物</p><p>無權占有土地</p><p>建物坐落A之土地上</p><p>B為建物所有人</p><p>B 將建物</p><p>出租予C</p><p>C向B承租</p><p>系爭建物全部</p><p>A訴請B</p><p>拆屋還地勝訴</p><p>A勝訴確定</p><p>B須拆屋還地</p><p>C占有期間</p><p>105.4.14~106.2.9</p><p>約10個月</p><p>租金利益1,993,481元</p><p>115.6.12</p><p>大法庭裁定</p><p>本件最高法院</p></div>`
+},
+  {
+  index: 24,
+  title: 法律爭議,
+  html: `<div class='slide-text'><p>法律爭議</p><p>爭點一</p><p>承租人是否為「土地占有人」？</p><p>非建物所有權或事實上處分權人之建物占有人（即承租人C），是否為土地之占有人？</p><p>▼</p><p>爭點二</p><p>承租人應否負不當得利返還責任？</p><p>承上，該建物占有人（C）對土地所有人（A）應否負不當得利返還責任？</p></div>`
+},
+  {
+  index: 25,
+  title: 無標題,
+  html: `<img src='images/sc932/image3.png' class='slide-img' alt='slide image'>`
+},
+  {
+  index: 26,
+  title: 大法庭推理結構總覽,
+  html: `<div class='slide-text'><p>大法庭推理結構總覽</p><p>核心問題：承租人要不要賠？</p><p>▼</p><p>步驟一：先確認承租人是「土地占有人」— 建物不能脫離土地，租房子=同時使用土地</p><p>▼</p><p>步驟二：是否構成不當得利？— 有無法律上原因 → 取決於占有人的主觀狀態</p><p>↙                        ↘</p><p>善意占有人</p><p>不知土地權源問題</p><p>民法§952推定 → ❌ 不用還</p><p>惡意占有人</p><p>明知土地權源問題</p><p>§952反面解釋 → ✅ 要還</p><p>▼</p><p>最終結論：承租人也是占有人，善意不用還，惡意才要還</p></div>`
+},
+  {
+  index: 27,
+  title: 階段一 — 占有的定義,
+  html: `<div class='slide-text'><p>階段一 — 占有的定義</p><p>民法第 940 條</p><p>對於物有事實上之管領力者，為占有人。</p><p>客觀要素</p><p>依社會觀念，物於一定空間、時間上</p><p>已屬於該人實力支配之下</p><p>→ 空間結合關係</p><p>→ 時間繼續性</p><p>主觀要素</p><p>有占有之意思（自然意思）</p><p>對物有支配之自然能力及意識</p><p>→ 不以具備行為能力為必要</p><p>※ 占有與權利不同 — 占有是事實，非權利</p></div>`
+}
+];
+
+let current = 0;
+
+function escapeHtml(str) {
+  const d = document.createElement('div');
+  d.textContent = str;
+  return d.innerHTML;
+}
+
+function renderSlide(index) {
+  current = index;
+  const slide = slides[index];
+  document.getElementById('slideContent').innerHTML = slide.html;
+  document.getElementById('pageInfo').textContent = `${index + 1} / ${slides.length}`;
+  
+  // 更新側邊欄高亮
+  document.querySelectorAll('#toc li').forEach((li, i) => {
+    li.classList.toggle('active', i === index);
+    li.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+  });
+}
+
+function buildToc() {
+  const ul = document.getElementById('toc');
+  slides.forEach((slide, i) => {
+    const li = document.createElement('li');
+    li.textContent = slide.title;
+    li.onclick = () => renderSlide(i);
+    ul.appendChild(li);
+  });
+}
+
+function nextSlide() {
+  if (current < slides.length - 1) renderSlide(current + 1);
+}
+
+function prevSlide() {
+  if (current > 0) renderSlide(current - 1);
+}
+
+function toggleFullscreen() {
+  if (!document.fullscreenElement) {
+    document.querySelector('.main').requestFullscreen();
+  } else {
+    document.exitFullscreen();
+  }
+}
+
+// 鍵盤事件
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowRight' || e.key === 'ArrowDown') nextSlide();
+  if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') prevSlide();
+  if (e.key === 'Home') renderSlide(0);
+  if (e.key === 'End') renderSlide(slides.length - 1);
+});
+
+buildToc();
+renderSlide(0);
+</script>
+</body>
+</html>
