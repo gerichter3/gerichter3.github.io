@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>農地借名登記無效後之不當得利返還請求</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: "Microsoft JhengHei", "PingFang TC", sans-serif;
+            background: #1a1a2e;
+            color: #fff;
+            overflow: hidden;
+        }
+        .container {
+            display: flex;
+            height: 100vh;
+        }
+        .sidebar {
+            width: 260px;
+            background: #16213e;
+            border-right: 1px solid #0f3460;
+            display: flex;
+            flex-direction: column;
+            flex-shrink: 0;
+        }
+        .sidebar-header {
+            padding: 20px;
+            border-bottom: 1px solid #0f3460;
+        }
+        .sidebar-header h1 {
+            font-size: 16px;
+            line-height: 1.5;
+            margin-bottom: 8px;
+        }
+        .sidebar-header p {
+            font-size: 12px;
+            color: #aaa;
+            line-height: 1.5;
+        }
+        .toc {
+            flex: 1;
+            overflow-y: auto;
+            padding: 10px;
+        }
+        .toc-item {
+            display: block;
+            padding: 8px 12px;
+            color: #ddd;
+            text-decoration: none;
+            border-radius: 6px;
+            margin-bottom: 4px;
+            font-size: 14px;
+            transition: background 0.2s;
+        }
+        .toc-item:hover, .toc-item.active {
+            background: #0f3460;
+            color: #fff;
+        }
+        .main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        .slide-viewer {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            overflow: hidden;
+        }
+        .slide {
+            display: none;
+            max-width: 100%;
+            max-height: 100%;
+        }
+        .slide.active {
+            display: block;
+        }
+        .slide img {
+            max-width: 100%;
+            max-height: calc(100vh - 120px);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+            border-radius: 8px;
+        }
+        .controls {
+            height: 80px;
+            background: #16213e;
+            border-top: 1px solid #0f3460;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            padding: 0 20px;
+        }
+        .controls button {
+            background: #0f3460;
+            color: #fff;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background 0.2s;
+        }
+        .controls button:hover {
+            background: #e94560;
+        }
+        .controls button:disabled {
+            background: #444;
+            cursor: not-allowed;
+        }
+        .page-info {
+            font-size: 14px;
+            color: #aaa;
+            min-width: 100px;
+            text-align: center;
+        }
+        .menu-toggle {
+            display: none;
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            z-index: 1000;
+            background: #0f3460;
+            color: #fff;
+            border: none;
+            padding: 10px 14px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        @media (max-width: 768px) {
+            .sidebar {
+                position: fixed;
+                left: -260px;
+                top: 0;
+                bottom: 0;
+                z-index: 999;
+                transition: left 0.3s;
+            }
+            .sidebar.open {
+                left: 0;
+            }
+            .menu-toggle {
+                display: block;
+            }
+            .slide img {
+                max-height: calc(100vh - 140px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="menu-toggle" onclick="toggleMenu()">☰ 目錄</button>
+    <div class="container">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h1>農地借名登記無效後之不當得利返還請求</h1>
+                <p>民法 §180 不法原因給付抗辯與 §125 消滅時效抗辯之分析</p>
+            </div>
+            <nav class="toc" id="toc">
+                <a href="#slide-1" class="toc-item" data-slide="1">投影片 1</a>
+<a href="#slide-2" class="toc-item" data-slide="2">投影片 2</a>
+<a href="#slide-3" class="toc-item" data-slide="3">投影片 3</a>
+<a href="#slide-4" class="toc-item" data-slide="4">投影片 4</a>
+<a href="#slide-5" class="toc-item" data-slide="5">投影片 5</a>
+<a href="#slide-6" class="toc-item" data-slide="6">投影片 6</a>
+<a href="#slide-7" class="toc-item" data-slide="7">投影片 7</a>
+<a href="#slide-8" class="toc-item" data-slide="8">投影片 8</a>
+<a href="#slide-9" class="toc-item" data-slide="9">投影片 9</a>
+<a href="#slide-10" class="toc-item" data-slide="10">投影片 10</a>
+<a href="#slide-11" class="toc-item" data-slide="11">投影片 11</a>
+<a href="#slide-12" class="toc-item" data-slide="12">投影片 12</a>
+<a href="#slide-13" class="toc-item" data-slide="13">投影片 13</a>
+<a href="#slide-14" class="toc-item" data-slide="14">投影片 14</a>
+<a href="#slide-15" class="toc-item" data-slide="15">投影片 15</a>
+<a href="#slide-16" class="toc-item" data-slide="16">投影片 16</a>
+<a href="#slide-17" class="toc-item" data-slide="17">投影片 17</a>
+<a href="#slide-18" class="toc-item" data-slide="18">投影片 18</a>
+<a href="#slide-19" class="toc-item" data-slide="19">投影片 19</a>
+<a href="#slide-20" class="toc-item" data-slide="20">投影片 20</a>
+<a href="#slide-21" class="toc-item" data-slide="21">投影片 21</a>
+<a href="#slide-22" class="toc-item" data-slide="22">投影片 22</a>
+<a href="#slide-23" class="toc-item" data-slide="23">投影片 23</a>
+<a href="#slide-24" class="toc-item" data-slide="24">投影片 24</a>
+<a href="#slide-25" class="toc-item" data-slide="25">投影片 25</a>
+<a href="#slide-26" class="toc-item" data-slide="26">投影片 26</a>
+            </nav>
+        </aside>
+        <main class="main">
+            <div class="slide-viewer" id="slide-viewer">
+                <div class="slide" id="slide-1"><img src="images/farmland-nominal-registration/slide_01.jpg" alt="投影片 1"></div>
+<div class="slide" id="slide-2"><img src="images/farmland-nominal-registration/slide_02.jpg" alt="投影片 2"></div>
+<div class="slide" id="slide-3"><img src="images/farmland-nominal-registration/slide_03.jpg" alt="投影片 3"></div>
+<div class="slide" id="slide-4"><img src="images/farmland-nominal-registration/slide_04.jpg" alt="投影片 4"></div>
+<div class="slide" id="slide-5"><img src="images/farmland-nominal-registration/slide_05.jpg" alt="投影片 5"></div>
+<div class="slide" id="slide-6"><img src="images/farmland-nominal-registration/slide_06.jpg" alt="投影片 6"></div>
+<div class="slide" id="slide-7"><img src="images/farmland-nominal-registration/slide_07.jpg" alt="投影片 7"></div>
+<div class="slide" id="slide-8"><img src="images/farmland-nominal-registration/slide_08.jpg" alt="投影片 8"></div>
+<div class="slide" id="slide-9"><img src="images/farmland-nominal-registration/slide_09.jpg" alt="投影片 9"></div>
+<div class="slide" id="slide-10"><img src="images/farmland-nominal-registration/slide_10.jpg" alt="投影片 10"></div>
+<div class="slide" id="slide-11"><img src="images/farmland-nominal-registration/slide_11.jpg" alt="投影片 11"></div>
+<div class="slide" id="slide-12"><img src="images/farmland-nominal-registration/slide_12.jpg" alt="投影片 12"></div>
+<div class="slide" id="slide-13"><img src="images/farmland-nominal-registration/slide_13.jpg" alt="投影片 13"></div>
+<div class="slide" id="slide-14"><img src="images/farmland-nominal-registration/slide_14.jpg" alt="投影片 14"></div>
+<div class="slide" id="slide-15"><img src="images/farmland-nominal-registration/slide_15.jpg" alt="投影片 15"></div>
+<div class="slide" id="slide-16"><img src="images/farmland-nominal-registration/slide_16.jpg" alt="投影片 16"></div>
+<div class="slide" id="slide-17"><img src="images/farmland-nominal-registration/slide_17.jpg" alt="投影片 17"></div>
+<div class="slide" id="slide-18"><img src="images/farmland-nominal-registration/slide_18.jpg" alt="投影片 18"></div>
+<div class="slide" id="slide-19"><img src="images/farmland-nominal-registration/slide_19.jpg" alt="投影片 19"></div>
+<div class="slide" id="slide-20"><img src="images/farmland-nominal-registration/slide_20.jpg" alt="投影片 20"></div>
+<div class="slide" id="slide-21"><img src="images/farmland-nominal-registration/slide_21.jpg" alt="投影片 21"></div>
+<div class="slide" id="slide-22"><img src="images/farmland-nominal-registration/slide_22.jpg" alt="投影片 22"></div>
+<div class="slide" id="slide-23"><img src="images/farmland-nominal-registration/slide_23.jpg" alt="投影片 23"></div>
+<div class="slide" id="slide-24"><img src="images/farmland-nominal-registration/slide_24.jpg" alt="投影片 24"></div>
+<div class="slide" id="slide-25"><img src="images/farmland-nominal-registration/slide_25.jpg" alt="投影片 25"></div>
+<div class="slide" id="slide-26"><img src="images/farmland-nominal-registration/slide_26.jpg" alt="投影片 26"></div>
+            </div>
+            <div class="controls">
+                <button id="prevBtn" onclick="prevSlide()">← 上一張</button>
+                <span class="page-info" id="pageInfo">1 / 26</span>
+                <button id="nextBtn" onclick="nextSlide()">下一張 →</button>
+            </div>
+        </main>
+    </div>
+    <script>
+        let currentSlide = 1;
+        const totalSlides = 26;
+
+        function showSlide(n) {
+            document.querySelectorAll('.slide').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.toc-item').forEach(t => t.classList.remove('active'));
+            const slide = document.getElementById('slide-' + n);
+            const toc = document.querySelector('.toc-item[data-slide="' + n + '"]');
+            if (slide) slide.classList.add('active');
+            if (toc) toc.classList.add('active');
+            document.getElementById('pageInfo').textContent = n + ' / ' + totalSlides;
+            document.getElementById('prevBtn').disabled = n === 1;
+            document.getElementById('nextBtn').disabled = n === totalSlides;
+            currentSlide = n;
+            if (toc) toc.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        function nextSlide() {
+            if (currentSlide < totalSlides) showSlide(currentSlide + 1);
+        }
+
+        function prevSlide() {
+            if (currentSlide > 1) showSlide(currentSlide - 1);
+        }
+
+        function toggleMenu() {
+            document.getElementById('sidebar').classList.toggle('open');
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowRight' || e.key === ' ') nextSlide();
+            if (e.key === 'ArrowLeft') prevSlide();
+        });
+
+        document.querySelectorAll('.toc-item').forEach(item => {
+            item.addEventListener('click', function(e) {
+                e.preventDefault();
+                showSlide(parseInt(this.dataset.slide));
+                if (window.innerWidth <= 768) {
+                    document.getElementById('sidebar').classList.remove('open');
+                }
+            });
+        });
+
+        showSlide(1);
+    </script>
+</body>
+</html>
