@@ -1,0 +1,6517 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>都市計畫逕為分割 — 法律分析簡報</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: "Microsoft JhengHei", "Noto Sans TC", sans-serif; background: #f5f2ec; color: #2c2c2c; overflow: hidden; height: 100vh; }
+  
+  .container { display: flex; height: 100vh; }
+  
+  .sidebar { width: 300px; background: #1a3a5c; padding: 16px 0; overflow-y: auto; flex-shrink: 0; }
+  .sidebar h3 { padding: 0 16px 14px; font-size: 14px; color: #c8a84b; border-bottom: 1px solid rgba(200,168,75,0.3); letter-spacing: 0.05em; }
+  .sidebar ul { list-style: none; }
+  .sidebar li { padding: 10px 16px; cursor: pointer; font-size: 13px; color: #a8bdd4; border-left: 3px solid transparent; transition: all 0.2s; line-height: 1.4; }
+  .sidebar li:hover { background: rgba(200,168,75,0.1); color: #fff; }
+  .sidebar li.active { background: rgba(200,168,75,0.15); color: #c8a84b; border-left-color: #c8a84b; font-weight: bold; }
+  .sidebar li .num { color: #6b8aab; font-size: 11px; margin-right: 8px; }
+  
+  .main { flex: 1; display: flex; flex-direction: column; position: relative; overflow: hidden; }
+  
+  .slide-viewer { flex: 1; overflow-y: auto; padding: 40px 48px; background: #ffffff; }
+  .slide-card { max-width: 900px; margin: 0 auto; background: #fff; border-radius: 8px; box-shadow: 0 2px 16px rgba(0,0,0,0.08); padding: 40px 48px; min-height: 60vh; }
+  .slide-card h2 { font-size: 1.6em; color: #1a3a5c; border-bottom: 3px solid #c8a84b; padding-bottom: 12px; margin-bottom: 28px; }
+  .slide-card .slide-number { font-size: 0.75em; color: #999; margin-bottom: 20px; display: block; }
+  
+  .nav-bar { display: flex; align-items: center; justify-content: center; gap: 16px; padding: 12px 20px; background: #1a3a5c; border-top: 2px solid #c8a84b; flex-shrink: 0; }
+  .nav-bar button { background: rgba(255,255,255,0.1); color: #fff; border: 1px solid rgba(255,255,255,0.2); padding: 7px 18px; border-radius: 4px; cursor: pointer; font-size: 14px; transition: all 0.2s; min-width: 80px; }
+  .nav-bar button:hover { background: #c8a84b; color: #1a3a5c; border-color: #c8a84b; }
+  .nav-bar .page-info { font-size: 14px; color: #c2cfe0; min-width: 100px; text-align: center; }
+  
+  .fullscreen-btn { position: absolute; top: 12px; right: 12px; background: rgba(26,58,92,0.08); color: #1a3a5c; border: 1px solid rgba(26,58,92,0.15); padding: 5px 10px; border-radius: 3px; cursor: pointer; font-size: 11px; z-index: 10; }
+  .fullscreen-btn:hover { background: rgba(26,58,92,0.15); }
+  
+  .sidebar::-webkit-scrollbar { width: 4px; }
+  .sidebar::-webkit-scrollbar-thumb { background: rgba(200,168,75,0.3); border-radius: 2px; }
+  
+  @media (max-width: 768px) { .sidebar { width: 200px; } .sidebar li { font-size: 12px; padding: 7px 12px; } .slide-card { padding: 24px 20px; } }
+  @media (max-width: 480px) { .container { flex-direction: column; } .sidebar { width: 100%; height: 120px; border-right: none; border-bottom: 1px solid rgba(200,168,75,0.3); } .slide-viewer { padding: 16px; } }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="sidebar" id="sidebar">
+    <h3>都市計畫逕為分割</h3>
+    <ul id="toc"></ul>
+  </div>
+  <div class="main">
+    <button class="fullscreen-btn" onclick="toggleFullscreen()">全螢幕</button>
+    <div class="slide-viewer" id="slideViewer">
+      <div class="slide-card" id="slideCard"></div>
+    </div>
+    <div class="nav-bar">
+      <button onclick="goFirst()">&laquo; 首頁</button>
+      <button onclick="prevSlide()">&lsaquo; 上一張</button>
+      <span class="page-info" id="pageInfo">1 / 1</span>
+      <button onclick="nextSlide()">下一張 &rsaquo;</button>
+      <button onclick="goLast()">末頁 &raquo;</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const slides = [
+  {
+    "index": 0,
+    "title": "都市計畫逕為分割",
+    "blocks": [
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "都市計畫逕為分割",
+                "styles": {
+                  "font-size": "40.0pt",
+                  "font-weight": "bold",
+                  "color": "#ffffff",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "CENTER (2)"
+          }
+        ],
+        "left": 457200,
+        "top": 1188720,
+        "width": 8229600,
+        "height": 1097280
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "致土地部分變更為道路用地之權利救濟分析",
+                "styles": {
+                  "font-size": "24.0pt",
+                  "color": "#c9a84c",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "CENTER (2)"
+          }
+        ],
+        "left": 457200,
+        "top": 2286000,
+        "width": 8229600,
+        "height": 731520
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "法 律 意 見 書",
+                "styles": {
+                  "font-size": "16.0pt",
+                  "color": "#5d7b93",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "CENTER (2)"
+          }
+        ],
+        "left": 457200,
+        "top": 3474720,
+        "width": 8229600,
+        "height": 548640
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "謝秉錡律師事務所  |  中華民國 115 年 7 月 11 日",
+                "styles": {
+                  "font-size": "11.0pt",
+                  "color": "#888888",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "CENTER (2)"
+          }
+        ],
+        "left": 457200,
+        "top": 4297680,
+        "width": 8229600,
+        "height": 365760
+      }
+    ]
+  },
+  {
+    "index": 1,
+    "title": "簡報大綱",
+    "blocks": [
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "簡報大綱",
+                "styles": {
+                  "font-size": "26.0pt",
+                  "font-weight": "bold",
+                  "color": "#1a2744",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 502920,
+        "top": 274320,
+        "width": 7772400,
+        "height": 548640
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "謝秉錡律師事務所 — 法律意見書",
+                "styles": {
+                  "font-size": "8.0pt",
+                  "color": "#ffffff",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 274320,
+        "top": 4892040,
+        "width": 4572000,
+        "height": 260604
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "2 / 20",
+                "styles": {
+                  "font-size": "10.0pt",
+                  "color": "#888888",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "RIGHT (3)"
+          }
+        ],
+        "left": 8046720,
+        "top": 4663440,
+        "width": 914400,
+        "height": 320040
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "01  一、案件事實與背景",
+                "styles": {
+                  "font-size": "12.0pt",
+                  "font-weight": "bold",
+                  "color": "#c9a84c",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 365760,
+        "top": 914400,
+        "width": 4114800,
+        "height": 365760
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "02  二、核心法律問題",
+                "styles": {
+                  "font-size": "12.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 365760,
+        "top": 1344168,
+        "width": 4114800,
+        "height": 365760
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "03  三、前提分析：兩種情形區分",
+                "styles": {
+                  "font-size": "12.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 365760,
+        "top": 1773936,
+        "width": 4114800,
+        "height": 365760
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "04  四、逕為分割之法律性質",
+                "styles": {
+                  "font-size": "12.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 365760,
+        "top": 2203704,
+        "width": 4114800,
+        "height": 365760
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "05  五、救濟途徑總覽",
+                "styles": {
+                  "font-size": "12.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 365760,
+        "top": 2633472,
+        "width": 4114800,
+        "height": 365760
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "06  六、途徑一：行政救濟（訴願＋撤銷訴訟）",
+                "styles": {
+                  "font-size": "12.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 365760,
+        "top": 3063240,
+        "width": 4114800,
+        "height": 365760
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "07  七、途徑二：都市計畫審查訴訟",
+                "styles": {
+                  "font-size": "12.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 365760,
+        "top": 3493008,
+        "width": 4114800,
+        "height": 365760
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "08  八、途徑三：國家賠償（土地法§68優先）",
+                "styles": {
+                  "font-size": "12.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 365760,
+        "top": 3922776,
+        "width": 4114800,
+        "height": 365760
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "09  九、土地法§68 vs 國賠法§2 對照",
+                "styles": {
+                  "font-size": "12.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 365760,
+        "top": 4352544,
+        "width": 4114800,
+        "height": 365760
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "10  十、途徑四、五：通盤檢討與複測更正",
+                "styles": {
+                  "font-size": "12.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 4754880,
+        "top": 914400,
+        "width": 4114800,
+        "height": 365760
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "11  十一、關鍵裁判要旨",
+                "styles": {
+                  "font-size": "12.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 4754880,
+        "top": 1344168,
+        "width": 4114800,
+        "height": 365760
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "12  十二、大法官解釋",
+                "styles": {
+                  "font-size": "12.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 4754880,
+        "top": 1773936,
+        "width": 4114800,
+        "height": 365760
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "13  十三、時效警示",
+                "styles": {
+                  "font-size": "12.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 4754880,
+        "top": 2203704,
+        "width": 4114800,
+        "height": 365760
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "14  十四、綜合比較表",
+                "styles": {
+                  "font-size": "12.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 4754880,
+        "top": 2633472,
+        "width": 4114800,
+        "height": 365760
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "15  十五、行動建議（第一階段）",
+                "styles": {
+                  "font-size": "12.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 4754880,
+        "top": 3063240,
+        "width": 4114800,
+        "height": 365760
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "16  十六、行動建議（第二階段）",
+                "styles": {
+                  "font-size": "12.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 4754880,
+        "top": 3493008,
+        "width": 4114800,
+        "height": 365760
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "17  十七、行動建議（第三階段）",
+                "styles": {
+                  "font-size": "12.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 4754880,
+        "top": 3922776,
+        "width": 4114800,
+        "height": 365760
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "18  十八、結論",
+                "styles": {
+                  "font-size": "12.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 4754880,
+        "top": 4352544,
+        "width": 4114800,
+        "height": 365760
+      }
+    ]
+  },
+  {
+    "index": 2,
+    "title": "一、案件事實與背景",
+    "blocks": [
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "一、案件事實與背景",
+                "styles": {
+                  "font-size": "26.0pt",
+                  "font-weight": "bold",
+                  "color": "#1a2744",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 502920,
+        "top": 274320,
+        "width": 7772400,
+        "height": 548640
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "謝秉錡律師事務所 — 法律意見書",
+                "styles": {
+                  "font-size": "8.0pt",
+                  "color": "#ffffff",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 274320,
+        "top": 4892040,
+        "width": 4572000,
+        "height": 260604
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "3 / 20",
+                "styles": {
+                  "font-size": "10.0pt",
+                  "color": "#888888",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "RIGHT (3)"
+          }
+        ],
+        "left": 8046720,
+        "top": 4663440,
+        "width": 914400,
+        "height": 320040
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "甲所有之 A 土地，經都市計畫分區認定為「住宅區」",
+                "styles": {
+                  "font-size": "14.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          },
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "地方政府依都市計畫法完成都市計畫樁之豎立，並經公告期間屆滿確定",
+                "styles": {
+                  "font-size": "14.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          },
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "嗣後，地政事務所發現 A 土地有部分應為道路用地",
+                "styles": {
+                  "font-size": "14.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          },
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "地政事務所將 A 土地部分逕為再分割出 A1 土地，列為道路用地",
+                "styles": {
+                  "font-size": "14.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          },
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "甲不服：原全部為住宅區之土地，現有部分變為道路用地，權益受損",
+                "styles": {
+                  "font-size": "14.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 640080,
+        "top": 1234440,
+        "width": 7863840,
+        "height": 3200400
+      }
+    ]
+  },
+  {
+    "index": 3,
+    "title": "投影片 4",
+    "blocks": []
+  },
+  {
+    "index": 4,
+    "title": "二、核心法律問題",
+    "blocks": [
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "二、核心法律問題",
+                "styles": {
+                  "font-size": "26.0pt",
+                  "font-weight": "bold",
+                  "color": "#1a2744",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 502920,
+        "top": 274320,
+        "width": 7772400,
+        "height": 548640
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "謝秉錡律師事務所 — 法律意見書",
+                "styles": {
+                  "font-size": "8.0pt",
+                  "color": "#ffffff",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 274320,
+        "top": 4892040,
+        "width": 4572000,
+        "height": 260604
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "4 / 20",
+                "styles": {
+                  "font-size": "10.0pt",
+                  "color": "#888888",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "RIGHT (3)"
+          }
+        ],
+        "left": 8046720,
+        "top": 4663440,
+        "width": 914400,
+        "height": 320040
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "Q1",
+                "styles": {
+                  "font-size": "18.0pt",
+                  "font-weight": "bold",
+                  "color": "#c9a84c",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "CENTER (2)"
+          }
+        ],
+        "left": 365760,
+        "top": 1097280,
+        "width": 640080,
+        "height": 822960
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "地政事務所逕為分割行為之法律性質為何？",
+                "styles": {
+                  "font-size": "14.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          },
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "是否為行政處分？",
+                "styles": {
+                  "font-size": "14.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 1188720,
+        "top": 1143000,
+        "width": 7498080,
+        "height": 731520
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "Q2",
+                "styles": {
+                  "font-size": "18.0pt",
+                  "font-weight": "bold",
+                  "color": "#c9a84c",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "CENTER (2)"
+          }
+        ],
+        "left": 365760,
+        "top": 2057400,
+        "width": 640080,
+        "height": 822960
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "都市計畫樁公告期滿後，",
+                "styles": {
+                  "font-size": "14.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          },
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "地政事務所得否另為逕為分割？",
+                "styles": {
+                  "font-size": "14.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 1188720,
+        "top": 2103120,
+        "width": 7498080,
+        "height": 731520
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "Q3",
+                "styles": {
+                  "font-size": "18.0pt",
+                  "font-weight": "bold",
+                  "color": "#c9a84c",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "CENTER (2)"
+          }
+        ],
+        "left": 365760,
+        "top": 3017520,
+        "width": 640080,
+        "height": 822960
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "甲得提起何種行政救濟途徑？",
+                "styles": {
+                  "font-size": "14.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 1188720,
+        "top": 3063240,
+        "width": 7498080,
+        "height": 731520
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "Q4",
+                "styles": {
+                  "font-size": "18.0pt",
+                  "font-weight": "bold",
+                  "color": "#c9a84c",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "CENTER (2)"
+          }
+        ],
+        "left": 365760,
+        "top": 3977640,
+        "width": 640080,
+        "height": 822960
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "甲是否得請求國家賠償？",
+                "styles": {
+                  "font-size": "14.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          },
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "應依何種法律途徑？",
+                "styles": {
+                  "font-size": "14.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 1188720,
+        "top": 4023360,
+        "width": 7498080,
+        "height": 731520
+      }
+    ]
+  },
+  {
+    "index": 5,
+    "title": "三、前提分析：兩種情形之區分",
+    "blocks": [
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "三、前提分析：兩種情形之區分",
+                "styles": {
+                  "font-size": "26.0pt",
+                  "font-weight": "bold",
+                  "color": "#1a2744",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 502920,
+        "top": 274320,
+        "width": 7772400,
+        "height": 548640
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "謝秉錡律師事務所 — 法律意見書",
+                "styles": {
+                  "font-size": "8.0pt",
+                  "color": "#ffffff",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 274320,
+        "top": 4892040,
+        "width": 4572000,
+        "height": 260604
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "5 / 20",
+                "styles": {
+                  "font-size": "10.0pt",
+                  "color": "#888888",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "RIGHT (3)"
+          }
+        ],
+        "left": 8046720,
+        "top": 4663440,
+        "width": 914400,
+        "height": 320040
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "情形一：更正登記",
+                "styles": {
+                  "font-size": "16.0pt",
+                  "font-weight": "bold",
+                  "color": "#ffffff",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "CENTER (2)"
+          }
+        ],
+        "left": 274320,
+        "top": 1097280,
+        "width": 4114800,
+        "height": 502920
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "都市計畫本就將該部分劃為道路用地",
+                "styles": {
+                  "font-size": "13.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          },
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "僅地籍登記與都市計畫不一致",
+                "styles": {
+                  "font-size": "13.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          },
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "地政事務所逕為分割係「更正」登記",
+                "styles": {
+                  "font-size": "13.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          },
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "主要救濟：都市計畫審查訴訟",
+                "styles": {
+                  "font-size": "13.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          },
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "附帶救濟：徵收補償",
+                "styles": {
+                  "font-size": "13.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 502920,
+        "top": 1828800,
+        "width": 3657600,
+        "height": 2194560
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "情形二：違法處分",
+                "styles": {
+                  "font-size": "16.0pt",
+                  "font-weight": "bold",
+                  "color": "#ffffff",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "CENTER (2)"
+          }
+        ],
+        "left": 4754880,
+        "top": 1097280,
+        "width": 4114800,
+        "height": 502920
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "都市計畫將A土地全部劃為住宅區",
+                "styles": {
+                  "font-size": "13.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          },
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "地政事務所逕為分割創設新使用分區",
+                "styles": {
+                  "font-size": "13.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          },
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "構成違法行政處分",
+                "styles": {
+                  "font-size": "13.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          },
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "主要救濟：訴願＋撤銷訴訟",
+                "styles": {
+                  "font-size": "13.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          },
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "附帶救濟：國家賠償",
+                "styles": {
+                  "font-size": "13.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 4983480,
+        "top": 1828800,
+        "width": 3657600,
+        "height": 2194560
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "⚠ 甲應立即調閱都市計畫書圖，確認系爭部分之使用分區，此為後續救濟之前提",
+                "styles": {
+                  "font-size": "11.0pt",
+                  "font-weight": "bold",
+                  "color": "#2e4053",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 457200,
+        "top": 4434840,
+        "width": 8229600,
+        "height": 320040
+      }
+    ]
+  },
+  {
+    "index": 6,
+    "title": "投影片 7",
+    "blocks": []
+  },
+  {
+    "index": 7,
+    "title": "四、逕為分割之法律性質分析",
+    "blocks": [
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "四、逕為分割之法律性質分析",
+                "styles": {
+                  "font-size": "26.0pt",
+                  "font-weight": "bold",
+                  "color": "#1a2744",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 502920,
+        "top": 274320,
+        "width": 7772400,
+        "height": 548640
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "謝秉錡律師事務所 — 法律意見書",
+                "styles": {
+                  "font-size": "8.0pt",
+                  "color": "#ffffff",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 274320,
+        "top": 4892040,
+        "width": 4572000,
+        "height": 260604
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "6 / 20",
+                "styles": {
+                  "font-size": "10.0pt",
+                  "color": "#888888",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "RIGHT (3)"
+          }
+        ],
+        "left": 8046720,
+        "top": 4663440,
+        "width": 914400,
+        "height": 320040
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "行政處分說（101訴300）",
+                "styles": {
+                  "font-size": "15.0pt",
+                  "font-weight": "bold",
+                  "color": "#1a2744",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 457200,
+        "top": 1097280,
+        "width": 3657600,
+        "height": 365760
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "逕為分割通知書直接影響原告權利義務",
+                "styles": {
+                  "font-size": "12.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          },
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "關係，實際上對外發生效力，",
+                "styles": {
+                  "font-size": "12.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          },
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "性質上為行政處分。",
+                "styles": {
+                  "font-size": "12.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          },
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "甲得對之提起訴願及行政訴訟。",
+                "styles": {
+                  "font-size": "12.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 457200,
+        "top": 1508760,
+        "width": 3657600,
+        "height": 1097280
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "內部行為說（92判1632）",
+                "styles": {
+                  "font-size": "15.0pt",
+                  "font-weight": "bold",
+                  "color": "#1a2744",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 5029200,
+        "top": 1097280,
+        "width": 3657600,
+        "height": 365760
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "樁位點交為行政機關間之內部協力行為",
+                "styles": {
+                  "font-size": "12.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          },
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "，非行政處分。但逕為分割登記本身",
+                "styles": {
+                  "font-size": "12.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          },
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "則為對外發生法律效果之行政處分。",
+                "styles": {
+                  "font-size": "12.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          },
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "二者應予區分。",
+                "styles": {
+                  "font-size": "12.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 5029200,
+        "top": 1508760,
+        "width": 3657600,
+        "height": 1097280
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "實務最佳解釋",
+                "styles": {
+                  "font-size": "14.0pt",
+                  "font-weight": "bold",
+                  "color": "#1a2744",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 457200,
+        "top": 3017520,
+        "width": 8229600,
+        "height": 320040
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "樁位點交（內部行為，不可救濟）  →  逕為分割通知書（行政處分，可救濟）",
+                "styles": {
+                  "font-size": "12.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 457200,
+        "top": 3383280,
+        "width": 8229600,
+        "height": 365760
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "92判1632處理的是「樁位點交」階段，101訴300處理的是「逕為分割通知書」階段，兩者不矛盾",
+                "styles": {
+                  "font-size": "11.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 640080,
+        "top": 3749040,
+        "width": 7863840,
+        "height": 640080
+      }
+    ]
+  },
+  {
+    "index": 8,
+    "title": "投影片 9",
+    "blocks": []
+  },
+  {
+    "index": 9,
+    "title": "五、救濟途徑總覽：六種途徑",
+    "blocks": [
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "五、救濟途徑總覽：六種途徑",
+                "styles": {
+                  "font-size": "26.0pt",
+                  "font-weight": "bold",
+                  "color": "#1a2744",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 502920,
+        "top": 274320,
+        "width": 7772400,
+        "height": 548640
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "謝秉錡律師事務所 — 法律意見書",
+                "styles": {
+                  "font-size": "8.0pt",
+                  "color": "#ffffff",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 274320,
+        "top": 4892040,
+        "width": 4572000,
+        "height": 260604
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "7 / 20",
+                "styles": {
+                  "font-size": "10.0pt",
+                  "color": "#888888",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "RIGHT (3)"
+          }
+        ],
+        "left": 8046720,
+        "top": 4663440,
+        "width": 914400,
+        "height": 320040
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "① 訴願＋撤銷訴訟",
+                "styles": {
+                  "font-size": "12.0pt",
+                  "font-weight": "bold",
+                  "color": "#2e4053",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 594360,
+        "top": 1188720,
+        "width": 2331720,
+        "height": 411480
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "對逕為分割處分提起",
+                "styles": {
+                  "font-size": "10.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          },
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "（訴願30日，撤銷訴訟2月）",
+                "styles": {
+                  "font-size": "10.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 594360,
+        "top": 1645920,
+        "width": 2331720,
+        "height": 1005840
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "② 都市計畫審查訴訟",
+                "styles": {
+                  "font-size": "12.0pt",
+                  "font-weight": "bold",
+                  "color": "#5d7b93",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 3520440,
+        "top": 1188720,
+        "width": 2331720,
+        "height": 411480
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "行政訴訟法§237-18",
+                "styles": {
+                  "font-size": "10.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          },
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "（起訴期間最長5年）",
+                "styles": {
+                  "font-size": "10.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 3520440,
+        "top": 1645920,
+        "width": 2331720,
+        "height": 1005840
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "③ 土地法§68國賠",
+                "styles": {
+                  "font-size": "12.0pt",
+                  "font-weight": "bold",
+                  "color": "#27ae60",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 6446520,
+        "top": 1188720,
+        "width": 2331720,
+        "height": 411480
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "無過失責任，舉證門檻低",
+                "styles": {
+                  "font-size": "10.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          },
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "民事訴訟程序",
+                "styles": {
+                  "font-size": "10.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 6446520,
+        "top": 1645920,
+        "width": 2331720,
+        "height": 1005840
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "④ 國賠法§2國賠",
+                "styles": {
+                  "font-size": "12.0pt",
+                  "font-weight": "bold",
+                  "color": "#5d7b93",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 594360,
+        "top": 3200400,
+        "width": 2331720,
+        "height": 411480
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "過失責任，備位適用",
+                "styles": {
+                  "font-size": "10.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          },
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "民事訴訟程序",
+                "styles": {
+                  "font-size": "10.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 594360,
+        "top": 3657600,
+        "width": 2331720,
+        "height": 1005840
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "⑤ 通盤檢討建議",
+                "styles": {
+                  "font-size": "12.0pt",
+                  "font-weight": "bold",
+                  "color": "#2e4053",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 3520440,
+        "top": 3200400,
+        "width": 2331720,
+        "height": 411480
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "都市計畫法§26",
+                "styles": {
+                  "font-size": "10.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          },
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "每3-5年通盤檢討一次",
+                "styles": {
+                  "font-size": "10.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 3520440,
+        "top": 3657600,
+        "width": 2331720,
+        "height": 1005840
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "⑥ 複測／更正",
+                "styles": {
+                  "font-size": "12.0pt",
+                  "font-weight": "bold",
+                  "color": "#5d7b93",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 6446520,
+        "top": 3200400,
+        "width": 2331720,
+        "height": 411480
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "管理辦法§11／土地法§69",
+                "styles": {
+                  "font-size": "10.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          },
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "釋273保障司法救濟權",
+                "styles": {
+                  "font-size": "10.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 6446520,
+        "top": 3657600,
+        "width": 2331720,
+        "height": 1005840
+      }
+    ]
+  },
+  {
+    "index": 10,
+    "title": "投影片 11",
+    "blocks": []
+  },
+  {
+    "index": 11,
+    "title": "六、途徑一：對逕為分割處分提起行政救濟",
+    "blocks": [
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "六、途徑一：對逕為分割處分提起行政救濟",
+                "styles": {
+                  "font-size": "26.0pt",
+                  "font-weight": "bold",
+                  "color": "#1a2744",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 502920,
+        "top": 274320,
+        "width": 7772400,
+        "height": 548640
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "謝秉錡律師事務所 — 法律意見書",
+                "styles": {
+                  "font-size": "8.0pt",
+                  "color": "#ffffff",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 274320,
+        "top": 4892040,
+        "width": 4572000,
+        "height": 260604
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "8 / 20",
+                "styles": {
+                  "font-size": "10.0pt",
+                  "color": "#888888",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "RIGHT (3)"
+          }
+        ],
+        "left": 8046720,
+        "top": 4663440,
+        "width": 914400,
+        "height": 320040
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "1",
+                "styles": {
+                  "font-size": "16.0pt",
+                  "font-weight": "bold",
+                  "color": "#ffffff",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "CENTER (2)"
+          }
+        ],
+        "left": 1280160,
+        "top": 960120,
+        "width": 914400,
+        "height": 502920
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "第一步",
+                "styles": {
+                  "font-size": "13.0pt",
+                  "font-weight": "bold",
+                  "color": "#1a2744",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "CENTER (2)"
+          },
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "訴願",
+                "styles": {
+                  "font-size": "13.0pt",
+                  "font-weight": "bold",
+                  "color": "#1a2744",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "CENTER (2)"
+          }
+        ],
+        "left": 594360,
+        "top": 1600200,
+        "width": 2286000,
+        "height": 502920
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "收受分割通知後",
+                "styles": {
+                  "font-size": "11.0pt",
+                  "color": "#c0392b",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "CENTER (2)"
+          },
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "30 日內",
+                "styles": {
+                  "font-size": "11.0pt",
+                  "color": "#c0392b",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "CENTER (2)"
+          }
+        ],
+        "left": 594360,
+        "top": 2148840,
+        "width": 2286000,
+        "height": 411480
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "向地政事務所上級機關",
+                "styles": {
+                  "font-size": "10.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "CENTER (2)"
+          },
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "（市政府）提起",
+                "styles": {
+                  "font-size": "10.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "CENTER (2)"
+          }
+        ],
+        "left": 594360,
+        "top": 2606040,
+        "width": 2286000,
+        "height": 457200
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "→",
+                "styles": {
+                  "font-size": "20.0pt",
+                  "color": "#c9a84c",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "CENTER (2)"
+          }
+        ],
+        "left": 3063240,
+        "top": 1828800,
+        "width": 274320,
+        "height": 457200
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "2",
+                "styles": {
+                  "font-size": "16.0pt",
+                  "font-weight": "bold",
+                  "color": "#ffffff",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "CENTER (2)"
+          }
+        ],
+        "left": 4160520,
+        "top": 960120,
+        "width": 914400,
+        "height": 502920
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "第二步",
+                "styles": {
+                  "font-size": "13.0pt",
+                  "font-weight": "bold",
+                  "color": "#1a2744",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "CENTER (2)"
+          },
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "撤銷訴訟",
+                "styles": {
+                  "font-size": "13.0pt",
+                  "font-weight": "bold",
+                  "color": "#1a2744",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "CENTER (2)"
+          }
+        ],
+        "left": 3474720,
+        "top": 1600200,
+        "width": 2286000,
+        "height": 502920
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "訴願決定書送達後",
+                "styles": {
+                  "font-size": "11.0pt",
+                  "color": "#c0392b",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "CENTER (2)"
+          },
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "2 個月內",
+                "styles": {
+                  "font-size": "11.0pt",
+                  "color": "#c0392b",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "CENTER (2)"
+          }
+        ],
+        "left": 3474720,
+        "top": 2148840,
+        "width": 2286000,
+        "height": 411480
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "向高等行政法院",
+                "styles": {
+                  "font-size": "10.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "CENTER (2)"
+          },
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "提起撤銷訴訟",
+                "styles": {
+                  "font-size": "10.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "CENTER (2)"
+          }
+        ],
+        "left": 3474720,
+        "top": 2606040,
+        "width": 2286000,
+        "height": 457200
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "→",
+                "styles": {
+                  "font-size": "20.0pt",
+                  "color": "#c9a84c",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "CENTER (2)"
+          }
+        ],
+        "left": 5943600,
+        "top": 1828800,
+        "width": 274320,
+        "height": 457200
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "3",
+                "styles": {
+                  "font-size": "16.0pt",
+                  "font-weight": "bold",
+                  "color": "#ffffff",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "CENTER (2)"
+          }
+        ],
+        "left": 7040880,
+        "top": 960120,
+        "width": 914400,
+        "height": 502920
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "第三步",
+                "styles": {
+                  "font-size": "13.0pt",
+                  "font-weight": "bold",
+                  "color": "#1a2744",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "CENTER (2)"
+          },
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "上訴",
+                "styles": {
+                  "font-size": "13.0pt",
+                  "font-weight": "bold",
+                  "color": "#1a2744",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "CENTER (2)"
+          }
+        ],
+        "left": 6355080,
+        "top": 1600200,
+        "width": 2286000,
+        "height": 502920
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "判決送達後",
+                "styles": {
+                  "font-size": "11.0pt",
+                  "color": "#c0392b",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "CENTER (2)"
+          },
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "20 日內",
+                "styles": {
+                  "font-size": "11.0pt",
+                  "color": "#c0392b",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "CENTER (2)"
+          }
+        ],
+        "left": 6355080,
+        "top": 2148840,
+        "width": 2286000,
+        "height": 411480
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "如敗訴，上訴",
+                "styles": {
+                  "font-size": "10.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "CENTER (2)"
+          },
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "至最高行政法院",
+                "styles": {
+                  "font-size": "10.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "CENTER (2)"
+          }
+        ],
+        "left": 6355080,
+        "top": 2606040,
+        "width": 2286000,
+        "height": 457200
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "關鍵裁判：臺中高等行政法院 101年度訴字第300號",
+                "styles": {
+                  "font-size": "12.0pt",
+                  "font-weight": "bold",
+                  "color": "#1a2744",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 731520,
+        "top": 3474720,
+        "width": 7680960,
+        "height": 274320
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "「行政機關行使公權力，就特定具體之公法事件所為對外發生法律上效果之單方行政行為，皆屬行政處分……本件被告雖以通知書為之，惟已直接影響原告之權利義務關係，且實際上已對外發生效力，應屬行政處分。」",
+                "styles": {
+                  "font-size": "10.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 731520,
+        "top": 3749040,
+        "width": 7680960,
+        "height": 640080
+      }
+    ]
+  },
+  {
+    "index": 12,
+    "title": "投影片 13",
+    "blocks": []
+  },
+  {
+    "index": 13,
+    "title": "七、途徑二：都市計畫審查訴訟",
+    "blocks": [
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "七、途徑二：都市計畫審查訴訟",
+                "styles": {
+                  "font-size": "26.0pt",
+                  "font-weight": "bold",
+                  "color": "#1a2744",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 502920,
+        "top": 274320,
+        "width": 7772400,
+        "height": 548640
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "謝秉錡律師事務所 — 法律意見書",
+                "styles": {
+                  "font-size": "8.0pt",
+                  "color": "#ffffff",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 274320,
+        "top": 4892040,
+        "width": 4572000,
+        "height": 260604
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "9 / 20",
+                "styles": {
+                  "font-size": "10.0pt",
+                  "color": "#888888",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "RIGHT (3)"
+          }
+        ],
+        "left": 8046720,
+        "top": 4663440,
+        "width": 914400,
+        "height": 320040
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "行政訴訟法第 237 條之 18",
+                "styles": {
+                  "font-size": "16.0pt",
+                  "font-weight": "bold",
+                  "color": "#1a2744",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 457200,
+        "top": 1143000,
+        "width": 8229600,
+        "height": 320040
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "人民認為行政機關依都市計畫法發布之都市計畫違法，而直接損害其權利或法律上利益者，得逕向管轄之高等行政法院提起訴訟，請求宣告該都市計畫無效。",
+                "styles": {
+                  "font-size": "12.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 457200,
+        "top": 1508760,
+        "width": 8229600,
+        "height": 731520
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "重要判決指引",
+                "styles": {
+                  "font-size": "14.0pt",
+                  "font-weight": "bold",
+                  "color": "#1a2744",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 457200,
+        "top": 2697480,
+        "width": 8229600,
+        "height": 274320
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "最高行政法院 113 年度上字第 433 號判決：計畫機關不採納所有權人建議、仍維持限制者，所有權人有訴訟權能",
+                "styles": {
+                  "font-size": "11.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          },
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "行政訴訟法第 237 條之 31：自都市計畫發布實施後最長不得逾 5 年起訴",
+                "styles": {
+                  "font-size": "11.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          },
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "108 年度判字第 143 號判決：逕為分割須確認不同使用分區是否經合法變更",
+                "styles": {
+                  "font-size": "11.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          },
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "109 年度上字第 716 號判決：地政機關對使用分區配置無權置喙，不得為相反認定",
+                "styles": {
+                  "font-size": "11.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 640080,
+        "top": 3017520,
+        "width": 7863840,
+        "height": 1280160
+      }
+    ]
+  },
+  {
+    "index": 14,
+    "title": "投影片 15",
+    "blocks": []
+  },
+  {
+    "index": 15,
+    "title": "八、途徑三：國家賠償 — 土地法§68 優先",
+    "blocks": [
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "八、途徑三：國家賠償 — 土地法§68 優先",
+                "styles": {
+                  "font-size": "26.0pt",
+                  "font-weight": "bold",
+                  "color": "#1a2744",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 502920,
+        "top": 274320,
+        "width": 7772400,
+        "height": 548640
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "謝秉錡律師事務所 — 法律意見書",
+                "styles": {
+                  "font-size": "8.0pt",
+                  "color": "#ffffff",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 274320,
+        "top": 4892040,
+        "width": 4572000,
+        "height": 260604
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "10 / 20",
+                "styles": {
+                  "font-size": "10.0pt",
+                  "color": "#888888",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "RIGHT (3)"
+          }
+        ],
+        "left": 8046720,
+        "top": 4663440,
+        "width": 914400,
+        "height": 320040
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "土地法第 68 條（特別法 — 無過失責任）",
+                "styles": {
+                  "font-size": "14.0pt",
+                  "font-weight": "bold",
+                  "color": "#1a2744",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 457200,
+        "top": 1097280,
+        "width": 8229600,
+        "height": 274320
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "因登記錯誤遺漏或虛偽致受損害者，由該地政機關負損害賠償責任。",
+                "styles": {
+                  "font-size": "12.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 457200,
+        "top": 1417320,
+        "width": 8229600,
+        "height": 274320
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "📍 最高法院110年度台上大字第3017號裁定：土地法§68為無過失責任",
+                "styles": {
+                  "font-size": "11.0pt",
+                  "color": "#2e4053",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 457200,
+        "top": 1737360,
+        "width": 8229600,
+        "height": 274320
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "✅ 舉證容易",
+                "styles": {
+                  "font-size": "11.0pt",
+                  "font-weight": "bold",
+                  "color": "#1a2744",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 365760,
+        "top": 2514600,
+        "width": 2514600,
+        "height": 274320
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "僅須證明登記錯誤＋損害",
+                "styles": {
+                  "font-size": "9.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          },
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "＋因果關係，無須證明過失",
+                "styles": {
+                  "font-size": "9.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 365760,
+        "top": 2788920,
+        "width": 2514600,
+        "height": 548640
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "✅ 財源保障",
+                "styles": {
+                  "font-size": "11.0pt",
+                  "font-weight": "bold",
+                  "color": "#1a2744",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 3291840,
+        "top": 2514600,
+        "width": 2514600,
+        "height": 274320
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "地政機關提存登記費 10%",
+                "styles": {
+                  "font-size": "9.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          },
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "為「登記儲金」專款專用",
+                "styles": {
+                  "font-size": "9.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 3291840,
+        "top": 2788920,
+        "width": 2514600,
+        "height": 548640
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "✅ 擴張說支持",
+                "styles": {
+                  "font-size": "11.0pt",
+                  "font-weight": "bold",
+                  "color": "#1a2744",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 6217920,
+        "top": 2514600,
+        "width": 2514600,
+        "height": 274320
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "76 年民事庭決議：測量錯誤",
+                "styles": {
+                  "font-size": "9.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          },
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "亦屬登記錯誤（反對限縮說）",
+                "styles": {
+                  "font-size": "9.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 6217920,
+        "top": 2788920,
+        "width": 2514600,
+        "height": 548640
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "⚠ 賠償上限",
+                "styles": {
+                  "font-size": "11.0pt",
+                  "font-weight": "bold",
+                  "color": "#1a2744",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 365760,
+        "top": 3611880,
+        "width": 2514600,
+        "height": 274320
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "不得超過受損害時",
+                "styles": {
+                  "font-size": "9.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          },
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "之土地價值（§68 II）",
+                "styles": {
+                  "font-size": "9.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 365760,
+        "top": 3886200,
+        "width": 2514600,
+        "height": 548640
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "⚠ 民事訴訟",
+                "styles": {
+                  "font-size": "11.0pt",
+                  "font-weight": "bold",
+                  "color": "#1a2744",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 3291840,
+        "top": 3611880,
+        "width": 2514600,
+        "height": 274320
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "應循民事訴訟程序",
+                "styles": {
+                  "font-size": "9.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          },
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "非行政訴訟（95判239）",
+                "styles": {
+                  "font-size": "9.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 3291840,
+        "top": 3886200,
+        "width": 2514600,
+        "height": 548640
+      }
+    ]
+  },
+  {
+    "index": 16,
+    "title": "投影片 17",
+    "blocks": []
+  },
+  {
+    "index": 17,
+    "title": "九、土地法§68 vs 國家賠償法§2 對照",
+    "blocks": [
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "九、土地法§68 vs 國家賠償法§2 對照",
+                "styles": {
+                  "font-size": "26.0pt",
+                  "font-weight": "bold",
+                  "color": "#1a2744",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 502920,
+        "top": 274320,
+        "width": 7772400,
+        "height": 548640
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "謝秉錡律師事務所 — 法律意見書",
+                "styles": {
+                  "font-size": "8.0pt",
+                  "color": "#ffffff",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 274320,
+        "top": 4892040,
+        "width": 4572000,
+        "height": 260604
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "11 / 20",
+                "styles": {
+                  "font-size": "10.0pt",
+                  "color": "#888888",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "RIGHT (3)"
+          }
+        ],
+        "left": 8046720,
+        "top": 4663440,
+        "width": 914400,
+        "height": 320040
+      },
+      {
+        "type": "table",
+        "content": [],
+        "left": 365760,
+        "top": 1051560,
+        "width": 8412480,
+        "height": 914400,
+        "rows": [
+          [
+            "比較項目",
+            "土地法§68（優先）",
+            "國賠法§2（備位）"
+          ],
+          [
+            "歸責原則",
+            "無過失責任",
+            "過失責任（須證明故意過失）"
+          ],
+          [
+            "舉證負擔",
+            "低（登記錯誤＋損害＋因果）",
+            "高（加證明故意或過失）"
+          ],
+          [
+            "賠償範圍",
+            "以受損時土地價值為上限",
+            "民法完全賠償（含所失利益）"
+          ],
+          [
+            "財源保障",
+            "登記儲金（10%登記費）",
+            "各機關年度預算"
+          ],
+          [
+            "訴訟程序",
+            "民事訴訟",
+            "民事訴訟"
+          ],
+          [
+            "消滅時效",
+            "知有損害起2年／損害發生起5年",
+            "知有損害起2年／損害發生起5年"
+          ]
+        ]
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "關鍵實務爭議：地籍測量錯誤是否屬於「登記錯誤」？",
+                "styles": {
+                  "font-size": "13.0pt",
+                  "font-weight": "bold",
+                  "color": "#1a2744",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 548640,
+        "top": 3611880,
+        "width": 8046720,
+        "height": 274320
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "限縮說（內政部）：測量錯誤 ≠ 登記錯誤 → 應適用國賠法§2（過失責任）",
+                "styles": {
+                  "font-size": "10.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          },
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "擴張說（司法實務＋監察院）：測量錯誤致登記不實亦屬登記錯誤 → 應適用土地法§68（無過失責任）",
+                "styles": {
+                  "font-size": "10.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          },
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "最高法院76年第5次民事庭會議決議：不應就土地登記規則作狹義解釋 ＝ 支持擴張說",
+                "styles": {
+                  "font-size": "10.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 731520,
+        "top": 3886200,
+        "width": 7680960,
+        "height": 731520
+      }
+    ]
+  },
+  {
+    "index": 18,
+    "title": "投影片 19",
+    "blocks": []
+  },
+  {
+    "index": 19,
+    "title": "十、途徑四、五：通盤檢討與複測更正",
+    "blocks": [
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "十、途徑四、五：通盤檢討與複測更正",
+                "styles": {
+                  "font-size": "26.0pt",
+                  "font-weight": "bold",
+                  "color": "#1a2744",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 502920,
+        "top": 274320,
+        "width": 7772400,
+        "height": 548640
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "謝秉錡律師事務所 — 法律意見書",
+                "styles": {
+                  "font-size": "8.0pt",
+                  "color": "#ffffff",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 274320,
+        "top": 4892040,
+        "width": 4572000,
+        "height": 260604
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "12 / 20",
+                "styles": {
+                  "font-size": "10.0pt",
+                  "color": "#888888",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "RIGHT (3)"
+          }
+        ],
+        "left": 8046720,
+        "top": 4663440,
+        "width": 914400,
+        "height": 320040
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "途徑四：通盤檢討建議",
+                "styles": {
+                  "font-size": "14.0pt",
+                  "font-weight": "bold",
+                  "color": "#1a2744",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 457200,
+        "top": 1188720,
+        "width": 3749040,
+        "height": 365760
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "都市計畫法第 26 條",
+                "styles": {
+                  "font-size": "11.0pt",
+                  "color": "#c9a84c",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 457200,
+        "top": 1554480,
+        "width": 3749040,
+        "height": 274320
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "每 3-5 年通盤檢討一次",
+                "styles": {
+                  "font-size": "11.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          },
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "提出建議請求將 A1 解編",
+                "styles": {
+                  "font-size": "11.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          },
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "或變更回住宅區",
+                "styles": {
+                  "font-size": "11.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          },
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "無時效限制、無訴訟成本",
+                "styles": {
+                  "font-size": "11.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          },
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "但行政機關有裁量權",
+                "styles": {
+                  "font-size": "11.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 640080,
+        "top": 1874520,
+        "width": 3474720,
+        "height": 1097280
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "途徑五：複測／更正",
+                "styles": {
+                  "font-size": "14.0pt",
+                  "font-weight": "bold",
+                  "color": "#1a2744",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 4937760,
+        "top": 1188720,
+        "width": 3749040,
+        "height": 365760
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "管理辦法§11／土地法§69",
+                "styles": {
+                  "font-size": "11.0pt",
+                  "color": "#c9a84c",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 4937760,
+        "top": 1554480,
+        "width": 3749040,
+        "height": 274320
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "樁位測定錯誤 → 申請複測",
+                "styles": {
+                  "font-size": "11.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          },
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "公告期間內繳費申請",
+                "styles": {
+                  "font-size": "11.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          },
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "不服可申請再複測",
+                "styles": {
+                  "font-size": "11.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          },
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "地籍分割錯誤 → 更正登記",
+                "styles": {
+                  "font-size": "11.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          },
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "僅處理測量錯誤",
+                "styles": {
+                  "font-size": "11.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 5120640,
+        "top": 1874520,
+        "width": 3474720,
+        "height": 1097280
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "釋字第 273 號：都市計畫樁測定及管理辦法「經上級政府再行複測決定者，不得再提異議」之規定違憲。即使行政複測程序用盡，人民仍享有憲法保障之訴願及行政訴訟權。",
+                "styles": {
+                  "font-size": "10.0pt",
+                  "font-weight": "bold",
+                  "color": "#2e4053",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 457200,
+        "top": 4160520,
+        "width": 8229600,
+        "height": 457200
+      }
+    ]
+  },
+  {
+    "index": 20,
+    "title": "投影片 21",
+    "blocks": []
+  },
+  {
+    "index": 21,
+    "title": "十一、關鍵裁判要旨",
+    "blocks": [
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "十一、關鍵裁判要旨",
+                "styles": {
+                  "font-size": "26.0pt",
+                  "font-weight": "bold",
+                  "color": "#1a2744",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 502920,
+        "top": 274320,
+        "width": 7772400,
+        "height": 548640
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "謝秉錡律師事務所 — 法律意見書",
+                "styles": {
+                  "font-size": "8.0pt",
+                  "color": "#ffffff",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 274320,
+        "top": 4892040,
+        "width": 4572000,
+        "height": 260604
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "13 / 20",
+                "styles": {
+                  "font-size": "10.0pt",
+                  "color": "#888888",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "RIGHT (3)"
+          }
+        ],
+        "left": 8046720,
+        "top": 4663440,
+        "width": 914400,
+        "height": 320040
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "113上433",
+                "styles": {
+                  "font-size": "11.0pt",
+                  "font-weight": "bold",
+                  "color": "#ffffff",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "CENTER (2)"
+          }
+        ],
+        "left": 274320,
+        "top": 1005840,
+        "width": 1371600,
+        "height": 566928
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "土地所有權人就都市計畫具有訴訟權能",
+                "styles": {
+                  "font-size": "12.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 1828800,
+        "top": 1051560,
+        "width": 6858000,
+        "height": 475488
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "108判143",
+                "styles": {
+                  "font-size": "11.0pt",
+                  "font-weight": "bold",
+                  "color": "#ffffff",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "CENTER (2)"
+          }
+        ],
+        "left": 274320,
+        "top": 1664208,
+        "width": 1371600,
+        "height": 566928
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "逕為分割須確認使用分區經合法變更，不能僅憑公告文號",
+                "styles": {
+                  "font-size": "12.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 1828800,
+        "top": 1709928,
+        "width": 6858000,
+        "height": 475488
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "109上716",
+                "styles": {
+                  "font-size": "11.0pt",
+                  "font-weight": "bold",
+                  "color": "#ffffff",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "CENTER (2)"
+          }
+        ],
+        "left": 274320,
+        "top": 2322576,
+        "width": 1371600,
+        "height": 566928
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "地政機關對使用分區配置無權置喙，不得為相反認定",
+                "styles": {
+                  "font-size": "12.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 1828800,
+        "top": 2368296,
+        "width": 6858000,
+        "height": 475488
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "101訴300",
+                "styles": {
+                  "font-size": "11.0pt",
+                  "font-weight": "bold",
+                  "color": "#ffffff",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "CENTER (2)"
+          }
+        ],
+        "left": 274320,
+        "top": 2980944,
+        "width": 1371600,
+        "height": 566928
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "逕為分割通知書性質上為行政處分",
+                "styles": {
+                  "font-size": "12.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 1828800,
+        "top": 3026664,
+        "width": 6858000,
+        "height": 475488
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "92判1632",
+                "styles": {
+                  "font-size": "11.0pt",
+                  "font-weight": "bold",
+                  "color": "#ffffff",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "CENTER (2)"
+          }
+        ],
+        "left": 274320,
+        "top": 3639312,
+        "width": 1371600,
+        "height": 566928
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "樁位點交為內部行為，逕為分割登記為行政處分（二者區分）",
+                "styles": {
+                  "font-size": "12.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 1828800,
+        "top": 3685032,
+        "width": 6858000,
+        "height": 475488
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "68判194",
+                "styles": {
+                  "font-size": "11.0pt",
+                  "font-weight": "bold",
+                  "color": "#ffffff",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "CENTER (2)"
+          }
+        ],
+        "left": 274320,
+        "top": 4297680,
+        "width": 1371600,
+        "height": 566928
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "地政機關依樁位成果辦理逕為分割，於法有據（更正登記合法性）",
+                "styles": {
+                  "font-size": "12.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 1828800,
+        "top": 4343400,
+        "width": 6858000,
+        "height": 475488
+      }
+    ]
+  },
+  {
+    "index": 22,
+    "title": "十二、大法官解釋",
+    "blocks": [
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "十二、大法官解釋",
+                "styles": {
+                  "font-size": "26.0pt",
+                  "font-weight": "bold",
+                  "color": "#1a2744",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 502920,
+        "top": 274320,
+        "width": 7772400,
+        "height": 548640
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "謝秉錡律師事務所 — 法律意見書",
+                "styles": {
+                  "font-size": "8.0pt",
+                  "color": "#ffffff",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 274320,
+        "top": 4892040,
+        "width": 4572000,
+        "height": 260604
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "14 / 20",
+                "styles": {
+                  "font-size": "10.0pt",
+                  "color": "#888888",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "RIGHT (3)"
+          }
+        ],
+        "left": 8046720,
+        "top": 4663440,
+        "width": 914400,
+        "height": 320040
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "釋字第273號",
+                "styles": {
+                  "font-size": "11.0pt",
+                  "font-weight": "bold",
+                  "color": "#ffffff",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "CENTER (2)"
+          },
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "1991.02.01",
+                "styles": {
+                  "font-size": "11.0pt",
+                  "font-weight": "bold",
+                  "color": "#ffffff",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "CENTER (2)"
+          }
+        ],
+        "left": 274320,
+        "top": 1051560,
+        "width": 1965960,
+        "height": 594360
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "樁位測定錯誤不得",
+                "styles": {
+                  "font-size": "11.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          },
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "以行政命令排除",
+                "styles": {
+                  "font-size": "11.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          },
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "司法救濟（違憲）",
+                "styles": {
+                  "font-size": "11.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 365760,
+        "top": 1828800,
+        "width": 1783080,
+        "height": 1645920
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "釋字第742號",
+                "styles": {
+                  "font-size": "11.0pt",
+                  "font-weight": "bold",
+                  "color": "#ffffff",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "CENTER (2)"
+          },
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "2016.12.09",
+                "styles": {
+                  "font-size": "11.0pt",
+                  "font-weight": "bold",
+                  "color": "#ffffff",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "CENTER (2)"
+          }
+        ],
+        "left": 2468880,
+        "top": 1051560,
+        "width": 1965960,
+        "height": 594360
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "都市計畫通盤檢討",
+                "styles": {
+                  "font-size": "11.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          },
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "如有具體項目直接",
+                "styles": {
+                  "font-size": "11.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          },
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "限制特定人權益",
+                "styles": {
+                  "font-size": "11.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          },
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "得提起救濟",
+                "styles": {
+                  "font-size": "11.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 2560320,
+        "top": 1828800,
+        "width": 1783080,
+        "height": 1645920
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "釋字第747號",
+                "styles": {
+                  "font-size": "11.0pt",
+                  "font-weight": "bold",
+                  "color": "#ffffff",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "CENTER (2)"
+          },
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "2017.03.17",
+                "styles": {
+                  "font-size": "11.0pt",
+                  "font-weight": "bold",
+                  "color": "#ffffff",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "CENTER (2)"
+          }
+        ],
+        "left": 4663440,
+        "top": 1051560,
+        "width": 1965960,
+        "height": 594360
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "土地所有權人",
+                "styles": {
+                  "font-size": "11.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          },
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "就公共設施保留地",
+                "styles": {
+                  "font-size": "11.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          },
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "得請求徵收",
+                "styles": {
+                  "font-size": "11.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 4754880,
+        "top": 1828800,
+        "width": 1783080,
+        "height": 1645920
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "釋字第423號",
+                "styles": {
+                  "font-size": "11.0pt",
+                  "font-weight": "bold",
+                  "color": "#ffffff",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "CENTER (2)"
+          }
+        ],
+        "left": 6858000,
+        "top": 1051560,
+        "width": 1965960,
+        "height": 594360
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "行政處分之認定",
+                "styles": {
+                  "font-size": "11.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          },
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "不因用語、形式",
+                "styles": {
+                  "font-size": "11.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          },
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "或記載不得聲明",
+                "styles": {
+                  "font-size": "11.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          },
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "不服之文字而有異",
+                "styles": {
+                  "font-size": "11.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 6949440,
+        "top": 1828800,
+        "width": 1783080,
+        "height": 1645920
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "釋273 對本案最具直接意義：行政複測程序用盡後，甲仍有訴願＋行政訴訟之最終司法救濟權",
+                "styles": {
+                  "font-size": "11.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 548640,
+        "top": 3977640,
+        "width": 8046720,
+        "height": 457200
+      }
+    ]
+  },
+  {
+    "index": 23,
+    "title": "十三、時效警示",
+    "blocks": [
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "十三、時效警示",
+                "styles": {
+                  "font-size": "26.0pt",
+                  "font-weight": "bold",
+                  "color": "#ffffff",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 457200,
+        "top": 365760,
+        "width": 8229600,
+        "height": 548640
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "⏱ 時效是此類案件最致命的陷阱",
+                "styles": {
+                  "font-size": "14.0pt",
+                  "color": "#c9a84c",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 457200,
+        "top": 914400,
+        "width": 8229600,
+        "height": 365760
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "訴願",
+                "styles": {
+                  "font-size": "14.0pt",
+                  "font-weight": "bold",
+                  "color": "#ffffff",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 640080,
+        "top": 1463040,
+        "width": 2103120,
+        "height": 502920
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "30 日",
+                "styles": {
+                  "font-size": "18.0pt",
+                  "font-weight": "bold",
+                  "color": "#c9a84c",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "CENTER (2)"
+          }
+        ],
+        "left": 2651760,
+        "top": 1463040,
+        "width": 1371600,
+        "height": 502920
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "收受逕為分割通知書次日起算",
+                "styles": {
+                  "font-size": "11.0pt",
+                  "color": "#5d7b93",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 4114800,
+        "top": 1463040,
+        "width": 4389120,
+        "height": 502920
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "撤銷訴訟",
+                "styles": {
+                  "font-size": "14.0pt",
+                  "font-weight": "bold",
+                  "color": "#ffffff",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 640080,
+        "top": 2103120,
+        "width": 2103120,
+        "height": 502920
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "2 個月",
+                "styles": {
+                  "font-size": "18.0pt",
+                  "font-weight": "bold",
+                  "color": "#c9a84c",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "CENTER (2)"
+          }
+        ],
+        "left": 2651760,
+        "top": 2103120,
+        "width": 1371600,
+        "height": 502920
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "訴願決定書送達後起算",
+                "styles": {
+                  "font-size": "11.0pt",
+                  "color": "#5d7b93",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 4114800,
+        "top": 2103120,
+        "width": 4389120,
+        "height": 502920
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "都市計畫審查訴訟",
+                "styles": {
+                  "font-size": "14.0pt",
+                  "font-weight": "bold",
+                  "color": "#ffffff",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 640080,
+        "top": 2743200,
+        "width": 2103120,
+        "height": 502920
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "最長 5 年",
+                "styles": {
+                  "font-size": "18.0pt",
+                  "font-weight": "bold",
+                  "color": "#c9a84c",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "CENTER (2)"
+          }
+        ],
+        "left": 2651760,
+        "top": 2743200,
+        "width": 1371600,
+        "height": 502920
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "都市計畫發布實施後起算（行訴§237-31）",
+                "styles": {
+                  "font-size": "11.0pt",
+                  "color": "#5d7b93",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 4114800,
+        "top": 2743200,
+        "width": 4389120,
+        "height": 502920
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "國家賠償",
+                "styles": {
+                  "font-size": "14.0pt",
+                  "font-weight": "bold",
+                  "color": "#ffffff",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 640080,
+        "top": 3383280,
+        "width": 2103120,
+        "height": 502920
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "2 年 / 5 年",
+                "styles": {
+                  "font-size": "18.0pt",
+                  "font-weight": "bold",
+                  "color": "#c9a84c",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "CENTER (2)"
+          }
+        ],
+        "left": 2651760,
+        "top": 3383280,
+        "width": 1371600,
+        "height": 502920
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "知有損害起 2 年／損害發生起 5 年",
+                "styles": {
+                  "font-size": "11.0pt",
+                  "color": "#5d7b93",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 4114800,
+        "top": 3383280,
+        "width": 4389120,
+        "height": 502920
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "最高法院106台上1740：知有損害 = 知悉損害係因公務員違法行為所致，非僅知土地被分割 → 時效未必已起算",
+                "styles": {
+                  "font-size": "11.0pt",
+                  "color": "#5d7b93",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 640080,
+        "top": 4114800,
+        "width": 7863840,
+        "height": 548640
+      }
+    ]
+  },
+  {
+    "index": 24,
+    "title": "投影片 25",
+    "blocks": []
+  },
+  {
+    "index": 25,
+    "title": "十四、救濟途徑綜合比較",
+    "blocks": [
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "十四、救濟途徑綜合比較",
+                "styles": {
+                  "font-size": "26.0pt",
+                  "font-weight": "bold",
+                  "color": "#1a2744",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 502920,
+        "top": 274320,
+        "width": 7772400,
+        "height": 548640
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "謝秉錡律師事務所 — 法律意見書",
+                "styles": {
+                  "font-size": "8.0pt",
+                  "color": "#ffffff",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 274320,
+        "top": 4892040,
+        "width": 4572000,
+        "height": 260604
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "16 / 20",
+                "styles": {
+                  "font-size": "10.0pt",
+                  "color": "#888888",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "RIGHT (3)"
+          }
+        ],
+        "left": 8046720,
+        "top": 4663440,
+        "width": 914400,
+        "height": 320040
+      },
+      {
+        "type": "table",
+        "content": [],
+        "left": 274320,
+        "top": 1005840,
+        "width": 8595360,
+        "height": 914400,
+        "rows": [
+          [
+            "救濟途徑",
+            "主要優點",
+            "主要風險",
+            "成功率"
+          ],
+          [
+            "訴願＋撤銷訴訟",
+            "程序成熟、前例多",
+            "30日內須提起訴願",
+            "情形二：高"
+          ],
+          [
+            "都市計畫審查訴訟",
+            "直接挑戰都計本身",
+            "5年起訴期間限制",
+            "視合法性而定"
+          ],
+          [
+            "土地法§68國賠",
+            "無過失責任、證明容易",
+            "賠償上限、限縮說爭議",
+            "情形二：中高"
+          ],
+          [
+            "國賠法§2（備位）",
+            "可完全賠償",
+            "須證明故意過失",
+            "情形二：中"
+          ],
+          [
+            "通盤檢討建議",
+            "無時效、無成本",
+            "行政機關有裁量權",
+            "不確定"
+          ],
+          [
+            "複測／更正",
+            "程序簡便",
+            "僅處理測量錯誤",
+            "視錯誤而定"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "index": 26,
+    "title": "十五、行動建議 — 第一階段：事實調查（立即）",
+    "blocks": [
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "十五、行動建議 — 第一階段：事實調查（立即）",
+                "styles": {
+                  "font-size": "26.0pt",
+                  "font-weight": "bold",
+                  "color": "#1a2744",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 502920,
+        "top": 274320,
+        "width": 7772400,
+        "height": 548640
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "謝秉錡律師事務所 — 法律意見書",
+                "styles": {
+                  "font-size": "8.0pt",
+                  "color": "#ffffff",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 274320,
+        "top": 4892040,
+        "width": 4572000,
+        "height": 260604
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "17 / 20",
+                "styles": {
+                  "font-size": "10.0pt",
+                  "color": "#888888",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "RIGHT (3)"
+          }
+        ],
+        "left": 8046720,
+        "top": 4663440,
+        "width": 914400,
+        "height": 320040
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "1",
+                "styles": {
+                  "font-size": "20.0pt",
+                  "font-weight": "bold",
+                  "color": "#ffffff",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "CENTER (2)"
+          }
+        ],
+        "left": 411480,
+        "top": 1280160,
+        "width": 640080,
+        "height": 640080
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "調閱都市計畫書圖",
+                "styles": {
+                  "font-size": "15.0pt",
+                  "font-weight": "bold",
+                  "color": "#1a2744",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 1234440,
+        "top": 1234440,
+        "width": 7315200,
+        "height": 320040
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "向地方政府都發局調閱 A 土地所在之都市計畫圖",
+                "styles": {
+                  "font-size": "11.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          },
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "及土地使用分區證明",
+                "styles": {
+                  "font-size": "11.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 1234440,
+        "top": 1554480,
+        "width": 7315200,
+        "height": 502920
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "2",
+                "styles": {
+                  "font-size": "20.0pt",
+                  "font-weight": "bold",
+                  "color": "#ffffff",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "CENTER (2)"
+          }
+        ],
+        "left": 411480,
+        "top": 2514600,
+        "width": 640080,
+        "height": 640080
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "調閱分割相關資料",
+                "styles": {
+                  "font-size": "15.0pt",
+                  "font-weight": "bold",
+                  "color": "#1a2744",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 1234440,
+        "top": 2468880,
+        "width": 7315200,
+        "height": 320040
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "向地政事務所申請調閱樁位成果圖、公告資料、",
+                "styles": {
+                  "font-size": "11.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          },
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "逕為分割測量成果、分割前後土地登記謄本",
+                "styles": {
+                  "font-size": "11.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 1234440,
+        "top": 2788920,
+        "width": 7315200,
+        "height": 502920
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "3",
+                "styles": {
+                  "font-size": "20.0pt",
+                  "font-weight": "bold",
+                  "color": "#ffffff",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "CENTER (2)"
+          }
+        ],
+        "left": 411480,
+        "top": 3749040,
+        "width": 640080,
+        "height": 640080
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "確認救濟期間",
+                "styles": {
+                  "font-size": "15.0pt",
+                  "font-weight": "bold",
+                  "color": "#1a2744",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 1234440,
+        "top": 3703320,
+        "width": 7315200,
+        "height": 320040
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "確認收受逕為分割通知之日期，計算訴願期間",
+                "styles": {
+                  "font-size": "11.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          },
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "是否已屆滿（訴願期間30日）",
+                "styles": {
+                  "font-size": "11.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 1234440,
+        "top": 4023360,
+        "width": 7315200,
+        "height": 502920
+      }
+    ]
+  },
+  {
+    "index": 27,
+    "title": "十六、行動建議 — 第二階段：行政救濟",
+    "blocks": [
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "十六、行動建議 — 第二階段：行政救濟",
+                "styles": {
+                  "font-size": "26.0pt",
+                  "font-weight": "bold",
+                  "color": "#1a2744",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 502920,
+        "top": 274320,
+        "width": 7772400,
+        "height": 548640
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "謝秉錡律師事務所 — 法律意見書",
+                "styles": {
+                  "font-size": "8.0pt",
+                  "color": "#ffffff",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 274320,
+        "top": 4892040,
+        "width": 4572000,
+        "height": 260604
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "18 / 20",
+                "styles": {
+                  "font-size": "10.0pt",
+                  "color": "#888888",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "RIGHT (3)"
+          }
+        ],
+        "left": 8046720,
+        "top": 4663440,
+        "width": 914400,
+        "height": 320040
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "情形二：都計全部為住宅區",
+                "styles": {
+                  "font-size": "13.0pt",
+                  "font-weight": "bold",
+                  "color": "#ffffff",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "CENTER (2)"
+          }
+        ],
+        "left": 274320,
+        "top": 1051560,
+        "width": 4114800,
+        "height": 457200
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "立即提起訴願（30日內）",
+                "styles": {
+                  "font-size": "12.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          },
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "向地政事務所上級機關提起",
+                "styles": {
+                  "font-size": "12.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          },
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "主張：逕為分割違法、違反信賴保護原則、侵害憲法§15財產權",
+                "styles": {
+                  "font-size": "12.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          },
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "訴願駁回後 → 高等行政法院撤銷訴訟",
+                "styles": {
+                  "font-size": "12.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          },
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "同步評估土地法§68國家賠償（走民事訴訟）",
+                "styles": {
+                  "font-size": "12.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 548640,
+        "top": 1691640,
+        "width": 3566160,
+        "height": 2377440
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "情形一：都計本為道路用地",
+                "styles": {
+                  "font-size": "13.0pt",
+                  "font-weight": "bold",
+                  "color": "#ffffff",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "CENTER (2)"
+          }
+        ],
+        "left": 4754880,
+        "top": 1051560,
+        "width": 4114800,
+        "height": 457200
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "考慮都市計畫審查訴訟（行訴§237-18）",
+                "styles": {
+                  "font-size": "12.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          },
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "先提出通盤檢討建議建立訴訟權能",
+                "styles": {
+                  "font-size": "12.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          },
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "同步提起訴願（保全程序權利）",
+                "styles": {
+                  "font-size": "12.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          },
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "訴願理由：都計本身違法，逕為分割失所附麗",
+                "styles": {
+                  "font-size": "12.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          },
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "或轉向請求徵收補償（釋747參照）",
+                "styles": {
+                  "font-size": "12.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 5029200,
+        "top": 1691640,
+        "width": 3566160,
+        "height": 2377440
+      }
+    ]
+  },
+  {
+    "index": 28,
+    "title": "十七、行動建議 — 第三階段：長期策略",
+    "blocks": [
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "十七、行動建議 — 第三階段：長期策略",
+                "styles": {
+                  "font-size": "26.0pt",
+                  "font-weight": "bold",
+                  "color": "#1a2744",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 502920,
+        "top": 274320,
+        "width": 7772400,
+        "height": 548640
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "謝秉錡律師事務所 — 法律意見書",
+                "styles": {
+                  "font-size": "8.0pt",
+                  "color": "#ffffff",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 274320,
+        "top": 4892040,
+        "width": 4572000,
+        "height": 260604
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "19 / 20",
+                "styles": {
+                  "font-size": "10.0pt",
+                  "color": "#888888",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "RIGHT (3)"
+          }
+        ],
+        "left": 8046720,
+        "top": 4663440,
+        "width": 914400,
+        "height": 320040
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "若救濟成功",
+                "styles": {
+                  "font-size": "13.0pt",
+                  "font-weight": "bold",
+                  "color": "#ffffff",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "CENTER (2)"
+          }
+        ],
+        "left": 274320,
+        "top": 1097280,
+        "width": 2011680,
+        "height": 1051560
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "地政事務所回復原狀，A1 土地回歸 A 土地，恢復全部住宅區登記",
+                "styles": {
+                  "font-size": "12.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 2468880,
+        "top": 1188720,
+        "width": 6217920,
+        "height": 868680
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "若救濟不成功",
+                "styles": {
+                  "font-size": "13.0pt",
+                  "font-weight": "bold",
+                  "color": "#ffffff",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "CENTER (2)"
+          },
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "（合法管制）",
+                "styles": {
+                  "font-size": "13.0pt",
+                  "font-weight": "bold",
+                  "color": "#ffffff",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "CENTER (2)"
+          }
+        ],
+        "left": 274320,
+        "top": 2377440,
+        "width": 2011680,
+        "height": 1051560
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "請求損失補償（特別犧牲）",
+                "styles": {
+                  "font-size": "12.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          },
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "請求徵收補償（都計法§48、釋747）",
+                "styles": {
+                  "font-size": "12.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 2468880,
+        "top": 2468880,
+        "width": 6217920,
+        "height": 868680
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "長期追蹤",
+                "styles": {
+                  "font-size": "13.0pt",
+                  "font-weight": "bold",
+                  "color": "#ffffff",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "CENTER (2)"
+          }
+        ],
+        "left": 274320,
+        "top": 3657600,
+        "width": 2011680,
+        "height": 1051560
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "密切注意通盤檢討公告，提出建議請求解編",
+                "styles": {
+                  "font-size": "12.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          },
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "援引113上433判決，計畫機關不採納即有訴訟權能",
+                "styles": {
+                  "font-size": "12.0pt",
+                  "color": "#1a1a1a",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 2468880,
+        "top": 3749040,
+        "width": 6217920,
+        "height": 868680
+      }
+    ]
+  },
+  {
+    "index": 29,
+    "title": "投影片 30",
+    "blocks": []
+  },
+  {
+    "index": 30,
+    "title": "結  論",
+    "blocks": [
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "結  論",
+                "styles": {
+                  "font-size": "36.0pt",
+                  "font-weight": "bold",
+                  "color": "#ffffff",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "CENTER (2)"
+          }
+        ],
+        "left": 457200,
+        "top": 548640,
+        "width": 8229600,
+        "height": 731520
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "1. 逕為分割通知書為行政處分，甲得提起訴願及行政訴訟",
+                "styles": {
+                  "font-size": "13.0pt",
+                  "color": "#f8f9fa",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 914400,
+        "top": 1645920,
+        "width": 7315200,
+        "height": 365760
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "2. 甲應優先調閱都市計畫書圖確認使用分區屬性",
+                "styles": {
+                  "font-size": "13.0pt",
+                  "color": "#f8f9fa",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 914400,
+        "top": 2084832,
+        "width": 7315200,
+        "height": 365760
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "3. 兩種情形之救濟途徑不同，應依調查結果選擇",
+                "styles": {
+                  "font-size": "13.0pt",
+                  "color": "#f8f9fa",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 914400,
+        "top": 2523744,
+        "width": 7315200,
+        "height": 365760
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "4. 國家賠償優先主張土地法§68無過失責任（民事訴訟）",
+                "styles": {
+                  "font-size": "13.0pt",
+                  "color": "#f8f9fa",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 914400,
+        "top": 2962656,
+        "width": 7315200,
+        "height": 365760
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "5. 時效是最大風險 — 訴願30日、國賠知悉起2年",
+                "styles": {
+                  "font-size": "13.0pt",
+                  "color": "#f8f9fa",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 914400,
+        "top": 3401568,
+        "width": 7315200,
+        "height": 365760
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "6. 建議委任專業律師代理，確保程序正確性及時效性",
+                "styles": {
+                  "font-size": "13.0pt",
+                  "color": "#f8f9fa",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "LEFT"
+          }
+        ],
+        "left": 914400,
+        "top": 3840480,
+        "width": 7315200,
+        "height": 365760
+      },
+      {
+        "type": "text",
+        "content": [
+          {
+            "type": "paragraph",
+            "runs": [
+              {
+                "text": "謝秉錡律師事務所",
+                "styles": {
+                  "font-size": "11.0pt",
+                  "color": "#888888",
+                  "font-family": "\"Microsoft JhengHei\", sans-serif"
+                }
+              }
+            ],
+            "alignment": "CENTER (2)"
+          }
+        ],
+        "left": 457200,
+        "top": 4297680,
+        "width": 8229600,
+        "height": 365760
+      }
+    ]
+  },
+  {
+    "index": 31,
+    "title": "投影片 32",
+    "blocks": []
+  }
+];
+
+let current = 0;
+
+function renderSlide(index) {
+  current = index;
+  const slide = slides[index];
+  
+  // 渲染內容
+  let content = '';
+  for (const block of slide.blocks) {
+    if (block.type === 'text') {
+      for (const item of block.content) {
+        if (item.type === 'paragraph') {
+          const alignMap = {'LEFT':'left','CENTER':'center','RIGHT':'right','JUSTIFY':'justify'};
+          const align = alignMap[item.alignment] || 'left';
+          let runsHtml = '';
+          for (const r of item.runs) {
+            let styleParts = [];
+            for (const [k, v] of Object.entries(r.styles)) styleParts.push(k + ':' + v);
+            const styleStr = styleParts.join('; ');
+            const text = r.text.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+            if (styleStr) runsHtml += '<span style="' + styleStr + '">' + text + '</span>';
+            else runsHtml += text;
+          }
+          content += '<p style="text-align:' + align + '; margin:6px 0; line-height:1.7">' + runsHtml + '</p>';
+        }
+      }
+    } else if (block.type === 'table') {
+      content += '<table style="width:100%; border-collapse:collapse; margin:10px 0; font-size:11pt">';
+      for (let ri = 0; ri < block.rows.length; ri++) {
+        const tag = ri === 0 ? 'th' : 'td';
+        let cells = '';
+        for (const c of block.rows[ri]) {
+          const safe = c.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+          cells += '<' + tag + ' style="border:1px solid #ddd; padding:6px 10px; text-align:left">' + safe + '</' + tag + '>';
+        }
+        const bg = ri === 0 ? 'background:#1a3a5c; color:#fff' : '';
+        content += '<tr style="' + bg + '">' + cells + '</tr>';
+      }
+      content += '</table>';
+    }
+  }
+  
+  document.getElementById('slideCard').innerHTML = 
+    '<h2>' + slide.title.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;') + '</h2>' +
+    '<span class="slide-number">第 ' + (index+1) + ' / ' + slides.length + ' 頁</span>' +
+    content;
+  
+  document.getElementById('pageInfo').textContent = (index + 1) + ' / ' + slides.length;
+  
+  document.querySelectorAll('#toc li').forEach((li, i) => {
+    li.classList.toggle('active', i === index);
+    if (i === index) li.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+  });
+  
+  // Scroll to top of content
+  document.getElementById('slideViewer').scrollTop = 0;
+}
+
+function buildToc() {
+  const ul = document.getElementById('toc');
+  slides.forEach((slide, i) => {
+    const li = document.createElement('li');
+    const title = slide.title.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    li.innerHTML = '<span class="num">' + String(i+1).padStart(2,'0') + '</span>' + title;
+    li.onclick = () => renderSlide(i);
+    ul.appendChild(li);
+  });
+}
+
+function nextSlide() { if (current < slides.length - 1) renderSlide(current + 1); }
+function prevSlide() { if (current > 0) renderSlide(current - 1); }
+function goFirst() { renderSlide(0); }
+function goLast() { renderSlide(slides.length - 1); }
+
+function toggleFullscreen() {
+  if (!document.fullscreenElement) {
+    document.querySelector('.main').requestFullscreen();
+  } else {
+    document.exitFullscreen();
+  }
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowRight' || e.key === 'ArrowDown') nextSlide();
+  if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') prevSlide();
+  if (e.key === 'Home') goFirst();
+  if (e.key === 'End') goLast();
+});
+
+buildToc();
+renderSlide(0);
+</script>
+</body>
+</html>
