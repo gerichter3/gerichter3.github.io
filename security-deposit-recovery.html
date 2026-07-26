@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>擔保提存物返還請求權 — 法律分析簡報</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family: "Noto Serif TC", "Microsoft JhengHei", serif;
+  background: #1a1a2e;
+  color: #fff;
+  overflow: hidden;
+  height: 100vh;
+}
+.slide-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #1a1a2e;
+}
+.slide-container img {
+  max-width: 100%;
+  max-height: 100vh;
+  object-fit: contain;
+  box-shadow: 0 4px 40px rgba(0,0,0,0.5);
+  border-radius: 4px;
+}
+.controls {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(26,26,46,0.92);
+  backdrop-filter: blur(8px);
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 100;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+.controls .info {
+  font-size: 0.85rem;
+  color: #aaa;
+}
+.controls .nav-btn {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: #fff;
+  padding: 8px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.2s;
+  font-family: inherit;
+}
+.controls .nav-btn:hover { background: rgba(255,255,255,0.18); }
+.controls .nav-btn:disabled { opacity: 0.3; cursor: default; }
+.progress {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: rgba(255,255,255,0.08);
+  z-index: 200;
+}
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #c8a84b, #e8c84b);
+  transition: width 0.3s ease;
+}
+/* 側邊目錄 */
+.toc-toggle {
+  position: fixed;
+  top: 16px; right: 16px;
+  background: rgba(26,26,46,0.85);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: #aaa;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  z-index: 200;
+  font-family: inherit;
+  transition: color 0.2s;
+}
+.toc-toggle:hover { color: #fff; }
+.toc-panel {
+  position: fixed;
+  top: 0; right: -340px;
+  width: 320px;
+  height: 100vh;
+  background: rgba(20,20,36,0.97);
+  backdrop-filter: blur(12px);
+  border-left: 1px solid rgba(255,255,255,0.08);
+  z-index: 300;
+  overflow-y: auto;
+  transition: right 0.35s ease;
+  padding: 60px 16px 24px;
+}
+.toc-panel.open { right: 0; }
+.toc-panel h3 {
+  font-size: 0.95rem;
+  color: #c8a84b;
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.toc-item {
+  display: block;
+  padding: 8px 12px;
+  margin-bottom: 4px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.82rem;
+  color: #bbb;
+  transition: background 0.15s, color 0.15s;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+  font-family: inherit;
+}
+.toc-item:hover { background: rgba(200,168,75,0.12); color: #fff; }
+.toc-item.active { background: rgba(200,168,75,0.2); color: #c8a84b; font-weight: 600; }
+.toc-overlay {
+  position: fixed; top:0; left:0; right:0; bottom:0;
+  background: rgba(0,0,0,0.4);
+  z-index: 250;
+  display: none;
+}
+.toc-overlay.show { display: block; }
+/* 鍵盤提示 */
+.key-hint {
+  position: fixed;
+  bottom: 70px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0,0,0,0.6);
+  color: #888;
+  padding: 6px 18px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  z-index: 50;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+.key-hint.show { opacity: 1; }
+@media (max-width: 768px) {
+  .controls .info { font-size: 0.75rem; }
+  .controls .nav-btn { padding: 6px 14px; font-size: 0.8rem; }
+  .toc-panel { width: 280px; right: -300px; }
+}
+</style>
+</head>
+<body>
+
+<div class="progress"><div class="progress-bar" id="progressBar"></div></div>
+
+<div class="slide-container" id="slideContainer">
+  <img id="slideImg" src="" alt="簡報幻燈片">
+</div>
+
+<div class="key-hint" id="keyHint">← → 方向鍵切換 · T 開啟目錄 · Esc 關閉</div>
+
+<button class="toc-toggle" id="tocToggle" onclick="toggleToc()">☰ 目錄</button>
+
+<div class="toc-overlay" id="tocOverlay" onclick="closeToc()"></div>
+<div class="toc-panel" id="tocPanel">
+  <h3>📋 幻燈片目錄</h3>
+  <button class="toc-item active" onclick="goTo(0)">第1頁 · 擔保提存物返還請求權</button>
+  <button class="toc-item " onclick="goTo(1)">第2頁 · 四、實務見解（續）</button>
+  <button class="toc-item " onclick="goTo(2)">第3頁 · 五、本案分析</button>
+  <button class="toc-item " onclick="goTo(3)">第4頁 · 五、本案分析（續）</button>
+  <button class="toc-item " onclick="goTo(4)">第5頁 · 五、本案分析（續）</button>
+  <button class="toc-item " onclick="goTo(5)">第6頁 · 六、結論</button>
+  <button class="toc-item " onclick="goTo(6)">第7頁 · 六、結論（續）——建議行動</button>
+  <button class="toc-item " onclick="goTo(7)">第8頁 · 七、援引判決列表</button>
+  <button class="toc-item " onclick="goTo(8)">第9頁 · 簡報目錄</button>
+  <button class="toc-item " onclick="goTo(9)">第10頁 · 一、案件事實</button>
+  <button class="toc-item " onclick="goTo(10)">第11頁 · 二、法律爭點</button>
+  <button class="toc-item " onclick="goTo(11)">第12頁 · 三、相關法律規定</button>
+  <button class="toc-item " onclick="goTo(12)">第13頁 · 四、實務見解</button>
+  <button class="toc-item " onclick="goTo(13)">第14頁 · 四、實務見解（續）</button>
+  <button class="toc-item " onclick="goTo(14)">第15頁 · 四、實務見解（續）</button>
+</div>
+
+<div class="controls">
+  <div class="info">
+    <span id="currentPage">1</span> / <span id="totalPages">15</span>
+    &nbsp;·&nbsp; 擔保提存物返還請求權
+  </div>
+  <div>
+    <button class="nav-btn" id="prevBtn" onclick="prevSlide()">‹ 上一頁</button>
+    <button class="nav-btn" id="nextBtn" onclick="nextSlide()">下一頁 ›</button>
+  </div>
+</div>
+
+<script>
+const images = ["slides/security-deposit/slide_1.png", "slides/security-deposit/slide_2.png", "slides/security-deposit/slide_3.png", "slides/security-deposit/slide_4.png", "slides/security-deposit/slide_5.png", "slides/security-deposit/slide_6.png", "slides/security-deposit/slide_7.png", "slides/security-deposit/slide_8.png", "slides/security-deposit/slide_9.png", "slides/security-deposit/slide_10.png", "slides/security-deposit/slide_11.png", "slides/security-deposit/slide_12.png", "slides/security-deposit/slide_13.png", "slides/security-deposit/slide_14.png", "slides/security-deposit/slide_15.png"];
+let current = 0;
+const total = images.length;
+const img = document.getElementById('slideImg');
+const progressBar = document.getElementById('progressBar');
+const currentPage = document.getElementById('currentPage');
+const totalPages = document.getElementById('totalPages');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+totalPages.textContent = total;
+
+function updateSlide() {
+  img.src = images[current];
+  currentPage.textContent = current + 1;
+  progressBar.style.width = ((current + 1) / total * 100) + '%';
+  prevBtn.disabled = current === 0;
+  nextBtn.disabled = current === total - 1;
+  document.title = (current + 1) + '/' + total + ' · 擔保提存物返還請求權';
+  // 更新目錄 active
+  document.querySelectorAll('.toc-item').forEach((el, i) => {
+    el.classList.toggle('active', i === current);
+  });
+}
+
+function nextSlide() { if (current < total - 1) { current++; updateSlide(); } }
+function prevSlide() { if (current > 0) { current--; updateSlide(); } }
+function goTo(n) { current = n; updateSlide(); closeToc(); }
+
+function toggleToc() {
+  const panel = document.getElementById('tocPanel');
+  const overlay = document.getElementById('tocOverlay');
+  const isOpen = panel.classList.contains('open');
+  panel.classList.toggle('open');
+  overlay.classList.toggle('show');
+}
+function closeToc() {
+  document.getElementById('tocPanel').classList.remove('open');
+  document.getElementById('tocOverlay').classList.remove('show');
+}
+
+// 鍵盤事件
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'ArrowLeft') prevSlide();
+  else if (e.key === 'ArrowRight') nextSlide();
+  else if (e.key === 't' || e.key === 'T') toggleToc();
+  else if (e.key === 'Escape') closeToc();
+});
+
+// 觸控滑動支援
+let touchStartX = 0;
+document.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; });
+document.addEventListener('touchend', e => {
+  const diff = touchStartX - e.changedTouches[0].screenX;
+  if (Math.abs(diff) > 50) {
+    if (diff > 0) nextSlide(); else prevSlide();
+  }
+});
+
+// 自動隱藏鍵盤提示
+setTimeout(() => document.getElementById('keyHint').classList.add('show'), 2000);
+setTimeout(() => document.getElementById('keyHint').classList.remove('show'), 8000);
+
+updateSlide();
+</script>
+</body>
+</html>
