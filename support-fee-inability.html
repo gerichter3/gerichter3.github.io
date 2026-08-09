@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>扶養費請求：「不能維持生活」之判斷標準與實務攻防</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:"Noto Serif TC","Microsoft JhengHei",serif; background:#1a1a2e; color:#fff; overflow:hidden; height:100vh; }
+.slide-container { position:relative; width:100vw; height:100vh; display:flex; align-items:center; justify-content:center; background:#1a1a2e; }
+.slide { display:none; width:100vw; height:100vh; align-items:center; justify-content:center; }
+.slide.active { display:flex; }
+.slide-img img { max-width:100%; max-height:100vh; object-fit:contain; box-shadow:0 4px 40px rgba(0,0,0,.5); border-radius:4px; }
+.slide-text { background:#fff; color:#1a1a2e; flex-direction:column; align-items:flex-start; justify-content:flex-start; padding:6vh 8vw; overflow-y:auto; }
+.st-title { font-size:2.2rem; font-weight:700; color:#1a365d; margin-bottom:2vh; border-bottom:3px solid #d4af37; padding-bottom:1vh; }
+.st-body p { font-size:1.25rem; line-height:1.9; margin-bottom:1.2vh; color:#222; }
+.st-body p.empty { color:#999; font-style:italic; }
+.controls { position:fixed; bottom:0; left:0; right:0; background:rgba(26,26,46,.92); backdrop-filter:blur(8px); padding:12px 24px; display:flex; align-items:center; justify-content:space-between; z-index:100; border-top:1px solid rgba(255,255,255,.1); }
+.controls .info { font-size:.85rem; color:#aaa; }
+.controls .nav-btn { background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.15); color:#fff; padding:8px 20px; border-radius:6px; cursor:pointer; font-size:.9rem; transition:background .2s; font-family:inherit; }
+.controls .nav-btn:hover { background:rgba(255,255,255,.18); }
+.controls .nav-btn:disabled { opacity:.3; cursor:default; }
+.progress { position:fixed; top:0; left:0; right:0; height:3px; background:rgba(255,255,255,.08); z-index:200; }
+.progress-bar { height:100%; background:linear-gradient(90deg,#c8a84b,#e8c84b); transition:width .3s ease; }
+.toc-toggle { position:fixed; top:16px; right:16px; background:rgba(26,26,46,.85); border:1px solid rgba(255,255,255,.15); color:#aaa; padding:8px 14px; border-radius:6px; cursor:pointer; font-size:.85rem; z-index:200; font-family:inherit; transition:color .2s; }
+.toc-toggle:hover { color:#fff; }
+.toc-panel { position:fixed; top:0; right:-340px; width:320px; height:100vh; background:rgba(20,20,36,.97); backdrop-filter:blur(12px); border-left:1px solid rgba(255,255,255,.08); z-index:300; overflow-y:auto; transition:right .35s ease; padding:60px 16px 24px; }
+.toc-panel.open { right:0; }
+.toc-panel h3 { font-size:.95rem; color:#c8a84b; margin-bottom:16px; padding-bottom:10px; border-bottom:1px solid rgba(255,255,255,.08); }
+.toc-item { display:block; padding:8px 12px; margin-bottom:4px; border-radius:4px; cursor:pointer; font-size:.82rem; color:#bbb; transition:background .15s,color .15s; border:none; background:none; width:100%; text-align:left; font-family:inherit; }
+.toc-item:hover { background:rgba(200,168,75,.12); color:#fff; }
+.toc-item.active { background:rgba(200,168,75,.2); color:#c8a84b; font-weight:600; }
+.toc-overlay { position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,.4); z-index:250; display:none; }
+.toc-overlay.show { display:block; }
+.key-hint { position:fixed; bottom:70px; left:50%; transform:translateX(-50%); background:rgba(0,0,0,.6); color:#888; padding:6px 18px; border-radius:20px; font-size:.75rem; z-index:50; pointer-events:none; opacity:0; transition:opacity .5s; }
+.key-hint.show { opacity:1; }
+@media (max-width:768px) { .controls .info{font-size:.75rem;} .controls .nav-btn{padding:6px 14px;font-size:.8rem;} .toc-panel{width:280px;right:-300px;} .st-title{font-size:1.6rem;} .st-body p{font-size:1.05rem;} }
+</style>
+</head>
+<body>
+<div class="progress"><div class="progress-bar" id="progressBar"></div></div>
+<div class="slide-container" id="slideContainer">
+<div class="slide slide-text"><div class="st-title">扶養費請求</div><div class="st-body"><p>「不能維持生活」之判斷標準與實務攻防</p><p>民法第 1117 條受扶養權利要件之實務認定</p><p>謝秉錡律師事務所　2026 年 8 月</p><p>1/14</p></div></div><div class="slide slide-text"><div class="st-title">簡報目錄</div><div class="st-body"><p>一、案件事實（已去識別化）</p><p>二、核心法條：民法 §1114／§1117／§1118／§1118-1</p><p>三、「不能維持生活」之判斷標準</p><p>四、最相近判決：有資產但受抵押權限制</p><p>五、有利與不利論點</p><p>六、實務判決彙整</p><p>七、答辯策略</p><p>2/14</p></div></div><div class="slide slide-text"><div class="st-title">一、案件事實（已去識別化）</div><div class="st-body"><p>3/14</p><p>當事人（父）為年長之直系血親尊親屬，向三名子女請求給付扶養費。</p><p>名下房地部分持分，其上疊有多重負擔：</p><p>銀行最高限額抵押權</p><p>早年設定</p><p>子女設定之最高限額抵押權</p><p>近年設定，約定年利率</p><p>預告登記</p><p>請求權人為子女</p><p>銀行假扣押登記</p><p>保全程序，限制範圍為該持分</p><p>核心爭點：持分受抵押權、預告登記與假扣押多重限制，是否仍屬 §1117「不能維持生活」？</p></div></div><div class="slide slide-img"><img src="slides/support-fee-inability/page04.png" alt="圖表頁"></div><div class="slide slide-text"><div class="st-title">二、核心法條</div><div class="st-body"><p>4/14</p><p>條文</p><p>內容</p><p>本案意義</p><p>§1114 I①</p><p>直系血親互負扶養義務</p><p>父子間扶養義務之基礎</p><p>§1117（關鍵）</p><p>受扶養以不能維持生活而無謀生能力為限；直系血親尊親屬不適用無謀生能力限制</p><p>聲請人僅須證明「不能維持生活」</p><p>§1118</p><p>負扶養義務致不能維持自己生活者，得免除（尊親屬僅能減輕）</p><p>子女經濟困難僅得減輕，不得全免</p><p>§1118-1</p><p>受扶養權利人對義務人虐待、棄養等情節重大得免除</p><p>子女之減免抗辯</p><p>4/14</p></div></div><div class="slide slide-img"><img src="slides/support-fee-inability/page06.png" alt="圖表頁"></div><div class="slide slide-text"><div class="st-title">三、「不能維持生活」之判斷標準（一）</div><div class="st-body"><p>5/14</p><p>兩條實務路線</p><p>路線</p><p>定義</p><p>來源</p><p>無財產路線</p><p>「無財產足以維持生活」</p><p>最高法院 81 台上 1504、96 台上 2823</p><p>財產＋勞力路線</p><p>「不能以自己之財產及勞力所得維持自己之生活」</p><p>最高法院 78 台上 1580、114 家親聲 129/98</p><p>認定時點（最高法院 108 台上 1757）</p><p>以事實審言詞辯論終結時之財產狀況，及該財產日後可能消減之情事，推認能否以自己財力維持生活。</p></div></div><div class="slide slide-img"><img src="slides/support-fee-inability/page08.png" alt="圖表頁"></div><div class="slide slide-text"><div class="st-title">三、判斷標準（二）——有財產 ≠ 能維持生活</div><div class="st-body"><p>6/14</p><p>法院審酌重點：該財產是否可實際運用，而非僅看登記名義或帳面價值。</p><p>公同共有無法變現</p><p>114 家親聲 77：名下財產 8,033 萬元，但為公同共有、無法變現 → 仍認不能維持生活</p><p>有存款數百萬也可能不夠</p><p>98 家上易 15：存款 205 萬＋老人年金 3,000／月，年利息約 5 萬 &lt; 年生活費 21.6 萬 → 不能維持生活</p><p>不動產價值豐厚無貸款</p><p>則可能認定能維持生活（反面推論）</p></div></div><div class="slide slide-img"><img src="slides/support-fee-inability/page10.png" alt="圖表頁"></div><div class="slide slide-text"><div class="st-title">四、最相近判決：高院 110 上更一 40 ★</div><div class="st-body"><p>7/14</p><p>判決要旨</p><p>父母名下雖各有數千萬元資產，惟房地設最高限額抵押、借款餘額數百萬元、土地為道路用地開發受限、供家人居住使用 → 法院認年滿 65 歲退休後不能維持生活，扶養費請求准許。</p><p>本案類比</p><p>聲請人持分同受高額抵押權限制 → 可類比援引「有資產但受抵押權限制，仍認不能維持生活」。</p></div></div><div class="slide slide-img"><img src="slides/support-fee-inability/page12.png" alt="圖表頁"></div><div class="slide slide-text"><div class="st-title">四、最相近判決（續）：北院 100 重訴 670</div><div class="st-body"><p>8/14</p><p>判決要旨</p><p>財產無法出租收取租金、亦無法出售變現以獲取生活所需現金者，即應認有不能維持生活之情事。</p><p>判斷重點：資產之「變現性」與「收益性」——不能只看所有權名義。</p><p>與本案關聯：假扣押登記後，持分客觀上無從出售、出租或再借貸變現 → 恰合本判決之「無法變現」要件。</p></div></div><div class="slide slide-img"><img src="slides/support-fee-inability/page14.png" alt="圖表頁"></div><div class="slide slide-text"><div class="st-title">五、有利於聲請人之論點</div><div class="st-body"><p>9/14</p><p>部分持分疊有高額抵押＋預告登記＋假扣押登記 → 淨值所剩無幾</p><p>假扣押後客觀上無從出售、出租或再借貸變現</p><p>最高法院 96 台上 2823：要求扣除負債後實質審查（財產 769 萬、負債 500 萬 → 發回）</p></div></div><div class="slide slide-img"><img src="slides/support-fee-inability/page16.png" alt="圖表頁"></div><div class="slide slide-text"><div class="st-title">五、不利論點（子女抗辯空間）</div><div class="st-body"><p>10/14</p><p>公告現值評估</p><p>法院慣以公告現值評估持分價值（臺南 110 家聲 81、臺中 104 家親聲 445）</p><p>拍賣無人應買 ≠ 變現困難</p><p>須舉證積極無法處分（臺南 113 家聲 22）</p><p>最大風險：規避扶養義務</p><p>子女前設定抵押＋預告登記，可能被定性為父子共謀規避扶養 → 誠信原則／權利濫用攻擊（士林 114 家親聲抗 46）</p><p>另有流動資產</p><p>若另有現金／存款足額 → 非不能維持生活（高雄少家 115 家聲抗 25：有 305 萬即駁回）</p></div></div><div class="slide slide-img"><img src="slides/support-fee-inability/page18.png" alt="圖表頁"></div><div class="slide slide-text"><div class="st-title">六、實務判決彙整</div><div class="st-body"><p>11/14</p><p>判決</p><p>層級</p><p>要旨</p><p>最高法院 96 台上 2823</p><p>財產須扣除負債後實質審查；769 萬－負債 500 萬 → 發回</p><p>最高法院 108 台上 1757</p><p>言詞辯論終結時財產＋日後消減情事認定</p><p>最高法院 78 台上 1580</p><p>不能以自己財產及勞力所得維持生活</p><p>高院 110 上更一 40</p><p>★ 有資產但受抵押限制仍認不能維持生活</p><p>北院 100 重訴 670</p><p>財產無法出租出售變現即認不能維持生活</p><p>臺中 104 家親聲 445</p><p>有土地持分 165 萬但未舉證無法處分 → 駁回</p><p>臺南 110 家聲 81</p><p>自住房 85 萬可抵押借貸 → 能維持生活</p><p>臺南 113 家聲 22</p><p>僅公告現值 216 萬即可維持 → 駁回</p><p>高雄少家 115 家聲抗 25</p><p>售屋款 305 萬可供支配 → 未達不能維持生活</p><p>士林 114 家親聲抗 46</p><p>蓄意處分財產致不能維持 → 違反誠信原則</p><p>11/14</p></div></div><div class="slide slide-img"><img src="slides/support-fee-inability/page20.png" alt="圖表頁"></div><div class="slide slide-text"><div class="st-title">七、答辯策略（子女方）</div><div class="st-body"><p>12/14</p><p>清查資產為第一優先</p><p>聲請調取稅務電子閘門財產所得明細</p><p>抗辯主軸</p><p>公告現值評估 → 足以維持生活；曾設定抵押 → 有融資能力</p><p>誠信原則攻擊</p><p>若子女抵押為父子間安排 → 主張權利濫用</p><p>減輕免除抗辯</p><p>§1118 減輕義務／§1118-1 受扶養人未盡義務</p></div></div><div class="slide slide-img"><img src="slides/support-fee-inability/page22.png" alt="圖表頁"></div><div class="slide slide-text"><div class="st-title">重點回顧</div><div class="st-body"><p>13/14</p><p>§1117：直系血親尊親屬僅須證明「不能維持生活」，無須證明無謀生能力</p><p>兩條路線：無財產（81 台上 1504）／財產＋勞力（78 台上 1580）</p><p>有財產 ≠ 能維持生活：重點在資產可否實際運用變現（108 台上 1757）</p><p>最相近判決：110 上更一 40——高額抵押限制下，65 歲退休仍認不能維持生活</p><p>最大風險：抵押安排被定性為規避扶養義務 → 誠信原則攻擊（114 家親聲抗 46）</p><p>實務趨勢：蓄意處分財產致自陷貧困 → 權利濫用，請求駁回</p></div></div><div class="slide slide-img"><img src="slides/support-fee-inability/page24.png" alt="圖表頁"></div><div class="slide slide-text"><div class="st-title">謝謝聆聽</div><div class="st-body"><p>扶養費請求：「不能維持生活」之判斷標準與實務攻防</p><p>本簡報為法律教育用途，案件事實已依個人資料保護法去識別化</p><p>判決字號業經司法院系統核實，正式引用前請再行確認</p><p>謝秉錡律師事務所　2026 年 8 月</p><p>14/14</p></div></div>
+</div>
+<div class="key-hint" id="keyHint">← → 方向鍵切換 · T 開啟目錄 · Esc 關閉</div>
+<button class="toc-toggle" id="tocToggle" onclick="toggleToc()">☰ 目錄</button>
+<div class="toc-overlay" id="tocOverlay" onclick="closeToc()"></div>
+<div class="toc-panel" id="tocPanel"><h3>📋 幻燈片目錄</h3>
+<button class="toc-item active" onclick="goTo(0)">第1頁 · 扶養費請求</button><button class="toc-item" onclick="goTo(1)">第2頁 · 簡報目錄</button><button class="toc-item" onclick="goTo(2)">第3頁 · 一、案件事實（已去識別化）</button><button class="toc-item" onclick="goTo(3)">第4頁 · 圖表頁 4</button><button class="toc-item" onclick="goTo(4)">第5頁 · 二、核心法條</button><button class="toc-item" onclick="goTo(5)">第6頁 · 圖表頁 6</button><button class="toc-item" onclick="goTo(6)">第7頁 · 三、「不能維持生活」之判斷標準（一）</button><button class="toc-item" onclick="goTo(7)">第8頁 · 圖表頁 8</button><button class="toc-item" onclick="goTo(8)">第9頁 · 三、判斷標準（二）——有財產 ≠ 能維持生活</button><button class="toc-item" onclick="goTo(9)">第10頁 · 圖表頁 10</button><button class="toc-item" onclick="goTo(10)">第11頁 · 四、最相近判決：高院 110 上更一 40 ★</button><button class="toc-item" onclick="goTo(11)">第12頁 · 圖表頁 12</button><button class="toc-item" onclick="goTo(12)">第13頁 · 四、最相近判決（續）：北院 100 重訴 670</button><button class="toc-item" onclick="goTo(13)">第14頁 · 圖表頁 14</button><button class="toc-item" onclick="goTo(14)">第15頁 · 五、有利於聲請人之論點</button><button class="toc-item" onclick="goTo(15)">第16頁 · 圖表頁 16</button><button class="toc-item" onclick="goTo(16)">第17頁 · 五、不利論點（子女抗辯空間）</button><button class="toc-item" onclick="goTo(17)">第18頁 · 圖表頁 18</button><button class="toc-item" onclick="goTo(18)">第19頁 · 六、實務判決彙整</button><button class="toc-item" onclick="goTo(19)">第20頁 · 圖表頁 20</button><button class="toc-item" onclick="goTo(20)">第21頁 · 七、答辯策略（子女方）</button><button class="toc-item" onclick="goTo(21)">第22頁 · 圖表頁 22</button><button class="toc-item" onclick="goTo(22)">第23頁 · 重點回顧</button><button class="toc-item" onclick="goTo(23)">第24頁 · 圖表頁 24</button><button class="toc-item" onclick="goTo(24)">第25頁 · 謝謝聆聽</button>
+</div>
+<div class="controls">
+  <div class="info"><span id="currentPage">1</span> / <span id="totalPages">25</span> &nbsp;·&nbsp; 扶養費請求：「不能維持生活」之判斷標準與實務攻防</div>
+  <div><button class="nav-btn" id="prevBtn" onclick="prevSlide()">‹ 上一頁</button>
+  <button class="nav-btn" id="nextBtn" onclick="nextSlide()">下一頁 ›</button></div>
+</div>
+<script>
+const TOTAL = 25;
+let current = 0;
+const slidesEl = document.querySelectorAll('.slide');
+const progressBar = document.getElementById('progressBar');
+const currentPage = document.getElementById('currentPage');
+const totalPages = document.getElementById('totalPages');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+totalPages.textContent = TOTAL;
+function updateSlide() {
+  slidesEl.forEach((el,i)=>el.classList.toggle('active', i===current));
+  currentPage.textContent = current+1;
+  progressBar.style.width = ((current+1)/TOTAL*100)+'%';
+  prevBtn.disabled = current===0;
+  nextBtn.disabled = current===TOTAL-1;
+  document.title = (current+1)+'/'+TOTAL+' · 扶養費請求：「不能維持生活」之判斷標準與實務攻防';
+  document.querySelectorAll('.toc-item').forEach((el,i)=>{el.classList.toggle('active', i===current);});
+}
+function nextSlide() { if(current<TOTAL-1){current++;updateSlide();} }
+function prevSlide() { if(current>0){current--;updateSlide();} }
+function goTo(n) { current=n; updateSlide(); closeToc(); }
+function toggleToc() { document.getElementById('tocPanel').classList.toggle('open'); document.getElementById('tocOverlay').classList.toggle('show'); }
+function closeToc() { document.getElementById('tocPanel').classList.remove('open'); document.getElementById('tocOverlay').classList.remove('show'); }
+document.addEventListener('keydown', function(e) {
+  if(e.key==='ArrowLeft') prevSlide();
+  else if(e.key==='ArrowRight') nextSlide();
+  else if(e.key==='t'||e.key==='T') toggleToc();
+  else if(e.key==='Escape') closeToc();
+});
+let touchStartX=0;
+document.addEventListener('touchstart', e=>{touchStartX=e.changedTouches[0].screenX;});
+document.addEventListener('touchend', e=>{
+  const diff=touchStartX-e.changedTouches[0].screenX;
+  if(Math.abs(diff)>50){ if(diff>0) nextSlide(); else prevSlide(); }
+});
+setTimeout(()=>document.getElementById('keyHint').classList.add('show'),2000);
+setTimeout(()=>document.getElementById('keyHint').classList.remove('show'),8000);
+updateSlide();
+</script>
+</body>
+</html>
