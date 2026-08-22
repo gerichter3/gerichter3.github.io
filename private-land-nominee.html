@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>私法人借名登記耕地之契約效力（甲→乙→丙三段式）</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:"Noto Serif TC","Microsoft JhengHei",serif; background:#1a1a2e; color:#fff; overflow:hidden; height:100vh; }
+.slide-container { position:relative; width:100vw; height:100vh; display:flex; align-items:center; justify-content:center; background:#1a1a2e; }
+.slide { display:none; width:100vw; height:100vh; align-items:center; justify-content:center; }
+.slide.active { display:flex; }
+.slide-img img { max-width:100%; max-height:100vh; object-fit:contain; box-shadow:0 4px 40px rgba(0,0,0,.5); border-radius:4px; }
+.slide-text { background:#fff; color:#1a1a2e; flex-direction:column; align-items:flex-start; justify-content:flex-start; padding:6vh 8vw; overflow-y:auto; }
+.st-title { font-size:2.2rem; font-weight:700; color:#1a365d; margin-bottom:2vh; border-bottom:3px solid #d4af37; padding-bottom:1vh; }
+.st-body p { font-size:1.25rem; line-height:1.9; margin-bottom:1.2vh; color:#222; }
+.st-body p.empty { color:#999; font-style:italic; }
+.controls { position:fixed; bottom:0; left:0; right:0; background:rgba(26,26,46,.92); backdrop-filter:blur(8px); padding:12px 24px; display:flex; align-items:center; justify-content:space-between; z-index:100; border-top:1px solid rgba(255,255,255,.1); }
+.controls .info { font-size:.85rem; color:#aaa; }
+.controls .nav-btn { background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.15); color:#fff; padding:8px 20px; border-radius:6px; cursor:pointer; font-size:.9rem; transition:background .2s; font-family:inherit; }
+.controls .nav-btn:hover { background:rgba(255,255,255,.18); }
+.controls .nav-btn:disabled { opacity:.3; cursor:default; }
+.progress { position:fixed; top:0; left:0; right:0; height:3px; background:rgba(255,255,255,.08); z-index:200; }
+.progress-bar { height:100%; background:linear-gradient(90deg,#c8a84b,#e8c84b); transition:width .3s ease; }
+.toc-toggle { position:fixed; top:16px; right:16px; background:rgba(26,26,46,.85); border:1px solid rgba(255,255,255,.15); color:#aaa; padding:8px 14px; border-radius:6px; cursor:pointer; font-size:.85rem; z-index:200; font-family:inherit; transition:color .2s; }
+.toc-toggle:hover { color:#fff; }
+.toc-panel { position:fixed; top:0; right:-340px; width:320px; height:100vh; background:rgba(20,20,36,.97); backdrop-filter:blur(12px); border-left:1px solid rgba(255,255,255,.08); z-index:300; overflow-y:auto; transition:right .35s ease; padding:60px 16px 24px; }
+.toc-panel.open { right:0; }
+.toc-panel h3 { font-size:.95rem; color:#c8a84b; margin-bottom:16px; padding-bottom:10px; border-bottom:1px solid rgba(255,255,255,.08); }
+.toc-item { display:block; padding:8px 12px; margin-bottom:4px; border-radius:4px; cursor:pointer; font-size:.82rem; color:#bbb; transition:background .15s,color .15s; border:none; background:none; width:100%; text-align:left; font-family:inherit; }
+.toc-item:hover { background:rgba(200,168,75,.12); color:#fff; }
+.toc-item.active { background:rgba(200,168,75,.2); color:#c8a84b; font-weight:600; }
+.toc-overlay { position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,.4); z-index:250; display:none; }
+.toc-overlay.show { display:block; }
+.key-hint { position:fixed; bottom:70px; left:50%; transform:translateX(-50%); background:rgba(0,0,0,.6); color:#888; padding:6px 18px; border-radius:20px; font-size:.75rem; z-index:50; pointer-events:none; opacity:0; transition:opacity .5s; }
+.key-hint.show { opacity:1; }
+@media (max-width:768px) { .controls .info{font-size:.75rem;} .controls .nav-btn{padding:6px 14px;font-size:.8rem;} .toc-panel{width:280px;right:-300px;} .st-title{font-size:1.6rem;} .st-body p{font-size:1.05rem;} }
+</style>
+</head>
+<body>
+<div class="progress"><div class="progress-bar" id="progressBar"></div></div>
+<div class="slide-container" id="slideContainer">
+<div class="slide slide-text"><div class="st-title">私法人借名登記耕地之契約效力</div><div class="st-body"><p>甲 → 乙 → 丙 三段式借名登記之法律分析</p><p>法律研究意見簡報</p><p>謝秉錡律師事務所</p><p>謝秉錡律師　劉靜芬律師　何博彥律師　林育正律師　陳儒學習律師</p><p>2026年8月</p><p>1/16</p></div></div><div class="slide slide-text"><div class="st-title">簡報目錄</div><div class="st-body"><p>一、問題提出與案件事實</p><p>二、法律爭點</p><p>三、相關法律規定</p><p>四、實務見解分析</p><p>五、爭點分析（綜合判斷）</p><p>六、結論與建議</p><p>七、援引判決列表</p><p>2/16</p></div></div><div class="slide slide-img"><img src="slides/private-land-nominee/page03.png" alt="圖表頁"></div><div class="slide slide-text"><div class="st-title">一、問題提出與案件事實</div><div class="st-body"><p>甲公司（私法人）</p><p>向第三人購買農地，原供作廠房使用；因私法人不得承受耕地，先借名登記於乙名下（第一段借名登記）</p><p>嗣廠房拆除</p><p>甲公司再要求乙將土地移轉登記予丙，成立甲、丙間之借名登記（第二段借名登記）</p><p>核心問題</p><p>三段式借名登記契約之效力如何？廠房拆除後是否影響效力？</p><p>3/16</p></div></div><div class="slide slide-img"><img src="slides/private-land-nominee/page05.png" alt="圖表頁"></div><div class="slide slide-text"><div class="st-title">二、法律爭點</div><div class="st-body"><p>爭點一</p><p>第一段甲、乙間借名登記契約是否無效？</p><p>爭點二</p><p>第二段甲、丙間借名登記契約，是否因第一段無效而「連帶無效」？</p><p>抑或應獨立判斷？結論上是否仍屬無效？</p><p>爭點三</p><p>廠房拆除之事實，是否使契約轉為有效？</p><p>4/16</p></div></div><div class="slide slide-img"><img src="slides/private-land-nominee/page07.png" alt="圖表頁"></div><div class="slide slide-text"><div class="st-title">三、相關法律規定</div><div class="st-body"><p>農發條例 §33 前段</p><p>私法人不得承受耕地。但符合第34條規定之農民團體、農業企業機構或農業試驗研究機構經取得許可者，不在此限</p><p>農發條例 §3 ⑪</p><p>耕地：依區域計畫法劃定為特定農業區、一般農業區、山坡地保育區及森林區之農牧用地</p><p>農發條例 §34</p><p>農民團體、農業企業機構或農業試驗研究機構，符合技術密集或資本密集類目及標準者，經申請許可後始得承受耕地</p><p>民法 §71</p><p>法律行為違反強制或禁止之規定者，無效。但其規定並不以之為無效者，不在此限</p><p>民法 §113</p><p>無效法律行為之當事人，於行為當時知其無效或可得而知者，應負回復原狀或損害賠償之責任</p><p>修正前土地法 §30</p><p>89年刪除前：「私有農地所有權之移轉，其承受人以能自耕者為限」→ 由農發條例 §33 承接</p><p>5/16</p></div></div><div class="slide slide-img"><img src="slides/private-land-nominee/page09.png" alt="圖表頁"></div><div class="slide slide-text"><div class="st-title">四、實務見解分析</div><div class="st-body"><p>（一）第一段借名登記：脫法行為，依民法 §71 無效</p><p>最高法院 97 年度台上字第 879 號（事實高度雷同）</p><p>金恩公司（私法人）為興建工廠購買農地，借用有自耕能力之自然人登記並建廠房：</p><p>「顯係以迂迴方法逃避土地法第30條禁止規定…以不正當方式規避強制規定之脫法行為，應屬無效」</p><p>「無效之法律行為…不能因嗣後土地法之修正，取消農地承受人之資格限制，而認為有效」</p><p>臺灣高雄地院 106 年度重訴字第 21 號</p><p>「若私法人將耕地借名登記於與有自耕能力之自然人名下，而規避上開規定之適用，自屬脫法行為，該借名登記契約應屬無效」</p><p>6/16</p></div></div><div class="slide slide-img"><img src="slides/private-land-nominee/page11.png" alt="圖表頁"></div><div class="slide slide-text"><div class="st-title">四、實務見解分析（續）</div><div class="st-body"><p>（二）第二段借名登記：效力獨立判斷，但本身仍屬無效</p><p>★ 高雄高分院 106 重上 62 ＋最高法院 108 台上 2246（事實最相似）</p><p>三英鋼鐵（私法人）借名登記於李金蓮名下 → 終止後將返還請求權讓與自然人股東請求移轉：</p><p>高雄高分院見解</p><p>「另覓之出名登記人…依前揭說明，與三英公司間就系爭土地另為借名登記之約定，亦非有效」「明顯係欲藉此迂迴方式規避三英公司不得承受農地之規定，自同屬脫法行為，而為無效」</p><p>最高法院 108 台上 2246（維持二審）</p><p>「回復之原狀，係塗銷受讓系爭土地之移轉登記…三英公司不得請求被上訴人將系爭土地移轉登記以為返還」</p><p>7/16</p></div></div><div class="slide slide-img"><img src="slides/private-land-nominee/page13.png" alt="圖表頁"></div><div class="slide slide-text"><div class="st-title">四、實務見解分析（續）</div><div class="st-body"><p>其他一致見解——更換出名人仍屬無效</p><p>高雄地院 106 重訴 21</p><p>請求移轉返還予其指定之第三人「更無異再次迂迴規避禁止規定，自屬於法不合」</p><p>臺中高分院 95 上更(一) 17</p><p>買賣契約或借名登記均屬無效，請求移轉予指定之登記名義人（股東）「即屬無據，不應准許」</p><p>臺南高分院 104 重上 51（最細緻區分）</p><p>出名人死亡改借名於繼承人：「仍屬脫法行為而無效」；改用不當得利請求「亦係規避法律規定之行為，不因改用不同法律請求依據而導致不同結論」</p><p>第一段無效 → 甲公司自始未取得權利，無從合法指示乙移轉予丙（民法 §113 僅得請求回復原狀）</p><p>8/16</p></div></div><div class="slide slide-img"><img src="slides/private-land-nominee/page15.png" alt="圖表頁"></div><div class="slide slide-text"><div class="st-title">四、實務見解分析（續）</div><div class="st-body"><p>（三）廠房拆除之事實：不影響無效認定</p><p>1. 「耕地」以使用分區／使用地類別認定，非以地上物為斷</p><p>農發條例 §3 ⑪：特定農業區、一般農業區、山坡地保育區及森林區之農牧用地</p><p>廠房拆除僅改變「農地農用」事實狀態，不改變土地之法律定位</p><p>2. 無效不因事後狀態變更而補正</p><p>最高法院 97 台上 879：「不能因嗣後土地法之修正…而認為有效」</p><p>臺南高分院 104 重上 51：「自不因舊土地法第30條嗣經刪除而轉為有效」</p><p>→ 農發條例 §33 核心在於私法人承受耕地之身分限制，非僅防農地非農用</p><p>⚠ 例外：土地經法定程序變更為非耕地（建地、工業區等）→ 不受 §33 限制，可能回復有效</p><p>9/16</p></div></div><div class="slide slide-img"><img src="slides/private-land-nominee/page17.png" alt="圖表頁"></div><div class="slide slide-text"><div class="st-title">五、爭點分析（綜合判斷）</div><div class="st-body"><p>爭點一：第一段甲、乙間借名登記契約是否無效？</p><p>結論：無效</p><p>甲公司為私法人，不得承受耕地，卻借乙名義登記並供作廠房使用，構成以迂迴方法規避強制規定之脫法行為</p><p>法理依據</p><p>• 依民法 §71 本文無效，且為自始、當然、確定無效（縱當事人承認亦不能使其生效）</p><p>• 最高法院 97 台上 879、高雄地院 106 重訴 21 判決意旨</p><p>• 89 年前行為適用修正前土地法 §30；89 年後適用農發條例 §33，效果相同</p><p>10/16</p></div></div><div class="slide slide-img"><img src="slides/private-land-nominee/page19.png" alt="圖表頁"></div><div class="slide slide-text"><div class="st-title">五、爭點分析（續）</div><div class="st-body"><p>爭點二：第二段甲、丙間借名登記契約之效力？</p><p>結論：仍屬無效（獨立判斷，非被「連帶傳染」）</p><p>無效原因係「契約自身違反強制規定而獨立無效」，非因第一段契約無效即逕認當然無效</p><p>論證步驟</p><p>• 法律行為效力應各自獨立判斷，不能僅因第一段無效即逕認第二段當然無效</p><p>• 惟甲、丙間借名登記之實質目的，仍係使不得承受耕地之甲公司藉丙名義繼續實質保有耕地</p><p>• 以迂迴方式達成農發條例 §33 所禁止之相同效果 → 自身即屬獨立脫法行為而無效</p><p>• 僅更換出名登記人（乙→丙），無法改變脫法行為之本質</p><p>援引：高雄高分院 106 重上 62、最高法院 108 台上 2246、高雄地院 106 重訴 21、臺中高分院 95 上更(一) 17、臺南高分院 104 重上 51</p><p>11/16</p></div></div><div class="slide slide-img"><img src="slides/private-land-nominee/page21.png" alt="圖表頁"></div><div class="slide slide-text"><div class="st-title">五、爭點分析（續）</div><div class="st-body"><p>爭點三：廠房拆除是否使契約轉為有效？</p><p>結論：不影響</p><p>耕地之認定以使用分區／使用地類別為準，非以地上物為斷；無效不因事後狀態變更而補正</p><p>理由</p><p>• 耕地＝使用分區/使用地類別（農發條例 §3 ⑪），非地上物</p><p>• 最高法院 97 台上 879：「不能因嗣後土地法修正…而認為有效」</p><p>• 農發條例 §33 核心＝私法人承受耕地之身分限制；縱土地嗣後恢復農用，甲公司仍不得承受</p><p>✅ 唯一例外：系爭土地已依法定程序變更為非耕地（都市計畫或非都市土地使用管制）→ 不受 §33 限制，契約可能回復有效（臺南高分院 104 重上 51 反面意旨）</p><p>12/16</p></div></div><div class="slide slide-img"><img src="slides/private-land-nominee/page23.png" alt="圖表頁"></div><div class="slide slide-text"><div class="st-title">六、結論</div><div class="st-body"><p>結論一</p><p>第一段甲、乙間借名登記契約無效</p><p>甲公司以迂迴方式規避「私法人不得承受耕地」之強制規定，屬脫法行為，依民法 §71 無效（自始、當然、確定無效）</p><p>結論二</p><p>第二段甲、丙間借名登記契約仍屬無效</p><p>非因第一段無效而「連帶無效」，而係其自身仍以迂迴方式達成同一禁止效果，獨立構成脫法行為而無效</p><p>結論三</p><p>廠房拆除不影響無效認定</p><p>限制重點在於私法人承受耕地之身分限制（依使用分區／使用地類別認定），惟土地已依法定程序變更為非耕地者結論不同</p><p>13/16</p></div></div><div class="slide slide-text"><div class="st-title">六、結論（續）——法律效果與實務建議</div><div class="st-body"><p>甲公司請求權</p><p>契約無效後僅得依民法 §113 請求回復原狀（塗銷登記回復原出賣人名義），不得請求移轉登記予自己或指定之人（最高法院 108 台上 2246）</p><p>換請求權基礎</p><p>依不當得利（§179）請求移轉登記仍屬規避法律規定，不因改用不同請求依據而異其結論；出名人另有 §180④、§125 時效抗辯空間</p><p>出名人風險</p><p>出名登記人仍為登記名義人，須負擔地價稅及土地債務風險；丙明知係規避而借名，無實質保障，建議依 §113 塗銷回復原狀</p><p>合法取得途徑</p><p>① 依農發條例 §34 申請承受耕地許可；② 具資格之自然人自行購買；③ 改以租賃、地上權等方式使用</p><p>訴訟策略</p><p>甲公司訴請移轉登記敗訴風險極高；出名人利害關係人應以「塗銷登記回復原狀」為正確訴之聲明</p><p>14/16</p></div></div><div class="slide slide-text"><div class="st-title">七、援引判決列表</div><div class="st-body"><p>① 最高法院 108 台上 2246（109.03.11）— 更換出名人仍無效；無效後僅得塗銷回復原狀</p><p>② 高雄高分院 106 重上 62（106.11.15）— 「另覓之出名登記人」之第二段借名登記無效</p><p>③ 最高法院 97 台上 879（97.04.29）— 私法人借名農地興建廠房＝脫法行為無效</p><p>④ 高雄地院 106 重訴 21（107.01.17）— 請求移轉予指定第三人＝再次迂迴規避</p><p>⑤ 臺中高分院 95 上更(一) 17（95.06.27）— 買賣或借名登記均無效</p><p>⑥ 臺南高分院 104 重上 51（105.03.08）— 耕地部分無效；非耕地部分准許移轉（例外）</p><p>⑦ 最高法院 105 台上 1852（105.10.27）— 脫法行為定義（經 106 重上 62 轉引）</p><p>⑧ 最高法院 98 台上 76／990 — 借名登記契約定義與效力判斷基準</p><p>⚠ 全部判決均經 Taiwan Legal DB 調閱裁判書全文逐筆核實（依引用核實規則 8.2、8.4）</p><p>15/16</p></div></div><div class="slide slide-text"><div class="st-title">感謝聆聽</div><div class="st-body"><p>私法人不得承受耕地 —— 借名登記無法規避強制規定</p><p>謝秉錡律師事務所</p><p>謝秉錡律師　劉靜芬律師　何博彥律師　林育正律師　陳儒學習律師</p><p>2026 年 8 月</p><p>16/16</p></div></div>
+</div>
+<div class="key-hint" id="keyHint">← → 方向鍵切換 · T 開啟目錄 · Esc 關閉</div>
+<button class="toc-toggle" id="tocToggle" onclick="toggleToc()">☰ 目錄</button>
+<div class="toc-overlay" id="tocOverlay" onclick="closeToc()"></div>
+<div class="toc-panel" id="tocPanel"><h3>📋 幻燈片目錄</h3>
+<button class="toc-item active" onclick="goTo(0)">第1頁 · 私法人借名登記耕地之契約效力</button><button class="toc-item" onclick="goTo(1)">第2頁 · 簡報目錄</button><button class="toc-item" onclick="goTo(2)">第3頁 · 圖表頁 3</button><button class="toc-item" onclick="goTo(3)">第4頁 · 一、問題提出與案件事實</button><button class="toc-item" onclick="goTo(4)">第5頁 · 圖表頁 5</button><button class="toc-item" onclick="goTo(5)">第6頁 · 二、法律爭點</button><button class="toc-item" onclick="goTo(6)">第7頁 · 圖表頁 7</button><button class="toc-item" onclick="goTo(7)">第8頁 · 三、相關法律規定</button><button class="toc-item" onclick="goTo(8)">第9頁 · 圖表頁 9</button><button class="toc-item" onclick="goTo(9)">第10頁 · 四、實務見解分析</button><button class="toc-item" onclick="goTo(10)">第11頁 · 圖表頁 11</button><button class="toc-item" onclick="goTo(11)">第12頁 · 四、實務見解分析（續）</button><button class="toc-item" onclick="goTo(12)">第13頁 · 圖表頁 13</button><button class="toc-item" onclick="goTo(13)">第14頁 · 四、實務見解分析（續）</button><button class="toc-item" onclick="goTo(14)">第15頁 · 圖表頁 15</button><button class="toc-item" onclick="goTo(15)">第16頁 · 四、實務見解分析（續）</button><button class="toc-item" onclick="goTo(16)">第17頁 · 圖表頁 17</button><button class="toc-item" onclick="goTo(17)">第18頁 · 五、爭點分析（綜合判斷）</button><button class="toc-item" onclick="goTo(18)">第19頁 · 圖表頁 19</button><button class="toc-item" onclick="goTo(19)">第20頁 · 五、爭點分析（續）</button><button class="toc-item" onclick="goTo(20)">第21頁 · 圖表頁 21</button><button class="toc-item" onclick="goTo(21)">第22頁 · 五、爭點分析（續）</button><button class="toc-item" onclick="goTo(22)">第23頁 · 圖表頁 23</button><button class="toc-item" onclick="goTo(23)">第24頁 · 六、結論</button><button class="toc-item" onclick="goTo(24)">第25頁 · 六、結論（續）——法律效果與實務建議</button><button class="toc-item" onclick="goTo(25)">第26頁 · 七、援引判決列表</button><button class="toc-item" onclick="goTo(26)">第27頁 · 感謝聆聽</button>
+</div>
+<div class="controls">
+  <div class="info"><span id="currentPage">1</span> / <span id="totalPages">27</span> &nbsp;·&nbsp; 私法人借名登記耕地之契約效力（甲→乙→丙三段式）</div>
+  <div><button class="nav-btn" id="prevBtn" onclick="prevSlide()">‹ 上一頁</button>
+  <button class="nav-btn" id="nextBtn" onclick="nextSlide()">下一頁 ›</button></div>
+</div>
+<script>
+const TOTAL = 27;
+let current = 0;
+const slidesEl = document.querySelectorAll('.slide');
+const progressBar = document.getElementById('progressBar');
+const currentPage = document.getElementById('currentPage');
+const totalPages = document.getElementById('totalPages');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+totalPages.textContent = TOTAL;
+function updateSlide() {
+  slidesEl.forEach((el,i)=>el.classList.toggle('active', i===current));
+  currentPage.textContent = current+1;
+  progressBar.style.width = ((current+1)/TOTAL*100)+'%';
+  prevBtn.disabled = current===0;
+  nextBtn.disabled = current===TOTAL-1;
+  document.title = (current+1)+'/'+TOTAL+' · 私法人借名登記耕地之契約效力（甲→乙→丙三段式）';
+  document.querySelectorAll('.toc-item').forEach((el,i)=>{el.classList.toggle('active', i===current);});
+}
+function nextSlide() { if(current<TOTAL-1){current++;updateSlide();} }
+function prevSlide() { if(current>0){current--;updateSlide();} }
+function goTo(n) { current=n; updateSlide(); closeToc(); }
+function toggleToc() { document.getElementById('tocPanel').classList.toggle('open'); document.getElementById('tocOverlay').classList.toggle('show'); }
+function closeToc() { document.getElementById('tocPanel').classList.remove('open'); document.getElementById('tocOverlay').classList.remove('show'); }
+document.addEventListener('keydown', function(e) {
+  if(e.key==='ArrowLeft') prevSlide();
+  else if(e.key==='ArrowRight') nextSlide();
+  else if(e.key==='t'||e.key==='T') toggleToc();
+  else if(e.key==='Escape') closeToc();
+});
+let touchStartX=0;
+document.addEventListener('touchstart', e=>{touchStartX=e.changedTouches[0].screenX;});
+document.addEventListener('touchend', e=>{
+  const diff=touchStartX-e.changedTouches[0].screenX;
+  if(Math.abs(diff)>50){ if(diff>0) nextSlide(); else prevSlide(); }
+});
+setTimeout(()=>document.getElementById('keyHint').classList.add('show'),2000);
+setTimeout(()=>document.getElementById('keyHint').classList.remove('show'),8000);
+updateSlide();
+</script>
+</body>
+</html>
