@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>市地重劃會解散後清算之法律研究</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:"Noto Serif TC","Microsoft JhengHei",serif; background:#1a1a2e; color:#fff; overflow:hidden; height:100vh; }
+.slide-container { position:relative; width:100vw; height:100vh; display:flex; align-items:center; justify-content:center; background:#1a1a2e; }
+.slide { display:none; width:100vw; height:100vh; align-items:center; justify-content:center; }
+.slide.active { display:flex; }
+.slide-img img { max-width:100%; max-height:100vh; object-fit:contain; box-shadow:0 4px 40px rgba(0,0,0,.5); border-radius:4px; }
+.slide-text { background:#fff; color:#1a1a2e; flex-direction:column; align-items:flex-start; justify-content:flex-start; padding:6vh 8vw; overflow-y:auto; }
+.st-title { font-size:2.2rem; font-weight:700; color:#1a365d; margin-bottom:2vh; border-bottom:3px solid #d4af37; padding-bottom:1vh; }
+.st-body p { font-size:1.25rem; line-height:1.9; margin-bottom:1.2vh; color:#222; }
+.st-body p.empty { color:#999; font-style:italic; }
+.controls { position:fixed; bottom:0; left:0; right:0; background:rgba(26,26,46,.92); backdrop-filter:blur(8px); padding:12px 24px; display:flex; align-items:center; justify-content:space-between; z-index:100; border-top:1px solid rgba(255,255,255,.1); }
+.controls .info { font-size:.85rem; color:#aaa; }
+.controls .nav-btn { background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.15); color:#fff; padding:8px 20px; border-radius:6px; cursor:pointer; font-size:.9rem; transition:background .2s; font-family:inherit; }
+.controls .nav-btn:hover { background:rgba(255,255,255,.18); }
+.controls .nav-btn:disabled { opacity:.3; cursor:default; }
+.progress { position:fixed; top:0; left:0; right:0; height:3px; background:rgba(255,255,255,.08); z-index:200; }
+.progress-bar { height:100%; background:linear-gradient(90deg,#c8a84b,#e8c84b); transition:width .3s ease; }
+.toc-toggle { position:fixed; top:16px; right:16px; background:rgba(26,26,46,.85); border:1px solid rgba(255,255,255,.15); color:#aaa; padding:8px 14px; border-radius:6px; cursor:pointer; font-size:.85rem; z-index:200; font-family:inherit; transition:color .2s; }
+.toc-toggle:hover { color:#fff; }
+.toc-panel { position:fixed; top:0; right:-340px; width:320px; height:100vh; background:rgba(20,20,36,.97); backdrop-filter:blur(12px); border-left:1px solid rgba(255,255,255,.08); z-index:300; overflow-y:auto; transition:right .35s ease; padding:60px 16px 24px; }
+.toc-panel.open { right:0; }
+.toc-panel h3 { font-size:.95rem; color:#c8a84b; margin-bottom:16px; padding-bottom:10px; border-bottom:1px solid rgba(255,255,255,.08); }
+.toc-item { display:block; padding:8px 12px; margin-bottom:4px; border-radius:4px; cursor:pointer; font-size:.82rem; color:#bbb; transition:background .15s,color .15s; border:none; background:none; width:100%; text-align:left; font-family:inherit; }
+.toc-item:hover { background:rgba(200,168,75,.12); color:#fff; }
+.toc-item.active { background:rgba(200,168,75,.2); color:#c8a84b; font-weight:600; }
+.toc-overlay { position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,.4); z-index:250; display:none; }
+.toc-overlay.show { display:block; }
+.key-hint { position:fixed; bottom:70px; left:50%; transform:translateX(-50%); background:rgba(0,0,0,.6); color:#888; padding:6px 18px; border-radius:20px; font-size:.75rem; z-index:50; pointer-events:none; opacity:0; transition:opacity .5s; }
+.key-hint.show { opacity:1; }
+@media (max-width:768px) { .controls .info{font-size:.75rem;} .controls .nav-btn{padding:6px 14px;font-size:.8rem;} .toc-panel{width:280px;right:-300px;} .st-title{font-size:1.6rem;} .st-body p{font-size:1.05rem;} }
+</style>
+</head>
+<body>
+<div class="progress"><div class="progress-bar" id="progressBar"></div></div>
+<div class="slide-container" id="slideContainer">
+<div class="slide slide-text"><div class="st-title">市地重劃會解散後</div><div class="st-body"><p>是否仍須進行清算？</p><p>以法院選任清算人事件為中心之法律研究</p><p>重劃會之法律性質 × 解散後清算之必要 × 債權人權益保障</p><p>謝秉錡律師事務所</p><p>謝秉錡律師　劉靜芬律師　何博彥律師　林育正律師　陳儒學習律師</p><p>民國115年8月（已去識別化對外版）</p><p>1/28</p></div></div><div class="slide slide-text"><div class="st-title">簡報目錄（1/2）</div><div class="st-body"><p>一、案件事實與研究問題</p><p>二、結論摘要</p><p>三、重劃會之法律性質</p><p>四、法規依據</p><p>五、實務見解分析</p><p>2/28</p></div></div><div class="slide slide-text"><div class="st-title">簡報目錄（2/2）</div><div class="st-body"><p>六、清算人之產生順序</p><p>七、本案應對方向</p><p>八、衍生問題：債權人保障</p><p>九、</p><p>結論</p><p>3/28</p></div></div><div class="slide slide-text"><div class="st-title">一、案件事實（1/3）背景</div><div class="st-body"><p>系爭重劃會</p><p>依「獎勵土地所有權人辦理市地重劃辦法」組織之自辦市地重劃區重劃會，以區內全體土地所有權人為會員。</p><p>章程</p><p>成立時經會員大會通過，全文17條，並無清算人相關規定。</p><p>4/28</p></div></div><div class="slide slide-text"><div class="st-title">一、案件事實（2/3）爭議發生</div><div class="st-body"><p>解散後未清算</p><p>系爭重劃會經主管機關核准解散後，近兩年未見清算程序之進行。</p><p>債權人聲請</p><p>債權人（公用事業公司）主張尚有未了債權，以利害關係人身分聲請法院選任清算人。</p><p>5/28</p></div></div><div class="slide slide-text"><div class="st-title">一、案件事實（3/3）法院審理中</div><div class="st-body"><p>法院函詢 5 事項</p><p>① 章程或會議紀錄有無清算規定</p><p>② 是否已解散、是否經清算</p><p>③ 有無選任清算人之必要</p><p>④ 有無相關人選供審酌</p><p>⑤ 特定人士與系爭重劃會之關係</p><p>6/28</p></div></div><div class="slide slide-text"><div class="st-title">二、結論摘要（1/2）</div><div class="st-body"><p>研究問題</p><p>台灣地區市地重劃會解散後，是否還需要進行清算？</p><p>結論①：非法人團體</p><p>重劃會非民法上法人，法人清算規定僅能類推適用其法理。</p><p>7/28</p></div></div><div class="slide slide-text"><div class="st-title">二、結論摘要（2/2）</div><div class="st-body"><p>結論②：清算前置機制</p><p>獎勵辦法§19：完成財務結算→報請解散；正常辦竣者原則無庸再清算。</p><p>結論③：未了事務仍應清算</p><p>解散時仍有賸餘財產、未清債務、未決爭訟者，應行清算；不能定清算人時，法院得因利害關係人聲請選任（類推民法§38、非訟§61）。</p><p>8/28</p></div></div><div class="slide slide-img"><img src="slides/urban-redevelopment-liquidation/page09.png" alt="圖表頁"></div><div class="slide slide-text"><div class="st-title">三、重劃會之法律性質（1/2）</div><div class="st-body"><p>最高法院64年台上字第2461號判例</p><p>非法人團體須具備：多數人組成、一定組織、名稱及事務所、一定目的及獨立財產，並具繼續性質。</p><p>雲林地院102年度訴字第460號裁定</p><p>重劃會「核屬於非法人之團體」，解散後不具當事人能力。</p><p>9/28</p></div></div><div class="slide slide-text"><div class="st-title">三、重劃會之法律性質（2/2）</div><div class="st-body"><p>臺南地院107年度訴字第1326號判決</p><p>重劃會「核屬非法人之團體，依法具有當事人能力」；於實體法上非權利義務歸屬主體，法律行為效力歸屬於全體會員。</p><p>法律效果</p><p>法人清算規定不能直接適用；解散後如有賸餘財產或未了事務，實務多類推適用其法理，由理事擔任清算人或由法院選任清算人。</p><p>10/28</p></div></div><div class="slide slide-img"><img src="slides/urban-redevelopment-liquidation/page12.png" alt="圖表頁"></div><div class="slide slide-text"><div class="st-title">四、法規依據（1/4）設立與解散</div><div class="st-body"><p>平均地權條例§58</p><p>得獎勵土地所有權人自行組織重劃會辦理市地重劃；組織、職權等辦法由中央主管機關定之。</p><p>獎勵辦法§3</p><p>自辦市地重劃應組織重劃會，以區內全體土地所有權人為會員。</p><p>11/28</p></div></div><div class="slide slide-text"><div class="st-title">四、法規依據（2/4）解散程序</div><div class="st-body"><p>獎勵辦法§6</p><p>主要程序第15-17款：財務結算→撰寫重劃報告→報請解散重劃會。</p><p>獎勵辦法§19</p><p>重劃會應於完成財務結算後，檢附重劃報告，送請主管機關備查，並報請解散。</p><p>獎勵辦法§18</p><p>違反法令或廢弛重劃業務者，主管機關必要時得解散之。</p><p>12/28</p></div></div><div class="slide slide-text"><div class="st-title">四、法規依據（3/4）法人清算類推</div><div class="st-body"><p>民法§37、§38</p><p>§37：法人解散後，由董事為清算；章程或總會另有規定者從其規定。</p><p>§38：不能定清算人時，法院得因主管機關、檢察官或利害關係人聲請選任之。</p><p>民法§40、非訟§59、§61</p><p>§40：清算人職務為了結現務、收取債權、清償債務、移交賸餘財產。</p><p>非訟§61：利害關係人得聲請選任清算人並應釋明利害關係。</p><p>13/28</p></div></div><div class="slide slide-text"><div class="st-title">四、法規依據（4/4）同性質組織比較法</div><div class="st-body"><p>合作社法§60</p><p>合作社解散後，清算人除章程別有規定或社員大會另行選任外，以理事充任之；不能選定時，法院得因利害關係人聲請選派。</p><p>都市更新會設立管理及解散辦法§34</p><p>解散之都市更新會應行清算；清算以理事為清算人，章程另有訂定或會員大會另選者不在此限。</p><p>14/28</p></div></div><div class="slide slide-text"><div class="st-title">五、實務見解（1/3）財務結算即清算替代</div><div class="st-body"><p>制度設計</p><p>獎勵辦法§6、§19將「財務結算」列為報請解散之前提；其內涵（抵費地出售價款優先償還重劃費用、差額地價結算與發放、收支表編製，參市地重劃實施辦法§54-57）實質上已涵蓋清算主要內容。</p><p>結論</p><p>正常完成財務結算並經主管機關同意解散之重劃會，原則上已無再行清算之必要。</p><p>15/28</p></div></div><div class="slide slide-img"><img src="slides/urban-redevelopment-liquidation/page18.png" alt="圖表頁"></div><div class="slide slide-text"><div class="st-title">五、實務見解（2/3）未了事務仍應清算</div><div class="st-body"><p>臺中地院114年度聲字第81號（臨時管理人—駁回）</p><p>理事會權責事項（獎勵辦法§14）須理事4/3出席、3/2同意決議，「顯無從由臨時管理人代行其職權」。惟係臨時管理人而非清算人，不當然阻礙清算人選任。</p><p>士林地院108年度抗字第6號（都更會類比）</p><p>「解散之都市更新會應行清算；清算以理事為清算人」，清算人並應向法院聲報。重劃會就「解散後了結未了事務」之需求與都更會相同。</p><p>16/28</p></div></div><div class="slide slide-text"><div class="st-title">五、實務見解（3/3）臨時管理人與清算人之別</div><div class="st-body"><p>臨時管理人（114聲81反面見解之射程）</p><p>代行理事會「繼續經營重劃業務」之合議決策權責（研擬重劃計畫書、工程發包、土地分配等）——法院不宜以外部人取代。</p><p>清算人（本案聲請對象）</p><p>職務：了結現務、收取債權、清償債務、移交賸餘財產（民法§40）——並非繼續執行重劃業務，性質上係終局處理解散後之未了事務。</p><p>17/28</p></div></div><div class="slide slide-img"><img src="slides/urban-redevelopment-liquidation/page21.png" alt="圖表頁"></div><div class="slide slide-text"><div class="st-title">六、清算人之產生順序</div><div class="st-body"><p>① 章程特別規定（本案章程無規定）</p><p>② 會員大會另選</p><p>③ 理事擔任清算人（類推民法§37等法理）</p><p>④ 法院選任（類推民法§38、非訟§61）</p><p>18/28</p></div></div><div class="slide slide-img"><img src="slides/urban-redevelopment-liquidation/page23.png" alt="圖表頁"></div><div class="slide slide-text"><div class="st-title">七、本案應對方向（1/2）法院函詢事項</div><div class="st-body"><p>(一) 章程有無清算規定</p><p>章程17條無清算人規定，查無相關會議紀錄</p><p>(二) 是否已解散、清算</p><p>已於早年經主管機關同意解散；尚未進行清算</p><p>(三) 有無選任必要</p><p>仍有未了事務→有清算必要；原理事應可擔任</p><p>19/28</p></div></div><div class="slide slide-img"><img src="slides/urban-redevelopment-liquidation/page25.png" alt="圖表頁"></div><div class="slide slide-text"><div class="st-title">七、本案應對方向（2/2）函詢事項與風險</div><div class="st-body"><p>(四) 有無相關人選</p><p>得提出原理事名單（7名）供法院審酌</p><p>(五) 特定人士與重劃會關係</p><p>依主管機關函為解散後聯繫窗口；具體關係由當事人確認後陳報</p><p>風險提示</p><p>若拒不配合清算，法院可能逕依聲請選任清算人，剩餘資產恐脫離原理事掌控。建議積極配合、主動提名人選，掌握清算主導權。</p><p>20/28</p></div></div><div class="slide slide-img"><img src="slides/urban-redevelopment-liquidation/page27.png" alt="圖表頁"></div><div class="slide slide-text"><div class="st-title">八、衍生問題（1/3）債權人權益保障</div><div class="st-body"><p>公司法§329</p><p>不列入清算內之債權人，就公司未分派之賸餘財產，有清償請求權；已分派且已領取者不在此限。</p><p>公司法§333</p><p>清算完結後，如有可以分派之財產，法院因利害關係人之聲請，得選派清算人重行分派。</p><p>21/28</p></div></div><div class="slide slide-img"><img src="slides/urban-redevelopment-liquidation/page29.png" alt="圖表頁"></div><div class="slide slide-text"><div class="st-title">八、衍生問題（2/3）重行分派實務（1/2）</div><div class="st-body"><p>臺北地院97司382</p><p>債權人1千萬元債權；發現礦場補償金債權373萬餘元</p><p>准許</p><p>臺中地院100聲41</p><p>發現破產債權109萬餘元可供分配</p><p>准許</p><p>臺北地院102司187</p><p>國稅局退稅款支票需另選清算人具領</p><p>准許</p><p>22/28</p></div></div><div class="slide slide-img"><img src="slides/urban-redevelopment-liquidation/page31.png" alt="圖表頁"></div><div class="slide slide-text"><div class="st-title">八、衍生問題（2/3）重行分派實務（2/2）</div><div class="st-body"><p>臺北地院104司68</p><p>發現銀行存款281萬餘元未列清算財產</p><p>准許</p><p>臺北地院105司192</p><p>發現持有第三人股份及股利291萬餘元</p><p>准許</p><p>高雄103司36／基隆100司21</p><p>清算完結後始取得工程款／房屋尾款債權</p><p>准許</p><p>要旨：清算完結後發現可分派財產，利害關係人仍得聲請選派清算人重行分派。</p><p>23/28</p></div></div><div class="slide slide-img"><img src="slides/urban-redevelopment-liquidation/page33.png" alt="圖表頁"></div><div class="slide slide-img"><img src="slides/urban-redevelopment-liquidation/page34.png" alt="圖表頁"></div><div class="slide slide-text"><div class="st-title">八、衍生問題（3/3）無賸餘財產仍得聲請</div><div class="st-body"><p>法律要件</p><p>民法§38、非訟§61之選任要件＝不能依§37定清算人＋利害關係人聲請並釋明——並未以「有賸餘財產」為要件。</p><p>實務肯認</p><p>臺南地院97年度聲字第587號：稅捐機關以合作社欠地價稅149萬餘元聲請選派清算人，法院未以「無賸餘財產」駁回，逕行選派律師為清算人。</p><p>24/28</p></div></div><div class="slide slide-img"><img src="slides/urban-redevelopment-liquidation/page36.png" alt="圖表頁"></div><div class="slide slide-text"><div class="st-title">、結論</div><div class="st-body"><p>結論</p><p>市地重劃會解散後：正常完成財務結算者原則上無庸再清算；但有未了事務（賸餘財產、未清債務、未決爭訟）者應行清算，清算人以原理事充任為原則，不能定清算人時法院得因利害關係人聲請選任。債權人權益於賸餘財產範圍內不因清算完結而喪失（公司法§329、§333）。</p><p>26/28</p></div></div><div class="slide slide-img"><img src="slides/urban-redevelopment-liquidation/page38.png" alt="圖表頁"></div><div class="slide slide-img"><img src="slides/urban-redevelopment-liquidation/page39.png" alt="圖表頁"></div>
+</div>
+<div class="key-hint" id="keyHint">← → 方向鍵切換 · T 開啟目錄 · Esc 關閉</div>
+<button class="toc-toggle" id="tocToggle" onclick="toggleToc()">☰ 目錄</button>
+<div class="toc-overlay" id="tocOverlay" onclick="closeToc()"></div>
+<div class="toc-panel" id="tocPanel"><h3>📋 幻燈片目錄</h3>
+<button class="toc-item active" onclick="goTo(0)">第1頁 · 市地重劃會解散後</button><button class="toc-item" onclick="goTo(1)">第2頁 · 簡報目錄（1/2）</button><button class="toc-item" onclick="goTo(2)">第3頁 · 簡報目錄（2/2）</button><button class="toc-item" onclick="goTo(3)">第4頁 · 一、案件事實（1/3）背景</button><button class="toc-item" onclick="goTo(4)">第5頁 · 一、案件事實（2/3）爭議發生</button><button class="toc-item" onclick="goTo(5)">第6頁 · 一、案件事實（3/3）法院審理中</button><button class="toc-item" onclick="goTo(6)">第7頁 · 二、結論摘要（1/2）</button><button class="toc-item" onclick="goTo(7)">第8頁 · 二、結論摘要（2/2）</button><button class="toc-item" onclick="goTo(8)">第9頁 · 圖表頁 9</button><button class="toc-item" onclick="goTo(9)">第10頁 · 三、重劃會之法律性質（1/2）</button><button class="toc-item" onclick="goTo(10)">第11頁 · 三、重劃會之法律性質（2/2）</button><button class="toc-item" onclick="goTo(11)">第12頁 · 圖表頁 12</button><button class="toc-item" onclick="goTo(12)">第13頁 · 四、法規依據（1/4）設立與解散</button><button class="toc-item" onclick="goTo(13)">第14頁 · 四、法規依據（2/4）解散程序</button><button class="toc-item" onclick="goTo(14)">第15頁 · 四、法規依據（3/4）法人清算類推</button><button class="toc-item" onclick="goTo(15)">第16頁 · 四、法規依據（4/4）同性質組織比較法</button><button class="toc-item" onclick="goTo(16)">第17頁 · 五、實務見解（1/3）財務結算即清算替代</button><button class="toc-item" onclick="goTo(17)">第18頁 · 圖表頁 18</button><button class="toc-item" onclick="goTo(18)">第19頁 · 五、實務見解（2/3）未了事務仍應清算</button><button class="toc-item" onclick="goTo(19)">第20頁 · 五、實務見解（3/3）臨時管理人與清算人之別</button><button class="toc-item" onclick="goTo(20)">第21頁 · 圖表頁 21</button><button class="toc-item" onclick="goTo(21)">第22頁 · 六、清算人之產生順序</button><button class="toc-item" onclick="goTo(22)">第23頁 · 圖表頁 23</button><button class="toc-item" onclick="goTo(23)">第24頁 · 七、本案應對方向（1/2）法院函詢事項</button><button class="toc-item" onclick="goTo(24)">第25頁 · 圖表頁 25</button><button class="toc-item" onclick="goTo(25)">第26頁 · 七、本案應對方向（2/2）函詢事項與風險</button><button class="toc-item" onclick="goTo(26)">第27頁 · 圖表頁 27</button><button class="toc-item" onclick="goTo(27)">第28頁 · 八、衍生問題（1/3）債權人權益保障</button><button class="toc-item" onclick="goTo(28)">第29頁 · 圖表頁 29</button><button class="toc-item" onclick="goTo(29)">第30頁 · 八、衍生問題（2/3）重行分派實務（1/2）</button><button class="toc-item" onclick="goTo(30)">第31頁 · 圖表頁 31</button><button class="toc-item" onclick="goTo(31)">第32頁 · 八、衍生問題（2/3）重行分派實務（2/2）</button><button class="toc-item" onclick="goTo(32)">第33頁 · 圖表頁 33</button><button class="toc-item" onclick="goTo(33)">第34頁 · 圖表頁 34</button><button class="toc-item" onclick="goTo(34)">第35頁 · 八、衍生問題（3/3）無賸餘財產仍得聲請</button><button class="toc-item" onclick="goTo(35)">第36頁 · 圖表頁 36</button><button class="toc-item" onclick="goTo(36)">第37頁 · 、結論</button><button class="toc-item" onclick="goTo(37)">第38頁 · 圖表頁 38</button><button class="toc-item" onclick="goTo(38)">第39頁 · 圖表頁 39</button>
+</div>
+<div class="controls">
+  <div class="info"><span id="currentPage">1</span> / <span id="totalPages">39</span> &nbsp;·&nbsp; 市地重劃會解散後清算之法律研究</div>
+  <div><button class="nav-btn" id="prevBtn" onclick="prevSlide()">‹ 上一頁</button>
+  <button class="nav-btn" id="nextBtn" onclick="nextSlide()">下一頁 ›</button></div>
+</div>
+<script>
+const TOTAL = 39;
+let current = 0;
+const slidesEl = document.querySelectorAll('.slide');
+const progressBar = document.getElementById('progressBar');
+const currentPage = document.getElementById('currentPage');
+const totalPages = document.getElementById('totalPages');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+totalPages.textContent = TOTAL;
+function updateSlide() {
+  slidesEl.forEach((el,i)=>el.classList.toggle('active', i===current));
+  currentPage.textContent = current+1;
+  progressBar.style.width = ((current+1)/TOTAL*100)+'%';
+  prevBtn.disabled = current===0;
+  nextBtn.disabled = current===TOTAL-1;
+  document.title = (current+1)+'/'+TOTAL+' · 市地重劃會解散後清算之法律研究';
+  document.querySelectorAll('.toc-item').forEach((el,i)=>{el.classList.toggle('active', i===current);});
+}
+function nextSlide() { if(current<TOTAL-1){current++;updateSlide();} }
+function prevSlide() { if(current>0){current--;updateSlide();} }
+function goTo(n) { current=n; updateSlide(); closeToc(); }
+function toggleToc() { document.getElementById('tocPanel').classList.toggle('open'); document.getElementById('tocOverlay').classList.toggle('show'); }
+function closeToc() { document.getElementById('tocPanel').classList.remove('open'); document.getElementById('tocOverlay').classList.remove('show'); }
+document.addEventListener('keydown', function(e) {
+  if(e.key==='ArrowLeft') prevSlide();
+  else if(e.key==='ArrowRight') nextSlide();
+  else if(e.key==='t'||e.key==='T') toggleToc();
+  else if(e.key==='Escape') closeToc();
+});
+let touchStartX=0;
+document.addEventListener('touchstart', e=>{touchStartX=e.changedTouches[0].screenX;});
+document.addEventListener('touchend', e=>{
+  const diff=touchStartX-e.changedTouches[0].screenX;
+  if(Math.abs(diff)>50){ if(diff>0) nextSlide(); else prevSlide(); }
+});
+setTimeout(()=>document.getElementById('keyHint').classList.add('show'),2000);
+setTimeout(()=>document.getElementById('keyHint').classList.remove('show'),8000);
+updateSlide();
+</script>
+</body>
+</html>
