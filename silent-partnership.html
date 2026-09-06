@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>隱名合夥：出名營業人解任禁止與終止結算</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:"Noto Serif TC","Microsoft JhengHei",serif; background:#1a1a2e; color:#fff; overflow:hidden; height:100vh; }
+.slide-container { position:relative; width:100vw; height:100vh; display:flex; align-items:center; justify-content:center; background:#1a1a2e; }
+.slide { display:none; width:100vw; height:100vh; align-items:center; justify-content:center; }
+.slide.active { display:flex; }
+.slide img { max-width:100%; max-height:100vh; object-fit:contain; box-shadow:0 4px 40px rgba(0,0,0,.55); border-radius:4px; user-select:none; -webkit-user-drag:none; }
+.controls { position:fixed; bottom:0; left:0; right:0; background:rgba(26,26,46,.92); backdrop-filter:blur(8px); padding:12px 24px; display:flex; align-items:center; justify-content:space-between; z-index:100; border-top:1px solid rgba(255,255,255,.1); }
+.controls .info { font-size:.85rem; color:#aaa; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; margin-right:16px; }
+.controls .nav-btn { background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.15); color:#fff; padding:8px 20px; border-radius:6px; cursor:pointer; font-size:.9rem; transition:background .2s; font-family:inherit; }
+.controls .nav-btn:hover { background:rgba(255,255,255,.18); }
+.controls .nav-btn:disabled { opacity:.3; cursor:default; }
+.progress { position:fixed; top:0; left:0; right:0; height:3px; background:rgba(255,255,255,.08); z-index:200; }
+.progress-bar { height:100%; background:linear-gradient(90deg,#c8a84b,#e8c84b); transition:width .3s ease; }
+.toc-toggle { position:fixed; top:16px; right:16px; background:rgba(26,26,46,.85); border:1px solid rgba(255,255,255,.15); color:#aaa; padding:8px 14px; border-radius:6px; cursor:pointer; font-size:.85rem; z-index:200; font-family:inherit; transition:color .2s; }
+.toc-toggle:hover { color:#fff; }
+.toc-panel { position:fixed; top:0; right:-340px; width:320px; height:100vh; background:rgba(20,20,36,.97); backdrop-filter:blur(12px); border-left:1px solid rgba(255,255,255,.08); z-index:300; overflow-y:auto; transition:right .35s ease; padding:60px 16px 24px; }
+.toc-panel.open { right:0; }
+.toc-panel h3 { font-size:.95rem; color:#c8a84b; margin-bottom:16px; padding-bottom:10px; border-bottom:1px solid rgba(255,255,255,.08); }
+.toc-item { display:block; padding:8px 12px; margin-bottom:4px; border-radius:4px; cursor:pointer; font-size:.82rem; color:#bbb; transition:background .15s,color .15s; border:none; background:none; width:100%; text-align:left; font-family:inherit; }
+.toc-item:hover { background:rgba(200,168,75,.12); color:#fff; }
+.toc-item.active { background:rgba(200,168,75,.2); color:#c8a84b; font-weight:600; }
+.toc-overlay { position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,.4); z-index:250; display:none; }
+.toc-overlay.show { display:block; }
+.key-hint { position:fixed; bottom:70px; left:50%; transform:translateX(-50%); background:rgba(0,0,0,.6); color:#888; padding:6px 18px; border-radius:20px; font-size:.75rem; z-index:50; pointer-events:none; opacity:0; transition:opacity .5s; }
+.key-hint.show { opacity:1; }
+@media (max-width:768px) { .controls .info{font-size:.72rem;} .controls .nav-btn{padding:6px 14px;font-size:.8rem;} .toc-panel{width:280px;right:-300px;} }
+</style>
+</head>
+<body>
+<div class="progress"><div class="progress-bar" id="progressBar"></div></div>
+<div class="slide-container" id="slideContainer">
+<div class="slide"><img src="slides/silent-partnership/slide_01.png" alt="第1頁：隱名合夥：出名營業人" loading="lazy"></div><div class="slide"><img src="slides/silent-partnership/slide_02.png" alt="第2頁：簡報目錄" loading="lazy"></div><div class="slide"><img src="slides/silent-partnership/slide_03.png" alt="第3頁：壹、案例事實（已去識別化）" loading="lazy"></div><div class="slide"><img src="slides/silent-partnership/slide_04.png" alt="第4頁：第 4 頁" loading="lazy"></div><div class="slide"><img src="slides/silent-partnership/slide_05.png" alt="第5頁：壹、三個爭點" loading="lazy"></div><div class="slide"><img src="slides/silent-partnership/slide_06.png" alt="第6頁：貳、核心概念：定義與差異" loading="lazy"></div><div class="slide"><img src="slides/silent-partnership/slide_07.png" alt="第7頁：第 7 頁" loading="lazy"></div><div class="slide"><img src="slides/silent-partnership/slide_08.png" alt="第8頁：貳、普通合夥 vs 隱名合夥" loading="lazy"></div><div class="slide"><img src="slides/silent-partnership/slide_09.png" alt="第9頁：第 9 頁" loading="lazy"></div><div class="slide"><img src="slides/silent-partnership/slide_10.png" alt="第10頁：第 10 頁" loading="lazy"></div><div class="slide"><img src="slides/silent-partnership/slide_11.png" alt="第11頁：參、不得開除出名營業人（§688）" loading="lazy"></div><div class="slide"><img src="slides/silent-partnership/slide_12.png" alt="第12頁：參、不得解任出名營業人（§674）" loading="lazy"></div><div class="slide"><img src="slides/silent-partnership/slide_13.png" alt="第13頁：第 13 頁" loading="lazy"></div><div class="slide"><img src="slides/silent-partnership/slide_14.png" alt="第14頁：肆、隱名合夥之「解散」＝契約終止" loading="lazy"></div><div class="slide"><img src="slides/silent-partnership/slide_15.png" alt="第15頁：第 15 頁" loading="lazy"></div><div class="slide"><img src="slides/silent-partnership/slide_16.png" alt="第16頁：第 16 頁" loading="lazy"></div><div class="slide"><img src="slides/silent-partnership/slide_17.png" alt="第17頁：肆、終止後之結算：§709" loading="lazy"></div><div class="slide"><img src="slides/silent-partnership/slide_18.png" alt="第18頁：第 18 頁" loading="lazy"></div><div class="slide"><img src="slides/silent-partnership/slide_19.png" alt="第19頁：肆、清算 vs 結算：程序差異" loading="lazy"></div><div class="slide"><img src="slides/silent-partnership/slide_20.png" alt="第20頁：第 20 頁" loading="lazy"></div><div class="slide"><img src="slides/silent-partnership/slide_21.png" alt="第21頁：伍、案例演練：法律定性傾向" loading="lazy"></div><div class="slide"><img src="slides/silent-partnership/slide_22.png" alt="第22頁：伍、案例演練：解任／開除決議之效力" loading="lazy"></div><div class="slide"><img src="slides/silent-partnership/slide_23.png" alt="第23頁：伍、出名營業人甲之主動策略" loading="lazy"></div><div class="slide"><img src="slides/silent-partnership/slide_24.png" alt="第24頁：陸、實務建議（防守方：出名營業人）" loading="lazy"></div><div class="slide"><img src="slides/silent-partnership/slide_25.png" alt="第25頁：第 25 頁" loading="lazy"></div><div class="slide"><img src="slides/silent-partnership/slide_26.png" alt="第26頁：陸、實務建議（攻擊方：隱名合夥人）" loading="lazy"></div><div class="slide"><img src="slides/silent-partnership/slide_27.png" alt="第27頁：第 27 頁" loading="lazy"></div><div class="slide"><img src="slides/silent-partnership/slide_28.png" alt="第28頁：柒、關鍵法條總覽（民法）" loading="lazy"></div><div class="slide"><img src="slides/silent-partnership/slide_29.png" alt="第29頁：柒、實務見解（判決經核實）" loading="lazy"></div><div class="slide"><img src="slides/silent-partnership/slide_30.png" alt="第30頁：第 30 頁" loading="lazy"></div><div class="slide"><img src="slides/silent-partnership/slide_31.png" alt="第31頁：捌、判決核實聲明" loading="lazy"></div><div class="slide"><img src="slides/silent-partnership/slide_32.png" alt="第32頁：結論與核心提醒" loading="lazy"></div><div class="slide"><img src="slides/silent-partnership/slide_33.png" alt="第33頁：第 33 頁" loading="lazy"></div>
+</div>
+<div class="key-hint" id="keyHint">← → 方向鍵切換 · T 開啟目錄 · Esc 關閉</div>
+<button class="toc-toggle" id="tocToggle" onclick="toggleToc()">☰ 目錄</button>
+<div class="toc-overlay" id="tocOverlay" onclick="closeToc()"></div>
+<div class="toc-panel" id="tocPanel"><h3>📋 幻燈片目錄</h3>
+<button class="toc-item active" onclick="goTo(0)">第1頁 · 隱名合夥：出名營業人</button><button class="toc-item" onclick="goTo(1)">第2頁 · 簡報目錄</button><button class="toc-item" onclick="goTo(2)">第3頁 · 壹、案例事實（已去識別化）</button><button class="toc-item" onclick="goTo(3)">第4頁 · 第 4 頁</button><button class="toc-item" onclick="goTo(4)">第5頁 · 壹、三個爭點</button><button class="toc-item" onclick="goTo(5)">第6頁 · 貳、核心概念：定義與差異</button><button class="toc-item" onclick="goTo(6)">第7頁 · 第 7 頁</button><button class="toc-item" onclick="goTo(7)">第8頁 · 貳、普通合夥 vs 隱名合夥</button><button class="toc-item" onclick="goTo(8)">第9頁 · 第 9 頁</button><button class="toc-item" onclick="goTo(9)">第10頁 · 第 10 頁</button><button class="toc-item" onclick="goTo(10)">第11頁 · 參、不得開除出名營業人（§688）</button><button class="toc-item" onclick="goTo(11)">第12頁 · 參、不得解任出名營業人（§674）</button><button class="toc-item" onclick="goTo(12)">第13頁 · 第 13 頁</button><button class="toc-item" onclick="goTo(13)">第14頁 · 肆、隱名合夥之「解散」＝契約終止</button><button class="toc-item" onclick="goTo(14)">第15頁 · 第 15 頁</button><button class="toc-item" onclick="goTo(15)">第16頁 · 第 16 頁</button><button class="toc-item" onclick="goTo(16)">第17頁 · 肆、終止後之結算：§709</button><button class="toc-item" onclick="goTo(17)">第18頁 · 第 18 頁</button><button class="toc-item" onclick="goTo(18)">第19頁 · 肆、清算 vs 結算：程序差異</button><button class="toc-item" onclick="goTo(19)">第20頁 · 第 20 頁</button><button class="toc-item" onclick="goTo(20)">第21頁 · 伍、案例演練：法律定性傾向</button><button class="toc-item" onclick="goTo(21)">第22頁 · 伍、案例演練：解任／開除決議之效力</button><button class="toc-item" onclick="goTo(22)">第23頁 · 伍、出名營業人甲之主動策略</button><button class="toc-item" onclick="goTo(23)">第24頁 · 陸、實務建議（防守方：出名營業人）</button><button class="toc-item" onclick="goTo(24)">第25頁 · 第 25 頁</button><button class="toc-item" onclick="goTo(25)">第26頁 · 陸、實務建議（攻擊方：隱名合夥人）</button><button class="toc-item" onclick="goTo(26)">第27頁 · 第 27 頁</button><button class="toc-item" onclick="goTo(27)">第28頁 · 柒、關鍵法條總覽（民法）</button><button class="toc-item" onclick="goTo(28)">第29頁 · 柒、實務見解（判決經核實）</button><button class="toc-item" onclick="goTo(29)">第30頁 · 第 30 頁</button><button class="toc-item" onclick="goTo(30)">第31頁 · 捌、判決核實聲明</button><button class="toc-item" onclick="goTo(31)">第32頁 · 結論與核心提醒</button><button class="toc-item" onclick="goTo(32)">第33頁 · 第 33 頁</button>
+</div>
+<div class="controls">
+  <div class="info"><span id="currentPage">1</span> / <span id="totalPages">33</span> &nbsp;·&nbsp; 隱名合夥：出名營業人解任禁止與終止結算</div>
+  <div><button class="nav-btn" id="prevBtn" onclick="prevSlide()">‹ 上一頁</button>
+  <button class="nav-btn" id="nextBtn" onclick="nextSlide()">下一頁 ›</button></div>
+</div>
+<script>
+const TOTAL = 33;
+let current = 0;
+const slidesEl = document.querySelectorAll('.slide');
+const progressBar = document.getElementById('progressBar');
+const currentPage = document.getElementById('currentPage');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+function updateSlide() {
+  slidesEl.forEach((el,i)=>el.classList.toggle('active', i===current));
+  currentPage.textContent = current+1;
+  progressBar.style.width = ((current+1)/TOTAL*100)+'%';
+  prevBtn.disabled = current===0;
+  nextBtn.disabled = current===TOTAL-1;
+  document.querySelectorAll('.toc-item').forEach((el,i)=>{el.classList.toggle('active', i===current);});
+}
+function nextSlide() { if(current<TOTAL-1){current++;updateSlide();} }
+function prevSlide() { if(current>0){current--;updateSlide();} }
+function goTo(n) { current=n; updateSlide(); closeToc(); }
+function toggleToc() { document.getElementById('tocPanel').classList.toggle('open'); document.getElementById('tocOverlay').classList.toggle('show'); }
+function closeToc() { document.getElementById('tocPanel').classList.remove('open'); document.getElementById('tocOverlay').classList.remove('show'); }
+document.addEventListener('keydown', function(e) {
+  if(e.key==='ArrowLeft') prevSlide();
+  else if(e.key==='ArrowRight') nextSlide();
+  else if(e.key==='t'||e.key==='T') toggleToc();
+  else if(e.key==='Escape') closeToc();
+});
+let touchStartX=0;
+document.addEventListener('touchstart', e=>{touchStartX=e.changedTouches[0].screenX;});
+document.addEventListener('touchend', e=>{
+  const diff=touchStartX-e.changedTouches[0].screenX;
+  if(Math.abs(diff)>50){ if(diff>0) nextSlide(); else prevSlide(); }
+});
+setTimeout(()=>document.getElementById('keyHint').classList.add('show'),2000);
+setTimeout(()=>document.getElementById('keyHint').classList.remove('show'),8000);
+updateSlide();
+</script>
+</body>
+</html>
