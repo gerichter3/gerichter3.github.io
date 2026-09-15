@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>露臺設置太陽光電發電設備之法律問題研究</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:"Noto Serif TC","Microsoft JhengHei",serif; background:#1a1a2e; color:#fff; overflow:hidden; height:100vh; }
+.slide-container { position:relative; width:100vw; height:100vh; display:flex; align-items:center; justify-content:center; background:#1a1a2e; }
+.slide { display:none; width:100vw; height:100vh; align-items:center; justify-content:center; }
+.slide.active { display:flex; }
+.slide-img img { max-width:100%; max-height:100vh; object-fit:contain; box-shadow:0 4px 40px rgba(0,0,0,.5); border-radius:4px; }
+.slide-text { background:#fff; color:#1a1a2e; flex-direction:column; align-items:flex-start; justify-content:flex-start; padding:6vh 8vw; overflow-y:auto; }
+.st-title { font-size:2.2rem; font-weight:700; color:#1a365d; margin-bottom:2vh; border-bottom:3px solid #d4af37; padding-bottom:1vh; }
+.st-body p { font-size:1.25rem; line-height:1.9; margin-bottom:1.2vh; color:#222; }
+.st-body p.empty { color:#999; font-style:italic; }
+.controls { position:fixed; bottom:0; left:0; right:0; background:rgba(26,26,46,.92); backdrop-filter:blur(8px); padding:12px 24px; display:flex; align-items:center; justify-content:space-between; z-index:100; border-top:1px solid rgba(255,255,255,.1); }
+.controls .info { font-size:.85rem; color:#aaa; }
+.controls .nav-btn { background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.15); color:#fff; padding:8px 20px; border-radius:6px; cursor:pointer; font-size:.9rem; transition:background .2s; font-family:inherit; }
+.controls .nav-btn:hover { background:rgba(255,255,255,.18); }
+.controls .nav-btn:disabled { opacity:.3; cursor:default; }
+.progress { position:fixed; top:0; left:0; right:0; height:3px; background:rgba(255,255,255,.08); z-index:200; }
+.progress-bar { height:100%; background:linear-gradient(90deg,#c8a84b,#e8c84b); transition:width .3s ease; }
+.toc-toggle { position:fixed; top:16px; right:16px; background:rgba(26,26,46,.85); border:1px solid rgba(255,255,255,.15); color:#aaa; padding:8px 14px; border-radius:6px; cursor:pointer; font-size:.85rem; z-index:200; font-family:inherit; transition:color .2s; }
+.toc-toggle:hover { color:#fff; }
+.toc-panel { position:fixed; top:0; right:-340px; width:320px; height:100vh; background:rgba(20,20,36,.97); backdrop-filter:blur(12px); border-left:1px solid rgba(255,255,255,.08); z-index:300; overflow-y:auto; transition:right .35s ease; padding:60px 16px 24px; }
+.toc-panel.open { right:0; }
+.toc-panel h3 { font-size:.95rem; color:#c8a84b; margin-bottom:16px; padding-bottom:10px; border-bottom:1px solid rgba(255,255,255,.08); }
+.toc-item { display:block; padding:8px 12px; margin-bottom:4px; border-radius:4px; cursor:pointer; font-size:.82rem; color:#bbb; transition:background .15s,color .15s; border:none; background:none; width:100%; text-align:left; font-family:inherit; }
+.toc-item:hover { background:rgba(200,168,75,.12); color:#fff; }
+.toc-item.active { background:rgba(200,168,75,.2); color:#c8a84b; font-weight:600; }
+.toc-overlay { position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,.4); z-index:250; display:none; }
+.toc-overlay.show { display:block; }
+.key-hint { position:fixed; bottom:70px; left:50%; transform:translateX(-50%); background:rgba(0,0,0,.6); color:#888; padding:6px 18px; border-radius:20px; font-size:.75rem; z-index:50; pointer-events:none; opacity:0; transition:opacity .5s; }
+.key-hint.show { opacity:1; }
+@media (max-width:768px) { .controls .info{font-size:.75rem;} .controls .nav-btn{padding:6px 14px;font-size:.8rem;} .toc-panel{width:280px;right:-300px;} .st-title{font-size:1.6rem;} .st-body p{font-size:1.05rem;} }
+</style>
+</head>
+<body>
+<div class="progress"><div class="progress-bar" id="progressBar"></div></div>
+<div class="slide-container" id="slideContainer">
+<div class="slide slide-text"><div class="st-title">建築物露臺設置太陽光電發電設備</div><div class="st-body"><p>之法律問題研究</p><p>以內政部台內國字第 1150807778 號函暨其附件為中心</p><p>法律研究報告簡報</p><p>謝秉錡律師事務所</p><p>謝秉錡律師　劉靜芬律師　何博彥律師　林育正律師　陳儒學習律師</p><p>中華民國 115 年 9 月</p></div></div><div class="slide slide-img"><img src="slides/terrace-solar-pv/page02.png" alt="圖表頁"></div><div class="slide slide-text"><div class="st-title">簡報目錄</div><div class="st-body"><p>一、問題提出與研究範圍</p><p>二、法規範體系之建構</p><p>三、免照標準第 5 條之要件</p><p>四、露臺與陽臺之定性轉換</p><p>五、定性變更之實質後果</p><p>六、新設頂蓋與版本沿革</p><p>七、免照不等於免程序</p><p>八、司法實務之審查態度</p><p>九、引證核實之三項發現</p><p>十、結論與實務建議</p><p>2/20</p></div></div><div class="slide slide-text"><div class="st-title">一、問題提出與研究範圍</div><div class="st-body"><p>核心問題</p><p>於建築物「露臺」設置太陽光電發電設備，是否符合免請領雜項執照之要件？</p><p>若否，該露臺將被重新定性為「陽臺」，其法律後果為何？</p><p>研究素材</p><p>行政函釋 4 件</p><p>內政部 115.07.13 台內國字第 1150807778 號函（核心）＋附件 1～3（96、106、113 年函）</p><p>法規命令 2 部</p><p>設置再生能源設施免請領雜項執照標準（114.01.13 修正）；建築技術規則建築設計施工編（115.02.23 修正）</p><p>實務見解 5 件</p><p>臺北市政府訴願決定書 1 件、行政法院裁判 2 則、能源局函釋 2 件（本研究獨立取得並核實）</p><p>3/20</p></div></div><div class="slide slide-img"><img src="slides/terrace-solar-pv/page05.png" alt="圖表頁"></div><div class="slide slide-text"><div class="st-title">二、法規範體系之建構</div><div class="st-body"><p>判斷順序（規範鏈）</p><p>再生能源發展條例 §17Ⅱ</p><p>法律授權</p><p>免照標準 §5</p><p>免照門檻（法規命令）</p><p>建築技術規則建築設計施工編</p><p>補充規範</p><p>建築法 §25</p><p>原則管制（應請領執照）</p><p>免照標準係「例外規定」，解釋上不宜從寬；不符合免照標準者，回歸建築法 §25 之原則管制。</p><p>4/20</p></div></div><div class="slide slide-text"><div class="st-title">二之一　法律層級：授權與管制</div><div class="st-body"><p>再生能源發展條例 §17（授權）</p><p>設置再生能源發電、利用系統及相關設施，依不同設施特性，就其裝置容量、高度或面積未達一定規模者，免依建築法規定請領雜項執照。</p><p>前項關於免請領雜項執照之設備容量、高度或面積標準，由中央主管機關會同中央建築主管機關定之。</p><p>建築法 §25（原則管制）</p><p>建築物非經申請直轄市、縣（市）（局）主管建築機關之審查許可並發給執照，不得擅自建造或使用或拆除。</p><p>未取得免照地位者，即回歸本條管制，違反者另生建築法 §86 之拆除義務。</p><p>★ 免照標準係依 §17Ⅱ 授權訂定之法規命令，其性質為「例外」；例外規定應從嚴解釋。</p><p>5/20</p></div></div><div class="slide slide-img"><img src="slides/terrace-solar-pv/page08.png" alt="圖表頁"></div><div class="slide slide-text"><div class="st-title">二之二　免照標準之規範結構（全文 9 條）</div><div class="st-body"><p>§1</p><p>授權依據（再生能源發展條例 §17Ⅱ）</p><p>§2</p><p>適用範圍：太陽光電發電設備「並得包含支撐架、新設頂蓋及運轉維護孔道或通道之設施」</p><p>§3</p><p>「建築物」四款定義（含自治條例許可、實施建築管理前已建造完成者）</p><p>§4</p><p>屋頂太陽能熱水系統 2 公尺以下免照</p><p>§5</p><p>太陽光電發電設備之免照門檻　★本案核心</p><p>§6</p><p>輸變電相關設施保護用構造物之免照門檻</p><p>§7</p><p>設置前備查（＋四款應另檢附結構計算說明書之情形）</p><p>§8</p><p>竣工後備查（結構安全證明書、工程完竣證明書）</p><p>§9</p><p>自發布日施行</p><p>6/20</p></div></div><div class="slide slide-text"><div class="st-title">三、免照標準第 5 條之要件</div><div class="st-body"><p>§5Ⅰ①　設置於建築物屋頂或露臺，包含支撐架並得結合新設頂蓋，其高度自屋頂面或露臺面起算四點五公尺以下。</p><p>§5Ⅱ</p><p>仰角非固定者，僅得設置於地面（露臺不適用）</p><p>§5Ⅲ</p><p>新設頂蓋之最大設置面積不得超出太陽光電發電設備之範圍　★核心門檻</p><p>§5Ⅳ</p><p>架高之運轉維護孔道或通道，水平投影面積 ≤ 光電設備整體水平投影面積 30%</p><p>§5Ⅴ</p><p>得視為屋簷，最大設置範圍以建築物外牆中心線或其代替柱中心線外 1 公尺為限，且不得超過建築基地範圍</p><p>§5Ⅵ</p><p>合法建築物屋頂有違章建築者，其適用類型：結構分立型／結構共構型／設備安裝型</p><p>實務上最易踰越者為「光電板小、頂蓋大」——全部設備即不符合免照要件。</p><p>7/20</p></div></div><div class="slide slide-text"><div class="st-title">四、露臺與陽臺之定性轉換</div><div class="st-body"><p>建築技術規則建築設計施工編 §1⑳　露臺及陽臺：直上方無任何頂遮蓋物之平臺稱為露臺，直上方有遮蓋物者稱為陽臺。</p><p>露臺</p><p>直上方「無」任何頂遮蓋物</p><p>原核准狀態：完全不佔容積</p><p>§162Ⅰ②　得不計入容積總樓地板面積，且無比例上限</p><p>陽臺</p><p>直上方「有」遮蓋物</p><p>§1③　每層陽臺面積和 ≤ 建築面積 1/8</p><p>§162Ⅰ①　未超過該層樓地板面積 10%（住宅 12.5%／8㎡）</p><p>★ 區別僅繫於「直上方有無任何頂遮蓋物」——不問遮蓋物之材料、面積、高度、固定性或設置者身分。</p><p>設置光電設備所結合之新設頂蓋，於物理上仍構成「直上方之遮蓋物」，故可能引致空間定性變更。</p><p>8/20</p></div></div><div class="slide slide-img"><img src="slides/terrace-solar-pv/page12.png" alt="圖表頁"></div><div class="slide slide-text"><div class="st-title">五、定性變更之實質後果</div><div class="st-body"><p>同一物理空間之法律地位：由「完全不佔容積」轉為「受上限拘束」</p><p>比較項目</p><p>露臺（原狀態）</p><p>陽臺（變性後）</p><p>建築面積</p><p>不計入</p><p>每層陽臺面積和 ≤ 建築面積 1/8（§1③）</p><p>容積總樓地板面積</p><p>得不計入，無比例上限（§162Ⅰ②）</p><p>未超過該層樓地板面積 10%；住宅 12.5% 或 8㎡（§162Ⅰ①）</p><p>超出上限之效果</p><p>超出部分應計入，直接衝擊建蔽率與容積率合規性</p><p>工廠類建築物</p><p>§296：陽臺不計入之規定於工廠類建築物不適用</p><p>注意：§162 位於「容積設計」章，以「實施容積管制地區」為前提（§160）；非容積管制地區回歸 §1⑤⑦ 處理。</p><p>9/20</p></div></div><div class="slide slide-img"><img src="slides/terrace-solar-pv/page14.png" alt="圖表頁"></div><div class="slide slide-text"><div class="st-title">五之一　「合規反較安全」之適用邏輯</div><div class="st-body"><p>第一步</p><p>是否符合免照標準 §5 所定要件？</p><p>符合 → 免請領雜項執照</p><p>第二步</p><p>若符合，建築技術規則是否適用？</p><p>不適用（113 年函）</p><p>第三步</p><p>若不適用，是否觸發 §1⑳ 之露臺變性？</p><p>不觸發</p><p>★ 關鍵洞見：合規反而安全、超標反而變性</p><p>是否被認定為陽臺，形式上取決於是否「超標」，實質上則取決於申請人是否恪守免照標準 §5 之各項限制（尤其第 3 項頂蓋面積）。</p><p>舉證重心應置於「免照標準 §5 要件是否該當」，而非事後爭執空間定性。</p><p>10/20</p></div></div><div class="slide slide-img"><img src="slides/terrace-solar-pv/page16.png" alt="圖表頁"></div><div class="slide slide-text"><div class="st-title">六、新設頂蓋之容許界線</div><div class="st-body"><p>§2Ⅱ①　太陽光電發電設備：除應有利用太陽電池轉換太陽光能為電能之發電設備外，並得包含支撐架、新設頂蓋及運轉維護孔道或通道之設施。</p><p>三層限制</p><p>① 面積限制（§5Ⅲ）</p><p>頂蓋最大設置面積不得超出太陽光電發電設備之範圍——不得以頂蓋作為變相增建之手段</p><p>② 程序加重（§7Ⅱ④）</p><p>「設置支撐架結合新設頂蓋」為應另檢附結構計算說明書之獨立事由——露臺加裝頂蓋者必然適用</p><p>③ 範圍限制（§5Ⅴ）</p><p>視為屋簷，最大設置範圍以建築物外牆中心線或其代替柱中心線外 1 公尺為限，且不得超過建築基地範圍</p><p>★ 實務風險：最常見之踰越型態為「光電板小、頂蓋大」，此際全部設備均不符合免照要件。</p><p>11/20</p></div></div><div class="slide slide-img"><img src="slides/terrace-solar-pv/page18.png" alt="圖表頁"></div><div class="slide slide-text"><div class="st-title">六之一　★ 版本沿革與「版本錯置」風險</div><div class="st-body"><p>版本</p><p>§2Ⅱ 之內容要旨</p><p>101.09.17</p><p>不含頂蓋之支撐架</p><p>103.09.22</p><p>太陽光電模組、無頂蓋之支撐架及其他轉換太陽光能為電能之必要設施</p><p>105.09.10</p><p>同上（不含頂蓋）</p><p>106.09.30</p><p>無頂蓋之支撐架及運轉維護孔道或通道之設施</p><p>107.05.10</p><p>同上（不含頂蓋）</p><p>114.01.13（現行）</p><p>並得包含支撐架、新設頂蓋及運轉維護孔道或通道之設施</p><p>★★ 結論：能源局 106 年函、最高行政法院 111 上 29、更一審 112 訴更一 102 所稱「不包含具有頂蓋之支撐架」，均係適用舊版之結果——就現行案件之頂蓋問題已失其依據。</p><p>援引任何實務見解前，務必先確認「其所適用之法規版本」。</p><p>12/20</p></div></div><div class="slide slide-img"><img src="slides/terrace-solar-pv/page20.png" alt="圖表頁"></div><div class="slide slide-text"><div class="st-title">七、免照不等於免程序</div><div class="st-body"><p>設置前</p><p>§7Ⅰ　檢附：①再生能源發電設備同意備案文件影本　②建築師／土木技師／結構技師出具之免請領雜項執照簽證表（附件二）及剖面示意圖、平面配置圖、立面圖</p><p>設置前（加重）</p><p>§7Ⅱ　太陽光電發電設備有下列情形之一者，應另檢附結構計算說明書：①設置高度超過 3 公尺　②設置仰角非固定　③設置範圍超出建築物外牆中心線或其代替柱中心線　④設置支撐架結合新設頂蓋</p><p>竣工後</p><p>§8　檢附結構安全證明書（附件三）、工程完竣證明書（附件四）及剖面示意圖、平面配置圖、立面圖，報請主管建築機關備查</p><p>★ 司法實務之權威表述（最高行政法院 111 年度上字第 29 號判決）</p><p>「再生能源設施之建造，必須先經建築主管機關認定符合免雜條件而出具免雜同意備查函，始獲得免除請領雜項執照之便利以進行建造。反之，如未取得免雜同意備查函，即等同未經豁免建築法所要求之建築許可，在建造行為之前，請領雜項執照仍屬法定應踐行之程序。」</p><p>13/20</p></div></div><div class="slide slide-img"><img src="slides/terrace-solar-pv/page22.png" alt="圖表頁"></div><div class="slide slide-text"><div class="st-title">七之一　「先設置、後補申請」無補正空間</div><div class="st-body"><p>實質違建</p><p>未依建築法規定申領建築執照擅自建造，且</p><p>★ 無法補正</p><p>於免照類案件：未於設置前取得免雜同意備查函，即未取得免照地位</p><p>程序違建</p><p>位置、高度、結構、建蔽率等均不違反當地都市計畫建築法令，且獲得土地使用權</p><p>僅程序上疏失，未領建築執照擅自興工</p><p>得限期補照</p><p>★ 更一審判決之認定（臺北高等行政法院 112 年度訴更一字第 102 號）</p><p>「原告未得建築許可逕行建造系爭設備Ｂ完竣，此部分已具違章狀態，自然屬於違建，且屬不得補正建築執照之實質違建。」</p><p>→ 露臺加裝光電而「先設置、後補申請」者，於司法上失去補正空間。</p><p>14/20</p></div></div><div class="slide slide-img"><img src="slides/terrace-solar-pv/page24.png" alt="圖表頁"></div><div class="slide slide-text"><div class="st-title">八、司法實務之審查態度</div><div class="st-body"><p>三則實務文書（本研究獨立取得並核實）</p><p>臺北市政府訴願決定書</p><p>114.09.08　府訴三字第 1146084318 號</p><p>訴願駁回｜原處分：114.05.14 不予備查</p><p>臺北高等行政法院判決</p><p>114.06.12　112 年度訴更一字第 102 號</p><p>原告之訴駁回｜更一審</p><p>最高行政法院判決</p><p>112.11.16　111 年度上字第 29 號</p><p>原判決廢棄發回（訴之聲明第 1 項部分）</p><p>個案事實：屋頂平臺女兒牆上設置窗形光電設備（1.1 瓩），與違建（含壁體、窗戶、屋頂鐵皮）共構作為居室使用。</p><p>15/20</p></div></div><div class="slide slide-text"><div class="st-title">八之一　最高行政法院之三項法律判斷</div><div class="st-body"><p>① 免雜同意備查函之先行性</p><p>免照地位須「經主管建築機關認定並核發免雜同意備查函」後始取得；未取得者，請領雜項執照仍屬法定應踐行之程序。</p><p>② 免雜範圍以申請時圖說為準</p><p>主管機關「不得事後援用能源局 106 年 11 月 9 日函復意旨指『增設頂蓋及窗戶』非免雜標準所適用之範圍，任意限縮其已同意備查之範圍」。</p><p>③ ★ 能源局函不得作為認定基礎</p><p>「不具職權以認定免雜同意備查函所及範圍之能源局 106 年 11 月 9 日函、107 年 5 月 14 日函……作為認定事實之基礎，實有認定事實違背論理法則之違誤。」</p><p>★ 審查重心：免雜同意備查函是否存在、其所及範圍為何、與拆除處分之範圍有無交錯重疊。</p><p>16/20</p></div></div><div class="slide slide-img"><img src="slides/terrace-solar-pv/page27.png" alt="圖表頁"></div><div class="slide slide-text"><div class="st-title">九、引證核實之三項發現</div><div class="st-body"><p>依「三層核實法」：①條號是否存在　②引文是否出自該裁判　③省略是否致語意變更</p><p>發現一　訴願決定書之引述失真</p><p>該決定書稱「不包括增設窗戶」業經更一審判決「所肯認」；惟該判決實則明言「系爭設備Ｂ並非窗戶」「與常見之窗戶裝置有所相異」，並自承「訴願決定雖理由與本院不同」，係以「未於設置前申請備查」之程序理由駁回。</p><p>發現二　能源局函之職權問題</p><p>最高行政法院已明示能源局「不具職權」認定免雜同意備查函所及範圍，以之為認定事實之基礎違背論理法則；而訴願決定書卻正以該函為依據——兩者直接衝突。</p><p>發現三　版本錯置風險</p><p>能源局 106 年函及二則判決所稱「不包含具有頂蓋之支撐架」，均係適用 103～107 年版之結果；於現行版明文「並得包含支撐架、新設頂蓋」之下，該部分見解已失其依據。</p><p>★ 援引上開實務文書時，務須自行過濾其引述，不得照錄。</p><p>17/20</p></div></div><div class="slide slide-img"><img src="slides/terrace-solar-pv/page29.png" alt="圖表頁"></div><div class="slide slide-text"><div class="st-title">十、實務建議（一）擬設置者</div><div class="st-body"><p>務必於「設置前」申請免雜同意備查（§7Ⅰ）</p><p>「先設置、後補申請」於司法上屬不得補正之實質違建</p><p>申請時之圖說應完整揭露設備範圍</p><p>含支撐架、新設頂蓋之投影尺寸、附屬設施；免雜範圍以申請時檢附之文件與圖說為準</p><p>注意 §5Ⅲ 頂蓋面積不得超出光電設備範圍</p><p>此為實務上最易踰越之門檻</p><p>竣工後再申請竣工同意備查（§8）</p><p>憑免雜同意備查函及竣工同意備查函向能源署申請設備登記</p><p>基地已有違建者，注意地方政策</p><p>臺北市僅放寬「結構分立型（A 型）」；結構共構型、設備安裝型於違建拆除前仍不同意</p><p>★ 申請文件與圖說之完整性，即為訴訟上之決勝基礎。</p><p>18/20</p></div></div><div class="slide slide-img"><img src="slides/terrace-solar-pv/page31.png" alt="圖表頁"></div><div class="slide slide-text"><div class="st-title">十、實務建議（二）已遭查報者</div><div class="st-body"><p>不得僅援引「符合免照標準 §5 要件」抗辯</p><p>免照地位之取得繫於「主管建築機關核發之免雜同意備查函」，而非「要件之抽象該當」</p><p>主張免雜範圍時，以申請時之簽證表、結構安全證明書及圖說為據</p><p>若申請文件所揭露之範圍大於主管機關事後認定之範圍，得據以主張「不得事後任意限縮」</p><p>★ 若相對人援引能源局 106 年 11 月 9 日函</p><p>得直接援引最高行政法院 111 年度上字第 29 號判決反駁——該函不具職權，以之為認定事實之基礎違背論理法則</p><p>★ 援引任何函釋或裁判前，先確認其所適用之法規版本</p><p>避免「版本錯置」——尤其「新設頂蓋」於 106.09.30 版仍不在適用範圍內</p><p>19/20</p></div></div><div class="slide slide-text"><div class="st-title">結論與資料來源</div><div class="st-body"><p>研究結論（摘要）</p><p>① 規範鏈：再生能源發展條例 §17Ⅱ → 免照標準 §5 → 建築技術規則 → 建築法 §25</p><p>② 露臺／陽臺之分野為單一物理標準（§1⑳），不問遮蓋物之性質與設置者</p><p>③ 定性變更之實質後果重大（由不佔容積→受 1/8 及 10%／12.5% 上限拘束）</p><p>④ 「合規反較安全」——舉證重心置於 §5 要件該當性</p><p>⑤ 免照地位係「經認定取得」，非「符合要件自動取得」</p><p>⑥ 版本錯置為主要實務風險；能源局函不得作為個案認定基礎</p><p>主要資料來源</p><p>內政部台內國字第 1150807778 號函暨附件 1～3｜設置再生能源設施免請領雜項執照標準（114.01.13，全文 9 條）｜建築技術規則建築設計施工編（115.02.23）</p><p>臺北市政府 114.09.08 府訴三字第 1146084318 號訴願決定書｜臺北高等行政法院 112 年度訴更一字第 102 號判決｜最高行政法院 111 年度上字第 29 號判決</p><p>謝秉錡律師事務所　115 年 9 月</p><p>20/20</p></div></div>
+</div>
+<div class="key-hint" id="keyHint">← → 方向鍵切換 · T 開啟目錄 · Esc 關閉</div>
+<button class="toc-toggle" id="tocToggle" onclick="toggleToc()">☰ 目錄</button>
+<div class="toc-overlay" id="tocOverlay" onclick="closeToc()"></div>
+<div class="toc-panel" id="tocPanel"><h3>📋 幻燈片目錄</h3>
+<button class="toc-item active" onclick="goTo(0)">第1頁 · 建築物露臺設置太陽光電發電設備</button><button class="toc-item" onclick="goTo(1)">第2頁 · 圖表頁 2</button><button class="toc-item" onclick="goTo(2)">第3頁 · 簡報目錄</button><button class="toc-item" onclick="goTo(3)">第4頁 · 一、問題提出與研究範圍</button><button class="toc-item" onclick="goTo(4)">第5頁 · 圖表頁 5</button><button class="toc-item" onclick="goTo(5)">第6頁 · 二、法規範體系之建構</button><button class="toc-item" onclick="goTo(6)">第7頁 · 二之一　法律層級：授權與管制</button><button class="toc-item" onclick="goTo(7)">第8頁 · 圖表頁 8</button><button class="toc-item" onclick="goTo(8)">第9頁 · 二之二　免照標準之規範結構（全文 9 條）</button><button class="toc-item" onclick="goTo(9)">第10頁 · 三、免照標準第 5 條之要件</button><button class="toc-item" onclick="goTo(10)">第11頁 · 四、露臺與陽臺之定性轉換</button><button class="toc-item" onclick="goTo(11)">第12頁 · 圖表頁 12</button><button class="toc-item" onclick="goTo(12)">第13頁 · 五、定性變更之實質後果</button><button class="toc-item" onclick="goTo(13)">第14頁 · 圖表頁 14</button><button class="toc-item" onclick="goTo(14)">第15頁 · 五之一　「合規反較安全」之適用邏輯</button><button class="toc-item" onclick="goTo(15)">第16頁 · 圖表頁 16</button><button class="toc-item" onclick="goTo(16)">第17頁 · 六、新設頂蓋之容許界線</button><button class="toc-item" onclick="goTo(17)">第18頁 · 圖表頁 18</button><button class="toc-item" onclick="goTo(18)">第19頁 · 六之一　★ 版本沿革與「版本錯置」風險</button><button class="toc-item" onclick="goTo(19)">第20頁 · 圖表頁 20</button><button class="toc-item" onclick="goTo(20)">第21頁 · 七、免照不等於免程序</button><button class="toc-item" onclick="goTo(21)">第22頁 · 圖表頁 22</button><button class="toc-item" onclick="goTo(22)">第23頁 · 七之一　「先設置、後補申請」無補正空間</button><button class="toc-item" onclick="goTo(23)">第24頁 · 圖表頁 24</button><button class="toc-item" onclick="goTo(24)">第25頁 · 八、司法實務之審查態度</button><button class="toc-item" onclick="goTo(25)">第26頁 · 八之一　最高行政法院之三項法律判斷</button><button class="toc-item" onclick="goTo(26)">第27頁 · 圖表頁 27</button><button class="toc-item" onclick="goTo(27)">第28頁 · 九、引證核實之三項發現</button><button class="toc-item" onclick="goTo(28)">第29頁 · 圖表頁 29</button><button class="toc-item" onclick="goTo(29)">第30頁 · 十、實務建議（一）擬設置者</button><button class="toc-item" onclick="goTo(30)">第31頁 · 圖表頁 31</button><button class="toc-item" onclick="goTo(31)">第32頁 · 十、實務建議（二）已遭查報者</button><button class="toc-item" onclick="goTo(32)">第33頁 · 結論與資料來源</button>
+</div>
+<div class="controls">
+  <div class="info"><span id="currentPage">1</span> / <span id="totalPages">33</span> &nbsp;·&nbsp; 露臺設置太陽光電發電設備之法律問題研究</div>
+  <div><button class="nav-btn" id="prevBtn" onclick="prevSlide()">‹ 上一頁</button>
+  <button class="nav-btn" id="nextBtn" onclick="nextSlide()">下一頁 ›</button></div>
+</div>
+<script>
+const TOTAL = 33;
+let current = 0;
+const slidesEl = document.querySelectorAll('.slide');
+const progressBar = document.getElementById('progressBar');
+const currentPage = document.getElementById('currentPage');
+const totalPages = document.getElementById('totalPages');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+totalPages.textContent = TOTAL;
+function updateSlide() {
+  slidesEl.forEach((el,i)=>el.classList.toggle('active', i===current));
+  currentPage.textContent = current+1;
+  progressBar.style.width = ((current+1)/TOTAL*100)+'%';
+  prevBtn.disabled = current===0;
+  nextBtn.disabled = current===TOTAL-1;
+  document.title = (current+1)+'/'+TOTAL+' · 露臺設置太陽光電發電設備之法律問題研究';
+  document.querySelectorAll('.toc-item').forEach((el,i)=>{el.classList.toggle('active', i===current);});
+}
+function nextSlide() { if(current<TOTAL-1){current++;updateSlide();} }
+function prevSlide() { if(current>0){current--;updateSlide();} }
+function goTo(n) { current=n; updateSlide(); closeToc(); }
+function toggleToc() { document.getElementById('tocPanel').classList.toggle('open'); document.getElementById('tocOverlay').classList.toggle('show'); }
+function closeToc() { document.getElementById('tocPanel').classList.remove('open'); document.getElementById('tocOverlay').classList.remove('show'); }
+document.addEventListener('keydown', function(e) {
+  if(e.key==='ArrowLeft') prevSlide();
+  else if(e.key==='ArrowRight') nextSlide();
+  else if(e.key==='t'||e.key==='T') toggleToc();
+  else if(e.key==='Escape') closeToc();
+});
+let touchStartX=0;
+document.addEventListener('touchstart', e=>{touchStartX=e.changedTouches[0].screenX;});
+document.addEventListener('touchend', e=>{
+  const diff=touchStartX-e.changedTouches[0].screenX;
+  if(Math.abs(diff)>50){ if(diff>0) nextSlide(); else prevSlide(); }
+});
+setTimeout(()=>document.getElementById('keyHint').classList.add('show'),2000);
+setTimeout(()=>document.getElementById('keyHint').classList.remove('show'),8000);
+updateSlide();
+</script>
+</body>
+</html>
