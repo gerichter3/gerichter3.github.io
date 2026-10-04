@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="臨終醫療決定的權限分野——意定監護人、醫療委任代理人與最近親屬之權限落差｜謝秉錡律師事務所">
+<title>臨終醫療決定的權限分野</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:"Noto Serif TC","PingFang TC","Microsoft JhengHei",serif; background:#1a1a2e; color:#fff; overflow:hidden; height:100vh; }
+.slide-container { position:relative; width:100vw; height:100vh; }
+.slide { display:none; width:100vw; height:100vh; }
+.slide.active { display:flex; }
+.slide-img { align-items:center; justify-content:center; background:#11111f; }
+.slide-img img { max-width:100%; max-height:100vh; object-fit:contain; }
+.slide-text { background:#fff; color:#1a1a2e; flex-direction:column; align-items:flex-start; justify-content:flex-start; padding:5vh 6vw 10vh; overflow-y:auto; }
+.st-title { font-size:1.95rem; font-weight:700; color:#1a365d; margin-bottom:1.5vh; border-bottom:3px solid #d4af37; padding-bottom:.8vh; width:100%; }
+.st-body { width:100%; }
+.st-body p { font-size:1.06rem; line-height:1.8; margin-bottom:.85vh; color:#222; }
+.st-body p.star { color:#8a6a12; font-weight:600; background:#fdf8e8; border-left:4px solid #d4af37; padding:9px 14px; border-radius:4px; margin:1.1vh 0; }
+.tbl-wrap { overflow-x:auto; margin:1.1vh 0 1.8vh; }
+.st-body table { border-collapse:collapse; width:100%; font-size:.96rem; }
+.st-body th { background:#1a365d; color:#fff; padding:10px 14px; text-align:left; font-weight:600; white-space:nowrap; }
+.st-body td { padding:9px 14px; border-bottom:1px solid #e3e7ef; vertical-align:top; line-height:1.7; }
+.st-body tbody tr:nth-child(even) td { background:#f6f8fb; }
+.slide-text.cover { justify-content:center; align-items:center; text-align:center; background:#0f1e3c; color:#fff; }
+.cover-in { max-width:1020px; }
+.cover-in h1 { font-size:2.9rem; color:#f0d78c; letter-spacing:2px; line-height:1.45; margin-bottom:2vh; }
+.cover-sub { font-size:1.3rem; color:#cbd6ea; margin-bottom:4vh; }
+.cover-meta p { font-size:1.02rem; color:#a9b6cd; line-height:2; }
+.controls { position:fixed; bottom:0; left:0; right:0; background:rgba(26,26,46,.92); backdrop-filter:blur(8px); padding:12px 24px; display:flex; align-items:center; justify-content:space-between; z-index:100; border-top:1px solid rgba(255,255,255,.1); }
+.controls .info { font-size:.85rem; color:#aaa; }
+.controls .nav-btn { background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.15); color:#fff; padding:8px 20px; border-radius:6px; cursor:pointer; font-size:.9rem; transition:background .2s; font-family:inherit; }
+.controls .nav-btn:hover { background:rgba(255,255,255,.18); }
+.controls .nav-btn:disabled { opacity:.3; cursor:default; }
+.progress { position:fixed; top:0; left:0; right:0; height:3px; background:rgba(255,255,255,.08); z-index:200; }
+.progress-bar { height:100%; background:linear-gradient(90deg,#c8a84b,#e8c84b); transition:width .3s ease; }
+.toc-toggle { position:fixed; top:16px; right:16px; background:rgba(26,26,46,.85); border:1px solid rgba(255,255,255,.15); color:#aaa; padding:8px 14px; border-radius:6px; cursor:pointer; font-size:.85rem; z-index:200; font-family:inherit; transition:color .2s; }
+.toc-toggle:hover { color:#fff; }
+.toc-panel { position:fixed; top:0; right:-360px; width:340px; height:100vh; background:rgba(20,20,36,.97); backdrop-filter:blur(12px); border-left:1px solid rgba(255,255,255,.08); z-index:300; overflow-y:auto; transition:right .35s ease; padding:60px 16px 24px; }
+.toc-panel.open { right:0; }
+.toc-panel h3 { font-size:.95rem; color:#c8a84b; margin-bottom:16px; padding-bottom:10px; border-bottom:1px solid rgba(255,255,255,.08); }
+.toc-item { display:block; padding:8px 12px; margin-bottom:4px; border-radius:4px; cursor:pointer; font-size:.82rem; color:#bbb; transition:background .15s,color .15s; border:none; background:none; width:100%; text-align:left; font-family:inherit; }
+.toc-item:hover { background:rgba(200,168,75,.12); color:#fff; }
+.toc-item.active { background:rgba(200,168,75,.2); color:#c8a84b; font-weight:600; }
+.toc-overlay { position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,.4); z-index:250; display:none; }
+.toc-overlay.show { display:block; }
+.key-hint { position:fixed; bottom:70px; left:50%; transform:translateX(-50%); background:rgba(0,0,0,.6); color:#888; padding:6px 18px; border-radius:20px; font-size:.75rem; z-index:50; pointer-events:none; opacity:0; transition:opacity .5s; }
+.key-hint.show { opacity:1; }
+@media (max-width:768px) {
+  .controls .info { font-size:.72rem; }
+  .controls .nav-btn { padding:6px 12px; font-size:.8rem; }
+  .toc-panel { width:290px; right:-310px; }
+  .st-title { font-size:1.5rem; }
+  .st-body p { font-size:.98rem; }
+  .st-body table { font-size:.85rem; }
+  .cover-in h1 { font-size:1.9rem; }
+  .cover-sub { font-size:1.05rem; }
+  .cover-meta p { font-size:.9rem; }
+}
+</style>
+</head>
+<body>
+<div class="progress"><div class="progress-bar" id="progressBar"></div></div>
+<div class="slide-container" id="slideContainer">
+<div class="slide slide-text cover" data-title="臨終醫療決定的權限分野——意定監護人、醫療委任代理人與最近親屬之權限落差"><div class="cover-in"><h1>臨終醫療決定的權限分野——意定監護人、醫療委任代理人與最近親屬之權限落差</h1><p class="cover-sub"></p><div class="cover-meta"><p>財產交給誰，和醫療交給誰，是兩把不同的鑰匙</p><p>民法 §1113-2 以下　│　病人自主權利法　│　安寧緩和醫療條例</p><p>謝秉錡律師事務所<br>謝秉錡律師　劉靜芬律師　何博彥律師　林育正律師　陳儒學習律師<br>中華民國 115 年 10 月 4 日</p></div></div></div><div class="slide slide-img" data-title="最信任的意定監護人，在病榻前依法無權為您簽署放棄急救"><img src="slides/terminal-medical-authority/page02.jpg" alt="第 2 頁：最信任的意定監護人，在病榻前依法無權為您簽署放棄急救"></div><div class="slide slide-text" data-title="問題：最信任的人，卻簽不了字"><div class="st-title">問題：最信任的人，卻簽不了字</div><div class="st-body"><p>一個真實卻常見的困境</p><p>①　當事人為避免日後失能、財產遭覬覦，與「最信任的人」簽立意定監護契約。<br>②　約定於其受監護宣告時，由該信任之人擔任監護人。<br>③　日後當事人進入臨終階段、無法表達意願——<br>④　該監護人依法竟無權為其簽署「不施行心肺復甦術（DNR）」同意書。</p><p class="star">★ 不是設計疏漏，而是立法者刻意區分三種法律關係所致。</p><p>本文要回答的三個問題</p><p>１　意定監護、醫療委任代理、最近親屬，各有何法律依據與權限？<br>２　何以意定監護人不當然具有醫療決定權？<br>３　如何透過預立醫療決定（AD）事先填補落差？</p></div></div><div class="slide slide-text" data-title="三個最常見的誤解"><div class="st-title">三個最常見的誤解</div><div class="st-body"><p>誤解 ①</p><p>「簽了意定監護契約，<br>監護人就什麼都能決定。」<br><br>❌ 錯。<br><br>監護權僅及於財產管理與生活照護，不含臨終醫療決定。</p><p>誤解 ②</p><p>「最近親屬就是<br>民法扶養義務的順序。」<br><br>❌ 錯。<br><br>安寧條例 §7Ⅳ<br>已用立法明文列舉 7 款範圍，<br>與民法 §1114 無關。</p><p>誤解 ③</p><p>「家屬簽了放棄急救，<br>就和病人的預立醫療決定<br>衝突。」<br><br>❌ 錯。<br><br>法律明定：家屬代簽<br>不得與病人<br>明示之意願相反。</p><p class="star">★ 三個誤解的共通根源：把「三種身分」誤認為「一種權力的三種稱呼」。</p></div></div><div class="slide slide-text" data-title="貳、法制架構——三種身分、三套權限"><div class="st-title">貳、法制架構——三種身分、三套權限</div><div class="st-body"><p>法制架構</p><p>三種身分、三套權限</p></div></div><div class="slide slide-text" data-title="三套並行機制"><div class="st-title">三套並行機制</div><div class="st-body"><div class="tbl-wrap"><table><thead><tr><th>機制</th><th>法律依據</th><th>決定主體</th><th>適用時點</th><th>權限內容</th></tr></thead><tbody><tr><td>意定監護</td><td>民法 §1113-2～
+§1113-10</td><td>受任人
+（監護人）</td><td>受監護宣告後</td><td>財產管理、
+生活照護</td></tr><tr><td>醫療委任代理</td><td>病主法 §10；
+安寧條例 §5</td><td>醫療委任
+代理人</td><td>意識昏迷或
+無法表達時</td><td>代理表達醫療意願、
+簽具同意書</td></tr><tr><td>最近親屬代簽</td><td>安寧條例 §7Ⅲ</td><td>最近親屬</td><td>末期病人且
+意識昏迷時</td><td>出具 DNR
+同意書</td></tr></tbody></table></div><p class="star">★ 核心命題：此三者為分立關係——取得其一，不等於取得其餘。</p></div></div><div class="slide slide-img" data-title="意定監護權與醫療決定權，是兩條互不相交的平行軌道"><img src="slides/terminal-medical-authority/page07.jpg" alt="第 7 頁：意定監護權與醫療決定權，是兩條互不相交的平行軌道"></div><div class="slide slide-text" data-title="意定監護（一）——定義與成立"><div class="st-title">意定監護（一）——定義與成立</div><div class="st-body"><p>民法 §1113-2（定義）</p><p>稱意定監護者，謂本人與受任人約定，於本人受監護宣告時，受任人允為擔任監護人之契約。受任人得為一人或數人。</p><p>民法 §1113-3（成立要件）</p><div class="tbl-wrap"><table><thead><tr><th>要件</th><th>內容</th></tr></thead><tbody><tr><td>① 公證成立主義</td><td>應由公證人作成公證書始為成立</td></tr><tr><td>② 通知法院</td><td>公證人作成公證書後七日內，以書面通知本人住所地之法院</td></tr><tr><td>③ 親自到場</td><td>公證時，本人及受任人應在場，向公證人表明合意</td></tr><tr><td>④ 生效時點</td><td>於本人受監護宣告時，發生效力</td></tr></tbody></table></div></div></div><div class="slide slide-text" data-title="意定監護（二）——職務範圍"><div class="st-title">意定監護（二）——職務範圍</div><div class="st-body"><div class="tbl-wrap"><table><thead><tr><th>條號</th><th>內容</th><th>性質</th></tr></thead><tbody><tr><td>民法 §1092</td><td>監護人於監護權限內，為受監護人之法定代理人</td><td>代理權</td></tr><tr><td>民法 §1100</td><td>監護人應以善良管理人之注意義務執行職務</td><td>注意義務</td></tr><tr><td>民法 §1102</td><td>監護人不得受讓受監護人之財產</td><td>利益衝突迴避</td></tr><tr><td>民法 §1103</td><td>監護人應會同開具財產清冊之人開具財產清冊</td><td>財產管理</td></tr></tbody></table></div><p class="star">★ 關鍵觀察：上述職務內容均集中於「財產管理」與「生活照護」，法條中未見「臨終醫療決定」之權限。</p><p>→ 意定監護權之核心在於財產與生活；其權限來源為民法親屬編，<br>    並不當然及於病人自主權利法或安寧緩和醫療條例所定之醫療決定權。</p></div></div><div class="slide slide-img" data-title="意定監護的法定邊界：止步於財產與生活"><img src="slides/terminal-medical-authority/page10.jpg" alt="第 10 頁：意定監護的法定邊界：止步於財產與生活"></div><div class="slide slide-text" data-title="醫療委任代理人"><div class="st-title">醫療委任代理人</div><div class="st-body"><p>病人自主權利法 §10</p><p>意願人指定之醫療委任代理人，應以成年且具行為能力之人為限，並經其書面同意。<br><br>下列之人，除意願人之繼承人外，不得為醫療委任代理人：<br>一、意願人之受遺贈人。　二、意願人遺體或器官指定之受贈人。<br>三、其他因意願人死亡而獲得利益之人。</p><p>權限內容（三項，均限於「醫療意願之表達」）</p><div class="tbl-wrap"><table><thead><tr><th>＃</th><th>權限</th><th>依據</th></tr></thead><tbody><tr><td>一</td><td>聽取病情告知</td><td>病主法 §5</td></tr><tr><td>二</td><td>簽具醫療同意書</td><td>病主法 §6</td></tr><tr><td>三</td><td>依預立醫療決定內容，代理表達醫療意願</td><td>病主法 §10</td></tr></tbody></table></div></div></div><div class="slide slide-img" data-title="醫療委任代理人：專責解鎖醫療意願的法定角色"><img src="slides/terminal-medical-authority/page12.jpg" alt="第 12 頁：醫療委任代理人：專責解鎖醫療意願的法定角色"></div><div class="slide slide-text" data-title="利益衝突之防火牆"><div class="st-title">利益衝突之防火牆</div><div class="st-body"><p>病主法 §10Ⅱ 的立法目的</p><p>避免因病人死亡而獲利之人，透過醫療決定權之行使，作成不利於病人之醫療決定。</p><p>道德風險之圖像</p><p>若無防火牆</p><p>受遺贈人 → 掌握醫療決定權<br><br>→ 提前放棄急救<br>→ 早日取得遺產<br><br>（道德風險）</p><p>立法者之處理</p><p>病主法 §10Ⅱ 明文排除：<br><br>• 受遺贈人<br>• 遺體或器官指定受贈人<br>• 其他因死亡獲利之人<br><br>（除意願人之繼承人外）</p></div></div><div class="slide slide-img" data-title="利益衝突防火牆：防堵「因死亡獲利」的道德風險"><img src="slides/terminal-medical-authority/page14.jpg" alt="第 14 頁：利益衝突防火牆：防堵「因死亡獲利」的道德風險"></div><div class="slide slide-text" data-title="最近親屬（一）——七款法定範圍"><div class="st-title">最近親屬（一）——七款法定範圍</div><div class="st-body"><p class="star">★ 重要澄清：「最近親屬」並非依民法扶養義務順序（民法 §1114）判斷，而是安寧條例 §7Ⅳ以立法明文列舉之 7 款範圍。</p><div class="tbl-wrap"><table><thead><tr><th>款次</th><th>範圍</th><th>款次</th><th>範圍</th></tr></thead><tbody><tr><td>一</td><td>配偶</td><td>五</td><td>祖父母</td></tr><tr><td>二</td><td>成年子女、孫子女</td><td>六</td><td>曾祖父母、曾孫子女
+或三親等旁系血親</td></tr><tr><td>三</td><td>父母</td><td>七</td><td>一親等直系姻親</td></tr><tr><td>四</td><td>兄弟姐妹</td><td></td><td></td></tr></tbody></table></div><p class="star">★ 此列舉清單中，不包含「受任之監護人」（除該人恰兼有上述親屬身分外）。</p></div></div><div class="slide slide-img" data-title="「最近親屬」的嚴格法定界線：非依民法扶養順序"><img src="slides/terminal-medical-authority/page16.jpg" alt="第 16 頁：「最近親屬」的嚴格法定界線：非依民法扶養順序"></div><div class="slide slide-text" data-title="最近親屬（二）——代簽與順序"><div class="st-title">最近親屬（二）——代簽與順序</div><div class="st-body"><div class="tbl-wrap"><table><thead><tr><th>項目</th><th>安寧緩和醫療條例 §7 之規定</th></tr></thead><tbody><tr><td>代簽前提</td><td>末期病人無簽署意願書，且意識昏迷或無法清楚表達意願時</td></tr><tr><td>代簽主體</td><td>由最近親屬出具同意書代替之</td></tr><tr><td>人數</td><td>得由一人行之</td></tr><tr><td>順序</td><td>最近親屬意思表示不一致時，依 §7Ⅳ 各款先後定其順序</td></tr><tr><td>後順序者限制</td><td>後順序者已出具同意書時，先順序者如有不同意思，應於不施行／終止／撤除前以書面為之</td></tr><tr><td>無最近親屬</td><td>應經安寧緩和醫療照會後，依末期病人最大利益出具醫囑代替之</td></tr></tbody></table></div><p class="star">★ §7Ⅲ後段：同意書或醫囑均不得與末期病人於意識昏迷或無法清楚表達意願前明示之意思表示相反。<br>　　→ 病人明示之意願，優先於家屬之代簽。</p></div></div><div class="slide slide-text" data-title="參、核心分析——權限落差之形成"><div class="st-title">參、核心分析——權限落差之形成</div><div class="st-body"><p>核心分析</p><p>權限落差之形成</p></div></div><div class="slide slide-text" data-title="權限落差一目了然"><div class="st-title">權限落差一目了然</div><div class="st-body"><div class="tbl-wrap"><table><thead><tr><th>身分</th><th>財產／生活</th><th>臨終醫療決定</th><th>法律依據</th></tr></thead><tbody><tr><td>意定監護人</td><td>✅ 有權</td><td>❌ 無權（除另受指定）</td><td>民法 §1113-2 以下</td></tr><tr><td>醫療委任代理人</td><td>❌ 無權</td><td>✅ 有權</td><td>病主法 §10</td></tr><tr><td>最近親屬</td><td>❌ 無權</td><td>✅ 有權（末期病人）</td><td>安寧條例 §7Ⅲ</td></tr></tbody></table></div><p class="star">★ 取得其一，不等於取得其餘——這正是「最信任的人簽不了字」的制度成因。</p></div></div><div class="slide slide-img" data-title="權限落差矩陣：三種身分、三套權限"><img src="slides/terminal-medical-authority/page20.jpg" alt="第 20 頁：權限落差矩陣：三種身分、三套權限"></div><div class="slide slide-text" data-title="落差之成因：兩種權限、兩種目的"><div class="st-title">落差之成因：兩種權限、兩種目的</div><div class="st-body"><div class="tbl-wrap"><table><thead><tr><th></th><th>意定監護</th><th>醫療決定</th></tr></thead><tbody><tr><td>規範目的</td><td>財產之保護與生活之照護</td><td>尊重病人之自主權</td></tr><tr><td>預設場景</td><td>本人長期失能</td><td>本人無法表達醫療意願</td></tr><tr><td>主要風險</td><td>財產流失</td><td>利益衝突下之不當醫療決定</td></tr></tbody></table></div><p>立法者未整合二者之理由</p><p>兩種場景之利害關係與風險不同：<br><br>• 意定監護重在「防範財產流失」——故設善良管理人義務、禁止受讓財產。<br>• 醫療決定重在「防範利益衝突下之不當醫療決定」——故設 §10Ⅱ 利益衝突防火牆。<br><br>規範目的一旦不同，權限即不可能當然重疊。</p></div></div><div class="slide slide-text" data-title="典型情境：監護人非最近親屬"><div class="st-title">典型情境：監護人非最近親屬</div><div class="st-body"><p>當意定監護人恰非病人之最近親屬時</p><div class="tbl-wrap"><table><thead><tr><th>時點</th><th>狀態</th></tr></thead><tbody><tr><td>① 本人受監護宣告</td><td>該信任之人擔任監護人，管理財產與生活</td></tr><tr><td>② 本人進入臨終階段、意識昏迷</td><td>監護人依法無權簽署 DNR 同意書</td></tr><tr><td>③ 結果</td><td>最信任之人無法為其做臨終決定</td></tr></tbody></table></div><p class="star">★ 此即問題之核心：監護權與醫療決定權，是兩條平行、不相交的軌道。</p></div></div><div class="slide slide-text" data-title="進一步衝突：兼為受遺贈人"><div class="st-title">進一步衝突：兼為受遺贈人</div><div class="st-body"><p>若該監護人同時為本人之受遺贈人</p><p>依病主法 §10Ⅱ 第 1 款，其不得被指定為醫療委任代理人（除其為繼承人外）。</p><p>該人在醫療軌道上「全線均不得觸碰」</p><div class="tbl-wrap"><table><thead><tr><th>不得為</th><th>依據</th></tr></thead><tbody><tr><td>醫療委任代理人</td><td>病主法 §10Ⅱ 第 1 款</td></tr><tr><td>預立醫療決定（AD）見證人</td><td>病主法 §9Ⅳ</td></tr><tr><td>主責照護醫療團隊成員</td><td>病主法 §9Ⅳ</td></tr></tbody></table></div><p class="star">★ 制度目的均在於「利益衝突之迴避」。</p></div></div><div class="slide slide-img" data-title="致命的規劃死角：受遺贈人在醫療軌道上的「三不」封殺"><img src="slides/terminal-medical-authority/page24.jpg" alt="第 24 頁：致命的規劃死角：受遺贈人在醫療軌道上的「三不」封殺"></div><div class="slide slide-text" data-title="見證人資格之限制"><div class="st-title">見證人資格之限制</div><div class="st-body"><div class="tbl-wrap"><table><thead><tr><th>機制</th><th>見證人規定</th><th>依據</th></tr></thead><tbody><tr><td>預立醫療決定
+（AD）</td><td>意願人之醫療委任代理人、主責照護醫療團隊成員
+及 §10Ⅱ 各款之人（受遺贈人等）不得為見證人</td><td>病主法 §9Ⅳ</td></tr><tr><td>DNR 意願書</td><td>應有具完全行為能力者二人以上在場見證；
+實施安寧緩和醫療及執行維生醫療抉擇之醫療機構
+所屬人員不得為見證人</td><td>安寧條例 §4Ⅲ</td></tr></tbody></table></div><p class="star">★ 實務提醒：三種機制之見證人資格限制各不相同。<br>簽署前應逐一核對——尤其是「受遺贈人」在 AD 見證與醫療委任代理兩處均被排除。</p></div></div><div class="slide slide-text" data-title="肆、解決方案——三軌並行"><div class="st-title">肆、解決方案——三軌並行</div><div class="st-body"><p>解決方案</p><p>三軌並行</p></div></div><div class="slide slide-text" data-title="根本解：預立醫療決定（AD）"><div class="st-title">根本解：預立醫療決定（AD）</div><div class="st-body"><p>程序要件（病主法 §9Ⅰ）</p><div class="tbl-wrap"><table><thead><tr><th>要件</th><th>內容</th></tr></thead><tbody><tr><td>一</td><td>經醫療機構提供預立醫療照護諮商（ACP），並經其於預立醫療決定上核章證明</td></tr><tr><td>二</td><td>經公證人公證，或有具完全行為能力者二人以上在場見證</td></tr><tr><td>三</td><td>經註記於全民健康保險憑證</td></tr></tbody></table></div><p>參與人員（§9Ⅱ）</p><p>意願人、二親等內之親屬至少一人、醫療委任代理人<br>（二親等內親屬死亡、失蹤或具特殊事由時得不參與）</p><p class="star">★ 效力（§14）：符合五款臨床條件之一且有 AD 者，醫療機構或醫師得依其 AD 終止、撤除或不施行維持生命治療或人工營養及流體餵養。</p></div></div><div class="slide slide-text" data-title="簡便解：DNR 意願書"><div class="st-title">簡便解：DNR 意願書</div><div class="st-body"><p>適用對象：僅欲處理「末期病人」情形者（安寧條例 §4、§5）</p><div class="tbl-wrap"><table><thead><tr><th>要件</th><th>內容</th></tr></thead><tbody><tr><td>書面</td><td>意願書須載明姓名、身分證字號、住所、意願內容、日期，並由意願人簽署</td></tr><tr><td>見證</td><td>2 人以上在場見證（醫療機構所屬人員不得為之）</td></tr><tr><td>代理人</td><td>§5 得預立醫療委任代理人，於本人無法表達時代為簽署</td></tr><tr><td>註記</td><td>§6-1 得註記於健保卡，效力與意願書正本相同</td></tr></tbody></table></div><p>補充解：最近親屬代簽</p><p>於病人未及訂立意願書且已意識昏迷時，依安寧條例 §7Ⅲ 由其最近親屬出具同意書代替之。<br>限制：該同意書不得與病人昏迷前明示之意思相反（§7Ⅲ後段）。</p></div></div><div class="slide slide-img" data-title="填補落差的雙重工具：預立醫療決定（AD）與 DNR 意願書"><img src="slides/terminal-medical-authority/page29.jpg" alt="第 29 頁：填補落差的雙重工具：預立醫療決定（AD）與 DNR 意願書"></div><div class="slide slide-text" data-title="適用順序：四層檢驗"><div class="st-title">適用順序：四層檢驗</div><div class="st-body"><p>①</p><p>病人有意願書／AD　→　依病人意願（優先）</p><p>↓ 無</p><p>②</p><p>病人有醫療委任代理人　→　由代理人代為簽署</p><p>↓ 無</p><p>③</p><p>病人有最近親屬　→　由最近親屬出具同意書（§7Ⅲ）</p><p>↓ 無</p><p>④</p><p>皆無　→　經安寧緩和醫療照會，依病人最大利益出具醫囑</p></div></div><div class="slide slide-img" data-title="臨終決策順序鏈：病人自主意願永遠凌駕於家屬代簽"><img src="slides/terminal-medical-authority/page31.jpg" alt="第 31 頁：臨終決策順序鏈：病人自主意願永遠凌駕於家屬代簽"></div><div class="slide slide-text" data-title="結論與規劃建議"><div class="st-title">結論與規劃建議</div><div class="st-body"><p>五點結論</p><p>① 意定監護權與醫療決定權，於現行法下為分立之兩套權限。<br>② 意定監護人不當然具有臨終醫療決定權（權限來源為民法親屬編）。<br>③ 醫療委任代理人為填補落差之關鍵工具，惟受遺贈人等不得擔任。<br>④ 「最近親屬」為安寧條例 §7Ⅳ 明定之七款範圍，不含單純之監護人身分。<br>⑤ 病人明示之意願優先於家屬代簽。</p><p>規劃建議——三軌並行</p><div class="tbl-wrap"><table><thead><tr><th>軌道</th><th>工具</th><th>主體安排</th></tr></thead><tbody><tr><td>① 財產與生活</td><td>意定監護契約（須公證）</td><td>得指定信任之人（不以親屬為限）</td></tr><tr><td>② 臨終醫療</td><td>AD 或 DNR 意願書</td><td>醫療委任代理人須排除受遺贈人等</td></tr><tr><td>③ 見證安排</td><td>—</td><td>見證人須排除受遺贈人等（§9Ⅳ）</td></tr></tbody></table></div></div></div><div class="slide slide-img" data-title="完美自主的法學架構：三軌並行的規劃藍圖"><img src="slides/terminal-medical-authority/page33.jpg" alt="第 33 頁：完美自主的法學架構：三軌並行的規劃藍圖"></div>
+</div>
+<div class="key-hint" id="keyHint">← → 方向鍵切換 · T 開啟目錄 · Esc 關閉</div>
+<button class="toc-toggle" id="tocToggle" onclick="toggleToc()">☰ 目錄</button>
+<div class="toc-overlay" id="tocOverlay" onclick="closeToc()"></div>
+<div class="toc-panel" id="tocPanel"><h3>📋 幻燈片目錄（共 33 頁）</h3>
+<button class="toc-item active" onclick="goTo(0)">第1頁 · 臨終醫療決定的權限分野——意定監護人、醫療委任代理人與最近親屬之權限落差</button><button class="toc-item" onclick="goTo(1)">第2頁 · 最信任的意定監護人，在病榻前依法無權為您簽署放棄急救</button><button class="toc-item" onclick="goTo(2)">第3頁 · 問題：最信任的人，卻簽不了字</button><button class="toc-item" onclick="goTo(3)">第4頁 · 三個最常見的誤解</button><button class="toc-item" onclick="goTo(4)">第5頁 · 貳、法制架構——三種身分、三套權限</button><button class="toc-item" onclick="goTo(5)">第6頁 · 三套並行機制</button><button class="toc-item" onclick="goTo(6)">第7頁 · 意定監護權與醫療決定權，是兩條互不相交的平行軌道</button><button class="toc-item" onclick="goTo(7)">第8頁 · 意定監護（一）——定義與成立</button><button class="toc-item" onclick="goTo(8)">第9頁 · 意定監護（二）——職務範圍</button><button class="toc-item" onclick="goTo(9)">第10頁 · 意定監護的法定邊界：止步於財產與生活</button><button class="toc-item" onclick="goTo(10)">第11頁 · 醫療委任代理人</button><button class="toc-item" onclick="goTo(11)">第12頁 · 醫療委任代理人：專責解鎖醫療意願的法定角色</button><button class="toc-item" onclick="goTo(12)">第13頁 · 利益衝突之防火牆</button><button class="toc-item" onclick="goTo(13)">第14頁 · 利益衝突防火牆：防堵「因死亡獲利」的道德風險</button><button class="toc-item" onclick="goTo(14)">第15頁 · 最近親屬（一）——七款法定範圍</button><button class="toc-item" onclick="goTo(15)">第16頁 · 「最近親屬」的嚴格法定界線：非依民法扶養順序</button><button class="toc-item" onclick="goTo(16)">第17頁 · 最近親屬（二）——代簽與順序</button><button class="toc-item" onclick="goTo(17)">第18頁 · 參、核心分析——權限落差之形成</button><button class="toc-item" onclick="goTo(18)">第19頁 · 權限落差一目了然</button><button class="toc-item" onclick="goTo(19)">第20頁 · 權限落差矩陣：三種身分、三套權限</button><button class="toc-item" onclick="goTo(20)">第21頁 · 落差之成因：兩種權限、兩種目的</button><button class="toc-item" onclick="goTo(21)">第22頁 · 典型情境：監護人非最近親屬</button><button class="toc-item" onclick="goTo(22)">第23頁 · 進一步衝突：兼為受遺贈人</button><button class="toc-item" onclick="goTo(23)">第24頁 · 致命的規劃死角：受遺贈人在醫療軌道上的「三不」封殺</button><button class="toc-item" onclick="goTo(24)">第25頁 · 見證人資格之限制</button><button class="toc-item" onclick="goTo(25)">第26頁 · 肆、解決方案——三軌並行</button><button class="toc-item" onclick="goTo(26)">第27頁 · 根本解：預立醫療決定（AD）</button><button class="toc-item" onclick="goTo(27)">第28頁 · 簡便解：DNR 意願書</button><button class="toc-item" onclick="goTo(28)">第29頁 · 填補落差的雙重工具：預立醫療決定（AD）與 DNR 意願書</button><button class="toc-item" onclick="goTo(29)">第30頁 · 適用順序：四層檢驗</button><button class="toc-item" onclick="goTo(30)">第31頁 · 臨終決策順序鏈：病人自主意願永遠凌駕於家屬代簽</button><button class="toc-item" onclick="goTo(31)">第32頁 · 結論與規劃建議</button><button class="toc-item" onclick="goTo(32)">第33頁 · 完美自主的法學架構：三軌並行的規劃藍圖</button>
+</div>
+<div class="controls">
+  <div class="info"><span id="currentPage">1</span> / <span id="totalPages">33</span> &nbsp;·&nbsp; 臨終醫療決定的權限分野</div>
+  <div><button class="nav-btn" id="prevBtn" onclick="prevSlide()">‹ 上一頁</button>
+  <button class="nav-btn" id="nextBtn" onclick="nextSlide()">下一頁 ›</button></div>
+</div>
+<script>
+const TOTAL = 33;
+const DOC_TITLE = "臨終醫療決定的權限分野";
+let current = 0;
+const slidesEl = document.querySelectorAll('.slide');
+const progressBar = document.getElementById('progressBar');
+const currentPage = document.getElementById('currentPage');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+function updateSlide() {
+  slidesEl.forEach((el,i)=>el.classList.toggle('active', i===current));
+  currentPage.textContent = current+1;
+  progressBar.style.width = ((current+1)/TOTAL*100)+'%';
+  prevBtn.disabled = current===0;
+  nextBtn.disabled = current===TOTAL-1;
+  document.title = (current+1)+'/'+TOTAL+' · '+DOC_TITLE;
+  document.querySelectorAll('.toc-item').forEach((el,i)=>{el.classList.toggle('active', i===current);});
+}
+function nextSlide() { if(current<TOTAL-1){ current++; updateSlide(); } }
+function prevSlide() { if(current>0){ current--; updateSlide(); } }
+function goTo(n) { current=n; updateSlide(); closeToc(); }
+function toggleToc() { document.getElementById('tocPanel').classList.toggle('open'); document.getElementById('tocOverlay').classList.toggle('show'); }
+function closeToc() { document.getElementById('tocPanel').classList.remove('open'); document.getElementById('tocOverlay').classList.remove('show'); }
+document.addEventListener('keydown', function(e) {
+  if(e.key==='ArrowLeft'||e.key==='PageUp') prevSlide();
+  else if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' ') { e.preventDefault(); nextSlide(); }
+  else if(e.key==='t'||e.key==='T') toggleToc();
+  else if(e.key==='Escape') closeToc();
+  else if(e.key==='Home') { current=0; updateSlide(); }
+  else if(e.key==='End') { current=TOTAL-1; updateSlide(); }
+});
+let touchStartX=0;
+document.addEventListener('touchstart', e=>{touchStartX=e.changedTouches[0].screenX;});
+document.addEventListener('touchend', e=>{
+  const diff=touchStartX-e.changedTouches[0].screenX;
+  if(Math.abs(diff)>50){ if(diff>0) nextSlide(); else prevSlide(); }
+});
+setTimeout(()=>document.getElementById('keyHint').classList.add('show'),2000);
+setTimeout(()=>document.getElementById('keyHint').classList.remove('show'),8000);
+// 深層連結：可用 #p=N 直接開啟第 N 頁
+function readHash() {
+  const m = location.hash.match(/p=(\d+)/);
+  if (m) { const v = parseInt(m[1],10)-1; if (v>=0 && v<TOTAL) current = v; }
+}
+window.addEventListener('hashchange', ()=>{ readHash(); updateSlide(); });
+readHash();
+updateSlide();
+</script>
+</body>
+</html>
