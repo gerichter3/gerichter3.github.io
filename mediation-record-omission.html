@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>調解筆錄漏載拆除之效力與強制執行救濟｜拆屋還地實務</title>
+<meta name="description" content="調解筆錄僅載拆除一部分地上物、卻命返還全部土地時，返還土地之執行力是否及於未記載部分？以執行力客觀範圍、聲明異議與筆錄更正三條路徑，拆解拆屋還地強制執行的實務爭議。">
+<style>
+  :root{
+    --navy:#0f1b2d;
+    --navy-2:#16263d;
+    --line:rgba(255,255,255,.10);
+    --gold:#c8a84b;
+    --gold-2:#e6c96a;
+    --txt:#e8eef7;
+    --muted:#9aa7bd;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html,body{height:100%;}
+  body{
+    font-family:"Noto Sans TC","Microsoft JhengHei","PingFang TC",system-ui,sans-serif;
+    background:var(--navy); color:var(--txt); overflow:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  /* ── 進度條 ── */
+  .progress{position:fixed;top:0;left:0;right:0;height:3px;background:rgba(255,255,255,.07);z-index:400;}
+  .progress-bar{height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--gold-2));transition:width .28s ease;}
+
+  /* ── 舞台 ── */
+  .stage{
+    position:fixed;inset:0 0 62px 0;
+    display:flex;align-items:center;justify-content:center;
+    padding:18px 18px 10px;
+  }
+  .slide{display:none;width:100%;height:100%;align-items:center;justify-content:center;}
+  .slide.active{display:flex;}
+  .slide img{
+    max-width:100%;max-height:100%;
+    width:auto;height:auto;
+    object-fit:contain;
+    border-radius:6px;
+    box-shadow:0 18px 60px rgba(0,0,0,.55),0 0 0 1px rgba(255,255,255,.06);
+    background:#fff;
+    user-select:none;-webkit-user-drag:none;
+  }
+
+  /* ── 底部控制列 ── */
+  .controls{
+    position:fixed;left:0;right:0;bottom:0;height:62px;
+    display:flex;align-items:center;gap:14px;
+    padding:0 18px;
+    background:rgba(12,22,37,.94);
+    backdrop-filter:blur(10px);
+    border-top:1px solid var(--line);
+    z-index:300;
+  }
+  .controls .meta{flex:1;min-width:0;}
+  .controls .meta .ttl{
+    font-size:.86rem;color:var(--txt);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  }
+  .controls .meta .sub{font-size:.72rem;color:var(--muted);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .btn{
+    appearance:none;border:1px solid rgba(255,255,255,.16);
+    background:rgba(255,255,255,.06);color:var(--txt);
+    font-family:inherit;font-size:.85rem;line-height:1;
+    padding:9px 16px;border-radius:8px;cursor:pointer;
+    transition:background .18s,border-color .18s,color .18s;
+    white-space:nowrap;
+  }
+  .btn:hover{background:rgba(200,168,75,.18);border-color:rgba(200,168,75,.5);color:#fff;}
+  .btn:disabled{opacity:.28;cursor:default;}
+  .btn:disabled:hover{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.16);color:var(--txt);}
+  .btn.icon{padding:9px 12px;}
+  .counter{
+    font-variant-numeric:tabular-nums;font-size:.85rem;color:var(--muted);
+    min-width:64px;text-align:center;
+  }
+  .counter b{color:var(--gold);font-weight:700;}
+
+  /* ── 目錄 ── */
+  .toc-toggle{position:fixed;top:16px;left:16px;z-index:320;}
+  .toc{
+    position:fixed;top:0;left:0;bottom:0;width:340px;max-width:86vw;
+    background:rgba(10,18,31,.985);
+    border-right:1px solid var(--line);
+    z-index:350;
+    transform:translateX(-102%);
+    transition:transform .32s cubic-bezier(.4,0,.2,1);
+    display:flex;flex-direction:column;
+  }
+  .toc.open{transform:translateX(0);}
+  .toc header{padding:22px 20px 14px;border-bottom:1px solid var(--line);}
+  .toc header h2{font-size:.95rem;letter-spacing:.04em;color:var(--gold);font-weight:700;}
+  .toc header p{font-size:.72rem;color:var(--muted);margin-top:6px;line-height:1.6;}
+  .toc nav{flex:1;overflow-y:auto;padding:12px 10px 24px;}
+  .toc-item{
+    display:flex;gap:10px;width:100%;text-align:left;
+    background:none;border:none;font-family:inherit;cursor:pointer;
+    padding:9px 10px;border-radius:6px;color:#b9c4d4;font-size:.8rem;line-height:1.45;
+    transition:background .15s,color .15s;
+  }
+  .toc-item:hover{background:rgba(200,168,75,.12);color:#fff;}
+  .toc-item.active{background:rgba(200,168,75,.2);color:var(--gold-2);font-weight:600;}
+  .toc-item .n{
+    flex:0 0 22px;text-align:right;color:var(--muted);
+    font-variant-numeric:tabular-nums;font-size:.74rem;padding-top:1px;
+  }
+  .toc-item.active .n{color:var(--gold);}
+  .toc footer{
+    border-top:1px solid var(--line);padding:14px 20px 18px;
+    font-size:.68rem;color:var(--muted);line-height:1.7;
+  }
+  .overlay{
+    position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:340;
+    opacity:0;pointer-events:none;transition:opacity .3s;
+  }
+  .overlay.show{opacity:1;pointer-events:auto;}
+
+  /* ── 提示 ── */
+  .hint{
+    position:fixed;left:50%;bottom:78px;transform:translateX(-50%);
+    background:rgba(0,0,0,.62);color:#cbd5e1;
+    padding:7px 18px;border-radius:999px;font-size:.74rem;
+    z-index:310;pointer-events:none;opacity:0;transition:opacity .5s;
+    white-space:nowrap;
+  }
+  .hint.show{opacity:1;}
+
+  @media (max-width:768px){
+    .stage{inset:0 0 56px 0;padding:8px 8px 4px;}
+    .controls{height:56px;gap:8px;padding:0 10px;}
+    .controls .meta .sub{display:none;}
+    .controls .meta .ttl{font-size:.76rem;}
+    .btn{padding:8px 11px;font-size:.78rem;}
+    .btn.icon{display:none;}
+    .counter{min-width:52px;font-size:.76rem;}
+    .toc-toggle{top:12px;left:12px;padding:7px 11px;font-size:.78rem;}
+  }
+</style>
+</head>
+<body>
+
+<div class="progress"><div class="progress-bar" id="progressBar"></div></div>
+
+<button class="btn toc-toggle" id="tocToggle">☰ 目錄</button>
+
+<div class="overlay" id="overlay"></div>
+
+<aside class="toc" id="toc">
+  <header>
+    <h2>調解筆錄漏載拆除之效力與救濟</h2>
+    <p>拆屋還地強制執行實務｜執行力客觀範圍 × 聲明異議 × 筆錄更正｜共 30 頁</p>
+  </header>
+  <nav id="tocNav"></nav>
+  <footer>
+    鍵盤 ← → 換頁．T 目錄．F 全螢幕<br>
+    引用裁判（100 台抗 482、115 台抗 297、113 抗 1536、105 台抗 768）<br>
+    均經司法院裁判書系統調閱全文核實。
+  </footer>
+</aside>
+
+<main class="stage" id="stage"></main>
+
+<div class="hint" id="hint">← → 方向鍵換頁 · T 開啟目錄 · F 全螢幕</div>
+
+<div class="controls">
+  <button class="btn" id="prevBtn">‹ 上一頁</button>
+  <button class="btn" id="nextBtn">下一頁 ›</button>
+  <div class="counter"><b id="cur">1</b> / <span id="tot">30</span></div>
+  <div class="meta">
+    <div class="ttl" id="ttl">封面｜調解筆錄漏載拆除之效力與救濟</div>
+    <div class="sub">拆屋還地強制執行實務｜謝秉錡律師事務所</div>
+  </div>
+  <button class="btn icon" id="fsBtn" title="全螢幕">⛶</button>
+</div>
+
+<script>
+const DIR = "slides/mediation-record-omission/";
+const PAGES = [
+  "封面｜調解筆錄漏載拆除之效力與救濟",
+  "目錄｜全篇十七章",
+  "三大核心結論",
+  "案件緣起｜爭點設定",
+  "個案圖解｜a 地與 a1／a2",
+  "事實與程序狀態整理",
+  "實體法缺陷｜從義務說不成立",
+  "另訴的四重障礙",
+  "程序法障礙｜既判力",
+  "核心法理｜執行力客觀範圍",
+  "執行力公式圖解",
+  "規範溯源｜院解字與 44 台抗 6",
+  "執行標的｜處分權涵蓋",
+  "首選救濟｜強執法 §12",
+  "聲明異議的四層論證",
+  "執行法院職責｜115 台抗 297",
+  "抗告審標準｜113 抗 1536",
+  "攻防武器總表",
+  "舉證｜處分權外觀五合一",
+  "期間迷思｜30 日",
+  "假警報與真死線",
+  "備位救濟｜類推 §232",
+  "更正界限｜105 台抗 768",
+  "關鍵物證｜調解錄音",
+  "路徑 B 決策樹",
+  "各途徑優劣對照表",
+  "四路徑診斷矩陣",
+  "實務戰術決策樹",
+  "24 小時急迫清單",
+  "結語｜三大致勝鐵則"
+];
+const TOTAL = PAGES.length;
+
+const stage = document.getElementById('stage');
+const tocNav = document.getElementById('tocNav');
+const bar = document.getElementById('progressBar');
+const curEl = document.getElementById('cur');
+const totEl = document.getElementById('tot');
+const ttlEl = document.getElementById('ttl');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+const toc = document.getElementById('toc');
+const overlay = document.getElementById('overlay');
+
+/* 建立頁面與目錄 */
+PAGES.forEach((title, i) => {
+  const n = String(i + 1).padStart(2, '0');
+  const d = document.createElement('div');
+  d.className = 'slide';
+  const img = document.createElement('img');
+  img.src = DIR + 'page' + n + '.webp';
+  img.alt = '第 ' + (i + 1) + ' 頁：' + title;
+  img.loading = i < 2 ? 'eager' : 'lazy';
+  img.decoding = 'async';
+  d.appendChild(img);
+  stage.appendChild(d);
+
+  const b = document.createElement('button');
+  b.className = 'toc-item';
+  b.innerHTML = '<span class="n">' + String(i + 1).padStart(2, '0') + '</span><span>' + title + '</span>';
+  b.addEventListener('click', () => { goTo(i); closeToc(); });
+  tocNav.appendChild(b);
+});
+
+const slides = stage.querySelectorAll('.slide');
+const tocItems = tocNav.querySelectorAll('.toc-item');
+let current = 0;
+
+function preload(i) {
+  if (i < 0 || i >= TOTAL) return;
+  const img = new Image();
+  img.src = DIR + 'page' + String(i + 1).padStart(2, '0') + '.webp';
+}
+
+function render() {
+  slides.forEach((el, i) => el.classList.toggle('active', i === current));
+  tocItems.forEach((el, i) => el.classList.toggle('active', i === current));
+  curEl.textContent = current + 1;
+  ttlEl.textContent = PAGES[current];
+  bar.style.width = ((current + 1) / TOTAL * 100) + '%';
+  prevBtn.disabled = current === 0;
+  nextBtn.disabled = current === TOTAL - 1;
+  if (history.replaceState) history.replaceState(null, '', '#p=' + (current + 1));
+  preload(current + 1);
+  preload(current + 2);
+  const active = tocItems[current];
+  if (active && toc.classList.contains('open')) active.scrollIntoView({block: 'nearest'});
+}
+
+function goTo(i) { current = Math.max(0, Math.min(TOTAL - 1, i)); render(); }
+function next() { if (current < TOTAL - 1) goTo(current + 1); }
+function prev() { if (current > 0) goTo(current - 1); }
+
+function openToc() { toc.classList.add('open'); overlay.classList.add('show'); }
+function closeToc() { toc.classList.remove('open'); overlay.classList.remove('show'); }
+function toggleToc() { toc.classList.contains('open') ? closeToc() : openToc(); }
+
+prevBtn.addEventListener('click', prev);
+nextBtn.addEventListener('click', next);
+document.getElementById('tocToggle').addEventListener('click', toggleToc);
+overlay.addEventListener('click', closeToc);
+
+document.getElementById('fsBtn').addEventListener('click', () => {
+  if (!document.fullscreenElement) {
+    (document.documentElement.requestFullscreen || function(){}).call(document.documentElement);
+  } else {
+    document.exitFullscreen();
+  }
+});
+
+document.addEventListener('keydown', e => {
+  switch (e.key) {
+    case 'ArrowRight': case 'PageDown': case ' ': e.preventDefault(); next(); break;
+    case 'ArrowLeft': case 'PageUp': e.preventDefault(); prev(); break;
+    case 'Home': e.preventDefault(); goTo(0); break;
+    case 'End': e.preventDefault(); goTo(TOTAL - 1); break;
+    case 't': case 'T': e.preventDefault(); toggleToc(); break;
+    case 'f': case 'F': e.preventDefault(); document.getElementById('fsBtn').click(); break;
+    case 'Escape': closeToc(); break;
+  }
+});
+
+let sx = 0, sy = 0;
+stage.addEventListener('touchstart', e => {
+  sx = e.changedTouches[0].clientX;
+  sy = e.changedTouches[0].clientY;
+}, {passive: true});
+stage.addEventListener('touchend', e => {
+  const dx = sx - e.changedTouches[0].clientX;
+  const dy = sy - e.changedTouches[0].clientY;
+  if (Math.abs(dx) > 55 && Math.abs(dx) > Math.abs(dy)) { dx > 0 ? next() : prev(); }
+}, {passive: true});
+
+/* 深層連結：#p=N */
+const m = location.hash.match(/p=(\d+)/);
+totEl.textContent = TOTAL;
+goTo(m ? parseInt(m[1], 10) - 1 : 0);
+
+/* 首次提示 */
+const hint = document.getElementById('hint');
+if (!m) {
+  setTimeout(() => hint.classList.add('show'), 1600);
+  setTimeout(() => hint.classList.remove('show'), 7000);
+}
+</script>
+</body>
+</html>
