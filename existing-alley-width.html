@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="現有巷道寬度認定三個層次、一條紅線，與一個最常被誤讀的數字｜謝秉錡律師事務所">
+<title>現有巷道寬度認定</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:"Noto Serif TC","PingFang TC","Microsoft JhengHei",serif;background:#11111f;overflow:hidden;height:100vh;}
+.slide{display:none;width:100vw;height:100vh;align-items:center;justify-content:center;}
+.slide.active{display:flex;}
+.slide img{max-width:100%;max-height:calc(100vh - 56px);object-fit:contain;}
+.progress{position:fixed;top:0;left:0;right:0;height:3px;background:rgba(255,255,255,.1);z-index:200;}
+.progress-bar{height:100%;background:linear-gradient(90deg,#c8a84b,#e8c84b);transition:width .3s ease;}
+.controls{position:fixed;bottom:0;left:0;right:0;background:rgba(17,17,31,.9);backdrop-filter:blur(8px);padding:12px 24px;display:flex;align-items:center;justify-content:space-between;z-index:100;border-top:1px solid rgba(255,255,255,.08);}
+.controls .info{font-size:.85rem;color:#999;}
+.controls .nav-btn{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:#fff;padding:8px 20px;border-radius:6px;cursor:pointer;font-size:.9rem;font-family:inherit;transition:background .2s;margin-left:8px;}
+.controls .nav-btn:hover{background:rgba(255,255,255,.18);}
+.controls .nav-btn:disabled{opacity:.3;cursor:default;}
+.toc-toggle{position:fixed;top:16px;right:16px;background:rgba(17,17,31,.8);border:1px solid rgba(255,255,255,.15);color:#aaa;padding:8px 14px;border-radius:6px;cursor:pointer;font-size:.85rem;z-index:200;font-family:inherit;}
+.toc-toggle:hover{color:#fff;}
+.toc-panel{position:fixed;top:0;right:-380px;width:360px;height:100vh;background:rgba(14,14,26,.97);backdrop-filter:blur(12px);border-left:1px solid rgba(255,255,255,.08);z-index:300;overflow-y:auto;transition:right .35s ease;padding:60px 16px 24px;}
+.toc-panel.open{right:0;}
+.toc-panel h3{font-size:.95rem;color:#c8a84b;margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,.08);}
+.toc-item{display:block;padding:8px 12px;margin-bottom:4px;border-radius:4px;cursor:pointer;font-size:.82rem;color:#bbb;border:none;background:none;width:100%;text-align:left;font-family:inherit;transition:background .15s,color .15s;}
+.toc-item:hover{background:rgba(200,168,75,.12);color:#fff;}
+.toc-item.active{background:rgba(200,168,75,.2);color:#c8a84b;font-weight:600;}
+.toc-overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:250;display:none;}
+.toc-overlay.show{display:block;}
+.key-hint{position:fixed;bottom:70px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,.65);color:#888;padding:6px 18px;border-radius:20px;font-size:.75rem;z-index:50;pointer-events:none;opacity:0;transition:opacity .5s;}
+.key-hint.show{opacity:1;}
+@media (max-width:768px){
+  .controls .info{font-size:.72rem;}
+  .controls .nav-btn{padding:6px 12px;font-size:.8rem;}
+  .toc-panel{width:300px;right:-320px;}
+}
+</style>
+</head>
+<body>
+<div class="progress"><div class="progress-bar" id="progressBar"></div></div>
+<div class="slide" data-title="現有巷道寬度認定"><img src="slides/existing-alley-width/page01.jpg" alt="第 1 頁：現有巷道寬度認定"></div><div class="slide" data-title="簡報目錄"><img src="slides/existing-alley-width/page02.jpg" alt="第 2 頁：簡報目錄"></div><div class="slide" data-title="問題提出"><img src="slides/existing-alley-width/page03.jpg" alt="第 3 頁：問題提出"></div><div class="slide" data-title="第 4 頁"><img src="slides/existing-alley-width/page04.jpg" alt="第 4 頁：第 4 頁"></div><div class="slide" data-title="三個層次"><img src="slides/existing-alley-width/page05.jpg" alt="第 5 頁：三個層次"></div><div class="slide" data-title="第 6 頁"><img src="slides/existing-alley-width/page06.jpg" alt="第 6 頁：第 6 頁"></div><div class="slide" data-title="巷道是否成立"><img src="slides/existing-alley-width/page07.jpg" alt="第 7 頁：巷道是否成立"></div><div class="slide" data-title="三個常見誤解"><img src="slides/existing-alley-width/page08.jpg" alt="第 8 頁：三個常見誤解"></div><div class="slide" data-title="第 9 頁"><img src="slides/existing-alley-width/page09.jpg" alt="第 9 頁：第 9 頁"></div><div class="slide" data-title="範圍以現況為準"><img src="slides/existing-alley-width/page10.jpg" alt="第 10 頁：範圍以現況為準"></div><div class="slide" data-title="第 11 頁"><img src="slides/existing-alley-width/page11.jpg" alt="第 11 頁：第 11 頁"></div><div class="slide" data-title="4 公尺是什麼？"><img src="slides/existing-alley-width/page12.jpg" alt="第 12 頁：4 公尺是什麼？"></div><div class="slide" data-title="第 13 頁"><img src="slides/existing-alley-width/page13.jpg" alt="第 13 頁：第 13 頁"></div><div class="slide" data-title="占用四象限"><img src="slides/existing-alley-width/page14.jpg" alt="第 14 頁：占用四象限"></div><div class="slide" data-title="第 15 頁"><img src="slides/existing-alley-width/page15.jpg" alt="第 15 頁：第 15 頁"></div><div class="slide" data-title="一條紅線"><img src="slides/existing-alley-width/page16.jpg" alt="第 16 頁：一條紅線"></div><div class="slide" data-title="第 17 頁"><img src="slides/existing-alley-width/page17.jpg" alt="第 17 頁：第 17 頁"></div><div class="slide" data-title="正確讀法"><img src="slides/existing-alley-width/page18.jpg" alt="第 18 頁：正確讀法"></div><div class="slide" data-title="關鍵區辨"><img src="slides/existing-alley-width/page19.jpg" alt="第 19 頁：關鍵區辨"></div><div class="slide" data-title="平均寬度"><img src="slides/existing-alley-width/page20.jpg" alt="第 20 頁：平均寬度"></div><div class="slide" data-title="兩項限制"><img src="slides/existing-alley-width/page21.jpg" alt="第 21 頁：兩項限制"></div><div class="slide" data-title="第 22 頁"><img src="slides/existing-alley-width/page22.jpg" alt="第 22 頁：第 22 頁"></div><div class="slide" data-title="圖上畫的不算"><img src="slides/existing-alley-width/page23.jpg" alt="第 23 頁：圖上畫的不算"></div><div class="slide" data-title="理由不是主文"><img src="slides/existing-alley-width/page24.jpg" alt="第 24 頁：理由不是主文"></div><div class="slide" data-title="第 25 頁"><img src="slides/existing-alley-width/page25.jpg" alt="第 25 頁：第 25 頁"></div><div class="slide" data-title="舉證責任"><img src="slides/existing-alley-width/page26.jpg" alt="第 26 頁：舉證責任"></div><div class="slide" data-title="第 27 頁"><img src="slides/existing-alley-width/page27.jpg" alt="第 27 頁：第 27 頁"></div><div class="slide" data-title="無判斷餘地"><img src="slides/existing-alley-width/page28.jpg" alt="第 28 頁：無判斷餘地"></div><div class="slide" data-title="第 29 頁"><img src="slides/existing-alley-width/page29.jpg" alt="第 29 頁：第 29 頁"></div><div class="slide" data-title="判斷七步"><img src="slides/existing-alley-width/page30.jpg" alt="第 30 頁：判斷七步"></div><div class="slide" data-title="第 31 頁"><img src="slides/existing-alley-width/page31.jpg" alt="第 31 頁：第 31 頁"></div><div class="slide" data-title="帶走一句話"><img src="slides/existing-alley-width/page32.jpg" alt="第 32 頁：帶走一句話"></div><div class="slide" data-title="開始之前"><img src="slides/existing-alley-width/page33.jpg" alt="第 33 頁：開始之前"></div><div class="slide" data-title="來源與核實"><img src="slides/existing-alley-width/page34.jpg" alt="第 34 頁：來源與核實"></div>
+<div class="key-hint" id="keyHint">← → 切換 · T 目錄 · F 全螢幕 · Esc 關閉</div>
+<button class="toc-toggle" onclick="toggleToc()">☰ 目錄</button>
+<div class="toc-overlay" id="tocOverlay" onclick="closeToc()"></div>
+<div class="toc-panel" id="tocPanel"><h3>📋 共 34 頁</h3>
+<button class="toc-item active" onclick="goTo(0)">第1頁 · 現有巷道寬度認定</button><button class="toc-item" onclick="goTo(1)">第2頁 · 簡報目錄</button><button class="toc-item" onclick="goTo(2)">第3頁 · 問題提出</button><button class="toc-item" onclick="goTo(3)">第4頁 · 第 4 頁</button><button class="toc-item" onclick="goTo(4)">第5頁 · 三個層次</button><button class="toc-item" onclick="goTo(5)">第6頁 · 第 6 頁</button><button class="toc-item" onclick="goTo(6)">第7頁 · 巷道是否成立</button><button class="toc-item" onclick="goTo(7)">第8頁 · 三個常見誤解</button><button class="toc-item" onclick="goTo(8)">第9頁 · 第 9 頁</button><button class="toc-item" onclick="goTo(9)">第10頁 · 範圍以現況為準</button><button class="toc-item" onclick="goTo(10)">第11頁 · 第 11 頁</button><button class="toc-item" onclick="goTo(11)">第12頁 · 4 公尺是什麼？</button><button class="toc-item" onclick="goTo(12)">第13頁 · 第 13 頁</button><button class="toc-item" onclick="goTo(13)">第14頁 · 占用四象限</button><button class="toc-item" onclick="goTo(14)">第15頁 · 第 15 頁</button><button class="toc-item" onclick="goTo(15)">第16頁 · 一條紅線</button><button class="toc-item" onclick="goTo(16)">第17頁 · 第 17 頁</button><button class="toc-item" onclick="goTo(17)">第18頁 · 正確讀法</button><button class="toc-item" onclick="goTo(18)">第19頁 · 關鍵區辨</button><button class="toc-item" onclick="goTo(19)">第20頁 · 平均寬度</button><button class="toc-item" onclick="goTo(20)">第21頁 · 兩項限制</button><button class="toc-item" onclick="goTo(21)">第22頁 · 第 22 頁</button><button class="toc-item" onclick="goTo(22)">第23頁 · 圖上畫的不算</button><button class="toc-item" onclick="goTo(23)">第24頁 · 理由不是主文</button><button class="toc-item" onclick="goTo(24)">第25頁 · 第 25 頁</button><button class="toc-item" onclick="goTo(25)">第26頁 · 舉證責任</button><button class="toc-item" onclick="goTo(26)">第27頁 · 第 27 頁</button><button class="toc-item" onclick="goTo(27)">第28頁 · 無判斷餘地</button><button class="toc-item" onclick="goTo(28)">第29頁 · 第 29 頁</button><button class="toc-item" onclick="goTo(29)">第30頁 · 判斷七步</button><button class="toc-item" onclick="goTo(30)">第31頁 · 第 31 頁</button><button class="toc-item" onclick="goTo(31)">第32頁 · 帶走一句話</button><button class="toc-item" onclick="goTo(32)">第33頁 · 開始之前</button><button class="toc-item" onclick="goTo(33)">第34頁 · 來源與核實</button>
+</div>
+<div class="controls">
+  <div class="info"><span id="currentPage">1</span> / <span>34</span> &nbsp;·&nbsp; 現有巷道寬度認定</div>
+  <div><button class="nav-btn" id="prevBtn" onclick="prevSlide()">‹ 上一頁</button>
+  <button class="nav-btn" id="nextBtn" onclick="nextSlide()">下一頁 ›</button></div>
+</div>
+<script>
+const TOTAL=34, DOC_TITLE="現有巷道寬度認定";
+let current=0;
+const slidesEl=document.querySelectorAll('.slide');
+const bar=document.getElementById('progressBar');
+const cur=document.getElementById('currentPage');
+const prevBtn=document.getElementById('prevBtn');
+const nextBtn=document.getElementById('nextBtn');
+function updateSlide(){
+  slidesEl.forEach((el,i)=>el.classList.toggle('active',i===current));
+  cur.textContent=current+1;
+  bar.style.width=((current+1)/TOTAL*100)+'%';
+  prevBtn.disabled=current===0;
+  nextBtn.disabled=current===TOTAL-1;
+  document.title=(current+1)+'/'+TOTAL+' · '+DOC_TITLE;
+  document.querySelectorAll('.toc-item').forEach((el,i)=>el.classList.toggle('active',i===current));
+  try{history.replaceState(null,'','#p='+(current+1));}catch(e){}
+}
+function nextSlide(){if(current<TOTAL-1){current++;updateSlide();}}
+function prevSlide(){if(current>0){current--;updateSlide();}}
+function goTo(n){current=n;updateSlide();closeToc();}
+function toggleToc(){document.getElementById('tocPanel').classList.toggle('open');document.getElementById('tocOverlay').classList.toggle('show');}
+function closeToc(){document.getElementById('tocPanel').classList.remove('open');document.getElementById('tocOverlay').classList.remove('show');}
+document.addEventListener('keydown',function(e){
+  if(e.key==='ArrowLeft'||e.key==='PageUp')prevSlide();
+  else if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){e.preventDefault();nextSlide();}
+  else if(e.key==='t'||e.key==='T')toggleToc();
+  else if(e.key==='Escape')closeToc();
+  else if(e.key==='Home'){current=0;updateSlide();}
+  else if(e.key==='End'){current=TOTAL-1;updateSlide();}
+  else if(e.key==='f'||e.key==='F'){if(document.fullscreenElement)document.exitFullscreen();else document.documentElement.requestFullscreen();}
+});
+document.addEventListener('click',function(e){
+  if(e.target.closest('a,button'))return;
+  const r=e.clientX/window.innerWidth;
+  if(r>0.7)nextSlide(); else if(r<0.3)prevSlide();
+});
+let tx=0;
+document.addEventListener('touchstart',e=>{tx=e.changedTouches[0].screenX;});
+document.addEventListener('touchend',e=>{const d=tx-e.changedTouches[0].screenX;if(Math.abs(d)>50){d>0?nextSlide():prevSlide();}});
+function readHash(){const m=location.hash.match(/p=(\d+)/);if(m){const v=parseInt(m[1],10)-1;if(v>=0&&v<TOTAL)current=v;}}
+window.addEventListener('hashchange',()=>{readHash();updateSlide();});
+setTimeout(()=>document.getElementById('keyHint').classList.add('show'),2000);
+setTimeout(()=>document.getElementById('keyHint').classList.remove('show'),7000);
+readHash();updateSlide();
+</script>
+</body>
+</html>
