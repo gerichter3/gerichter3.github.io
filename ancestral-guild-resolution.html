@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="無規約、無名冊的派下員大會——證明書被撤銷後，五個程序裂縫與三種決議效力｜謝秉錡律師事務所">
+<meta name="robots" content="noindex">
+<title>無規約、無名冊的派下員大會</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:"Noto Serif TC","PingFang TC","Microsoft JhengHei",serif; background:#1a1a2e; color:#fff; overflow:hidden; height:100vh; }
+.slide { display:none; width:100vw; height:100vh; }
+.slide.active { display:flex; }
+.slide-img { align-items:center; justify-content:center; background:#11111f; }
+.slide-img img { max-width:100%; max-height:100vh; object-fit:contain; }
+.slide-text { background:#fff; color:#1a1a2e; flex-direction:column; align-items:flex-start; justify-content:flex-start; padding:6vh 6vw 12vh; overflow-y:auto; }
+.st-title { font-size:1.95rem; font-weight:700; color:#1a365d; margin-bottom:1.6vh; padding-bottom:.8vh; width:100%; }
+.st-body { width:100%; }
+.st-body p { font-size:1.06rem; line-height:1.85; margin-bottom:.9vh; color:#222; }
+.st-body p.star { color:#8a6a12; font-weight:600; background:#fdf8e8; border-left:4px solid #d4af37; padding:9px 14px; border-radius:4px; margin:1.1vh 0; }
+.tbl-wrap { overflow-x:auto; margin:1.1vh 0 1.8vh; }
+.st-body table { border-collapse:collapse; width:100%; font-size:.96rem; }
+.st-body th { background:#1a365d; color:#fff; padding:10px 14px; text-align:left; font-weight:600; white-space:nowrap; }
+.st-body td { padding:9px 14px; border-bottom:1px solid #e3e7ef; vertical-align:top; line-height:1.7; }
+.st-body tbody tr:nth-child(even) td { background:#f6f8fb; }
+.slide-text.cover { justify-content:center; align-items:center; text-align:center; background:#1a365d; color:#fff; }
+.cover-in { max-width:1020px; }
+.cover-in h1 { font-size:2.9rem; color:#fff; letter-spacing:2px; line-height:1.45; margin-bottom:2vh; }
+.cover-sub { font-size:1.28rem; color:#d4af37; margin-bottom:4vh; line-height:1.7; }
+.cover-meta p { font-size:1rem; color:#a9b6cd; line-height:2; }
+#progress { position:fixed; top:0; left:0; height:3px; width:0; background:#d4af37; z-index:9999; transition:width .3s ease; }
+#sectionTag { position:fixed; top:14px; left:24px; font-size:13px; color:#8a93a6; letter-spacing:.08em; z-index:9999; }
+.controls { position:fixed; bottom:0; left:0; right:0; background:rgba(26,26,46,.94); padding:12px 24px; display:flex; align-items:center; justify-content:space-between; z-index:100; border-top:1px solid rgba(255,255,255,.1); }
+.controls .info { font-size:.85rem; color:#aaa; }
+.nav-btn { background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.15); color:#fff; padding:8px 20px; border-radius:6px; cursor:pointer; font-size:.9rem; font-family:inherit; }
+.nav-btn:hover { background:rgba(255,255,255,.18); }
+.nav-btn:disabled { opacity:.3; cursor:default; }
+.toc-toggle { position:fixed; top:16px; right:16px; background:rgba(26,26,46,.85); border:1px solid rgba(255,255,255,.15); color:#aaa; padding:8px 14px; border-radius:6px; cursor:pointer; font-size:.85rem; z-index:200; font-family:inherit; }
+.toc-toggle:hover { color:#fff; }
+.toc-panel { position:fixed; top:0; right:-360px; width:340px; height:100vh; background:rgba(20,20,36,.97); border-left:1px solid rgba(255,255,255,.08); z-index:300; overflow-y:auto; transition:right .35s ease; padding:60px 16px 24px; }
+.toc-panel.open { right:0; }
+.toc-panel h3 { font-size:.95rem; color:#c8a84b; margin-bottom:16px; padding-bottom:10px; border-bottom:1px solid rgba(255,255,255,.08); }
+.toc-item { display:block; padding:8px 12px; margin-bottom:4px; border-radius:4px; cursor:pointer; font-size:.82rem; color:#bbb; border:none; background:none; width:100%; text-align:left; font-family:inherit; }
+.toc-item:hover { background:rgba(200,168,75,.12); color:#fff; }
+.toc-item.active { background:rgba(200,168,75,.2); color:#c8a84b; font-weight:600; }
+.toc-overlay { position:fixed; inset:0; background:rgba(0,0,0,.4); z-index:250; display:none; }
+.toc-overlay.show { display:block; }
+.key-hint { position:fixed; bottom:70px; left:50%; transform:translateX(-50%); background:rgba(0,0,0,.6); color:#888; padding:6px 18px; border-radius:20px; font-size:.75rem; z-index:50; pointer-events:none; opacity:0; transition:opacity .5s; }
+.key-hint.show { opacity:1; }
+@media (max-width:768px) {
+  .st-title { font-size:1.5rem; } .st-body p { font-size:.98rem; }
+  .st-body table { font-size:.85rem; } .cover-in h1 { font-size:1.9rem; }
+  .cover-sub { font-size:1.05rem; } .toc-panel { width:290px; right:-310px; }
+  #sectionTag { font-size:11px; left:14px; }
+}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+<div id="sectionTag"></div>
+<div class="slide-container" id="slideContainer">
+<div class="slide slide-text cover" data-section="" data-title="無規約、無名冊的大會"><div class="cover-in"><h1>無規約、無名冊的大會</h1><p class="cover-sub">祭祀公業法制研究</p><div class="cover-meta"><p>派下員大會決議之效力分析</p><p>證明書被撤銷之後：五個程序裂縫與三種決議效力</p><p>謝秉錡律師事務所</p><p>2026 年 11 月　｜　本簡報之當事人、公業、機關、金額均已去識別化</p></div></div></div><div class="slide slide-text" data-section="引起動機" data-title="三個問題"><div class="st-title">三個問題</div><div class="st-body"><p>01</p><p>沒有規約，</p><p>誰有權召集大會？</p><p>02</p><p>名冊被撤銷，</p><p>多少人算「過半數」？</p><p>03</p><p>公業還沒解散，</p><p>可以把錢分掉嗎？</p><p>這三個問題沒有共通的答案，卻共用同一個前提：一份不存在的名冊。</p></div></div><div class="slide slide-img" data-section="" data-title="三個法理叩問：權源與程序的雙重斷裂"><img src="slides/ancestral-guild-resolution/page03.jpg" alt="第 3 頁：三個法理叩問：權源與程序的雙重斷裂"></div><div class="slide slide-text" data-section="迷思澄清" data-title="三個誤解"><div class="st-title">三個誤解</div><div class="st-body"><div class="tbl-wrap"><table><thead><tr><th>常見誤解</th><th>正確理解</th></tr></thead><tbody><tr><td>前管理人說「同意」
+就有召集權</td><td>召集權只能來自法律或規約。他人同意不能創設權源。</td></tr><tr><td>公告期滿無人異議
+派下範圍就確定了</td><td>不爭執的只是「程序曾公告」，不含實體範圍正確。</td></tr><tr><td>先開會、先選人
+程序之後再補</td><td>條例第 6 條至第 16 條是有先後順序的，不能跳級。</td></tr></tbody></table></div><p>→ 這三句話，是本案所有爭議的起點。</p></div></div><div class="slide slide-img" data-section="" data-title="實務盲點與法理解構"><img src="slides/ancestral-guild-resolution/page05.jpg" alt="第 5 頁：實務盲點與法理解構"></div><div class="slide slide-text" data-section="案例" data-title="事情怎麼發生"><div class="st-title">事情怎麼發生</div><div class="st-body"><p>早年</p><p>主管機關核發派下全員證明書，名冊僅列第四房</p><p>其後</p><p>前管理人處分數筆土地，收取價金（未經任何裁判認定）</p><p>二審更審</p><p>認定五房設立、確認三人派下權、前管理人選任無效</p><p>三審</p><p>上訴駁回，全案確定</p><p>近期</p><p>主管機關撤銷派下全員證明書及備查名冊</p><p>近期</p><p>派下員Ｂ自任召集人，訂 11 月中旬開會</p><p>※ 議案為「選任管理人」及「辦理剩餘財產分配」，地點、日期、金額均已模糊化</p></div></div><div class="slide slide-img" data-section="" data-title="法律空間之層層限縮"><img src="slides/ancestral-guild-resolution/page07.jpg" alt="第 7 頁：法律空間之層層限縮"></div><div class="slide slide-text" data-section="分類" data-title="誰是誰"><div class="st-title">誰是誰</div><div class="st-body"><p>祭祀公業甲</p><p>未登記法人・無原始規約<br>祀產為派下員公同共有</p><p>前管理人Ａ</p><p>選任經判決認定無效<br>證明書及備查嗣後被撤銷</p><p>派下員Ｂ</p><p>派下權經判決確認<br>以「前管理人同意」自任召集人</p><p>派下員Ｃ、Ｄ</p><p>派下權經判決確認<br>（主文僅確認此三人）</p><p>派下員Ｅ＋7 人</p><p>派下權經判決駁回確定<br>不得列入名冊</p><p>第三人己・Ｆ公司</p><p>系爭土地受讓人<br>買賣移轉經判決認定有效</p></div></div><div class="slide slide-img" data-section="" data-title="當事人結構：代稱化關係圖"><img src="slides/ancestral-guild-resolution/page09.jpg" alt="第 9 頁：當事人結構：代稱化關係圖"></div><div class="slide slide-text" data-section="" data-title="判決已經確定。"><div class="st-title">判決已經確定。</div><div class="st-body"><p>以下五件事，不必再爭。</p><p>它們同時也是判斷這場大會是否有效的基礎。</p></div></div><div class="slide slide-text" data-section="判決認定" data-title="地基一：無規約"><div class="st-title">地基一：無規約</div><div class="st-body"><p>二審更審判決・不爭執事項㈡</p><p>「系爭公業無原始規約，其享祀者為某先祖。」</p><p>沒有規約</p><p>就沒有「召集方式、通知期間」的私法依據</p><p>沒有規約</p><p>就沒有「出席門檻、表決門檻」的計算基礎</p><p>沒有規約</p><p>就沒有規約授權的召集人</p><p>條例第 30、31 條「由管理人召集」→ 僅適用於已登記之祭祀公業法人，本件不適用。</p></div></div><div class="slide slide-text" data-section="判決認定" data-title="地基二：五房"><div class="st-title">地基二：五房</div><div class="st-body"><p>系爭公業調查書所附設立連名帳記載，設立人為下列五人：</p><p>大房</p><p>設立人一</p><p>二房</p><p>設立人二</p><p>三房</p><p>設立人三</p><p>四房</p><p>設立人四</p><p>五房</p><p>設立人五</p><p>判決理由：第四房從未被排除</p><p>「系爭調查書所附派下系統表，記載某等 5 人……係設立人四之子，且設立人四與其餘 4 位設立人同為設立人。」<br>→ 名冊之第四房 98 人，判決從未否定其派下權。任何決議若排除該房，即與判決認定衝突。</p><p>注意：判決理由另指出，調查書與宗譜就其中二房之房序本有歧異。</p></div></div><div class="slide slide-text" data-section="判決認定" data-title="地基三：只認三人"><div class="st-title">地基三：只認三人</div><div class="st-body"><p>主文確認的範圍</p><p>Ｃ</p><p>派下權存在</p><p>Ｂ</p><p>派下權存在</p><p>Ｄ</p><p>派下權存在</p><p>其餘上訴駁回　→　Ｅ及承受訴訟人 7 人「均非」派下員</p><p>判決理由中的「18 人」不是主文範圍</p><p>「許吉後代子孫可為派下員者尚有 18 人」——這是被上訴人不爭執的計算基礎，不是主文確認的範圍。任何人都不能拿理由中的 18 人去造名冊。</p><p>→ 名冊若填入已被駁回者，即與確定判決直接衝突。</p><p>※ 未經主文確認、亦無備查名冊可憑之派下權，其人數無從認定——這是後續所有門檻失效的根源。</p></div></div><div class="slide slide-img" data-section="" data-title="法理基柱（一）：無規約・五房・僅認三人"><img src="slides/ancestral-guild-resolution/page14.jpg" alt="第 14 頁：法理基柱（一）：無規約・五房・僅認三人"></div><div class="slide slide-text" data-section="判決認定" data-title="地基四：選任無效"><div class="st-title">地基四：選任無效</div><div class="st-body"><p>條例第 16 條第 4 項的「過半數」，是全體現員的過半數，不是出席者的過半數。</p><p>同意選任前管理人的同意書</p><p>53 份</p><p>法定門檻（全體 116 人之過半數）</p><p>58 人</p><p>差 5 份 → 未達門檻</p><p>判決用語</p><p>「出具同意書同意選任前管理人為管理人者為 53 名，不足半數，與祭祀公業條例第 16 條第 4 項規定未合……前管理人非合法之系爭公業管理人。」（三審裁定亦重申「雖非合法」）</p></div></div><div class="slide slide-text" data-section="判決認定" data-title="地基五：不適用"><div class="st-title">地基五：不適用</div><div class="st-body"><p>二審更審判決・關於土地法第 34 條之 1</p><p>「至上訴人主張土地法第 34 條之 1 部分，與系爭公業處分祀產之情節未符，復不影響上開法規適用之結果，不予贅論。」</p><p>這一句話的用途</p><p>①</p><p>法院已明示：本案情形與該條「情節未符」</p><p>②</p><p>「不予贅論」＝法院未以該條作為分配依據</p><p>③</p><p>故「以多數決分配祀產」欠缺裁判支持</p></div></div><div class="slide slide-img" data-section="" data-title="法理基柱（二）：選任無效與不適用 §34-1"><img src="slides/ancestral-guild-resolution/page17.jpg" alt="第 17 頁：法理基柱（二）：選任無效與不適用 §34-1"></div><div class="slide slide-text" data-section="法律瑕疵" data-title="五個裂縫"><div class="st-title">五個裂縫</div><div class="st-body"><p>①</p><p>無召集權人</p><p>條例 §30、§31 不適用本件；無規約；管理人選任無效</p><p>②</p><p>沒有分母</p><p>名冊被撤銷 → 現員總數、過半數、房份比例全部無從認定</p><p>③</p><p>通知缺口</p><p>無發文日期、無通知期間、無名冊、無議案內容</p><p>④</p><p>提存無據</p><p>「報紙 30 日無人認領即提存」與繼承規定、民法 §326 不符</p><p>⑤</p><p>逾越權限</p><p>分配祀產屬分割，須先終止公同關係（§829、§830）</p><p>①②③ 針對「會議能不能開」；④⑤ 針對「決議內容能不能成立」。</p></div></div><div class="slide slide-text" data-section="法律瑕疵" data-title="裂縫一：無召集權人"><div class="st-title">裂縫一：無召集權人</div><div class="st-body"><p>法律</p><p>條例 §30、§31 之召集權人（管理人）僅指已登記之法人</p><p>✗ 不適用</p><p>規約</p><p>本件無原始規約，亦無嗣後訂定之備查紀錄</p><p>✗ 不存在</p><p>管理人</p><p>前管理人選任經判決認定無效，備查亦經撤銷</p><p>✗ 資格欠缺</p><p>三個來源皆空 → 沒有人有召集權</p><p>「前管理人同意由本人擔任召集人」不是召集權的來源，也不能創設召集權。</p></div></div><div class="slide slide-text" data-section="法律瑕疵" data-title="裂縫二：沒有分母"><div class="st-title">裂縫二：沒有分母</div><div class="st-body"><p>名冊被撤銷之後，每一個門檻都失去分母。</p><p>訂定規約</p><p>§14Ⅲ</p><p>現員 2/3 出席<br>出席者 3/4 同意</p><p>分母 = ？</p><p>選任管理人</p><p>§16Ⅳ</p><p>全體現員<br>過半數同意</p><p>分母 = ？</p><p>處分祀產</p><p>§828Ⅲ<br>§34-1Ⅴ</p><p>人數＋潛在<br>應有部分雙多數</p><p>分母 = ？</p><p>沒有分母，就沒有多數決；沒有多數決，就沒有決議成立。</p><p>逕行表決者，屬法律上不能認為有決議成立，並非單純的程序瑕疵。</p></div></div><div class="slide slide-img" data-section="" data-title="五項瑕疵（一）：根基斷裂"><img src="slides/ancestral-guild-resolution/page21.jpg" alt="第 21 頁：五項瑕疵（一）：根基斷裂"></div><div class="slide slide-text" data-section="法律瑕疵" data-title="裂縫三：通知缺口"><div class="st-title">裂縫三：通知缺口</div><div class="st-body"><p>①</p><p>無發文日期<br>無通知期間</p><p>亦無規約依據（本件無規約），通知是否合法送達無從認定</p><p>②</p><p>無派下現員名冊<br>無資格認定方式</p><p>出席者是否具派下員身分，現場無從核對</p><p>③</p><p>無議案內容</p><p>剩餘財產之標的、金額、計算基礎、分配比例全部空白</p><p>三者合起來的效果：與會者無法確知「誰有資格出席」「要表決什麼」。</p></div></div><div class="slide slide-text" data-section="法律瑕疵" data-title="裂縫四：提存無據"><div class="st-title">裂縫四：提存無據</div><div class="st-body"><p>通知書：「……刊登報紙 30 日後如無人認領，將其房份之款項提存法院。」</p><div class="tbl-wrap"><table><thead><tr><th>民法 §326 之要件</th><th>本件情形</th><th>判斷</th></tr></thead><tbody><tr><td>債權人受領遲延，或不能確知孰為債權人而難為給付</td><td>派下員及繼承人均可經戶籍查明</td><td>✗ 非「不能確知」</td></tr><tr><td>有已確定之債權存在</td><td>公業未解散、無規約、無合法決議</td><td>✗ 無債可清償</td></tr><tr><td>依 §34-1 處分後對不同意者之對價補償（執行要點 §11）</td><td>本件無處分、無對價、住址可查</td><td>✗ 三者皆不符</td></tr></tbody></table></div><p>縱經提存所形式准許，依提存法 §22，非依債務本旨之清償提存，債之關係不消滅。</p></div></div><div class="slide slide-img" data-section="" data-title="五項瑕疵（二）：程序崩潰"><img src="slides/ancestral-guild-resolution/page24.jpg" alt="第 24 頁：五項瑕疵（二）：程序崩潰"></div><div class="slide slide-text" data-section="比較" data-title="處分不等於分配"><div class="st-title">處分不等於分配</div><div class="st-body"><div class="tbl-wrap"><table><thead><tr><th>項目</th><th>處分</th><th>分配</th></tr></thead><tbody><tr><td>性質</td><td>處分行為（賣、設定負擔）</td><td>分割（終結公同共有）</td></tr><tr><td>依據</td><td>民法 §828Ⅲ；土地法 §34-1Ⅴ</td><td>民法 §829、§830</td></tr><tr><td>門檻</td><td>全體同意，或雙重多數</td><td>須先終止公同關係</td></tr><tr><td>本件</td><td>（前管理人曾處分數筆土地）</td><td>✗ 未解散，不得分配</td></tr></tbody></table></div><p>「辦理剩餘財產分配」在法律上屬分割，不是處分。</p><p>把分割包裝成分配，是本案議案最根本的定性錯誤。</p></div></div><div class="slide slide-text" data-section="法律瑕疵" data-title="裂縫五：逾越權限"><div class="st-title">裂縫五：逾越權限</div><div class="st-body"><p>條例 §15Ⅵ</p><p>僅要求規約記載「解散後」財產分配之方式</p><p>本件無規約，且公業並未解散</p><p>民法 §829</p><p>公同關係存續中，不得請求分割公同共有物</p><p>公同關係仍存續</p><p>民法 §830</p><p>須關係終止或讓與後，始得分割</p><p>未終止、未讓與</p><p>民法 §828Ⅲ</p><p>祀產處分應得全體公同共有人同意</p><p>無全體同意</p><p>四項要件全缺 → 議案內容本身即無實現可能，屬決議內容違反法令而無效。</p></div></div><div class="slide slide-img" data-section="" data-title="五項瑕疵（三）：逾越權限"><img src="slides/ancestral-guild-resolution/page27.jpg" alt="第 27 頁：五項瑕疵（三）：逾越權限"></div><div class="slide slide-img" data-section="" data-title="處分與分配之本質差異"><img src="slides/ancestral-guild-resolution/page28.jpg" alt="第 28 頁：處分與分配之本質差異"></div><div class="slide slide-text" data-section="正確順序" data-title="少了三步"><div class="st-title">少了三步</div><div class="st-body"><p>1</p><p>重新申報</p><p>2</p><p>公告異議</p><p>3</p><p>核發名冊</p><p>4</p><p>訂定規約</p><p>5</p><p>選任管理人</p><p>6</p><p>依規約處分</p><p>7</p><p>解散</p><p>8</p><p>分配</p><p>↑ 前三步整段跳過</p><p>跳過前三步，直接做最後一步 → 順序倒置</p><p>最高行政法院 114 上 623：取得派下全員證明書「無從省略此等程序」</p></div></div><div class="slide slide-img" data-section="" data-title="法定八步順序：違法跳級之紅線"><img src="slides/ancestral-guild-resolution/page30.jpg" alt="第 30 頁：法定八步順序：違法跳級之紅線"></div><div class="slide slide-text" data-section="比較" data-title="三種效力"><div class="st-title">三種效力</div><div class="st-body"><div class="tbl-wrap"><table><thead><tr><th>瑕疵類型</th><th>效力</th><th>期間／限制</th></tr></thead><tbody><tr><td>決議內容違反法令</td><td>無效</td><td>無期間限制</td></tr><tr><td>召集程序或決議方法違法</td><td>得撤銷</td><td>決議後 3 個月
+出席未當場異議者不得撤銷</td></tr><tr><td>根本無召集權人</td><td>不成立</td><td>無期間限制</td></tr></tbody></table></div><p>最高法院 114 台上 879</p><p>派下員大會決議之性質與社團總會決議相似，可類推適用民法第 56 條；決議內容違反法令者無效。</p><p>→ 若議案為「分配剩餘財產」，即落入民法 §829 射程，不受 3 個月限制。</p></div></div><div class="slide slide-img" data-section="" data-title="決議效力三層次：不成立・無效・撤銷"><img src="slides/ancestral-guild-resolution/page32.jpg" alt="第 32 頁：決議效力三層次：不成立・無效・撤銷"></div><div class="slide slide-text" data-section="" data-title="記住這一句"><div class="st-title">記住這一句</div><div class="st-body"><p>沒有名冊，就沒有分母；</p><p>沒有分母，就沒有決議。</p><p>名冊不是形式文件，是所有表決門檻的分母來源。<br>分母不存在，後面的出席、表決、決議，一律無從成立。</p></div></div><div class="slide slide-text" data-section="行動" data-title="帶走檢查表"><div class="st-title">帶走檢查表</div><div class="st-body"><p>下次遇到「公業要開會分財產」，先問這五題。</p><p>1</p><p>派下全員證明書還在有效狀態嗎？（不在 → 先重新申報）</p><p>2</p><p>現員名冊從哪裡來？人數與房份比例由誰認定？</p><p>3</p><p>召集權的依據是法律、規約，還是「某人同意」？</p><p>4</p><p>議案是「處分」還是「分配」？公同關係終止了嗎？</p><p>5</p><p>通知有無載明日期、期間、名冊、議案內容？</p><p>謝秉錡律師事務所　｜　本簡報已去識別化，引用裁判以審級稱之</p></div></div>
+</div>
+<div class="key-hint" id="keyHint">← → 切換 · T 目錄 · F 全螢幕 · 點左右側換頁</div>
+<button class="toc-toggle" onclick="toggleToc()">☰ 目錄</button>
+<div class="toc-overlay" id="tocOverlay" onclick="closeToc()"></div>
+<div class="toc-panel" id="tocPanel"><h3>幻燈片目錄（共 34 頁）</h3>
+<button class="toc-item active" onclick="goTo(0)">第1頁 · 無規約、無名冊的大會</button><button class="toc-item" onclick="goTo(1)">第2頁 · 三個問題</button><button class="toc-item" onclick="goTo(2)">第3頁 · 三個法理叩問：權源與程序的雙重斷裂</button><button class="toc-item" onclick="goTo(3)">第4頁 · 三個誤解</button><button class="toc-item" onclick="goTo(4)">第5頁 · 實務盲點與法理解構</button><button class="toc-item" onclick="goTo(5)">第6頁 · 事情怎麼發生</button><button class="toc-item" onclick="goTo(6)">第7頁 · 法律空間之層層限縮</button><button class="toc-item" onclick="goTo(7)">第8頁 · 誰是誰</button><button class="toc-item" onclick="goTo(8)">第9頁 · 當事人結構：代稱化關係圖</button><button class="toc-item" onclick="goTo(9)">第10頁 · 判決已經確定。</button><button class="toc-item" onclick="goTo(10)">第11頁 · 地基一：無規約</button><button class="toc-item" onclick="goTo(11)">第12頁 · 地基二：五房</button><button class="toc-item" onclick="goTo(12)">第13頁 · 地基三：只認三人</button><button class="toc-item" onclick="goTo(13)">第14頁 · 法理基柱（一）：無規約・五房・僅認三人</button><button class="toc-item" onclick="goTo(14)">第15頁 · 地基四：選任無效</button><button class="toc-item" onclick="goTo(15)">第16頁 · 地基五：不適用</button><button class="toc-item" onclick="goTo(16)">第17頁 · 法理基柱（二）：選任無效與不適用 §34-1</button><button class="toc-item" onclick="goTo(17)">第18頁 · 五個裂縫</button><button class="toc-item" onclick="goTo(18)">第19頁 · 裂縫一：無召集權人</button><button class="toc-item" onclick="goTo(19)">第20頁 · 裂縫二：沒有分母</button><button class="toc-item" onclick="goTo(20)">第21頁 · 五項瑕疵（一）：根基斷裂</button><button class="toc-item" onclick="goTo(21)">第22頁 · 裂縫三：通知缺口</button><button class="toc-item" onclick="goTo(22)">第23頁 · 裂縫四：提存無據</button><button class="toc-item" onclick="goTo(23)">第24頁 · 五項瑕疵（二）：程序崩潰</button><button class="toc-item" onclick="goTo(24)">第25頁 · 處分不等於分配</button><button class="toc-item" onclick="goTo(25)">第26頁 · 裂縫五：逾越權限</button><button class="toc-item" onclick="goTo(26)">第27頁 · 五項瑕疵（三）：逾越權限</button><button class="toc-item" onclick="goTo(27)">第28頁 · 處分與分配之本質差異</button><button class="toc-item" onclick="goTo(28)">第29頁 · 少了三步</button><button class="toc-item" onclick="goTo(29)">第30頁 · 法定八步順序：違法跳級之紅線</button><button class="toc-item" onclick="goTo(30)">第31頁 · 三種效力</button><button class="toc-item" onclick="goTo(31)">第32頁 · 決議效力三層次：不成立・無效・撤銷</button><button class="toc-item" onclick="goTo(32)">第33頁 · 記住這一句</button><button class="toc-item" onclick="goTo(33)">第34頁 · 帶走檢查表</button>
+</div>
+<div class="controls">
+  <div class="info"><span id="currentPage">1</span> / <span id="totalPages">34</span> &nbsp;·&nbsp; 無規約、無名冊的派下員大會</div>
+  <div><button class="nav-btn" id="prevBtn" onclick="prevSlide()">‹ 上一頁</button>
+  <button class="nav-btn" id="nextBtn" onclick="nextSlide()">下一頁 ›</button></div>
+</div>
+<script>
+const TOTAL = 34;
+const DOC_TITLE = "無規約、無名冊的派下員大會";
+let current = 0;
+const slidesEl = document.querySelectorAll('.slide');
+const progressBar = document.getElementById('progress');
+const sectionTag = document.getElementById('sectionTag');
+const currentPage = document.getElementById('currentPage');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+function updateSlide() {
+  slidesEl.forEach((el,i)=>el.classList.toggle('active', i===current));
+  currentPage.textContent = current+1;
+  progressBar.style.width = ((current+1)/TOTAL*100)+'%';
+  const sec = slidesEl[current].dataset.section || '';
+  sectionTag.textContent = sec ? '— ' + sec + ' —' : '— 祭祀公業法制研究 —';
+  prevBtn.disabled = current===0;
+  nextBtn.disabled = current===TOTAL-1;
+  document.title = (current+1)+'/'+TOTAL+' · '+DOC_TITLE;
+  document.querySelectorAll('.toc-item').forEach((el,i)=>el.classList.toggle('active', i===current));
+  try{ history.replaceState(null,'','#p='+(current+1)); }catch(e){}
+}
+function nextSlide() { if(current<TOTAL-1){ current++; updateSlide(); } }
+function prevSlide() { if(current>0){ current--; updateSlide(); } }
+function goTo(n) { current=n; updateSlide(); closeToc(); }
+function toggleToc() { document.getElementById('tocPanel').classList.toggle('open'); document.getElementById('tocOverlay').classList.toggle('show'); }
+function closeToc() { document.getElementById('tocPanel').classList.remove('open'); document.getElementById('tocOverlay').classList.remove('show'); }
+document.addEventListener('keydown', function(e) {
+  if(e.key==='ArrowLeft'||e.key==='PageUp'){ e.preventDefault(); prevSlide(); }
+  else if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){ e.preventDefault(); nextSlide(); }
+  else if(e.key==='t'||e.key==='T') toggleToc();
+  else if(e.key==='Escape') closeToc();
+  else if(e.key==='Home'){ e.preventDefault(); current=0; updateSlide(); }
+  else if(e.key==='End'){ e.preventDefault(); current=TOTAL-1; updateSlide(); }
+  else if(e.key==='f'||e.key==='F'){ if(document.fullscreenElement){document.exitFullscreen();} else {document.documentElement.requestFullscreen();} }
+});
+document.addEventListener('click', function(e){
+  if(e.target.closest('a,button')) return;
+  const r = e.clientX / window.innerWidth;
+  if(r > 0.7) nextSlide(); else if(r < 0.3) prevSlide();
+});
+let touchStartX=0;
+document.addEventListener('touchstart', e=>{touchStartX=e.changedTouches[0].screenX;});
+document.addEventListener('touchend', e=>{
+  const diff=touchStartX-e.changedTouches[0].screenX;
+  if(Math.abs(diff)>50){ if(diff>0) nextSlide(); else prevSlide(); }
+});
+setTimeout(()=>document.getElementById('keyHint').classList.add('show'),2000);
+setTimeout(()=>document.getElementById('keyHint').classList.remove('show'),8000);
+function readHash(){
+  const m = location.hash.match(/p=(\d+)/);
+  if(m){ const v = parseInt(m[1],10)-1; if(v>=0 && v<TOTAL) current = v; }
+}
+window.addEventListener('hashchange', ()=>{ readHash(); updateSlide(); });
+readHash();
+updateSlide();
+</script>
+</body>
+</html>
